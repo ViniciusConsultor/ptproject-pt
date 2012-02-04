@@ -10,15 +10,37 @@ using DevComponents.DotNetBar;
 namespace PT.Master
 {
     public partial class Grid : DevComponents.DotNetBar.Office2007Form
-    {
+    {        
         public Grid()
         {
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void Grid_Load(object sender, EventArgs e)
         {
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.Columns[0].ReadOnly = true;
+            }
+            //btnSave.Enabled = false;
+
+        }
+
+        private void dgv_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.Columns[0].ReadOnly = true;
+                btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {            
+            ((DataTable)dgv.DataSource).Rows.Add("");
             dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
+            dgv.CurrentCell.ReadOnly = false;
             btnDelete.Enabled = false;
             btnSave.Enabled = true;
         }
@@ -47,33 +69,19 @@ namespace PT.Master
             }
         }
 
-        private void gdv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgv.Rows.Count > 0)
-                btnDelete.Enabled = true;
-        }
-
-        private void Grid_Load(object sender, EventArgs e)
-        {
-            if (dgv.Rows.Count > 0)
-            {
-                dgv.Columns[0].ReadOnly = true;
-                btnDelete.Enabled = true;
-                btnSave.Enabled = true;
-            }
-            //btnSave.Enabled = false;
-            
-        }
-
-        private void dgv_DataSourceChanged(object sender, EventArgs e)
-        {
-            if (dgv.Rows.Count > 0)
-            {
-                dgv.Columns[0].ReadOnly = true;
-                btnDelete.Enabled = true;
-                btnSave.Enabled = true;
-            }
-        }
+        //protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        //{
+        //    if (msg.WParam.ToInt32() == (int)Keys.Tab)
+        //    {
+        //        if (dgv.CurrentCell == dgv.Rows[dgv.Rows.Count - 1].Cells[dgv.Columns.Count - 1])
+        //        {
+        //            btnAdd.RaiseClick();
+        //            return true;
+        //        }
+        //    }
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
+       
         
     }
 }
