@@ -1,0 +1,2 @@
+form config -> sai user, pass SQL bam connect - Loi
+Form Luoi edit, khi den cot cuoi cung, Enter ko them dong moi de Nhap tiep, phai bam New 
