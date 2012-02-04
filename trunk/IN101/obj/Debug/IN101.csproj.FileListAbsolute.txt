@@ -50,3 +50,22 @@ C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-
 C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\IN101\obj\Debug\IN101.IN101.resources
 C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\IN101\obj\Debug\IN101.Properties.Resources.resources
 C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\IN101\obj\Debug\IN101.csproj.GenerateResource.Cache
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.exe
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.pdb
+E:\PT-Working\trunk\IN101\bin\Debug\IN101.exe
+E:\PT-Working\trunk\IN101\bin\Debug\IN101.pdb
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Component.dll
+E:\PT-Working\trunk\IN101\bin\Debug\PT.DataInfo.dll
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Helper.dll
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Master.exe
+E:\PT-Working\trunk\IN101\bin\Debug\log4net.dll
+E:\PT-Working\trunk\IN101\bin\Debug\PT.DataInfo.pdb
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Master.pdb
+E:\PT-Working\trunk\IN101\bin\Debug\log4net.xml
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Helper.pdb
+E:\PT-Working\trunk\IN101\bin\Debug\PT.Component.pdb
+E:\PT-Working\trunk\IN101\obj\Debug\ResolveAssemblyReference.cache
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.Form1.resources
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.IN101.resources
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.Properties.Resources.resources
+E:\PT-Working\trunk\IN101\obj\Debug\IN101.csproj.GenerateResource.Cache
