@@ -27,7 +27,6 @@ namespace PT.DataInfo
         private static string _DfltSOUnit;
         private static string _DfltSite;
         private static string _Picture;
-        private static string _PriceClassID;
         private static string _Size;
         private static float _StkVol;
         private static float _StkWt;
@@ -63,7 +62,6 @@ namespace PT.DataInfo
         public static string DfltSOUnit { get { return _DfltSOUnit; } set { _DfltSOUnit = value; } }
         public static string DfltSite { get { return _DfltSite; } set { _DfltSite = value; } }
         public static string Picture { get { return _Picture; } set { _Picture = value; } }
-        public static string PriceClassID { get { return _PriceClassID; } set { _PriceClassID = value; } }
         public static string Size { get { return _Size; } set { _Size = value; } }
         public static float StkVol { get { return _StkVol; } set { _StkVol = value; } }
         public static float StkWt { get { return _StkWt; } set { _StkWt = value; } }

@@ -63,7 +63,8 @@
     <Compile Include="INDoc.cs" />
     <Compile Include="INDocDet.cs" />
     <Compile Include="INProduct.cs" />
-    <Compile Include="INProductClass.cs" />
+    <Compile Include="INProductClass1.cs" />
+    <Compile Include="INProductClass2.cs" />
     <Compile Include="INProductStatus.cs" />
     <Compile Include="INReason.cs" />
     <Compile Include="INUnit.cs" />

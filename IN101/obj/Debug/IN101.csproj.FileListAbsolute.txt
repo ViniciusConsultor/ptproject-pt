@@ -88,3 +88,5 @@ D:\My work\PT\SVN\IN101\bin\Debug\PT.Master.pdb
 D:\My work\PT\SVN\IN101\bin\Debug\log4net.xml
 D:\My work\PT\SVN\IN101\bin\Debug\PT.Helper.pdb
 D:\My work\PT\SVN\IN101\bin\Debug\PT.Component.pdb
+E:\SVN\IN101\obj\Debug\IN101.exe
+E:\SVN\IN101\obj\Debug\IN101.pdb
