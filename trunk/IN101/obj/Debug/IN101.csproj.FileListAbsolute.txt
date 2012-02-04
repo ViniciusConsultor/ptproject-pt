@@ -76,3 +76,15 @@ D:\My work\PT\SVN\IN101\obj\Debug\IN101.Form1.resources
 D:\My work\PT\SVN\IN101\obj\Debug\IN101.IN101.resources
 D:\My work\PT\SVN\IN101\obj\Debug\IN101.Properties.Resources.resources
 D:\My work\PT\SVN\IN101\obj\Debug\IN101.csproj.GenerateResource.Cache
+D:\My work\PT\SVN\IN101\bin\Debug\IN101.exe
+D:\My work\PT\SVN\IN101\bin\Debug\IN101.pdb
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Component.dll
+D:\My work\PT\SVN\IN101\bin\Debug\PT.DataInfo.dll
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Helper.dll
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Master.exe
+D:\My work\PT\SVN\IN101\bin\Debug\log4net.dll
+D:\My work\PT\SVN\IN101\bin\Debug\PT.DataInfo.pdb
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Master.pdb
+D:\My work\PT\SVN\IN101\bin\Debug\log4net.xml
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\IN101\bin\Debug\PT.Component.pdb
