@@ -1,0 +1,16 @@
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Master.exe
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Master.pdb
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Component.dll
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Helper.dll
+D:\My work\PT\SVN\PT.Master\bin\Debug\log4net.dll
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\PT.Master\bin\Debug\log4net.xml
+D:\My work\PT\SVN\PT.Master\bin\Debug\PT.Component.pdb
+D:\My work\PT\SVN\PT.Master\obj\Debug\ResolveAssemblyReference.cache
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.Form1.resources
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.Grid.resources
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.GridEdit.resources
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.Properties.Resources.resources
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.csproj.GenerateResource.Cache
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.exe
+D:\My work\PT\SVN\PT.Master\obj\Debug\PT.Master.pdb

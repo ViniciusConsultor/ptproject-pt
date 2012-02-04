@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC515D5C-7859-4847-BD62-73662B710ECA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PT.DataInfo</RootNamespace>
+    <AssemblyName>PT.DataInfo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APAdjust.cs" />
+    <Compile Include="APAdjustDet.cs" />
+    <Compile Include="APDoc.cs" />
+    <Compile Include="APVendor.cs" />
+    <Compile Include="AP_Vendor.cs" />
+    <Compile Include="ARAdjust.cs" />
+    <Compile Include="ARAdjustDet.cs" />
+    <Compile Include="ARCustomer.cs" />
+    <Compile Include="ARDoc.cs" />
+    <Compile Include="ARStaff.cs" />
+    <Compile Include="Batch.cs" />
+    <Compile Include="CAAccount.cs" />
+    <Compile Include="CADoc.cs" />
+    <Compile Include="CADocDet.cs" />
+    <Compile Include="CATypeList.cs" />
+    <Compile Include="INDoc.cs" />
+    <Compile Include="INDocDet.cs" />
+    <Compile Include="INProduct.cs" />
+    <Compile Include="INProductClass.cs" />
+    <Compile Include="INProductStatus.cs" />
+    <Compile Include="INReason.cs" />
+    <Compile Include="INUnit.cs" />
+    <Compile Include="INWarehouse.cs" />
+    <Compile Include="IN_Product.cs" />
+    <Compile Include="IN_ProductClass.cs" />
+    <Compile Include="IN_ProductStatus.cs" />
+    <Compile Include="IN_Reason.cs" />
+    <Compile Include="IN_Trans.cs" />
+    <Compile Include="IN_Unit.cs" />
+    <Compile Include="IN_Warehouse.cs" />
+    <Compile Include="POOrder.cs" />
+    <Compile Include="POOrderDet.cs" />
+    <Compile Include="POPrice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPRun.cs" />
+    <Compile Include="RPSetup.cs" />
+    <Compile Include="SALanguage.cs" />
+    <Compile Include="SAMenu.cs" />
+    <Compile Include="SOOrder.cs" />
+    <Compile Include="SOOrderDet.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D720DBC-2D1A-48A8-B01D-774A8B593155}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PT.Manager</RootNamespace>
+    <AssemblyName>PT.Manager</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=10.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=10.0.0.3, Culture=neutral, PublicKeyToken=bc4a9d761ea44ef0" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataForm\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataForm\frmReport.designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Native .cs" />
+    <Compile Include="PTComponent\MultiColumnComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataForm\frmINPRT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataForm\frmINPRT.Designer.cs">
+      <DependentUpon>frmINPRT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DataForm\frmINPRT.resx">
+      <DependentUpon>frmINPRT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataForm\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PTComponent\MultiDropDownTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PTComponent\MultiDropDownTextBox.Designer.cs">
+      <DependentUpon>MultiDropDownTextBox.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Images\Jpg\TN_psd0000.JPG" />
+    <None Include="Resources\XMLs\XMLSchema1.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\Ico\001_01.ico" />
+    <Content Include="Resources\Images\Ico\001_02.ico" />
+    <Content Include="Resources\Images\Ico\001_03.ico" />
+    <Content Include="Resources\Images\Ico\001_04.ico" />
+    <Content Include="Resources\Images\Ico\001_05.ico" />
+    <Content Include="Resources\Images\Ico\001_06.ico" />
+    <Content Include="Resources\Images\Ico\001_07.ico" />
+    <Content Include="Resources\Images\Ico\001_08.ico" />
+    <Content Include="Resources\Images\Ico\001_09.ico" />
+    <Content Include="Resources\Images\Ico\001_10.ico" />
+    <Content Include="Resources\Images\Ico\001_11.ico" />
+    <Content Include="Resources\Images\Ico\001_12.ico" />
+    <Content Include="Resources\Images\Ico\001_13.ico" />
+    <Content Include="Resources\Images\Ico\001_14.ico" />
+    <Content Include="Resources\Images\Ico\001_15.ico" />
+    <Content Include="Resources\Images\Ico\001_16.ico" />
+    <Content Include="Resources\Images\Ico\001_17.ico" />
+    <Content Include="Resources\Images\Ico\001_18.ico" />
+    <Content Include="Resources\Images\Ico\001_19.ico" />
+    <Content Include="Resources\Images\Ico\001_20.ico" />
+    <Content Include="Resources\Images\Ico\001_21.ico" />
+    <Content Include="Resources\Images\Ico\001_22.ico" />
+    <Content Include="Resources\Images\Ico\001_23.ico" />
+    <Content Include="Resources\Images\Ico\001_24.ico" />
+    <Content Include="Resources\Images\Ico\001_25.ico" />
+    <Content Include="Resources\Images\Ico\001_26.ico" />
+    <Content Include="Resources\Images\Ico\001_27.ico" />
+    <Content Include="Resources\Images\Ico\001_28.ico" />
+    <Content Include="Resources\Images\Ico\001_29.ico" />
+    <Content Include="Resources\Images\Ico\001_30.ico" />
+    <Content Include="Resources\Images\Ico\001_31.ico" />
+    <Content Include="Resources\Images\Ico\001_32.ico" />
+    <Content Include="Resources\Images\Ico\001_33.ico" />
+    <Content Include="Resources\Images\Ico\001_34.ico" />
+    <Content Include="Resources\Images\Ico\001_35.ico" />
+    <Content Include="Resources\Images\Ico\001_36.ico" />
+    <Content Include="Resources\Images\Ico\001_37.ico" />
+    <Content Include="Resources\Images\Ico\001_38.ico" />
+    <Content Include="Resources\Images\Ico\001_39.ico" />
+    <Content Include="Resources\Images\Ico\001_40.ico" />
+    <Content Include="Resources\Images\Ico\001_41.ico" />
+    <Content Include="Resources\Images\Ico\001_42.ico" />
+    <Content Include="Resources\Images\Ico\001_43.ico" />
+    <Content Include="Resources\Images\Ico\001_44.ico" />
+    <Content Include="Resources\Images\Ico\001_45.ico" />
+    <Content Include="Resources\Images\Ico\001_46.ico" />
+    <Content Include="Resources\Images\Ico\001_47.ico" />
+    <Content Include="Resources\Images\Ico\001_48.ico" />
+    <Content Include="Resources\Images\Ico\001_49.ico" />
+    <Content Include="Resources\Images\Ico\001_50.ico" />
+    <Content Include="Resources\Images\Ico\001_51.ico" />
+    <Content Include="Resources\Images\Ico\001_52.ico" />
+    <Content Include="Resources\Images\Ico\001_53.ico" />
+    <Content Include="Resources\Images\Ico\001_54.ico" />
+    <Content Include="Resources\Images\Ico\001_55.ico" />
+    <Content Include="Resources\Images\Ico\001_56.ico" />
+    <Content Include="Resources\Images\Ico\001_57.ico" />
+    <Content Include="Resources\Images\Ico\001_58.ico" />
+    <Content Include="Resources\Images\Ico\001_59.ico" />
+    <Content Include="Resources\Images\Ico\001_60.ico" />
+    <Content Include="Resources\Images\Png\3d bar chart.png" />
+    <Content Include="Resources\Images\Png\Abort.png" />
+    <Content Include="Resources\Images\Png\About.png" />
+    <Content Include="Resources\Images\Png\accept.png" />
+    <Content Include="Resources\Images\Png\accepted_48.png" />
+    <Content Include="Resources\Images\Png\Accounting.png" />
+    <Content Include="Resources\Images\Png\Add.png" />
+    <Content Include="Resources\Images\Png\Address book.png" />
+    <Content Include="Resources\Images\Png\address-book-2.png" />
+    <Content Include="Resources\Images\Png\address_book.png" />
+    <Content Include="Resources\Images\Png\address_book_accept.png" />
+    <Content Include="Resources\Images\Png\address_book_add.png" />
+    <Content Include="Resources\Images\Png\address_book_delete.png" />
+    <Content Include="Resources\Images\Png\address_book_edit.png" />
+    <Content Include="Resources\Images\Png\address_book_help.png" />
+    <Content Include="Resources\Images\Png\address_book_info.png" />
+    <Content Include="Resources\Images\Png\address_book_lock.png" />
+    <Content Include="Resources\Images\Png\address_book_search.png" />
+    <Content Include="Resources\Images\Png\address_book_unlock.png" />
+    <Content Include="Resources\Images\Png\address_book_warning.png" />
+    <Content Include="Resources\Images\Png\add_16.png" />
+    <Content Include="Resources\Images\Png\add_48.png" />
+    <Content Include="Resources\Images\Png\add_page.png" />
+    <Content Include="Resources\Images\Png\add_to_shopping_cart.png" />
+    <Content Include="Resources\Images\Png\adress-book.png" />
+    <Content Include="Resources\Images\Png\Alarm clock.png" />
+    <Content Include="Resources\Images\Png\Alarm.png" />
+    <Content Include="Resources\Images\Png\Alert.png" />
+    <Content Include="Resources\Images\Png\Alien.png" />
+    <Content Include="Resources\Images\Png\AllDay.ru_16.png" />
+    <Content Include="Resources\Images\Png\AllDay.ru_91.png" />
+    <Content Include="Resources\Images\Png\Anchor.png" />
+    <Content Include="Resources\Images\Png\application.png" />
+    <Content Include="Resources\Images\Png\applications.png" />
+    <Content Include="Resources\Images\Png\application_accept.png" />
+    <Content Include="Resources\Images\Png\application_add.png" />
+    <Content Include="Resources\Images\Png\application_back.png" />
+    <Content Include="Resources\Images\Png\application_delete.png" />
+    <Content Include="Resources\Images\Png\application_down.png" />
+    <Content Include="Resources\Images\Png\application_edit.png" />
+    <Content Include="Resources\Images\Png\application_help.png" />
+    <Content Include="Resources\Images\Png\application_info.png" />
+    <Content Include="Resources\Images\Png\application_lock.png" />
+    <Content Include="Resources\Images\Png\application_next.png" />
+    <Content Include="Resources\Images\Png\application_process.png" />
+    <Content Include="Resources\Images\Png\application_remove.png" />
+    <Content Include="Resources\Images\Png\application_search.png" />
+    <Content Include="Resources\Images\Png\application_unlock.png" />
+    <Content Include="Resources\Images\Png\application_up.png" />
+    <Content Include="Resources\Images\Png\application_warning.png" />
+    <Content Include="Resources\Images\Png\Apply.png" />
+    <Content Include="Resources\Images\Png\app_48.png" />
+    <Content Include="Resources\Images\Png\arrow_down_48.png" />
+    <Content Include="Resources\Images\Png\arrow_down_green_48.png" />
+    <Content Include="Resources\Images\Png\arrow_left_48.png" />
+    <Content Include="Resources\Images\Png\arrow_left_green_48.png" />
+    <Content Include="Resources\Images\Png\arrow_right_48.png" />
+    <Content Include="Resources\Images\Png\arrow_right_green_48.png" />
+    <Content Include="Resources\Images\Png\arrow_up_48.png" />
+    <Content Include="Resources\Images\Png\arrow_up_green_48.png" />
+    <Content Include="Resources\Images\Png\attachment.png" />
+    <Content Include="Resources\Images\Png\Back.png" />
+    <Content Include="Resources\Images\Png\Bad mark.png" />
+    <Content Include="Resources\Images\Png\bag.png" />
+    <Content Include="Resources\Images\Png\Bee.png" />
+    <Content Include="Resources\Images\Png\beer_48.png" />
+    <Content Include="Resources\Images\Png\Black bookmark.png" />
+    <Content Include="Resources\Images\Png\Black pin.png" />
+    <Content Include="Resources\Images\Png\Black tag.png" />
+    <Content Include="Resources\Images\Png\black_business_user.png" />
+    <Content Include="Resources\Images\Png\black_female_business_user.png" />
+    <Content Include="Resources\Images\Png\black_female_user.png" />
+    <Content Include="Resources\Images\Png\black_user.png" />
+    <Content Include="Resources\Images\Png\blinklist_48.png" />
+    <Content Include="Resources\Images\Png\Blog.png" />
+    <Content Include="Resources\Images\Png\Blue bookmark.png" />
+    <Content Include="Resources\Images\Png\Blue key.png" />
+    <Content Include="Resources\Images\Png\Blue pin.png" />
+    <Content Include="Resources\Images\Png\Blue tag.png" />
+    <Content Include="Resources\Images\Png\blue_speech_bubble_48.png" />
+    <Content Include="Resources\Images\Png\Bomb.png" />
+    <Content Include="Resources\Images\Png\book.png" />
+    <Content Include="Resources\Images\Png\Bookmark.png" />
+    <Content Include="Resources\Images\Png\book_48.png" />
+    <Content Include="Resources\Images\Png\book_accept.png" />
+    <Content Include="Resources\Images\Png\book_add.png" />
+    <Content Include="Resources\Images\Png\book_delete.png" />
+    <Content Include="Resources\Images\Png\book_down.png" />
+    <Content Include="Resources\Images\Png\book_edit.png" />
+    <Content Include="Resources\Images\Png\book_help.png" />
+    <Content Include="Resources\Images\Png\book_info.png" />
+    <Content Include="Resources\Images\Png\book_next.png" />
+    <Content Include="Resources\Images\Png\book_previous.png" />
+    <Content Include="Resources\Images\Png\book_remove.png" />
+    <Content Include="Resources\Images\Png\book_search.png" />
+    <Content Include="Resources\Images\Png\book_up.png" />
+    <Content Include="Resources\Images\Png\book_warning.png" />
+    <Content Include="Resources\Images\Png\Boss.png" />
+    <Content Include="Resources\Images\Png\Bottom.png" />
+    <Content Include="Resources\Images\Png\box_48.png" />
+    <Content Include="Resources\Images\Png\box_download_48.png" />
+    <Content Include="Resources\Images\Png\box_upload_48.png" />
+    <Content Include="Resources\Images\Png\Briefcase.png" />
+    <Content Include="Resources\Images\Png\broom.png" />
+    <Content Include="Resources\Images\Png\Brush.png" />
+    <Content Include="Resources\Images\Png\Bubble.png" />
+    <Content Include="Resources\Images\Png\business_user.png" />
+    <Content Include="Resources\Images\Png\business_users.png" />
+    <Content Include="Resources\Images\Png\business_users_accept.png" />
+    <Content Include="Resources\Images\Png\business_users_add.png" />
+    <Content Include="Resources\Images\Png\business_users_delete.png" />
+    <Content Include="Resources\Images\Png\business_users_down.png" />
+    <Content Include="Resources\Images\Png\business_users_edit.png" />
+    <Content Include="Resources\Images\Png\business_users_help.png" />
+    <Content Include="Resources\Images\Png\business_users_info.png" />
+    <Content Include="Resources\Images\Png\business_users_lock.png" />
+    <Content Include="Resources\Images\Png\business_users_next.png" />
+    <Content Include="Resources\Images\Png\business_users_previous.png" />
+    <Content Include="Resources\Images\Png\business_users_process.png" />
+    <Content Include="Resources\Images\Png\business_users_remove.png" />
+    <Content Include="Resources\Images\Png\business_users_search.png" />
+    <Content Include="Resources\Images\Png\business_users_unlock.png" />
+    <Content Include="Resources\Images\Png\business_users_up.png" />
+    <Content Include="Resources\Images\Png\business_users_warning.png" />
+    <Content Include="Resources\Images\Png\business_user_accept.png" />
+    <Content Include="Resources\Images\Png\business_user_add.png" />
+    <Content Include="Resources\Images\Png\business_user_comment.png" />
+    <Content Include="Resources\Images\Png\business_user_delete.png" />
+    <Content Include="Resources\Images\Png\business_user_down.png" />
+    <Content Include="Resources\Images\Png\business_user_edit.png" />
+    <Content Include="Resources\Images\Png\business_user_help.png" />
+    <Content Include="Resources\Images\Png\business_user_info.png" />
+    <Content Include="Resources\Images\Png\business_user_lock.png" />
+    <Content Include="Resources\Images\Png\business_user_next.png" />
+    <Content Include="Resources\Images\Png\business_user_previous.png" />
+    <Content Include="Resources\Images\Png\business_user_process.png" />
+    <Content Include="Resources\Images\Png\business_user_remove.png" />
+    <Content Include="Resources\Images\Png\business_user_search.png" />
+    <Content Include="Resources\Images\Png\business_user_unlock.png" />
+    <Content Include="Resources\Images\Png\business_user_up.png" />
+    <Content Include="Resources\Images\Png\business_user_warning.png" />
+    <Content Include="Resources\Images\Png\Buy.png" />
+    <Content Include="Resources\Images\Png\calc.png" />
+    <Content Include="Resources\Images\Png\calculator.png" />
+    <Content Include="Resources\Images\Png\calendar.png" />
+    <Content Include="Resources\Images\Png\calendar_accept.png" />
+    <Content Include="Resources\Images\Png\calendar_add.png" />
+    <Content Include="Resources\Images\Png\calendar_date.png" />
+    <Content Include="Resources\Images\Png\calendar_delete.png" />
+    <Content Include="Resources\Images\Png\calendar_info.png" />
+    <Content Include="Resources\Images\Png\camera.png" />
+    <Content Include="Resources\Images\Png\camera_48.png" />
+    <Content Include="Resources\Images\Png\camera_add_48.png" />
+    <Content Include="Resources\Images\Png\camera_delete_48.png" />
+    <Content Include="Resources\Images\Png\camera_noflash_48.png" />
+    <Content Include="Resources\Images\Png\camera_noflash_add_48.png" />
+    <Content Include="Resources\Images\Png\camera_noflash_delete_48.png" />
+    <Content Include="Resources\Images\Png\camera_noflash_warning_48.png" />
+    <Content Include="Resources\Images\Png\camera_warning_48.png" />
+    <Content Include="Resources\Images\Png\cancel_16.png" />
+    <Content Include="Resources\Images\Png\cancel_48.png" />
+    <Content Include="Resources\Images\Png\Car key.png" />
+    <Content Include="Resources\Images\Png\CD.png" />
+    <Content Include="Resources\Images\Png\cd_48.png" />
+    <Content Include="Resources\Images\Png\chart.png" />
+    <Content Include="Resources\Images\Png\chart_add.png" />
+    <Content Include="Resources\Images\Png\chart_delete.png" />
+    <Content Include="Resources\Images\Png\chart_down.png" />
+    <Content Include="Resources\Images\Png\chart_info.png" />
+    <Content Include="Resources\Images\Png\chart_up.png" />
+    <Content Include="Resources\Images\Png\circle_blue.png" />
+    <Content Include="Resources\Images\Png\circle_green.png" />
+    <Content Include="Resources\Images\Png\circle_orange.png" />
+    <Content Include="Resources\Images\Png\circle_red.png" />
+    <Content Include="Resources\Images\Png\Clipboard.png" />
+    <Content Include="Resources\Images\Png\clock.png" />
+    <Content Include="Resources\Images\Png\clock_48.png" />
+    <Content Include="Resources\Images\Png\Close.png" />
+    <Content Include="Resources\Images\Png\cloud_comment.png" />
+    <Content Include="Resources\Images\Png\coffee.png" />
+    <Content Include="Resources\Images\Png\coffee_48.png" />
+    <Content Include="Resources\Images\Png\coffee_mug.png" />
+    <Content Include="Resources\Images\Png\Coin.png" />
+    <Content Include="Resources\Images\Png\comic-book.png" />
+    <Content Include="Resources\Images\Png\Comment.png" />
+    <Content Include="Resources\Images\Png\comments.png" />
+    <Content Include="Resources\Images\Png\comment_48.png" />
+    <Content Include="Resources\Images\Png\comment_accept.png" />
+    <Content Include="Resources\Images\Png\comment_add.png" />
+    <Content Include="Resources\Images\Png\comment_add_48.png" />
+    <Content Include="Resources\Images\Png\comment_delete.png" />
+    <Content Include="Resources\Images\Png\comment_edit.png" />
+    <Content Include="Resources\Images\Png\comment_remove_48.png" />
+    <Content Include="Resources\Images\Png\comment_search.png" />
+    <Content Include="Resources\Images\Png\comment_warning_48.png" />
+    <Content Include="Resources\Images\Png\Company.png" />
+    <Content Include="Resources\Images\Png\Compass.png" />
+    <Content Include="Resources\Images\Png\Component.png" />
+    <Content Include="Resources\Images\Png\computer.png" />
+    <Content Include="Resources\Images\Png\computers.png" />
+    <Content Include="Resources\Images\Png\computer_48.png" />
+    <Content Include="Resources\Images\Png\computer_accept.png" />
+    <Content Include="Resources\Images\Png\computer_add.png" />
+    <Content Include="Resources\Images\Png\computer_delete.png" />
+    <Content Include="Resources\Images\Png\computer_down.png" />
+    <Content Include="Resources\Images\Png\computer_help.png" />
+    <Content Include="Resources\Images\Png\computer_info.png" />
+    <Content Include="Resources\Images\Png\computer_lock.png" />
+    <Content Include="Resources\Images\Png\computer_process.png" />
+    <Content Include="Resources\Images\Png\computer_remove.png" />
+    <Content Include="Resources\Images\Png\computer_search.png" />
+    <Content Include="Resources\Images\Png\computer_unlock.png" />
+    <Content Include="Resources\Images\Png\computer_up.png" />
+    <Content Include="Resources\Images\Png\computer_warning.png" />
+    <Content Include="Resources\Images\Png\computer_world.png" />
+    <Content Include="Resources\Images\Png\Copy.png" />
+    <Content Include="Resources\Images\Png\Create.png" />
+    <Content Include="Resources\Images\Png\creditcard_american_express.png" />
+    <Content Include="Resources\Images\Png\creditcard_cirrus.png" />
+    <Content Include="Resources\Images\Png\creditcard_mastercard.png" />
+    <Content Include="Resources\Images\Png\creditcard_paypal.png" />
+    <Content Include="Resources\Images\Png\creditcard_solo.png" />
+    <Content Include="Resources\Images\Png\creditcard_switch.png" />
+    <Content Include="Resources\Images\Png\creditcard_visa.png" />
+    <Content Include="Resources\Images\Png\cross_48.png" />
+    <Content Include="Resources\Images\Png\Cut.png" />
+    <Content Include="Resources\Images\Png\Danger.png" />
+    <Content Include="Resources\Images\Png\Database.png" />
+    <Content Include="Resources\Images\Png\database_48.png" />
+    <Content Include="Resources\Images\Png\database_accept.png" />
+    <Content Include="Resources\Images\Png\database_add.png" />
+    <Content Include="Resources\Images\Png\database_add_48.png" />
+    <Content Include="Resources\Images\Png\database_delete.png" />
+    <Content Include="Resources\Images\Png\database_down.png" />
+    <Content Include="Resources\Images\Png\database_edit.png" />
+    <Content Include="Resources\Images\Png\database_help.png" />
+    <Content Include="Resources\Images\Png\database_info.png" />
+    <Content Include="Resources\Images\Png\database_lock.png" />
+    <Content Include="Resources\Images\Png\database_next.png" />
+    <Content Include="Resources\Images\Png\database_previous.png" />
+    <Content Include="Resources\Images\Png\database_process.png" />
+    <Content Include="Resources\Images\Png\database_remove.png" />
+    <Content Include="Resources\Images\Png\database_remove_48.png" />
+    <Content Include="Resources\Images\Png\database_search.png" />
+    <Content Include="Resources\Images\Png\database_unlock.png" />
+    <Content Include="Resources\Images\Png\database_up.png" />
+    <Content Include="Resources\Images\Png\database_warning.png" />
+    <Content Include="Resources\Images\Png\database_warning_48.png" />
+    <Content Include="Resources\Images\Png\Delete.png" />
+    <Content Include="Resources\Images\Png\delete_page.png" />
+    <Content Include="Resources\Images\Png\delicious_48.png" />
+    <Content Include="Resources\Images\Png\Delivery.png" />
+    <Content Include="Resources\Images\Png\design.png" />
+    <Content Include="Resources\Images\Png\designfloat_48.png" />
+    <Content Include="Resources\Images\Png\Diagram.png" />
+    <Content Include="Resources\Images\Png\Dial.png" />
+    <Content Include="Resources\Images\Png\digg_48.png" />
+    <Content Include="Resources\Images\Png\direction_down.png" />
+    <Content Include="Resources\Images\Png\direction_left.png" />
+    <Content Include="Resources\Images\Png\direction_right.png" />
+    <Content Include="Resources\Images\Png\direction_up.png" />
+    <Content Include="Resources\Images\Png\Disaster.png" />
+    <Content Include="Resources\Images\Png\disc.png" />
+    <Content Include="Resources\Images\Png\disc_accept.png" />
+    <Content Include="Resources\Images\Png\disc_add.png" />
+    <Content Include="Resources\Images\Png\disc_delete.png" />
+    <Content Include="Resources\Images\Png\disc_down.png" />
+    <Content Include="Resources\Images\Png\disc_info.png" />
+    <Content Include="Resources\Images\Png\disc_up.png" />
+    <Content Include="Resources\Images\Png\disc_warning.png" />
+    <Content Include="Resources\Images\Png\disk.png" />
+    <None Include="Resources\Images\Png\.DS_Store" />
+    <None Include="Resources\XMLs\Config.manger" />
+    <None Include="Resources\XMLs\Copy of Menu.manger" />
+    <None Include="Resources\XMLs\Language.manger" />
+    <None Include="Resources\XMLs\Menu.manger" />
+    <Content Include="Resources\Images\Png\diskette.png" />
+    <Content Include="Resources\Images\Png\Display.png" />
+    <Content Include="Resources\Images\Png\display2.png" />
+    <Content Include="Resources\Images\Png\document.png" />
+    <Content Include="Resources\Images\Png\document_add.png" />
+    <Content Include="Resources\Images\Png\document_delete.png" />
+    <Content Include="Resources\Images\Png\document_edit.png" />
+    <Content Include="Resources\Images\Png\document_search.png" />
+    <Content Include="Resources\Images\Png\document_warning.png" />
+    <Content Include="Resources\Images\Png\Dollar.png" />
+    <Content Include="Resources\Images\Png\dollar_currency_sign.png" />
+    <Content Include="Resources\Images\Png\dollar_gold.png" />
+    <Content Include="Resources\Images\Png\dollar_silver.png" />
+    <Content Include="Resources\Images\Png\Door.png" />
+    <Content Include="Resources\Images\Png\Down.png" />
+    <Content Include="Resources\Images\Png\Download.png" />
+    <Content Include="Resources\Images\Png\Downloads folder.png" />
+    <Content Include="Resources\Images\Png\download_page.png" />
+    <Content Include="Resources\Images\Png\E-mail.png" />
+    <Content Include="Resources\Images\Png\Earth.png" />
+    <Content Include="Resources\Images\Png\edit.png" />
+    <Content Include="Resources\Images\Png\edit_page.png" />
+    <Content Include="Resources\Images\Png\Eject.png" />
+    <Content Include="Resources\Images\Png\email.png" />
+    <Content Include="Resources\Images\Png\envelope.png" />
+    <Content Include="Resources\Images\Png\equalizer.png" />
+    <Content Include="Resources\Images\Png\Equipment.png" />
+    <Content Include="Resources\Images\Png\Erase.png" />
+    <Content Include="Resources\Images\Png\Error.png" />
+    <Content Include="Resources\Images\Png\Euro.png" />
+    <Content Include="Resources\Images\Png\euro_currency_sign.png" />
+    <Content Include="Resources\Images\Png\euro_gold.png" />
+    <Content Include="Resources\Images\Png\euro_silver.png" />
+    <Content Include="Resources\Images\Png\Exit.png" />
+    <Content Include="Resources\Images\Png\Expand.png" />
+    <Content Include="Resources\Images\Png\Eye.png" />
+    <Content Include="Resources\Images\Png\Fall.png" />
+    <Content Include="Resources\Images\Png\Fast-forward.png" />
+    <Content Include="Resources\Images\Png\fast_forward.png" />
+    <Content Include="Resources\Images\Png\favourite.png" />
+    <Content Include="Resources\Images\Png\Favourites.png" />
+    <Content Include="Resources\Images\Png\feedburner_48.png" />
+    <Content Include="Resources\Images\Png\Female symbol.png" />
+    <Content Include="Resources\Images\Png\Female.png" />
+    <Content Include="Resources\Images\Png\female_business_user.png" />
+    <Content Include="Resources\Images\Png\female_user.png" />
+    <Content Include="Resources\Images\Png\file.png" />
+    <Content Include="Resources\Images\Png\file_add.png" />
+    <Content Include="Resources\Images\Png\file_delete.png" />
+    <Content Include="Resources\Images\Png\file_edit.png" />
+    <Content Include="Resources\Images\Png\file_search.png" />
+    <Content Include="Resources\Images\Png\file_warning.png" />
+    <Content Include="Resources\Images\Png\Film.png" />
+    <Content Include="Resources\Images\Png\Filter.png" />
+    <Content Include="Resources\Images\Png\Find.png" />
+    <Content Include="Resources\Images\Png\finder.png" />
+    <Content Include="Resources\Images\Png\First record.png" />
+    <Content Include="Resources\Images\Png\First.png" />
+    <Content Include="Resources\Images\Png\Flag.png" />
+    <Content Include="Resources\Images\Png\Flash drive.png" />
+    <Content Include="Resources\Images\Png\flickr_48.png" />
+    <Content Include="Resources\Images\Png\floppy_disk_48.png" />
+    <Content Include="Resources\Images\Png\folder-open.png" />
+    <Content Include="Resources\Images\Png\folder.png" />
+    <Content Include="Resources\Images\Png\folder_48.png" />
+    <Content Include="Resources\Images\Png\folder_accept.png" />
+    <Content Include="Resources\Images\Png\folder_add.png" />
+    <Content Include="Resources\Images\Png\folder_add_48.png" />
+    <Content Include="Resources\Images\Png\folder_delete.png" />
+    <Content Include="Resources\Images\Png\folder_delete_48.png" />
+    <Content Include="Resources\Images\Png\folder_down.png" />
+    <Content Include="Resources\Images\Png\folder_edit.png" />
+    <Content Include="Resources\Images\Png\folder_empty.png" />
+    <Content Include="Resources\Images\Png\folder_full.png" />
+    <Content Include="Resources\Images\Png\folder_help.png" />
+    <Content Include="Resources\Images\Png\folder_info.png" />
+    <Content Include="Resources\Images\Png\folder_lock.png" />
+    <Content Include="Resources\Images\Png\folder_next.png" />
+    <Content Include="Resources\Images\Png\folder_previous.png" />
+    <Content Include="Resources\Images\Png\folder_process.png" />
+    <Content Include="Resources\Images\Png\folder_remove.png" />
+    <Content Include="Resources\Images\Png\folder_search.png" />
+    <Content Include="Resources\Images\Png\folder_unlock.png" />
+    <Content Include="Resources\Images\Png\folder_up.png" />
+    <Content Include="Resources\Images\Png\folder_warning.png" />
+    <Content Include="Resources\Images\Png\folder_warning_48.png" />
+    <Content Include="Resources\Images\Png\Forbidden.png" />
+    <Content Include="Resources\Images\Png\Forward.png" />
+    <Content Include="Resources\Images\Png\Free bsd.png" />
+    <Content Include="Resources\Images\Png\full_page.png" />
+    <Content Include="Resources\Images\Png\furl_48.png" />
+    <Content Include="Resources\Images\Png\Gift.png" />
+    <Content Include="Resources\Images\Png\Globe.png" />
+    <Content Include="Resources\Images\Png\globe_48.png" />
+    <Content Include="Resources\Images\Png\Go back.png" />
+    <Content Include="Resources\Images\Png\Go forward.png" />
+    <Content Include="Resources\Images\Png\Go.png" />
+    <Content Include="Resources\Images\Png\Good mark.png" />
+    <Content Include="Resources\Images\Png\google_48.png" />
+    <Content Include="Resources\Images\Png\Green bookmark.png" />
+    <Content Include="Resources\Images\Png\Green pin.png" />
+    <Content Include="Resources\Images\Png\Green tag.png" />
+    <Content Include="Resources\Images\Png\Hard disk.png" />
+    <Content Include="Resources\Images\Png\hdd.png" />
+    <Content Include="Resources\Images\Png\headphone.png" />
+    <Content Include="Resources\Images\Png\headphones.png" />
+    <Content Include="Resources\Images\Png\headphones_accept.png" />
+    <Content Include="Resources\Images\Png\headphones_add.png" />
+    <Content Include="Resources\Images\Png\headphones_delete.png" />
+    <Content Include="Resources\Images\Png\headphones_down.png" />
+    <Content Include="Resources\Images\Png\headphones_remove.png" />
+    <Content Include="Resources\Images\Png\headphones_up.png" />
+    <Content Include="Resources\Images\Png\Heart.png" />
+    <Content Include="Resources\Images\Png\heart_48.png" />
+    <Content Include="Resources\Images\Png\Help book 3d.png" />
+    <Content Include="Resources\Images\Png\Help book.png" />
+    <Content Include="Resources\Images\Png\Help.png" />
+    <Content Include="Resources\Images\Png\Hint.png" />
+    <Content Include="Resources\Images\Png\History.png" />
+    <Content Include="Resources\Images\Png\home.png" />
+    <Content Include="Resources\Images\Png\home_48.png" />
+    <Content Include="Resources\Images\Png\home_accept.png" />
+    <Content Include="Resources\Images\Png\home_add.png" />
+    <Content Include="Resources\Images\Png\home_help.png" />
+    <Content Include="Resources\Images\Png\home_info.png" />
+    <Content Include="Resources\Images\Png\home_remove.png" />
+    <Content Include="Resources\Images\Png\home_search.png" />
+    <Content Include="Resources\Images\Png\home_warning.png" />
+    <Content Include="Resources\Images\Png\Hourglass.png" />
+    <Content Include="Resources\Images\Png\How-to.png" />
+    <Content Include="Resources\Images\Png\Hungup.png" />
+    <Content Include="Resources\Images\Png\id_card.png" />
+    <Content Include="Resources\Images\Png\image.png" />
+    <Content Include="Resources\Images\Png\images.png" />
+    <Content Include="Resources\Images\Png\image_48.png" />
+    <Content Include="Resources\Images\Png\image_accept.png" />
+    <Content Include="Resources\Images\Png\image_add.png" />
+    <Content Include="Resources\Images\Png\image_add_48.png" />
+    <Content Include="Resources\Images\Png\image_delete.png" />
+    <Content Include="Resources\Images\Png\image_delete_48.png" />
+    <Content Include="Resources\Images\Png\image_down.png" />
+    <Content Include="Resources\Images\Png\image_edit.png" />
+    <Content Include="Resources\Images\Png\image_help.png" />
+    <Content Include="Resources\Images\Png\image_info.png" />
+    <Content Include="Resources\Images\Png\image_next.png" />
+    <Content Include="Resources\Images\Png\image_previous.png" />
+    <Content Include="Resources\Images\Png\image_remove.png" />
+    <Content Include="Resources\Images\Png\image_search.png" />
+    <Content Include="Resources\Images\Png\image_up.png" />
+    <Content Include="Resources\Images\Png\image_warning.png" />
+    <Content Include="Resources\Images\Png\image_warning_48.png" />
+    <Content Include="Resources\Images\Png\In-yang.png" />
+    <Content Include="Resources\Images\Png\Info.png" />
+    <Content Include="Resources\Images\Png\Iphone.png" />
+    <Content Include="Resources\Images\Png\ipod.png" />
+    <Content Include="Resources\Images\Png\Key.png" />
+    <Content Include="Resources\Images\Png\Last recor.png" />
+    <Content Include="Resources\Images\Png\Last.png" />
+    <Content Include="Resources\Images\Png\Left-right.png" />
+    <Content Include="Resources\Images\Png\lens.png" />
+    <Content Include="Resources\Images\Png\Letter.png" />
+    <Content Include="Resources\Images\Png\library.png" />
+    <Content Include="Resources\Images\Png\license.png" />
+    <Content Include="Resources\Images\Png\lightbulb_48.png" />
+    <Content Include="Resources\Images\Png\Lightning.png" />
+    <Content Include="Resources\Images\Png\light_bulb.png" />
+    <Content Include="Resources\Images\Png\light_bulb_accept.png" />
+    <Content Include="Resources\Images\Png\light_bulb_add.png" />
+    <Content Include="Resources\Images\Png\light_bulb_delete.png" />
+    <Content Include="Resources\Images\Png\light_bulb_help.png" />
+    <Content Include="Resources\Images\Png\light_bulb_info.png" />
+    <Content Include="Resources\Images\Png\Liner.png" />
+    <Content Include="Resources\Images\Png\link.png" />
+    <Content Include="Resources\Images\Png\Linux.png" />
+    <Content Include="Resources\Images\Png\List.png" />
+    <Content Include="Resources\Images\Png\Load.png" />
+    <Content Include="Resources\Images\Png\load_download.png" />
+    <Content Include="Resources\Images\Png\load_upload.png" />
+    <Content Include="Resources\Images\Png\Lock.png" />
+    <Content Include="Resources\Images\Png\lock_48.png" />
+    <Content Include="Resources\Images\Png\lock_open_48.png" />
+    <Content Include="Resources\Images\Png\Low rating.png" />
+    <Content Include="Resources\Images\Png\Magic wand.png" />
+    <Content Include="Resources\Images\Png\magnet.png" />
+    <Content Include="Resources\Images\Png\mail.png" />
+    <Content Include="Resources\Images\Png\mail_48.png" />
+    <Content Include="Resources\Images\Png\mail_accept.png" />
+    <Content Include="Resources\Images\Png\mail_add.png" />
+    <Content Include="Resources\Images\Png\mail_add_48.png" />
+    <Content Include="Resources\Images\Png\mail_back.png" />
+    <Content Include="Resources\Images\Png\mail_delete.png" />
+    <Content Include="Resources\Images\Png\mail_delete_48.png" />
+    <Content Include="Resources\Images\Png\mail_down.png" />
+    <Content Include="Resources\Images\Png\mail_edit.png" />
+    <Content Include="Resources\Images\Png\mail_forward_48.png" />
+    <Content Include="Resources\Images\Png\mail_help.png" />
+    <Content Include="Resources\Images\Png\mail_info.png" />
+    <Content Include="Resources\Images\Png\mail_lock.png" />
+    <Content Include="Resources\Images\Png\mail_next.png" />
+    <Content Include="Resources\Images\Png\mail_open.png" />
+    <Content Include="Resources\Images\Png\mail_open_accept.png" />
+    <Content Include="Resources\Images\Png\mail_open_add.png" />
+    <Content Include="Resources\Images\Png\mail_open_back.png" />
+    <Content Include="Resources\Images\Png\mail_open_delete.png" />
+    <Content Include="Resources\Images\Png\mail_open_down.png" />
+    <Content Include="Resources\Images\Png\mail_open_edit.png" />
+    <Content Include="Resources\Images\Png\mail_open_help.png" />
+    <Content Include="Resources\Images\Png\mail_open_info.png" />
+    <Content Include="Resources\Images\Png\mail_open_lock.png" />
+    <Content Include="Resources\Images\Png\mail_open_next.png" />
+    <Content Include="Resources\Images\Png\mail_open_process.png" />
+    <Content Include="Resources\Images\Png\mail_open_remove.png" />
+    <Content Include="Resources\Images\Png\mail_open_search.png" />
+    <Content Include="Resources\Images\Png\mail_open_unlock.png" />
+    <Content Include="Resources\Images\Png\mail_open_up.png" />
+    <Content Include="Resources\Images\Png\mail_open_warning.png" />
+    <Content Include="Resources\Images\Png\mail_process.png" />
+    <Content Include="Resources\Images\Png\mail_receive.png" />
+    <Content Include="Resources\Images\Png\mail_remove.png" />
+    <Content Include="Resources\Images\Png\mail_reply_48.png" />
+    <Content Include="Resources\Images\Png\mail_search.png" />
+    <Content Include="Resources\Images\Png\mail_send.png" />
+    <Content Include="Resources\Images\Png\mail_spam_48.png" />
+    <Content Include="Resources\Images\Png\mail_unlock.png" />
+    <Content Include="Resources\Images\Png\mail_up.png" />
+    <Content Include="Resources\Images\Png\mail_warning.png" />
+    <Content Include="Resources\Images\Png\mail_write.png" />
+    <Content Include="Resources\Images\Png\mail_write_48.png" />
+    <Content Include="Resources\Images\Png\Male symbol.png" />
+    <Content Include="Resources\Images\Png\Male.png" />
+    <Content Include="Resources\Images\Png\map.png" />
+    <Content Include="Resources\Images\Png\map_accept.png" />
+    <Content Include="Resources\Images\Png\map_add.png" />
+    <Content Include="Resources\Images\Png\map_delete.png" />
+    <Content Include="Resources\Images\Png\map_down.png" />
+    <Content Include="Resources\Images\Png\map_edit.png" />
+    <Content Include="Resources\Images\Png\map_help.png" />
+    <Content Include="Resources\Images\Png\map_info.png" />
+    <Content Include="Resources\Images\Png\map_remove.png" />
+    <Content Include="Resources\Images\Png\map_search.png" />
+    <Content Include="Resources\Images\Png\map_up.png" />
+    <Content Include="Resources\Images\Png\map_warning.png" />
+    <Content Include="Resources\Images\Png\medal.png" />
+    <Content Include="Resources\Images\Png\Medium rating.png" />
+    <Content Include="Resources\Images\Png\megaphone.png" />
+    <Content Include="Resources\Images\Png\memory.png" />
+    <Content Include="Resources\Images\Png\message.png" />
+    <Content Include="Resources\Images\Png\mixx_48.png" />
+    <Content Include="Resources\Images\Png\Mobile-phone.png" />
+    <Content Include="Resources\Images\Png\mobile_phone.png" />
+    <Content Include="Resources\Images\Png\Modify.png" />
+    <Content Include="Resources\Images\Png\monitor.png" />
+    <Content Include="Resources\Images\Png\mouse.png" />
+    <Content Include="Resources\Images\Png\mouse_48.png" />
+    <Content Include="Resources\Images\Png\mouse_accept.png" />
+    <Content Include="Resources\Images\Png\mouse_help.png" />
+    <Content Include="Resources\Images\Png\mouse_info.png" />
+    <Content Include="Resources\Images\Png\mouse_remove.png" />
+    <Content Include="Resources\Images\Png\mouse_warning.png" />
+    <Content Include="Resources\Images\Png\Move.png" />
+    <Content Include="Resources\Images\Png\Movie.png" />
+    <Content Include="Resources\Images\Png\movie_accept.png" />
+    <Content Include="Resources\Images\Png\movie_add.png" />
+    <Content Include="Resources\Images\Png\movie_delete.png" />
+    <Content Include="Resources\Images\Png\movie_down.png" />
+    <Content Include="Resources\Images\Png\movie_edit.png" />
+    <Content Include="Resources\Images\Png\movie_help.png" />
+    <Content Include="Resources\Images\Png\movie_info.png" />
+    <Content Include="Resources\Images\Png\movie_remove.png" />
+    <Content Include="Resources\Images\Png\movie_search.png" />
+    <Content Include="Resources\Images\Png\movie_up.png" />
+    <Content Include="Resources\Images\Png\movie_warning.png" />
+    <Content Include="Resources\Images\Png\mug.png" />
+    <Content Include="Resources\Images\Png\music-cd.png" />
+    <Content Include="Resources\Images\Png\Music.png" />
+    <Content Include="Resources\Images\Png\music_note.png" />
+    <Content Include="Resources\Images\Png\Mute.png" />
+    <Content Include="Resources\Images\Png\navigate_48.png" />
+    <Content Include="Resources\Images\Png\Network connection.png" />
+    <Content Include="Resources\Images\Png\New document.png" />
+    <Content Include="Resources\Images\Png\New.png" />
+    <Content Include="Resources\Images\Png\news.png" />
+    <Content Include="Resources\Images\Png\newspaper.png" />
+    <Content Include="Resources\Images\Png\newspaper_48.png" />
+    <Content Include="Resources\Images\Png\news_accept.png" />
+    <Content Include="Resources\Images\Png\news_add.png" />
+    <Content Include="Resources\Images\Png\news_delete.png" />
+    <Content Include="Resources\Images\Png\news_down.png" />
+    <Content Include="Resources\Images\Png\news_edit.png" />
+    <Content Include="Resources\Images\Png\news_help.png" />
+    <Content Include="Resources\Images\Png\news_info.png" />
+    <Content Include="Resources\Images\Png\news_next.png" />
+    <Content Include="Resources\Images\Png\news_previous.png" />
+    <Content Include="Resources\Images\Png\news_remove.png" />
+    <Content Include="Resources\Images\Png\news_search.png" />
+    <Content Include="Resources\Images\Png\news_up.png" />
+    <Content Include="Resources\Images\Png\news_warning.png" />
+    <Content Include="Resources\Images\Png\new_page.png" />
+    <Content Include="Resources\Images\Png\Next track.png" />
+    <Content Include="Resources\Images\Png\Next.png" />
+    <Content Include="Resources\Images\Png\No-entry.png" />
+    <Content Include="Resources\Images\Png\No.png" />
+    <Content Include="Resources\Images\Png\note.png" />
+    <Content Include="Resources\Images\Png\Notes.png" />
+    <Content Include="Resources\Images\Png\notes_accept.png" />
+    <Content Include="Resources\Images\Png\notes_add.png" />
+    <Content Include="Resources\Images\Png\notes_delete.png" />
+    <Content Include="Resources\Images\Png\notes_edit.png" />
+    <Content Include="Resources\Images\Png\notes_help.png" />
+    <Content Include="Resources\Images\Png\notes_info.png" />
+    <Content Include="Resources\Images\Png\notes_lock.png" />
+    <Content Include="Resources\Images\Png\notes_search.png" />
+    <Content Include="Resources\Images\Png\notes_unlock.png" />
+    <Content Include="Resources\Images\Png\notes_warning.png" />
+    <Content Include="Resources\Images\Png\note_book.png" />
+    <Content Include="Resources\Images\Png\note_book_accept.png" />
+    <Content Include="Resources\Images\Png\note_book_add.png" />
+    <Content Include="Resources\Images\Png\note_book_delete.png" />
+    <Content Include="Resources\Images\Png\note_book_edit.png" />
+    <Content Include="Resources\Images\Png\note_book_help.png" />
+    <Content Include="Resources\Images\Png\note_book_info.png" />
+    <Content Include="Resources\Images\Png\note_book_lock.png" />
+    <Content Include="Resources\Images\Png\note_book_process.png" />
+    <Content Include="Resources\Images\Png\note_book_search.png" />
+    <Content Include="Resources\Images\Png\note_book_unlock.png" />
+    <Content Include="Resources\Images\Png\note_book_warning.png" />
+    <Content Include="Resources\Images\Png\notification_add.png" />
+    <Content Include="Resources\Images\Png\notification_done.png" />
+    <Content Include="Resources\Images\Png\notification_error.png" />
+    <Content Include="Resources\Images\Png\notification_remove.png" />
+    <Content Include="Resources\Images\Png\notification_warning.png" />
+    <Content Include="Resources\Images\Png\OK.png" />
+    <Content Include="Resources\Images\Png\onebit_01.png" />
+    <Content Include="Resources\Images\Png\onebit_02.png" />
+    <Content Include="Resources\Images\Png\onebit_03.png" />
+    <Content Include="Resources\Images\Png\onebit_04.png" />
+    <Content Include="Resources\Images\Png\onebit_05.png" />
+    <Content Include="Resources\Images\Png\onebit_06.png" />
+    <Content Include="Resources\Images\Png\onebit_07.png" />
+    <Content Include="Resources\Images\Png\onebit_08.png" />
+    <Content Include="Resources\Images\Png\onebit_09.png" />
+    <Content Include="Resources\Images\Png\onebit_10.png" />
+    <Content Include="Resources\Images\Png\onebit_11.png" />
+    <Content Include="Resources\Images\Png\onebit_12.png" />
+    <Content Include="Resources\Images\Png\onebit_13.png" />
+    <Content Include="Resources\Images\Png\onebit_14.png" />
+    <Content Include="Resources\Images\Png\onebit_15.png" />
+    <Content Include="Resources\Images\Png\onebit_16.png" />
+    <Content Include="Resources\Images\Png\onebit_17.png" />
+    <Content Include="Resources\Images\Png\onebit_18.png" />
+    <Content Include="Resources\Images\Png\onebit_19.png" />
+    <Content Include="Resources\Images\Png\onebit_20.png" />
+    <Content Include="Resources\Images\Png\onebit_21.png" />
+    <Content Include="Resources\Images\Png\onebit_22.png" />
+    <Content Include="Resources\Images\Png\onebit_23.png" />
+    <Content Include="Resources\Images\Png\onebit_24.png" />
+    <Content Include="Resources\Images\Png\onebit_25.png" />
+    <Content Include="Resources\Images\Png\onebit_26.png" />
+    <Content Include="Resources\Images\Png\onebit_27.png" />
+    <Content Include="Resources\Images\Png\onebit_28.png" />
+    <Content Include="Resources\Images\Png\onebit_29.png" />
+    <Content Include="Resources\Images\Png\onebit_30.png" />
+    <Content Include="Resources\Images\Png\onebit_31.png" />
+    <Content Include="Resources\Images\Png\onebit_32.png" />
+    <Content Include="Resources\Images\Png\onebit_33.png" />
+    <Content Include="Resources\Images\Png\onebit_34.png" />
+    <Content Include="Resources\Images\Png\onebit_35.png" />
+    <Content Include="Resources\Images\Png\onebit_36.png" />
+    <Content Include="Resources\Images\Png\onebit_37.png" />
+    <Content Include="Resources\Images\Png\onebit_38.png" />
+    <Content Include="Resources\Images\Png\onebit_39.png" />
+    <Content Include="Resources\Images\Png\onebit_40.png" />
+    <Content Include="Resources\Images\Png\onebit_41.png" />
+    <Content Include="Resources\Images\Png\onebit_42.png" />
+    <Content Include="Resources\Images\Png\onebit_43.png" />
+    <Content Include="Resources\Images\Png\onebit_44.png" />
+    <Content Include="Resources\Images\Png\onebit_45.png" />
+    <Content Include="Resources\Images\Png\onebit_46.png" />
+    <Content Include="Resources\Images\Png\onebit_47.png" />
+    <Content Include="Resources\Images\Png\onebit_48.png" />
+    <Content Include="Resources\Images\Png\onebit_49.png" />
+    <Content Include="Resources\Images\Png\onebit_50.png" />
+    <Content Include="Resources\Images\Png\page.png" />
+    <Content Include="Resources\Images\Png\pages.png" />
+    <Content Include="Resources\Images\Png\pages_written.png" />
+    <Content Include="Resources\Images\Png\page_accept.png" />
+    <Content Include="Resources\Images\Png\page_add.png" />
+    <Content Include="Resources\Images\Png\page_delete.png" />
+    <Content Include="Resources\Images\Png\page_down.png" />
+    <Content Include="Resources\Images\Png\page_edit.png" />
+    <Content Include="Resources\Images\Png\page_help.png" />
+    <Content Include="Resources\Images\Png\page_info.png" />
+    <Content Include="Resources\Images\Png\page_lock.png" />
+    <Content Include="Resources\Images\Png\page_next.png" />
+    <Content Include="Resources\Images\Png\page_previous.png" />
+    <Content Include="Resources\Images\Png\page_process.png" />
+    <Content Include="Resources\Images\Png\page_remove.png" />
+    <Content Include="Resources\Images\Png\page_search.png" />
+    <Content Include="Resources\Images\Png\page_unlock.png" />
+    <Content Include="Resources\Images\Png\page_up.png" />
+    <Content Include="Resources\Images\Png\page_warning.png" />
+    <Content Include="Resources\Images\Png\page_written.png" />
+    <Content Include="Resources\Images\Png\paint.png" />
+    <Content Include="Resources\Images\Png\paper&amp;pencil_48.png" />
+    <Content Include="Resources\Images\Png\paper_48.png" />
+    <Content Include="Resources\Images\Png\paper_content_48.png" />
+    <Content Include="Resources\Images\Png\paper_content_chart_48.png" />
+    <Content Include="Resources\Images\Png\paper_content_pencil_48.png" />
+    <Content Include="Resources\Images\Png\Paste.png" />
+    <Content Include="Resources\Images\Png\Pause.png" />
+    <Content Include="Resources\Images\Png\pencil_48.png" />
+    <Content Include="Resources\Images\Png\People.png" />
+    <Content Include="Resources\Images\Png\Percent.png" />
+    <Content Include="Resources\Images\Png\Person.png" />
+    <Content Include="Resources\Images\Png\Phone number.png" />
+    <Content Include="Resources\Images\Png\Phone.png" />
+    <Content Include="Resources\Images\Png\phone_accept.png" />
+    <Content Include="Resources\Images\Png\phone_add.png" />
+    <Content Include="Resources\Images\Png\phone_book.png" />
+    <Content Include="Resources\Images\Png\phone_book_accept.png" />
+    <Content Include="Resources\Images\Png\phone_book_add.png" />
+    <Content Include="Resources\Images\Png\phone_book_delete.png" />
+    <Content Include="Resources\Images\Png\phone_book_edit.png" />
+    <Content Include="Resources\Images\Png\phone_book_help.png" />
+    <Content Include="Resources\Images\Png\phone_book_info.png" />
+    <Content Include="Resources\Images\Png\phone_book_lock.png" />
+    <Content Include="Resources\Images\Png\phone_book_search.png" />
+    <Content Include="Resources\Images\Png\phone_book_unlock.png" />
+    <Content Include="Resources\Images\Png\phone_book_warning.png" />
+    <Content Include="Resources\Images\Png\phone_delete.png" />
+    <Content Include="Resources\Images\Png\phone_down.png" />
+    <Content Include="Resources\Images\Png\phone_help.png" />
+    <Content Include="Resources\Images\Png\phone_info.png" />
+    <Content Include="Resources\Images\Png\phone_search.png" />
+    <Content Include="Resources\Images\Png\phone_up.png" />
+    <Content Include="Resources\Images\Png\phone_warning.png" />
+    <Content Include="Resources\Images\Png\photo.png" />
+    <Content Include="Resources\Images\Png\photos.png" />
+    <Content Include="Resources\Images\Png\photo_accept.png" />
+    <Content Include="Resources\Images\Png\photo_add.png" />
+    <Content Include="Resources\Images\Png\photo_bmp_file.png" />
+    <Content Include="Resources\Images\Png\photo_camera.png" />
+    <Content Include="Resources\Images\Png\photo_camera_accept.png" />
+    <Content Include="Resources\Images\Png\photo_camera_add.png" />
+    <Content Include="Resources\Images\Png\photo_camera_delete.png" />
+    <Content Include="Resources\Images\Png\photo_camera_down.png" />
+    <Content Include="Resources\Images\Png\photo_camera_help.png" />
+    <Content Include="Resources\Images\Png\photo_camera_info.png" />
+    <Content Include="Resources\Images\Png\photo_camera_up.png" />
+    <Content Include="Resources\Images\Png\photo_camera_warning.png" />
+    <Content Include="Resources\Images\Png\photo_delete.png" />
+    <Content Include="Resources\Images\Png\photo_down.png" />
+    <Content Include="Resources\Images\Png\photo_edit.png" />
+    <Content Include="Resources\Images\Png\photo_help.png" />
+    <Content Include="Resources\Images\Png\photo_info.png" />
+    <Content Include="Resources\Images\Png\photo_jpg_file.png" />
+    <Content Include="Resources\Images\Png\photo_next.png" />
+    <Content Include="Resources\Images\Png\photo_previous.png" />
+    <Content Include="Resources\Images\Png\photo_remove.png" />
+    <Content Include="Resources\Images\Png\photo_search.png" />
+    <Content Include="Resources\Images\Png\photo_tif_file.png" />
+    <Content Include="Resources\Images\Png\photo_up.png" />
+    <Content Include="Resources\Images\Png\photo_warning.png" />
+    <Content Include="Resources\Images\Png\Picture.png" />
+    <Content Include="Resources\Images\Png\Pie chart.png" />
+    <Content Include="Resources\Images\Png\piechart.png" />
+    <Content Include="Resources\Images\Png\pie_chart_48.png" />
+    <Content Include="Resources\Images\Png\pin.png" />
+    <Content Include="Resources\Images\Png\Pinion.png" />
+    <Content Include="Resources\Images\Png\Play-music.png" />
+    <Content Include="Resources\Images\Png\Play.png" />
+    <Content Include="Resources\Images\Png\Playback.png" />
+    <Content Include="Resources\Images\Png\player_fastforward.png" />
+    <Content Include="Resources\Images\Png\player_pause.png" />
+    <Content Include="Resources\Images\Png\player_play.png" />
+    <Content Include="Resources\Images\Png\player_record.png" />
+    <Content Include="Resources\Images\Png\player_rewind.png" />
+    <Content Include="Resources\Images\Png\player_stop.png" />
+    <Content Include="Resources\Images\Png\pound_gold.png" />
+    <Content Include="Resources\Images\Png\pound_silver.png" />
+    <Content Include="Resources\Images\Png\Previous record.png" />
+    <Content Include="Resources\Images\Png\Previous.png" />
+    <Content Include="Resources\Images\Png\Print.png" />
+    <Content Include="Resources\Images\Png\printer.png" />
+    <Content Include="Resources\Images\Png\printer_48.png" />
+    <Content Include="Resources\Images\Png\printer_accept.png" />
+    <Content Include="Resources\Images\Png\printer_add.png" />
+    <Content Include="Resources\Images\Png\printer_delete.png" />
+    <Content Include="Resources\Images\Png\printer_help.png" />
+    <Content Include="Resources\Images\Png\printer_info.png" />
+    <Content Include="Resources\Images\Png\printer_process.png" />
+    <Content Include="Resources\Images\Png\printer_remove.png" />
+    <Content Include="Resources\Images\Png\printer_search.png" />
+    <Content Include="Resources\Images\Png\printer_warning.png" />
+    <Content Include="Resources\Images\Png\prize_winner.png" />
+    <Content Include="Resources\Images\Png\Problem.png" />
+    <Content Include="Resources\Images\Png\process.png" />
+    <Content Include="Resources\Images\Png\processor.png" />
+    <Content Include="Resources\Images\Png\process_accept.png" />
+    <Content Include="Resources\Images\Png\process_add.png" />
+    <Content Include="Resources\Images\Png\process_down.png" />
+    <Content Include="Resources\Images\Png\process_help.png" />
+    <Content Include="Resources\Images\Png\process_info.png" />
+    <Content Include="Resources\Images\Png\process_remove.png" />
+    <Content Include="Resources\Images\Png\process_up.png" />
+    <Content Include="Resources\Images\Png\process_warning.png" />
+    <Content Include="Resources\Images\Png\promotion.png" />
+    <Content Include="Resources\Images\Png\protection.png" />
+    <Content Include="Resources\Images\Png\put_in_shopping_cart.png" />
+    <Content Include="Resources\Images\Png\puzzle.png" />
+    <Content Include="Resources\Images\Png\Question.png" />
+    <Content Include="Resources\Images\Png\questionmark_48.png" />
+    <Content Include="Resources\Images\Png\Radiation.png" />
+    <Content Include="Resources\Images\Png\radio.png" />
+    <Content Include="Resources\Images\Png\Raise.png" />
+    <Content Include="Resources\Images\Png\receive_mail.png" />
+    <Content Include="Resources\Images\Png\Record.png" />
+    <Content Include="Resources\Images\Png\Red bookmark.png" />
+    <Content Include="Resources\Images\Png\Red mark.png" />
+    <Content Include="Resources\Images\Png\Red pin.png" />
+    <Content Include="Resources\Images\Png\Red star.png" />
+    <Content Include="Resources\Images\Png\Red tag.png" />
+    <Content Include="Resources\Images\Png\reddit_48.png" />
+    <Content Include="Resources\Images\Png\Redo.png" />
+    <Content Include="Resources\Images\Png\Refresh.png" />
+    <Content Include="Resources\Images\Png\refresh_48.png" />
+    <Content Include="Resources\Images\Png\Remove.png" />
+    <Content Include="Resources\Images\Png\remove_from_shopping_cart.png" />
+    <Content Include="Resources\Images\Png\Repair.png" />
+    <Content Include="Resources\Images\Png\repeat.png" />
+    <Content Include="Resources\Images\Png\Report.png" />
+    <Content Include="Resources\Images\Png\Retort.png" />
+    <Content Include="Resources\Images\Png\Rewind.png" />
+    <Content Include="Resources\Images\Png\rss.png" />
+    <Content Include="Resources\Images\Png\rss_48.png" />
+    <Content Include="Resources\Images\Png\Sad.png" />
+    <Content Include="Resources\Images\Png\Save.png" />
+    <Content Include="Resources\Images\Png\Schedule.png" />
+    <Content Include="Resources\Images\Png\Script.png" />
+    <Content Include="Resources\Images\Png\search.png" />
+    <Content Include="Resources\Images\Png\search_48.png" />
+    <Content Include="Resources\Images\Png\search_mail.png" />
+    <Content Include="Resources\Images\Png\security_key.png" />
+    <Content Include="Resources\Images\Png\security_keyandlock.png" />
+    <Content Include="Resources\Images\Png\security_lock.png" />
+    <Content Include="Resources\Images\Png\security_unlock.png" />
+    <Content Include="Resources\Images\Png\send_mail.png" />
+    <Content Include="Resources\Images\Png\Shield.png" />
+    <Content Include="Resources\Images\Png\shop.png" />
+    <Content Include="Resources\Images\Png\Shopping cart.png" />
+    <Content Include="Resources\Images\Png\shoppingcart.png" />
+    <Content Include="Resources\Images\Png\shoppingcart_add.png" />
+    <Content Include="Resources\Images\Png\shoppingcart_checkout.png" />
+    <Content Include="Resources\Images\Png\shoppingcart_remove.png" />
+    <Content Include="Resources\Images\Png\shoppingcart_warning.png" />
+    <Content Include="Resources\Images\Png\shopping_cart.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_accept.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_add.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_back.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_delete.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_down.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_info.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_next.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_up.png" />
+    <Content Include="Resources\Images\Png\shopping_cart_warning.png" />
+    <Content Include="Resources\Images\Png\shut_down.png" />
+    <Content Include="Resources\Images\Png\Silence.png" />
+    <Content Include="Resources\Images\Png\skip_backward.png" />
+    <Content Include="Resources\Images\Png\skip_forward.png" />
+    <Content Include="Resources\Images\Png\smartphone.png" />
+    <Content Include="Resources\Images\Png\smart_phone.png" />
+    <Content Include="Resources\Images\Png\smart_phone_accept.png" />
+    <Content Include="Resources\Images\Png\smart_phone_add.png" />
+    <Content Include="Resources\Images\Png\smart_phone_delete.png" />
+    <Content Include="Resources\Images\Png\smart_phone_down.png" />
+    <Content Include="Resources\Images\Png\smart_phone_help.png" />
+    <Content Include="Resources\Images\Png\smart_phone_info.png" />
+    <Content Include="Resources\Images\Png\smart_phone_search.png" />
+    <Content Include="Resources\Images\Png\smart_phone_up.png" />
+    <Content Include="Resources\Images\Png\smart_phone_warning.png" />
+    <Content Include="Resources\Images\Png\Smile.png" />
+    <Content Include="Resources\Images\Png\smile_grin_48.png" />
+    <Content Include="Resources\Images\Png\smile_sad_48.png" />
+    <Content Include="Resources\Images\Png\sofa.png" />
+    <Content Include="Resources\Images\Png\Sound.png" />
+    <Content Include="Resources\Images\Png\sound_accept.png" />
+    <Content Include="Resources\Images\Png\sound_add.png" />
+    <Content Include="Resources\Images\Png\sound_delete.png" />
+    <Content Include="Resources\Images\Png\sound_down.png" />
+    <Content Include="Resources\Images\Png\sound_remove.png" />
+    <Content Include="Resources\Images\Png\sound_up.png" />
+    <Content Include="Resources\Images\Png\spanner_48.png" />
+    <Content Include="Resources\Images\Png\speech_bubble_48.png" />
+    <Content Include="Resources\Images\Png\star.png" />
+    <Content Include="Resources\Images\Png\star_48.png" />
+    <Content Include="Resources\Images\Png\star_empty.png" />
+    <Content Include="Resources\Images\Png\star_full.png" />
+    <Content Include="Resources\Images\Png\star_half.png" />
+    <Content Include="Resources\Images\Png\star_half_48.png" />
+    <Content Include="Resources\Images\Png\star_off_48.png" />
+    <Content Include="Resources\Images\Png\sterling_pound_currency_sign.png" />
+    <Content Include="Resources\Images\Png\Stock graph.png" />
+    <Content Include="Resources\Images\Png\Stop sign.png" />
+    <Content Include="Resources\Images\Png\Stop.png" />
+    <Content Include="Resources\Images\Png\Stopwatch.png" />
+    <Content Include="Resources\Images\Png\Sum.png" />
+    <Content Include="Resources\Images\Png\sumbleupon_48.png" />
+    <Content Include="Resources\Images\Png\Sync.png" />
+    <Content Include="Resources\Images\Png\Table.png" />
+    <Content Include="Resources\Images\Png\table_48.png" />
+    <Content Include="Resources\Images\Png\table_green_48.png" />
+    <Content Include="Resources\Images\Png\tabs_48.png" />
+    <Content Include="Resources\Images\Png\Target.png" />
+    <Content Include="Resources\Images\Png\Taxi.png" />
+    <Content Include="Resources\Images\Png\technorati_48.png" />
+    <Content Include="Resources\Images\Png\television.png" />
+    <Content Include="Resources\Images\Png\Terminate.png" />
+    <Content Include="Resources\Images\Png\Text preview.png" />
+    <Content Include="Resources\Images\Png\Text.png" />
+    <Content Include="Resources\Images\Png\text_page.png" />
+    <Content Include="Resources\Images\Png\Thumbs down.png" />
+    <Content Include="Resources\Images\Png\Thumbs up.png" />
+    <Content Include="Resources\Images\Png\thumbs_down_48.png" />
+    <Content Include="Resources\Images\Png\thumbs_up_48.png" />
+    <Content Include="Resources\Images\Png\tool.png" />
+    <Content Include="Resources\Images\Png\Toolbox.png" />
+    <Content Include="Resources\Images\Png\Top.png" />
+    <Content Include="Resources\Images\Png\Trackback.png" />
+    <Content Include="Resources\Images\Png\Trash.png" />
+    <Content Include="Resources\Images\Png\Tune.png" />
+    <Content Include="Resources\Images\Png\Turn off.png" />
+    <Content Include="Resources\Images\Png\Twitter.png" />
+    <Content Include="Resources\Images\Png\twitter_48.png" />
+    <Content Include="Resources\Images\Png\twitter_boxed_48.png" />
+    <Content Include="Resources\Images\Png\under-construction.png" />
+    <Content Include="Resources\Images\Png\Undo.png" />
+    <Content Include="Resources\Images\Png\Unlock.png" />
+    <Content Include="Resources\Images\Png\Up-down.png" />
+    <Content Include="Resources\Images\Png\Up.png" />
+    <Content Include="Resources\Images\Png\Update.png" />
+    <Content Include="Resources\Images\Png\Upload.png" />
+    <Content Include="Resources\Images\Png\usb.png" />
+    <Content Include="Resources\Images\Png\usb_48.png" />
+    <Content Include="Resources\Images\Png\User group.png" />
+    <Content Include="Resources\Images\Png\user.png" />
+    <Content Include="Resources\Images\Png\users.png" />
+    <Content Include="Resources\Images\Png\users_accept.png" />
+    <Content Include="Resources\Images\Png\users_add.png" />
+    <Content Include="Resources\Images\Png\users_delete.png" />
+    <Content Include="Resources\Images\Png\users_down.png" />
+    <Content Include="Resources\Images\Png\users_edit.png" />
+    <Content Include="Resources\Images\Png\users_help.png" />
+    <Content Include="Resources\Images\Png\users_info.png" />
+    <Content Include="Resources\Images\Png\users_lock.png" />
+    <Content Include="Resources\Images\Png\users_next.png" />
+    <Content Include="Resources\Images\Png\users_previous.png" />
+    <Content Include="Resources\Images\Png\users_process.png" />
+    <Content Include="Resources\Images\Png\users_remove.png" />
+    <Content Include="Resources\Images\Png\users_search.png" />
+    <Content Include="Resources\Images\Png\users_two_48.png" />
+    <Content Include="Resources\Images\Png\users_two_add_48.png" />
+    <Content Include="Resources\Images\Png\users_two_warning_48.png" />
+    <Content Include="Resources\Images\Png\users_unlock.png" />
+    <Content Include="Resources\Images\Png\users_up.png" />
+    <Content Include="Resources\Images\Png\users_warning.png" />
+    <Content Include="Resources\Images\Png\user_48.png" />
+    <Content Include="Resources\Images\Png\user_accept.png" />
+    <Content Include="Resources\Images\Png\user_add.png" />
+    <Content Include="Resources\Images\Png\user_add_48.png" />
+    <Content Include="Resources\Images\Png\user_comment.png" />
+    <Content Include="Resources\Images\Png\user_delete.png" />
+    <Content Include="Resources\Images\Png\user_delete_48.png" />
+    <Content Include="Resources\Images\Png\user_down.png" />
+    <Content Include="Resources\Images\Png\user_edit.png" />
+    <Content Include="Resources\Images\Png\user_help.png" />
+    <Content Include="Resources\Images\Png\user_info.png" />
+    <Content Include="Resources\Images\Png\user_lock.png" />
+    <Content Include="Resources\Images\Png\user_manage.png" />
+    <Content Include="Resources\Images\Png\user_next.png" />
+    <Content Include="Resources\Images\Png\user_previous.png" />
+    <Content Include="Resources\Images\Png\user_process.png" />
+    <Content Include="Resources\Images\Png\user_remove.png" />
+    <Content Include="Resources\Images\Png\user_search.png" />
+    <Content Include="Resources\Images\Png\user_two_delete_48.png" />
+    <Content Include="Resources\Images\Png\user_unlock.png" />
+    <Content Include="Resources\Images\Png\user_up.png" />
+    <Content Include="Resources\Images\Png\user_warning.png" />
+    <Content Include="Resources\Images\Png\user_warning_48.png" />
+    <Content Include="Resources\Images\Png\video_camera.png" />
+    <Content Include="Resources\Images\Png\video_camera_accept.png" />
+    <Content Include="Resources\Images\Png\video_camera_add.png" />
+    <Content Include="Resources\Images\Png\video_camera_delete.png" />
+    <Content Include="Resources\Images\Png\video_camera_down.png" />
+    <Content Include="Resources\Images\Png\video_camera_help.png" />
+    <Content Include="Resources\Images\Png\video_camera_info.png" />
+    <Content Include="Resources\Images\Png\video_camera_up.png" />
+    <Content Include="Resources\Images\Png\video_camera_warning.png" />
+    <Content Include="Resources\Images\Png\View.png" />
+    <Content Include="Resources\Images\Png\volume.png" />
+    <Content Include="Resources\Images\Png\volume_down.png" />
+    <Content Include="Resources\Images\Png\volume_mute.png" />
+    <Content Include="Resources\Images\Png\volume_up.png" />
+    <Content Include="Resources\Images\Png\Wallet.png" />
+    <Content Include="Resources\Images\Png\wallpapers.png" />
+    <Content Include="Resources\Images\Png\Warning.png" />
+    <Content Include="Resources\Images\Png\warning_16.png" />
+    <Content Include="Resources\Images\Png\warning_48.png" />
+    <Content Include="Resources\Images\Png\webcam.png" />
+    <Content Include="Resources\Images\Png\webcam_accept.png" />
+    <Content Include="Resources\Images\Png\webcam_add.png" />
+    <Content Include="Resources\Images\Png\webcam_help.png" />
+    <Content Include="Resources\Images\Png\webcam_remove.png" />
+    <Content Include="Resources\Images\Png\webcam_warning.png" />
+    <Content Include="Resources\Images\Png\window.png" />
+    <Content Include="Resources\Images\Png\windows.png" />
+    <Content Include="Resources\Images\Png\window_accept.png" />
+    <Content Include="Resources\Images\Png\window_add.png" />
+    <Content Include="Resources\Images\Png\window_back.png" />
+    <Content Include="Resources\Images\Png\window_delete.png" />
+    <Content Include="Resources\Images\Png\window_down.png" />
+    <Content Include="Resources\Images\Png\window_edit.png" />
+    <Content Include="Resources\Images\Png\window_help.png" />
+    <Content Include="Resources\Images\Png\window_info.png" />
+    <Content Include="Resources\Images\Png\window_lock.png" />
+    <Content Include="Resources\Images\Png\window_next.png" />
+    <Content Include="Resources\Images\Png\window_process.png" />
+    <Content Include="Resources\Images\Png\window_remove.png" />
+    <Content Include="Resources\Images\Png\window_search.png" />
+    <Content Include="Resources\Images\Png\window_unlock.png" />
+    <Content Include="Resources\Images\Png\window_up.png" />
+    <Content Include="Resources\Images\Png\window_warning.png" />
+    <Content Include="Resources\Images\Png\world.png" />
+    <Content Include="Resources\Images\Png\world_accept.png" />
+    <Content Include="Resources\Images\Png\world_add.png" />
+    <Content Include="Resources\Images\Png\world_down.png" />
+    <Content Include="Resources\Images\Png\world_help.png" />
+    <Content Include="Resources\Images\Png\world_info.png" />
+    <Content Include="Resources\Images\Png\world_process.png" />
+    <Content Include="Resources\Images\Png\world_remove.png" />
+    <Content Include="Resources\Images\Png\world_search.png" />
+    <Content Include="Resources\Images\Png\world_up.png" />
+    <Content Include="Resources\Images\Png\world_warning.png" />
+    <Content Include="Resources\Images\Png\Wrench.png" />
+    <Content Include="Resources\Images\Png\Yellow bookmark.png" />
+    <Content Include="Resources\Images\Png\Yellow pin.png" />
+    <Content Include="Resources\Images\Png\Yellow tag.png" />
+    <Content Include="Resources\Images\Png\yen_currency_sign.png" />
+    <Content Include="Resources\Images\Png\yen_gold.png" />
+    <Content Include="Resources\Images\Png\yen_silver.png" />
+    <Content Include="Resources\Images\Png\Yes.png" />
+    <Content Include="Resources\Images\Png\Zoom.png" />
+    <Content Include="Resources\Images\Png\zoom_in.png" />
+    <Content Include="Resources\Images\Png\zoom_out.png" />
+    <Content Include="Resources\XMLs\System.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PT.DataInfo\PT.DataInfo.csproj">
+      <Project>{EC515D5C-7859-4847-BD62-73662B710ECA}</Project>
+      <Name>PT.DataInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PT.Helper\PT.Helper.csproj">
+      <Project>{998770D9-C789-45D5-8DBC-494C079FBA8A}</Project>
+      <Name>PT.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PT.MainCtl\PT.MainCtl.csproj">
+      <Project>{DF506292-E4D0-4FBA-A565-265EC8556748}</Project>
+      <Name>PT.MainCtl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

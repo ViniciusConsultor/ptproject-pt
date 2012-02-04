@@ -1,0 +1,348 @@
+<?xml version="1.0" standalone="yes"?>
+<Languages>
+  <Language>
+    <LgID>Addr</LgID>
+    <Language1>Địa Chỉ</Language1>
+    <Language2>Address</Language2>
+  </Language>
+  <Language>
+    <LgID>Attn</LgID>
+    <Language1>Người Đại Diện</Language1>
+    <Language2>Attention</Language2>
+  </Language>
+  <Language>
+    <LgID>AvgCost</LgID>
+    <Language1>Giá Bình Quân</Language1>
+    <Language2>Average Cost</Language2>
+  </Language>
+  <Language>
+    <LgID>BatDate</LgID>
+    <Language1>Ngày Chứng Từ</Language1>
+    <Language2>Bat Date</Language2>
+  </Language>
+  <Language>
+    <LgID>BatNbr</LgID>
+    <Language1>Số Chứng Từ</Language1>
+    <Language2>Bat Nbr</Language2>
+  </Language>
+  <Language>
+    <LgID>BranchID</LgID>
+    <Language1>Mã Chi Nhánh</Language1>
+    <Language2>Branch</Language2>
+  </Language>
+  <Language>
+    <LgID>ClassID</LgID>
+    <Language1>Mã Nhóm</Language1>
+    <Language2>Product Class</Language2>
+  </Language>
+  <Language>
+    <LgID>Cnvfact</LgID>
+    <Language1>Hệ Số Quy Đổi</Language1>
+    <Language2>Conversion Factor</Language2>
+  </Language>
+  <Language>
+    <LgID>Color</LgID>
+    <Language1>Màu Sắc</Language1>
+    <Language2>Color</Language2>
+  </Language>
+  <Language>
+    <LgID>Crtd_DateTime</LgID>
+    <Language1>Ngày Tạo</Language1>
+    <Language2>Crtd.DateTime</Language2>
+  </Language>
+  <Language>
+    <LgID>Crtd_Prog</LgID>
+    <Language1>Màn Hình Tạo</Language1>
+    <Language2>Crtd.Prog</Language2>
+  </Language>
+  <Language>
+    <LgID>Crtd_User</LgID>
+    <Language1>Người Tạo</Language1>
+    <Language2>Crtd.User</Language2>
+  </Language>
+  <Language>
+    <LgID>Descr</LgID>
+    <Language1>Diễn Giải</Language1>
+    <Language2>Description</Language2>
+  </Language>
+  <Language>
+    <LgID>DfltPOUnit</LgID>
+    <Language1>Đơn Vị Mua Mặc Định</Language1>
+    <Language2>Purchase Unit</Language2>
+  </Language>
+  <Language>
+    <LgID>DfltSOUnit</LgID>
+    <Language1>Đơn Vị Bán Mặc Định</Language1>
+    <Language2>Sale Unit</Language2>
+  </Language>
+  <Language>
+    <LgID>DfltStkUnit</LgID>
+    <Language1>Đơn Vị GD Kho Mặc  Định</Language1>
+    <Language2>Stock Unit</Language2>
+  </Language>
+  <Language>
+    <LgID>DfltTax</LgID>
+    <Language1>Thuế Mặc Định</Language1>
+    <Language2>Tax</Language2>
+  </Language>
+  <Language>
+    <LgID>DfltWhID</LgID>
+    <Language1>Kho Mặc Định</Language1>
+    <Language2>WareHouse</Language2>
+  </Language>
+  <Language>
+    <LgID>EMailAddr</LgID>
+    <Language1>Địa Chỉ Email</Language1>
+    <Language2>Email Address</Language2>
+  </Language>
+  <Language>
+    <LgID>ExtCost</LgID>
+    <Language1>Tổng Giá Trị</Language1>
+    <Language2>Extended Cost</Language2>
+  </Language>
+  <Language>
+    <LgID>Fax</LgID>
+    <Language1>Số Fax</Language1>
+    <Language2>Fax</Language2>
+  </Language>
+  <Language>
+    <LgID>FreeItem</LgID>
+    <Language1>Hàng KM</Language1>
+    <Language2>Free Item</Language2>
+  </Language>
+  <Language>
+    <LgID>FromUnit</LgID>
+    <Language1>Đơn Vị Lớn</Language1>
+    <Language2>Large</Language2>
+  </Language>
+  <Language>
+    <LgID>LineQty</LgID>
+    <Language1>Số Lượng</Language1>
+    <Language2>Quanty</Language2>
+  </Language>
+  <Language>
+    <LgID>LineRef</LgID>
+    <Language1>Số Thứ Tự</Language1>
+    <Language2>Line</Language2>
+  </Language>
+  <Language>
+    <LgID>LUpd_DateTime</LgID>
+    <Language1>Ngày Chỉnh Sửa</Language1>
+    <Language2>Lupd.DateTime</Language2>
+  </Language>
+  <Language>
+    <LgID>LUpd_Prog</LgID>
+    <Language1>Màn Hình Chỉnh Sửa</Language1>
+    <Language2>Lupd.Prog</Language2>
+  </Language>
+  <Language>
+    <LgID>LUpd_User</LgID>
+    <Language1>Người Chỉnh Sửa</Language1>
+    <Language2>Lupd.User</Language2>
+  </Language>
+  <Language>
+    <LgID>Module</LgID>
+    <Language1>Phân Hệ</Language1>
+    <Language2>Module</Language2>
+  </Language>
+  <Language>
+    <LgID>Name</LgID>
+    <Language1>Tên</Language1>
+    <Language2>Name</Language2>
+  </Language>
+  <Language>
+    <LgID>Note</LgID>
+    <Language1>Ghi Chú</Language1>
+    <Language2>Note</Language2>
+  </Language>
+  <Language>
+    <LgID>ObjID</LgID>
+    <Language1>Mã Đối Tượng</Language1>
+    <Language2>Object ID</Language2>
+  </Language>
+  <Language>
+    <LgID>OrdNbr</LgID>
+    <Language1>Số Hóa Đơn</Language1>
+    <Language2>Order Nbr</Language2>
+  </Language>
+  <Language>
+    <LgID>Phone</LgID>
+    <Language1>Điện Thoại</Language1>
+    <Language2>Phone</Language2>
+  </Language>
+  <Language>
+    <LgID>Picture</LgID>
+    <Language1>Hình Ảnh</Language1>
+    <Language2>Picture</Language2>
+  </Language>
+  <Language>
+    <LgID>POFromUnitPrice</LgID>
+    <Language1>Giá Mua</Language1>
+    <Language2>Purchase Price</Language2>
+  </Language>
+  <Language>
+    <LgID>POPriStartDate</LgID>
+    <Language1>Ngày Áp Dụng</Language1>
+    <Language2>Start Date</Language2>
+  </Language>
+  <Language>
+    <LgID>POToUnitPrice</LgID>
+    <Language1>Giá Mua</Language1>
+    <Language2>Price</Language2>
+  </Language>
+  <Language>
+    <LgID>PriceClassID</LgID>
+    <Language1>Nhóm Giá</Language1>
+    <Language2>Price Class</Language2>
+  </Language>
+  <Language>
+    <LgID>ProductID</LgID>
+    <Language1>Mã Sản Phẩm</Language1>
+    <Language2>Product ID</Language2>
+  </Language>
+  <Language>
+    <LgID>QtyAvail</LgID>
+    <Language1>Số Lượng Cho Phép</Language1>
+    <Language2>Quantity Available</Language2>
+  </Language>
+  <Language>
+    <LgID>QtyOnHand</LgID>
+    <Language1>Số Lượng Tồn Kho</Language1>
+    <Language2>Quantity On Hand</Language2>
+  </Language>
+  <Language>
+    <LgID>RcptNbr</LgID>
+    <Language1>Số Đơn Nhập</Language1>
+    <Language2>Receipt.Nbr</Language2>
+  </Language>
+  <Language>
+    <LgID>Rlsed</LgID>
+    <Language1>Trạng Thái</Language1>
+    <Language2>Release</Language2>
+  </Language>
+  <Language>
+    <LgID>RsID</LgID>
+    <Language1>Mã Lý Do</Language1>
+    <Language2>Reason ID</Language2>
+  </Language>
+  <Language>
+    <LgID>ShipperID</LgID>
+    <Language1>Mã Giao Nhận</Language1>
+    <Language2>ShipperID</Language2>
+  </Language>
+  <Language>
+    <LgID>Size</LgID>
+    <Language1>Kích Cỡ</Language1>
+    <Language2>Size</Language2>
+  </Language>
+  <Language>
+    <LgID>SOFromUnitPrice</LgID>
+    <Language1>Giá Bán</Language1>
+    <Language2>Price</Language2>
+  </Language>
+  <Language>
+    <LgID>SOPriStartDate</LgID>
+    <Language1>Ngày Áp Dụng</Language1>
+    <Language2>Start Date</Language2>
+  </Language>
+  <Language>
+    <LgID>SOToUnitPrice</LgID>
+    <Language1>Gía Bán</Language1>
+    <Language2>Price</Language2>
+  </Language>
+  <Language>
+    <LgID>Status</LgID>
+    <Language1>Trạng Thái</Language1>
+    <Language2>Status</Language2>
+  </Language>
+  <Language>
+    <LgID>StkVol</LgID>
+    <Language1>Thể Tích</Language1>
+    <Language2>Volume</Language2>
+  </Language>
+  <Language>
+    <LgID>StkWt</LgID>
+    <Language1>Trọng Lượng</Language1>
+    <Language2>Weight</Language2>
+  </Language>
+  <Language>
+    <LgID>Style</LgID>
+    <Language1>Kiểu cách</Language1>
+    <Language2>Style</Language2>
+  </Language>
+  <Language>
+    <LgID>TotAmt</LgID>
+    <Language1>Tổng Giá Trị</Language1>
+    <Language2>Total</Language2>
+  </Language>
+  <Language>
+    <LgID>ToUnit</LgID>
+    <Language1>Đơn Vị Nhỏ</Language1>
+    <Language2>Small Unit</Language2>
+  </Language>
+  <Language>
+    <LgID>ToWhID</LgID>
+    <Language1>Kho Đến</Language1>
+    <Language2>To Warehouse</Language2>
+  </Language>
+  <Language>
+    <LgID>TranAmt</LgID>
+    <Language1>Tổng Giá Trị Giao Dịch</Language1>
+    <Language2>Tranfer Amount</Language2>
+  </Language>
+  <Language>
+    <LgID>TranDate</LgID>
+    <Language1>Ngày Giao Dịch</Language1>
+    <Language2>Tranfer Date</Language2>
+  </Language>
+  <Language>
+    <LgID>TranDesc</LgID>
+    <Language1>Diễn Giải</Language1>
+    <Language2>Tran Desc</Language2>
+  </Language>
+  <Language>
+    <LgID>TranType</LgID>
+    <Language1>Loại Giao Dịch</Language1>
+    <Language2>Tran Type</Language2>
+  </Language>
+  <Language>
+    <LgID>Unit</LgID>
+    <Language1>Đơn Vị Tính</Language1>
+    <Language2>Unit</Language2>
+  </Language>
+  <Language>
+    <LgID>UnitCost</LgID>
+    <Language1>Giá Trị</Language1>
+    <Language2>Unit Cost</Language2>
+  </Language>
+  <Language>
+    <LgID>UnitPrice</LgID>
+    <Language1>Giá Bán</Language1>
+    <Language2>Unit Price</Language2>
+  </Language>
+  <Language>
+    <LgID>UnitRate</LgID>
+    <Language1>Hệ Số Quy Đổi</Language1>
+    <Language2>Unit Rate</Language2>
+  </Language>
+  <Language>
+    <LgID>VendID</LgID>
+    <Language1>Mã Nhà Cung Cấp</Language1>
+    <Language2>VenDor ID</Language2>
+  </Language>
+  <Language>
+    <LgID>VendName</LgID>
+    <Language1>Tên Nhà Cung Cấp</Language1>
+    <Language2>Vendor Name</Language2>
+  </Language>
+  <Language>
+    <LgID>WhId</LgID>
+    <Language1>Mã Kho</Language1>
+    <Language2>WareHouse</Language2>
+  </Language>
+  <Language>
+    <LgID>WhKeeper</LgID>
+    <Language1>Thủ Kho</Language1>
+    <Language2>WareHouse Keeper</Language2>
+  </Language>
+</Languages>

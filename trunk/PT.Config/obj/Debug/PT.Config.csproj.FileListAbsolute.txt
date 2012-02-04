@@ -1,0 +1,36 @@
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\PT.Config.Config.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\PT.Config.Properties.Resources.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\PT.Config.csproj.GenerateResource.Cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\PT.Config.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\PT.Config.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\PT.Config.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Config\obj\Debug\PT.Config.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\PT.Config.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\PT.Config.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\PT.Config.Config.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\PT.Config.Properties.Resources.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\PT.Config.csproj.GenerateResource.Cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\PT.Config.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Config\obj\Debug\PT.Config.pdb
+D:\My work\PT\SVN\PT.Config\bin\Debug\PT.Config.exe
+D:\My work\PT\SVN\PT.Config\bin\Debug\PT.Config.pdb
+D:\My work\PT\SVN\PT.Config\bin\Debug\PT.Helper.dll
+D:\My work\PT\SVN\PT.Config\bin\Debug\log4net.dll
+D:\My work\PT\SVN\PT.Config\bin\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\PT.Config\bin\Debug\log4net.xml
+D:\My work\PT\SVN\PT.Config\obj\Debug\ResolveAssemblyReference.cache
+D:\My work\PT\SVN\PT.Config\obj\Debug\PT.Config.Config.resources
+D:\My work\PT\SVN\PT.Config\obj\Debug\PT.Config.Properties.Resources.resources
+D:\My work\PT\SVN\PT.Config\obj\Debug\PT.Config.csproj.GenerateResource.Cache
+D:\My work\PT\SVN\PT.Config\obj\Debug\PT.Config.exe
+D:\My work\PT\SVN\PT.Config\obj\Debug\PT.Config.pdb
