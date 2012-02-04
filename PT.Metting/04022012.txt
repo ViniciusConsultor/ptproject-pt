@@ -1,0 +1,15 @@
+TextBox
+	kiem tra neu ten cot khong co ngon ngu khac thi khong can doi ten
+Menu
+	bam phan he -> hien thi ten cac expanel
+		bam expanel -> an cac expanel khac
+
+04/02/2012
+sua form grid -> addrow (cho edit column dau)
+form config -> sql authetication
+them fold metting => luu cac thong tin can chinh sua, moi lan la 1 file txt dat ten theo ngay
+them folder testlog => khi co loi thi them file txt dat ten thoi ngay
+tu thay doi ten cot cho component grid
+
+nhung phat sinh thi mail
+
