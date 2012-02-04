@@ -1,9 +1,0 @@
-D:\My work\PT\SVN\PT.Component\bin\Debug\PT.Component.dll
-D:\My work\PT\SVN\PT.Component\bin\Debug\PT.Component.pdb
-D:\My work\PT\SVN\PT.Component\bin\Debug\PT.Helper.dll
-D:\My work\PT\SVN\PT.Component\bin\Debug\log4net.dll
-D:\My work\PT\SVN\PT.Component\bin\Debug\PT.Helper.pdb
-D:\My work\PT\SVN\PT.Component\bin\Debug\log4net.xml
-D:\My work\PT\SVN\PT.Component\obj\Debug\ResolveAssemblyReference.cache
-D:\My work\PT\SVN\PT.Component\obj\Debug\PT.Component.dll
-D:\My work\PT\SVN\PT.Component\obj\Debug\PT.Component.pdb
