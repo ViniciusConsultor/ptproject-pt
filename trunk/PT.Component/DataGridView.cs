@@ -12,15 +12,9 @@ namespace PT.Component
     [Designer(typeof(ControlDesigner))]   
     public partial class DataGridView : DevComponents.DotNetBar.Controls.DataGridViewX
     {
-       // public string _DataSource = "";
         public DataGridView() : base()
-        { }
-
-        //public DataGridView()
-        //{
-        //    InitializeComponent();
-        //    //_AutoNumberForGrid();
-        //}
+        {
+        }
 
         public DataGridView(IContainer container)
         {
@@ -33,6 +27,8 @@ namespace PT.Component
             {
                 Rows[i].HeaderCell.Value = (i + 1).ToString();
             }
+            RowHeadersWidth = 55;
+            RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             
         }
         protected override void OnDataSourceChanged(EventArgs e)
@@ -47,39 +43,11 @@ namespace PT.Component
             base.OnRowsAdded(e);
             _AutoNumberForGrid();
         }
-        //protected override void OnKeyDown(KeyEventArgs e)
-        //{
-        //    base.OnKeyDown(e);
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        MessageBox.Show("OnKeyDown",this.CurrentCell.Value.ToString());
-        //    }
-        //}
-        //protected override void OnKeyPress(KeyPressEventArgs e)
-        //{
-        //    base.OnKeyPress(e);
-        //    if (e.KeyChar  == (char)Keys.Enter)
-        //    {
-        //        MessageBox.Show("OnKeyDown",this.CurrentCell.Value.ToString());
-        //    }
-        //}
-        //protected override void OnKeyUp(KeyEventArgs e)
-        //{
-        //    base.OnKeyUp(e);
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        MessageBox.Show("OnKeyUp", this.CurrentCell.Value.ToString());
-        //        SendKeys.SendWait("{right}");
-        //    }
-        //}
+        
         protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
            
-            base.OnCellEnter(e);
-            //this.BeginEdit(true);
-            
-            
-            
+            base.OnCellEnter(e);            
         }
 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
@@ -90,6 +58,6 @@ namespace PT.Component
                 return true;
             }
              return base.ProcessCmdKey(ref msg, keyData);            
-        } 
+        }         
     }
 }

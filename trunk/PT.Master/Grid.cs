@@ -18,7 +18,7 @@ namespace PT.Master
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            gdv.CurrentCell = gdv.Rows[gdv.Rows.Count - 1].Cells[0];
+            dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
             btnDelete.Enabled = false;
             btnSave.Enabled = true;
         }
@@ -26,32 +26,53 @@ namespace PT.Master
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (gdv.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
+            {
                 btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            //MessageBox.Show("Save");
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            if (gdv.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
+            {            
                 btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
         }
 
         private void gdv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (gdv.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
                 btnDelete.Enabled = true;
         }
 
         private void Grid_Load(object sender, EventArgs e)
         {
-            if (gdv.Rows.Count > 0)
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.Columns[0].ReadOnly = true;
                 btnDelete.Enabled = true;
-            btnSave.Enabled = false;
+                btnSave.Enabled = true;
+            }
+            //btnSave.Enabled = false;
+            
+        }
+
+        private void dgv_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.Columns[0].ReadOnly = true;
+                btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
         }
         
     }
