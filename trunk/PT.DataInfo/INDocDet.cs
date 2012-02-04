@@ -33,8 +33,6 @@ namespace PT.DataInfo
         private float _DetailQty;
         private float _UnitCost;
         private float _TotalCost;
-        private float _UnitPrice;
-        private float _TranAmt;
         #region private Pro+Date
         private DateTime _Crtd_DateTime;
         private string _Crtd_Prog;
@@ -70,8 +68,6 @@ namespace PT.DataInfo
         public float DetailQty { get { return _DetailQty; } set { _DetailQty = value; } }
         public float UnitCost { get { return _UnitCost; } set { _UnitCost = value; } }
         public float TotalCost { get { return _TotalCost; } set { _TotalCost = value; } }
-        public float UnitPrice { get { return _UnitPrice; } set { _UnitPrice = value; } }
-        public float TranAmt { get { return _TranAmt; } set { _TranAmt = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
         public string Crtd_Prog { get { return _Crtd_Prog; } set { _Crtd_Prog = value; } }
