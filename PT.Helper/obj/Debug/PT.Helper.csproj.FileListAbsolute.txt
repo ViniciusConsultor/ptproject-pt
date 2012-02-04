@@ -1,0 +1,21 @@
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\obj\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\obj\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Helper\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\obj\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Helper\obj\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\PT.Helper\bin\Debug\PT.Helper.dll
+D:\My work\PT\SVN\PT.Helper\bin\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\PT.Helper\bin\Debug\log4net.dll
+D:\My work\PT\SVN\PT.Helper\bin\Debug\log4net.xml
+D:\My work\PT\SVN\PT.Helper\obj\Debug\ResolveAssemblyReference.cache
+D:\My work\PT\SVN\PT.Helper\obj\Debug\PT.Helper.dll
+D:\My work\PT\SVN\PT.Helper\obj\Debug\PT.Helper.pdb

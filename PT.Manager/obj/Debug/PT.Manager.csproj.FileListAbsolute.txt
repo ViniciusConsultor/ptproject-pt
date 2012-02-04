@@ -1,0 +1,88 @@
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.Manager.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.Manager.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.Properties.Resources.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.csproj.GenerateResource.Cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.Main.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.Manager.exe.config
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\bin\Debug\PT.Manager.exe.config
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.exe
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.pdb
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\bin\Debug\PT.Manager.exe
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\bin\Debug\PT.Manager.pdb
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\bin\Debug\DevComponents.DotNetBar2.dll
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\bin\Debug\DevComponents.DotNetBar2.xml
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\ResolveAssemblyReference.cache
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.Form2.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.RibbonForm1.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.RibbonForm2.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.Main.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.Properties.Resources.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.RibbonForm1.resources
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.csproj.GenerateResource.Cache
+D:\ASP.NET\TaiLieu\@new\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmINPRT.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmINPRT.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.DataController.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.DataInfo.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.DataInfo.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.DataController.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmMasterOneGrid.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmSAMenu.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.Form1.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmMaster.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.Form2.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.Form3.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.DataForm.frmReport.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\obj\Debug\PT.Manager.Form1.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.Manager\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.DataForm.frmINPRT.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.DataForm.frmReport.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.Form1.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.Main.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.Properties.Resources.resources
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.csproj.GenerateResource.Cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.Manager.exe.config
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.Manager.exe
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.Manager.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\DevComponents.DotNetBar2.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.DataInfo.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.MainCtl.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.MainCtl.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.DataInfo.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.Manager\obj\Debug\PT.Manager.pdb
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.Manager.exe.config
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.Manager.exe
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.Manager.pdb
+D:\My work\PT\SVN\PT.Manager\bin\Debug\DevComponents.DotNetBar2.dll
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.DataInfo.dll
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.Helper.dll
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.MainCtl.dll
+D:\My work\PT\SVN\PT.Manager\bin\Debug\log4net.dll
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.MainCtl.pdb
+D:\My work\PT\SVN\PT.Manager\bin\Debug\log4net.xml
+D:\My work\PT\SVN\PT.Manager\bin\Debug\DevComponents.DotNetBar2.xml
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.DataInfo.pdb
+D:\My work\PT\SVN\PT.Manager\bin\Debug\PT.Helper.pdb
+D:\My work\PT\SVN\PT.Manager\obj\Debug\ResolveAssemblyReference.cache
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.DataForm.frmINPRT.resources
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.DataForm.frmReport.resources
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.Form1.resources
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.Main.resources
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.Properties.Resources.resources
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.csproj.GenerateResource.Cache
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.exe
+D:\My work\PT\SVN\PT.Manager\obj\Debug\PT.Manager.pdb
