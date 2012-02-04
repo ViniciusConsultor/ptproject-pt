@@ -37,9 +37,11 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonItem();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonItem();
             this.btnDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdWH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
+            this.bar1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -75,7 +77,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdWH.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdWH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdWH.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.grdWH.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grdWH.Location = new System.Drawing.Point(0, 25);
             this.grdWH.Name = "grdWH";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
@@ -100,6 +102,7 @@
             // bar1
             // 
             this.bar1.AntiAlias = true;
+            this.bar1.Controls.Add(this.buttonX1);
             this.bar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bar1.DockSide = DevComponents.DotNetBar.eDockSide.Document;
             this.bar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -140,6 +143,17 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(291, 1);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 0;
+            this.buttonX1.Text = "buttonX1";
+            // 
             // IN101
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +167,7 @@
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdWH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
+            this.bar1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -166,6 +181,7 @@
         private DevComponents.DotNetBar.ButtonItem btnSave;
         private DevComponents.DotNetBar.ButtonItem btnRefresh;
         private DevComponents.DotNetBar.ButtonItem btnDelete;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
     }
 }
 
