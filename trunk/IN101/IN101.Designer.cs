@@ -75,7 +75,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdWH.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdWH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdWH.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.grdWH.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.grdWH.Location = new System.Drawing.Point(0, 25);
             this.grdWH.Name = "grdWH";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;

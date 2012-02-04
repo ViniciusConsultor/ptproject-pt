@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PT.Master;
 using PT.Helper;
 
 namespace IN101
@@ -18,27 +20,24 @@ namespace IN101
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //DataTable _dt_grdWH = new DataTable();
-            //_dt_grdWH = 
-            gdv.DataSource = ConnectDB.GetAll("INProduct");
-            //_SetGridColumVisible();
-            //_setColumSite();
-            //_AutoNumberForGrid(grdWH);
-            //grdWH.Refresh();
+            dgv.DataSource = ConnectDB.GetAll("INProduct");            
+        }
+
+        private void dgv_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+  //          MessageBox.Show("add");
+        }
+
+        private void dgv_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            MessageBox.Show("add");
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
