@@ -1,0 +1,5 @@
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.DataInfo\bin\Debug\PT.DataInfo.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.DataInfo\bin\Debug\PT.DataInfo.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.DataInfo\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.DataInfo\obj\Debug\PT.DataInfo.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\PT.DataInfo\obj\Debug\PT.DataInfo.pdb

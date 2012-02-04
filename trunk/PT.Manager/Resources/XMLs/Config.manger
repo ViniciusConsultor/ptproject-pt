@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<Configs>
+  <Config>
+    <Server>LTPHUOC-PC\SQLEXPRESS10</Server>
+    <Database>PT.Manager</Database>
+    <Username />
+    <Password />
+  </Config>
+</Configs>

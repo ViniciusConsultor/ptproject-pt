@@ -1,0 +1,99 @@
+<?xml version="1.0" standalone="yes"?>
+<Menus>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>INPUT</MenuType>
+    <ScreenID>AP001</ScreenID>
+    <Descr>Điều Chỉnh Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>INPUT</MenuType>
+    <ScreenID>frmINPRT</ScreenID>
+    <Descr>Chuyển Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>Form2</ScreenID>
+    <Descr>Danh Mục Nhóm Sản Phẩm</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmReport</ScreenID>
+    <Descr>Danh Mục Sản Phẩm</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmINREN</ScreenID>
+    <Descr>Danh Mục Mã Lý Do</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmINUNT</ScreenID>
+    <Descr>Đơn Vị Sử Dụng</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmINWAE</ScreenID>
+    <Descr>Danh Mục Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LOK</MenuType>
+    <ScreenID>frmINV</ScreenID>
+    <Descr>Xuất Nhập Tồn Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LOK</MenuType>
+    <ScreenID>frmPRTRAN</ScreenID>
+    <Descr>Giao Dịch Của Sản Phẩm</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>LOK</MenuType>
+    <ScreenID>frmPRTRAN1</ScreenID>
+    <Descr>Giao Dịch Của Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>RPT</MenuType>
+    <ScreenID>frmINDOCSTOC</ScreenID>
+    <Descr>Thẻ Kho</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>IN</ModuleID>
+    <MenuType>RPT</MenuType>
+    <ScreenID>frmINV</ScreenID>
+    <Descr>Báo Cáo Xuất Nhập Tồn</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>OUT</ModuleID>
+    <MenuType>RPT</MenuType>
+    <ScreenID>frmOUT</ScreenID>
+    <Descr>Báo Cáo Xuất Nhập Tồn</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>OUT</ModuleID>
+    <MenuType>LOK</MenuType>
+    <ScreenID>frmLOK</ScreenID>
+    <Descr>frmLOK</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>OUT</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmLIST</ScreenID>
+    <Descr>frmLIST</Descr>
+  </Menu>
+  <Menu>
+    <ModuleID>OUT</ModuleID>
+    <MenuType>LIST</MenuType>
+    <ScreenID>frmLIST2</ScreenID>
+    <Descr>frmLIST2</Descr>
+  </Menu>
+</Menus>

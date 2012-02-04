@@ -1,0 +1,11 @@
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.MainCtl.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.MainCtl.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.DataInfo.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.Helper.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\log4net.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.Helper.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\log4net.xml
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\bin\Debug\PT.DataInfo.pdb
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\obj\Debug\PT.MainCtl.dll
+C:\Users\LTPhuoc\Documents\Visual Studio 2008\Projects\PT.Manager\SVN\ptproject-pt\PT.MainCtl\obj\Debug\PT.MainCtl.pdb
