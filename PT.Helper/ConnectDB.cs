@@ -6,6 +6,8 @@ using System.Data.OleDb;
 using System.Data.SqlTypes;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+
 
 namespace PT.Helper
 {
@@ -30,10 +32,9 @@ namespace PT.Helper
             string _username = _datatable.Rows[0]["Username"].ToString();
             string _password = _datatable.Rows[0]["Password"].ToString();
             string str = "";
-            if (_username == null || _username == string.Empty || _username == "")
-                str = "Data Source=" + _servername + ";Database=" + _database +  ";Integrated Security=True";
-            else
-                str = "Data Source=" + _servername + "Database=" + _database + ";User ID=" + _username + ";pwd=" + _password + ";";
+            if ((_servername == "") || (_database == "") || (_username == ""))
+                MessageBox.Show("Thông tin cấu hình bị lỗi","Kết nối");
+            str = "Data Source=" + _servername + ";Database=" + _database + ";User ID=" + _username + ";pwd=" + _password + ";";
             return str;
         }
         static ConnectDB()

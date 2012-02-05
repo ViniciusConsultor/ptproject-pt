@@ -1,3 +1,10 @@
+----------
+05/02/2012 ltphuoc
+-Update PT.Config -> bat loi them
+-Update PT.Helper -> bat loi them
+-Update PT.Master -> Chinh sua form grid de bam enter tu them 1 dong moi
+-Update PT.TestLog
+----------
 04/02/2012 tuanbk
 - Sua lai giao dien, TabIndex form FormConfig
 - File ConnectDB duong dan thieu ";" ko conect duoc -> Ðad fix

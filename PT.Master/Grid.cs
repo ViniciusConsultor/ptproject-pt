@@ -69,18 +69,18 @@ namespace PT.Master
             }
         }
 
-        //protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
-        //{
-        //    if (msg.WParam.ToInt32() == (int)Keys.Tab)
-        //    {
-        //        if (dgv.CurrentCell == dgv.Rows[dgv.Rows.Count - 1].Cells[dgv.Columns.Count - 1])
-        //        {
-        //            btnAdd.RaiseClick();
-        //            return true;
-        //        }
-        //    }
-        //    return base.ProcessCmdKey(ref msg, keyData);
-        //}
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        {
+            if (msg.WParam.ToInt32() == (int)Keys.Tab)
+            {
+                if (dgv.CurrentCell == dgv.Rows[dgv.Rows.Count - 1].Cells[dgv.Columns.Count - 1])
+                {
+                    btnAdd.RaiseClick();
+                    return true;
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
        
         
     }
