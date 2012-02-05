@@ -1,4 +1,8 @@
 ----------
+05/02/2012 tuanbk
+- Update Completed IN-Module design Document
+- Update  FormConfig again because after updated your Commit I'd got old form design
+----------
 05/02/2012 ltphuoc
 -Update PT.Config -> bat loi them
 -Update PT.Helper -> bat loi them
