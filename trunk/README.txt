@@ -1,5 +1,9 @@
 ----------
+06/02/2012 tuanbk
+Thêm txt - TASK
+----------
 05/02/2012 tuanbk
+- Update DataInfo
 - Update Completed IN-Module design Document
 - Update  FormConfig again because after updated your Commit I'd got old form design
 ----------
