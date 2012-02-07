@@ -18,8 +18,8 @@ namespace PT.DataInfo
         private string _LUpd_User;
         #endregion
 
-        public string VendID { get { return _RsID; } set { _RsID = value; } }
-        public string VendName { get { return _Descr; } set { _Descr = value; } }
+        public string RsID { get { return _RsID; } set { _RsID = value; } }
+        public string Descr { get { return _Descr; } set { _Descr = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
         public string Crtd_Prog { get { return _Crtd_Prog; } set { _Crtd_Prog = value; } }

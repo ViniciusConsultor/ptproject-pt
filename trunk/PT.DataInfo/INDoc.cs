@@ -12,7 +12,8 @@ namespace PT.DataInfo
         private string _Module;
         private string _TranType;
         private float _TotQty;
-        private string _FromWhID;
+        private string _WhID;
+        private string _ToWhID;
         private float _TotAmt;
         private DateTime _DocDate;
         private string _DocDescr;
@@ -33,7 +34,8 @@ namespace PT.DataInfo
         public string Module { get { return _Module; } set { _Module = value; } }
         public string TranType { get { return _TranType; } set { _TranType = value; } }
         public float TotQty { get { return _TotQty; } set { _TotQty = value; } }
-        public string WhID { get { return _FromWhID; } set { _FromWhID = value; } }
+        public string WhID { get { return _WhID; } set { _WhID = value; } }
+        public string ToWhID { get { return _ToWhID; } set { _ToWhID = value; } }
         public float TotAmt { get { return _TotAmt; } set { _TotAmt = value; } }
         public DateTime DocDate { get { return _DocDate; } set { _DocDate = value; } }
         public string DocDescr { get { return _DocDescr; } set { _DocDescr = value; } }
