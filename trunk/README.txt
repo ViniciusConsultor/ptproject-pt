@@ -1,5 +1,8 @@
 ----------
 07/02/2012 ltphuoc
+- Add SqlScript Folder
+----------
+07/02/2012 ltphuoc
 - Update PT.Manager.sln & PT.Manager.sou
 - Add PT.Controller folder
 ----------
