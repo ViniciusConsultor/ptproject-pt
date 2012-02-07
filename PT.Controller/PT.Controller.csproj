@@ -45,8 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="INDocCtrl.cs" />
+    <Compile Include="INDocDetCtrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PT.DataInfo\PT.DataInfo.csproj">
+      <Project>{EC515D5C-7859-4847-BD62-73662B710ECA}</Project>
+      <Name>PT.DataInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PT.Helper\PT.Helper.csproj">
+      <Project>{998770D9-C789-45D5-8DBC-494C079FBA8A}</Project>
+      <Name>PT.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

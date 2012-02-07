@@ -3,3 +3,14 @@ D:\My work\PT\Temp\PT.Controller\bin\Debug\PT.Controller.pdb
 D:\My work\PT\Temp\PT.Controller\obj\Debug\ResolveAssemblyReference.cache
 D:\My work\PT\Temp\PT.Controller\obj\Debug\PT.Controller.dll
 D:\My work\PT\Temp\PT.Controller\obj\Debug\PT.Controller.pdb
+E:\PT.Manager\PT.Controller\bin\Debug\PT.Controller.dll
+E:\PT.Manager\PT.Controller\bin\Debug\PT.Controller.pdb
+E:\PT.Manager\PT.Controller\obj\Debug\ResolveAssemblyReference.cache
+E:\PT.Manager\PT.Controller\obj\Debug\PT.Controller.dll
+E:\PT.Manager\PT.Controller\obj\Debug\PT.Controller.pdb
+E:\PT.Manager\PT.Controller\bin\Debug\PT.DataInfo.dll
+E:\PT.Manager\PT.Controller\bin\Debug\PT.Helper.dll
+E:\PT.Manager\PT.Controller\bin\Debug\log4net.dll
+E:\PT.Manager\PT.Controller\bin\Debug\PT.Helper.pdb
+E:\PT.Manager\PT.Controller\bin\Debug\log4net.xml
+E:\PT.Manager\PT.Controller\bin\Debug\PT.DataInfo.pdb
