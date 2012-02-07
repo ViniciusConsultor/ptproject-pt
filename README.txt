@@ -1,4 +1,8 @@
 ----------
+07/02/2012 tuanbk
+- Add IN102 & IN103
+- Update PT.Sqlscript
+----------
 07/02/2012 ltphuoc
 - Add SqlScript Folder
 ----------
