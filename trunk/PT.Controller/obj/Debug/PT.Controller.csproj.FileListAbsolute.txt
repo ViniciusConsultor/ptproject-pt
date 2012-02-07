@@ -1,0 +1,5 @@
+D:\My work\PT\Temp\PT.Controller\bin\Debug\PT.Controller.dll
+D:\My work\PT\Temp\PT.Controller\bin\Debug\PT.Controller.pdb
+D:\My work\PT\Temp\PT.Controller\obj\Debug\ResolveAssemblyReference.cache
+D:\My work\PT\Temp\PT.Controller\obj\Debug\PT.Controller.dll
+D:\My work\PT\Temp\PT.Controller\obj\Debug\PT.Controller.pdb

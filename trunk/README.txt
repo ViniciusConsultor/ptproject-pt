@@ -1,4 +1,8 @@
 ----------
+07/02/2012 ltphuoc
+- Update PT.Manager.sln & PT.Manager.sou
+- Add PT.Controller folder
+----------
 06/02/2012 tuanbk
 Thêm txt - TASK
 ----------
