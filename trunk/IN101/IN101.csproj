@@ -55,7 +55,7 @@
     <Compile Include="IN101.Designer.cs">
       <DependentUpon>IN101.cs</DependentUpon>
     </Compile>
-    <Compile Include="IN101Ctr.cs" />
+    <Compile Include="IN101Ctrl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="IN101.resx">
