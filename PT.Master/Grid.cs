@@ -104,6 +104,58 @@ namespace PT.Master
             }
         }
 
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {            
+            string _strCrtUser = dgv.Rows[e.RowIndex].Cells["Crtd_User"].FormattedValue.ToString();
+            string _strMdfUser = dgv.Rows[e.RowIndex].Cells["LUpd_User"].FormattedValue.ToString();
+            string _strCrtTime = dgv.Rows[e.RowIndex].Cells["Crtd_DateTime"].FormattedValue.ToString();
+            string _strMdfTime = dgv.Rows[e.RowIndex].Cells["LUpd_DateTime"].FormattedValue.ToString();
+
+            txtCrtUser.Text = " by "+ _strCrtUser;
+            txtMdfUser.Text = " by "+ _strMdfUser;
+            txtCrtTime.Text = "Created at "+_strCrtTime;
+            txtMdfTime.Text = "Modified at "+_strMdfTime;
+            
+        }
+
+        private void dgv_KeyDown(object sender, KeyEventArgs e)
+        {
+            int index;
+            if (e.KeyCode == Keys.Up)
+            {
+                index = dgv.CurrentRow.Index - 1;
+                if (index > -1)
+                {
+                    string _strCrtUser = dgv.Rows[index].Cells["Crtd_User"].FormattedValue.ToString();
+                    string _strMdfUser = dgv.Rows[index].Cells["LUpd_User"].FormattedValue.ToString();
+                    string _strCrtTime = dgv.Rows[index].Cells["Crtd_DateTime"].FormattedValue.ToString();
+                    string _strMdfTime = dgv.Rows[index].Cells["LUpd_DateTime"].FormattedValue.ToString();
+
+                    txtCrtUser.Text = " by " + _strCrtUser;
+                    txtMdfUser.Text = " by " + _strMdfUser;
+                    txtCrtTime.Text = "Created at " + _strCrtTime;
+                    txtMdfTime.Text = "Modified at " + _strMdfTime;
+                }
+            }
+
+            if (e.KeyCode == Keys.Down)
+            {
+                index = dgv.CurrentRow.Index + 1;
+                if (index < dgv.RowCount)
+                {
+                    string _strCrtUser = dgv.Rows[index].Cells["Crtd_User"].FormattedValue.ToString();
+                    string _strMdfUser = dgv.Rows[index].Cells["LUpd_User"].FormattedValue.ToString();
+                    string _strCrtTime = dgv.Rows[index].Cells["Crtd_DateTime"].FormattedValue.ToString();
+                    string _strMdfTime = dgv.Rows[index].Cells["LUpd_DateTime"].FormattedValue.ToString();
+
+                    txtCrtUser.Text = " by " + _strCrtUser;
+                    txtMdfUser.Text = " by " + _strMdfUser;
+                    txtCrtTime.Text = "Created at " + _strCrtTime;
+                    txtMdfTime.Text = "Modified at " + _strMdfTime;
+                }
+            }
+        }
+
        
         
     }
