@@ -23,7 +23,7 @@ namespace PT.MainCtl
             DataTable _dataTable = GetAllSAMenu();
             _dataTable.TableName = "Language";
             _dataSet.Tables.Add(_dataTable);
-            _dataSet.WriteXml(Globals.PTXMLFile, XmlWriteMode.IgnoreSchema);
+            _dataSet.WriteXml(Globals.PTXMLLanguage, XmlWriteMode.IgnoreSchema);
 
             return true;
         }
@@ -39,7 +39,7 @@ namespace PT.MainCtl
            
             _dataset.Tables.Add(_datatable);
 
-            _dataset.ReadXml(Globals.PTXMLFile, XmlReadMode.IgnoreSchema);
+            _dataset.ReadXml(Globals.PTXMLLanguage, XmlReadMode.IgnoreSchema);
 
             return _datatable; 
         }
