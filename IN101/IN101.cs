@@ -12,201 +12,105 @@ using PT.Helper;
 
 namespace IN101
 {
-    public partial class IN101 : Form
+    public partial class IN101 : PT.Master.Grid
     {
-        string _strUser = "ADMIN";
-        string _strPro = "IN101";
-
+        string _strPro = "IN101";        
         public IN101()
         {
             InitializeComponent();
         }
-        private DataTable _dt_grdWH = new DataTable();
 
         private void IN101_Load(object sender, EventArgs e)
         {
-            _BinGridWH();
+
+            _BinGrid();
+            _SetColumnVisible();
         }
-        //
-        private void _BinGridWH()
+        private void _SetColumnVisible()
         {
-            _dt_grdWH = ConnectDB.ExecuteReader("sp_GetAll", new String[] { "TableName" }, new Object[] { "INWarehouse" });
-            grdWH.DataSource = _dt_grdWH;
-            _SetGridColumVisible();
-            _setColumSite();
-            _AutoNumberForGrid(grdWH);
-            grdWH.Refresh();
+            dgv.Columns["Crtd_DateTime"].Visible = false;
+            dgv.Columns["Crtd_Prog"].Visible = false;
+            dgv.Columns["Crtd_User"].Visible = false;
+            dgv.Columns["LUpd_DateTime"].Visible = false;
+            dgv.Columns["LUpd_Prog"].Visible = false;
+            dgv.Columns["LUpd_User"].Visible = false;            
         }
 
-        private void _SetGridColumVisible()
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            grdWH.Columns["Type"].Visible = false;
-            grdWH.Columns["Crtd_DateTime"].Visible = false;
-            grdWH.Columns["Crtd_Prog"].Visible = false;
-            grdWH.Columns["Crtd_User"].Visible = false;
-            grdWH.Columns["LUpd_DateTime"].Visible = false;
-            grdWH.Columns["LUpd_Prog"].Visible = false;
-            grdWH.Columns["LUpd_User"].Visible = false;
+           // MessageBox.Show(dgv.CurrentRow.IsNewRow.ToString());
         }
 
-        private void _AutoNumberForGrid(DataGridView dataGridView)
+         
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView != null)
+            Int32 _intTotalRow = dgv.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (_intTotalRow > 0)
             {
-
-                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                if (MessageBox.Show("Bạn có muốn xóa '" + _intTotalRow + "' dòng được chọn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    dataGridView.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                    for (int i = 0; i < _intTotalRow; i++)
+                    {
+                        int _row = Int16.Parse(dgv.SelectedRows[i].Index.ToString());
+                        _DeleteRow(_row);
+                    }
+                    _BinGrid();
                 }
+                
             }
+
+        }
+        private void _BinGrid()
+        {
+            DataTable _dtINReason = new DataTable();
+            _dtINReason = IN101Ctr.GetWarehouse();
+            dgv.DataSource = _dtINReason;
+            dgv.Refresh();
         }
 
-        private void _setColumSite()
+        private void _DeleteRow(int row)
         {
-            grdWH.Columns[1].Width = 200;
-            grdWH.Columns[2].Width = 150;
-            grdWH.Columns[3].Width = 150;
-            grdWH.Columns[4].Width = 150;
-        }
-
-        private void _saveGridWH()
-        {
-            if (grdWH != null)
-            {
-                for (int i = 0; i < grdWH.Rows.Count - 1; i++)
-                {
-                    INWarehouse _info = new INWarehouse();
-                    _info.WhId = grdWH.Rows[i].Cells["WhId"].FormattedValue.ToString().Trim();
-                    _info.Name = grdWH.Rows[i].Cells["Name"].FormattedValue.ToString().Trim();
-                    _info.WhKeeper = grdWH.Rows[i].Cells["WhKeeper"].FormattedValue.ToString().Trim();
-                    _info.Addr = grdWH.Rows[i].Cells["Addr"].FormattedValue.ToString().Trim();
-                    _info.Phone = grdWH.Rows[i].Cells["Phone"].FormattedValue.ToString().Trim();
-                    _info.Type = "ST";
-                    _info.Crtd_DateTime = DateTime.Now;
-                    _info.Crtd_Prog = _strPro;
-                    _info.Crtd_User = _strUser;
-                    _info.LUpd_DateTime = DateTime.Now;
-                    _info.LUpd_Prog = _strPro;
-                    _info.LUpd_User = _strUser;
-
-                    int kq;
-                    if (_info.WhId != "")
-                        kq = INWarehouseCtr.SaveWarehouse(_info);
-                }
-            }
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            _saveGridWH();
-        }
-        //
-        private void grdWH_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            _AutoNumberForGrid(grdWH);
+            string _id = dgv.Rows[row].Cells["WhID"].Value.ToString();
+            string _strRsId = dgv.Rows[row].Cells[0].FormattedValue.ToString();
+            IN101Ctr.DeleteWarehouse(_strRsId);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            _BinGridWH();
+            _BinGrid();
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _saveGridWH();
-            _BinGridWH();
-        }
-        private void _deleteGridRow(int row)
-        {
-            string _strWhId = grdWH.Rows[row].Cells[0].FormattedValue.ToString();
-            INWarehouseCtr.DeleteWarehouse(_strWhId);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            Int32 _intTotalRow = grdWH.Rows.GetRowCount(DataGridViewElementStates.Selected);
-
-            if (_intTotalRow > 0)
+            if (dgv != null)
             {
-                DialogResult _kq;
-                _kq = MessageBox.Show("Bạn muốn xóa " + _intTotalRow.ToString() + " dòng được chọn", "Thông báo !", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (_kq == DialogResult.Yes)
-                    for (int i = 0; i < _intTotalRow; i++)
-                    {
-                        int _row = Int16.Parse(grdWH.SelectedRows[i].Index.ToString());
-                        _deleteGridRow(_row);
-                    }
-                _BinGridWH();
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    INWarehouse _rs = new INWarehouse();
+                    _rs.WhId = dgv.Rows[i].Cells["WhId"].FormattedValue.ToString().Trim();
+                    _rs.Name = dgv.Rows[i].Cells["Name"].FormattedValue.ToString().Trim();
+                    _rs.WhKeeper = dgv.Rows[i].Cells["WhKeeper"].FormattedValue.ToString().Trim();
+                    _rs.Addr = dgv.Rows[i].Cells["Addr"].FormattedValue.ToString().Trim();
+                    _rs.Phone = dgv.Rows[i].Cells["Phone"].FormattedValue.ToString().Trim();
+                    _rs.Type = dgv.Rows[i].Cells["Type"].FormattedValue.ToString().Trim();
+                    _rs.Crtd_DateTime = DateTime.Now;
+                    _rs.Crtd_Prog = _strPro ;
+                    _rs.Crtd_User = Globals.PTUserName;
+                    _rs.LUpd_DateTime = DateTime.Now;
+                    _rs.LUpd_Prog = _strPro;
+                    _rs.LUpd_User = Globals.PTUserName;
+                    int kq;
+                    if (_rs.WhId!= "")
+                        kq = IN101Ctr.SaveWarehouse(_rs);
+                }
+                _BinGrid();
             }
         }
-
-        private void grdWH_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private bool _CheckCell(int _cell)
         {
-            //if (e.ColumnIndex > -1 && e.RowIndex > -1)
-            //{
-            //    this.grdWH.CurrentCell = this.grdWH[e.ColumnIndex, e.RowIndex];
-            //    this.grdWH.BeginEdit(true);
-            //}
+            return true;
         }
-
-        private void grdWH_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            Int32 _intTotalRow = grdWH.Rows.GetRowCount(DataGridViewElementStates.Selected);
-
-            if (_intTotalRow > 0)
-            {
-                DialogResult _kq;
-                _kq = MessageBox.Show("Bạn muốn xóa " + _intTotalRow.ToString() + " dòng được chọn", "Thông báo !", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (_kq == DialogResult.Yes)
-                    for (int i = 0; i < _intTotalRow; i++)
-                    {
-                        int _row = Int16.Parse(grdWH.SelectedRows[i].Index.ToString());
-                        _deleteGridRow(_row);
-                    }
-                _BinGridWH();
-            }
-        }
-
-        private void grdWH_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                MessageBox.Show("Enter key pressed");
-            }
-        }
-
-        private void grdWH_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-         //   SendKeys.SendWait("{right}");
-            //MessageBox.Show("a");
-        }
-
-        private void grdWH_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        //{
-        //    const int WM_KEYDOWN = 0x100;
-        //    const int WM_SYSKEYDOWN = 0x104;
-
-        //    if ((msg.Msg == WM_KEYDOWN) || (msg.Msg == WM_SYSKEYDOWN))
-        //    {
-        //        if (ActiveControl.Name == "grdWH")
-        //        {
-        //            if (keyData == Keys.Enter)
-        //            {
-        //                SendKeys.SendWait("{right}");
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return base.ProcessCmdKey(ref msg, keyData);
-        //} 
-
-
-
-
-
     }
 }

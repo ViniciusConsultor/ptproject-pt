@@ -42,11 +42,13 @@ namespace PT.Helper
 
             _dataset.Tables.Add(_datatable);
 
-            _dataset.ReadXml(Globals.PTXMLFile, XmlReadMode.IgnoreSchema);
+            _dataset.ReadXml(Globals.PTXMLLanguage, XmlReadMode.IgnoreSchema);
 
             //DataTable _dt = _datatable;
             string _sql = string.Format("LgID = '{0}'",_LgID);
             DataRow[] _rows = _datatable.Select(_sql);
+            if (_rows.Length == 0)
+                return _LgID;
             string _value = (string)_rows[0][_Language];
             if ((_value == "")||(_value == string.Empty)||(_value == null))
                 return _LgID;
