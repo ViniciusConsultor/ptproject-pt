@@ -15,7 +15,7 @@ namespace IN101
 {
     public partial class IN101 : PT.Master.Grid
     {
-        string _strPro = "IN101";        
+        
         public IN101()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace IN101
 
         private void IN101_Load(object sender, EventArgs e)
         {
-
+            this.strPro = "IN101";
             _BinGrid();
             _SetColumnVisible();
         }
@@ -66,7 +66,7 @@ namespace IN101
         {
             DataTable _dtINReason = new DataTable();
             dgv.Visible = false;
-            _dtINReason = IN101Ctr.GetWarehouse();
+            _dtINReason = IN101Ctrl.GetWarehouse();
             dgv.EndCell = 5;
             dgv.DataSource = _dtINReason;
 
@@ -78,7 +78,7 @@ namespace IN101
         {
             string _id = dgv.Rows[row].Cells["WhID"].Value.ToString();
             string _strRsId = dgv.Rows[row].Cells[0].FormattedValue.ToString();
-            IN101Ctr.DeleteWarehouse(_strRsId);
+            IN101Ctrl.DeleteWarehouse(_strRsId);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -101,14 +101,14 @@ namespace IN101
                     _rs.Phone = dgv.Rows[i].Cells["Phone"].FormattedValue.ToString().Trim();
                     _rs.Type = dgv.Rows[i].Cells["Type"].FormattedValue.ToString().Trim();
                     _rs.Crtd_DateTime = DateTime.Now;
-                    _rs.Crtd_Prog = _strPro ;
+                    _rs.Crtd_Prog = this.strPro ;
                     _rs.Crtd_User = Globals.PTUserName;
                     _rs.LUpd_DateTime = DateTime.Now;
-                    _rs.LUpd_Prog = _strPro;
+                    _rs.LUpd_Prog = this.strPro;
                     _rs.LUpd_User = Globals.PTUserName;
                     int kq;
                     if (_rs.WhId!= "")
-                        kq = IN101Ctr.SaveWarehouse(_rs);
+                        kq = IN101Ctrl.SaveWarehouse(_rs);
                 }
                 _BinGrid();
             }
@@ -139,6 +139,11 @@ namespace IN101
         {
             _CheckCell(dgv.CurrentRow.Index, dgv.CurrentCell.ColumnIndex);
                  
+            
+        }
+
+        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
             
         }
     }

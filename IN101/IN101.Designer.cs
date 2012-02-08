@@ -59,6 +59,7 @@
             this.dgv.Size = new System.Drawing.Size(877, 377);
             this.dgv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEndEdit);
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dgv.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEnter);
             // 
             // IN101
             // 
@@ -67,7 +68,7 @@
             this.ClientSize = new System.Drawing.Size(877, 421);
             this.DoubleBuffered = true;
             this.Name = "IN101";
-            this.Text = "IN101";
+            this.Text = "Danh mục - Kho ";
             this.Load += new System.EventHandler(this.IN101_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barStatus)).EndInit();

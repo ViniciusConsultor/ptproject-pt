@@ -10,24 +10,29 @@ using DevComponents.DotNetBar;
 namespace PT.Master
 {
     public partial class Grid : DevComponents.DotNetBar.Office2007Form
-    {        
+    {
+        private int _EndCell;
+        private string _strPro;
         public Grid()
         {
             InitializeComponent();
         }
-
+        public string strPro
+        {
+            get { return _strPro; }
+            set { _strPro = value; }
+        }
         private void Grid_Load(object sender, EventArgs e)
         {
             if (dgv.Rows.Count > 0)
             {
                 dgv.Columns[0].ReadOnly = true;
             }
-            //btnSave.Enabled = false;
-
+           
         }
 
         private void dgv_DataSourceChanged(object sender, EventArgs e)
-        {
+        {           
             if (dgv.Rows.Count > 0)
             {
                 dgv.Columns[0].ReadOnly = true;
@@ -57,11 +62,13 @@ namespace PT.Master
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Save");
+
+        
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            
             if (dgv.Rows.Count > 0)
             {            
                 btnDelete.Enabled = true;
@@ -69,11 +76,16 @@ namespace PT.Master
             }
         }
 
+        
+
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
+            int _endcell = dgv.EndCell;
+            if (_endcell == 0)
+                _endcell = dgv.Rows.Count - 1;
             if (msg.WParam.ToInt32() == (int)Keys.Tab)
             {
-                if (dgv.CurrentCell == dgv.Rows[dgv.Rows.Count - 1].Cells[dgv.Columns.Count - 1])
+                if (dgv.CurrentCell == dgv.Rows[dgv.Rows.Count - 1].Cells[_endcell])
                 {
                     btnAdd.RaiseClick();
                     return true;
@@ -81,6 +93,17 @@ namespace PT.Master
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                dgv.Columns[0].ReadOnly = true;
+                btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
        
         
     }
