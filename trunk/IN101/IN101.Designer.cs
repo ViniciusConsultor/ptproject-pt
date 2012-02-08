@@ -57,6 +57,7 @@
             // dgv
             // 
             this.dgv.Size = new System.Drawing.Size(877, 377);
+            this.dgv.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellEndEdit);
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // IN101

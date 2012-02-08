@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using PT.DataInfo;
 using PT.Helper;
+using System.Text.RegularExpressions;
 
 
 namespace IN101
@@ -64,9 +65,13 @@ namespace IN101
         private void _BinGrid()
         {
             DataTable _dtINReason = new DataTable();
+            dgv.Visible = false;
             _dtINReason = IN101Ctr.GetWarehouse();
+            dgv.EndCell = 5;
             dgv.DataSource = _dtINReason;
+
             dgv.Refresh();
+            dgv.Visible = true;
         }
 
         private void _DeleteRow(int row)
@@ -108,9 +113,33 @@ namespace IN101
                 _BinGrid();
             }
         }
-        private bool _CheckCell(int _cell)
+        private bool _CheckCell(int _row, int _cell)
         {
+            long a = 0;
+            //string _rules = @"/^(\(?[2-9]{1}[0-9]{2}\)?|[0-9]{3,3}[-. ]?)[ ][0-9]{3,3}[-. ]?[0-9]{4,4}$/";
+            //Regex _reg = new Regex(_rules);
+            if (_cell == 4)
+            //    if (_reg.IsMatch(dgv.Rows[_row].Cells[_cell].Value.ToString()))
+            //    {
+            //        return true;
+            //    }
+
+            if (long.TryParse(dgv.Rows[_row].Cells[_cell].Value.ToString(), out a) == true)
+                return true;
+            else
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo");
+                SendKeys.Send("+{tab}");
+                return false;
+            }
             return true;
+        }
+
+        private void dgv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            _CheckCell(dgv.CurrentRow.Index, dgv.CurrentCell.ColumnIndex);
+                 
+            
         }
     }
 }
