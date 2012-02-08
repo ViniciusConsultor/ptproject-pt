@@ -10,11 +10,12 @@ namespace PT.Helper
     {
        // public static string PTManagerConnectionString = "Data Source=LTPHUOC-PC\\SQLEXPRESS10;User ID=sa;pwd=123456;Initial Catalog=PT.Manager;";
         public static int PTManagerMenu = 1; //Menu Cha dang duoc mo (su dung trong main)
-        public static string PTXMLFile = "../../../PT.Manager/Resources/XMLs/Language.manger";
+        public static string PTXMLLanguage = "../../../PT.Manager/Resources/XMLs/Language.manger";
+        public static string PTXMLLog = "../../../PT.Manager/Resources/XMLs/Log.manger";
         public static string PTXMLMenu = "../../../PT.Manager/Resources/XMLs/Menu.manger";
         public static string PTXMLConfig = "../../../PT.Manager/Resources/XMLs/Config.manger";
         public static string PTLanguage = "Language1"; //Ngon ngu mac dinh cua chuong trinh (dung de thay doi ngon ngu)
-        public static string PTUser = "";
+        public static string PTUserName = "Admin";
         public static DateTime PTWorkingDate = DateTime.Now;
         //public static DataTable PTMenu = new DataTable();
         public enum OrderStatus
