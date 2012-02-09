@@ -1,4 +1,8 @@
 ----------
+09/02/2012 ltphuoc
+-Update IN101
+-Update Grid Form : them su kien neu co thay doi cell do thi se gan lai thong tin update
+----------
 08/02/2012 ltphuoc
 -Update IN101
 -Update PT.Helper
