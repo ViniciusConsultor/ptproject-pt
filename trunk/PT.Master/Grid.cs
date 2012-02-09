@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using PT.Helper;
 
 namespace PT.Master
 {
@@ -13,6 +14,8 @@ namespace PT.Master
     {
         private int _EndCell;
         private string _strPro;
+        public bool _IsChange=false;
+        private string _strCell="";
         public Grid()
         {
             InitializeComponent();
@@ -153,6 +156,24 @@ namespace PT.Master
                     txtCrtTime.Text = "Created at " + _strCrtTime;
                     txtMdfTime.Text = "Modified at " + _strMdfTime;
                 }
+            }
+        }
+
+        private void dgv_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            _strCell = dgv.CurrentCell.Value.ToString().Trim();
+        }
+
+        private void dgv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgv.CurrentCell.RowIndex;
+            if (dgv.CurrentCell.Value.ToString().Trim() == _strCell)
+                _IsChange = false;
+            else
+            {
+                dgv.Rows[index].Cells["LUpd_Prog"].Value = _strPro;
+                dgv.Rows[index].Cells["LUpd_User"].Value = Globals.PTUserName;
+                dgv.Rows[index].Cells["LUpd_DateTime"].Value = DateTime.Now;
             }
         }
 
