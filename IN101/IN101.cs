@@ -15,7 +15,6 @@ namespace IN101
 {
     public partial class IN101 : PT.Master.Grid
     {
-        
         public IN101()
         {
             InitializeComponent();
@@ -37,10 +36,6 @@ namespace IN101
             dgv.Columns["LUpd_User"].Visible = false;            
         }
 
-        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           // MessageBox.Show(dgv.CurrentRow.IsNewRow.ToString());
-        }
 
          
 
@@ -103,9 +98,9 @@ namespace IN101
                     _rs.Crtd_DateTime = DateTime.Now;
                     _rs.Crtd_Prog = this.strPro ;
                     _rs.Crtd_User = Globals.PTUserName;
-                    _rs.LUpd_DateTime = DateTime.Now;
-                    _rs.LUpd_Prog = this.strPro;
-                    _rs.LUpd_User = Globals.PTUserName;
+                    _rs.LUpd_DateTime = DateTime.Parse(dgv.Rows[i].Cells["LUpd_DateTime"].FormattedValue.ToString().Trim());
+                    _rs.LUpd_Prog = dgv.Rows[i].Cells["LUpd_Prog"].FormattedValue.ToString().Trim();
+                    _rs.LUpd_User = dgv.Rows[i].Cells["LUpd_User"].FormattedValue.ToString().Trim();
                     int kq;
                     if (_rs.WhId!= "")
                         kq = IN101Ctrl.SaveWarehouse(_rs);
@@ -115,36 +110,22 @@ namespace IN101
         }
         private bool _CheckCell(int _row, int _cell)
         {
-            long a = 0;
-            //string _rules = @"/^(\(?[2-9]{1}[0-9]{2}\)?|[0-9]{3,3}[-. ]?)[ ][0-9]{3,3}[-. ]?[0-9]{4,4}$/";
-            //Regex _reg = new Regex(_rules);
+            long a = 0;            
             if (_cell == 4)
-            //    if (_reg.IsMatch(dgv.Rows[_row].Cells[_cell].Value.ToString()))
-            //    {
-            //        return true;
-            //    }
-
-            if (long.TryParse(dgv.Rows[_row].Cells[_cell].Value.ToString(), out a) == true)
-                return true;
-            else
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo");
-                SendKeys.Send("+{tab}");
-                return false;
-            }
+                if (long.TryParse(dgv.Rows[_row].Cells[_cell].Value.ToString(), out a) == true)
+                    return true;
+                else
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo");
+                    SendKeys.Send("+{tab}");
+                    return false;
+                }
             return true;
         }
 
         private void dgv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             _CheckCell(dgv.CurrentRow.Index, dgv.CurrentCell.ColumnIndex);
-                 
-            
-        }
-
-        private void dgv_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            
         }
     }
 }
