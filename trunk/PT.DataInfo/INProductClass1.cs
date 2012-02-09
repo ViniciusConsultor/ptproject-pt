@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PT.DataInfo
 {
-    class INProductClass1
+    public class INProductClass1
     {
         private string _VendID;
         private string _ClassID1;
