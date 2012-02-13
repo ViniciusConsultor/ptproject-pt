@@ -35,19 +35,50 @@ namespace PT.Component
         {
            // base.OnTextChanged(e);
 
-            string str1 = this.Text.ToString();
-            if (str1.Length == 4)
-            {
-                str1 = str1.Substring(0, 3) + "," + str1.Substring(3, 1);
-                Text = str1;
-            }
+            //string str1 = this.Text.ToString();
+            //if (str1.Length == 4)
+            //{
+            //    str1 = str1.Substring(0, 3) + "," + str1.Substring(3, 1);
+            //    Text = str1;
+            //}
             //this.fo
             
 
-            //string str2 = str1.Replace(",", null);
-            //float a;
-            //bool kq = float.TryParse(str2, out a);
-            //this.Text = a.ToString("0,0.00", CultureInfo.InvariantCulture);
+            //TextBox t = (TextBox)sender;
+
+            String Text = this.Text.ToString();
+            //int selStart = t.SelectionStart;
+            int commaCount_Before = 0;
+            int commaCount_After = 0;
+            for (int i = 0; i < Text.Length; i++)
+            {
+                if (Text.Substring(i, 1) == ",")
+                {
+                    commaCount_Before++;
+                }
+            }
+            float Num;
+            Text = Text.Replace(",", "");
+            if (float.TryParse(Text, out Num))
+            {
+                Text = String.Format("{0:N0}", Num);
+                this.Text = Text;
+            }
+            for (int i = 0; i < Text.Length; i++)
+            {
+                if (Text.Substring(i, 1) == ",")
+                {
+                    commaCount_After++;
+                }
+            }
+
+            this.SelectionStart = Text.Length;
+            //int diff = (commaCount_After - commaCount_Before);
+            //if (diff>=0)
+            //    this.SelectionStart = selStart + (commaCount_After - commaCount_Before);
+            ////{
+            //    t.SelectionStart = selStart + (commaCount_After - commaCount_Before);
+            //}
 
         }
 
