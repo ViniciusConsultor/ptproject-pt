@@ -1,5 +1,6 @@
 - Contro dang o row nao thi khi enter phai lay dc row do. Con 1 dong, bam Enter phai lay duoc dong do,
+- Sau khi enter phai nhay ðên control ke tiep
 - Vi tri cua Grid phai khop voi textbox
 - Bam vao textbox tu dong select all text
-- Mac dinh so dong la 10, qua so dong moi hien Scroll
+- Mac dinh so dong la 10, quá 10 moi hien Scroll
 - Tu cot thu 2 tro di, columWight = 2*conlum1
