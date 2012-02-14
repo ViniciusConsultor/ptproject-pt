@@ -12,42 +12,48 @@ using PT.DataInfo;
 using PT.Master;
 using System.Globalization;
 
-namespace IN202
+namespace IN201
 {
-    public partial class IN202 : PT.Master.GridEditIn
+    public partial class IN201 : PT.Master.GridEditIn
     {
-        string _strUser = PT.Helper.Globals.PTUserName;
-        DateTime _dtmWorkDate = PT.Helper.Globals.PTWorkingDate;
-        DataTable _dtUserList = new DataTable();
-        DataTable _dtBranchList = new DataTable();
-        DataTable _dtWhList = new DataTable();
-        DataTable _dtToWhList = new DataTable();
-        DataTable _dtReason = new DataTable();
-        DataTable _dtProductList = new DataTable();
-        DataTable _dtProductInfo = new DataTable();
+        private string _strUser = PT.Helper.Globals.PTUserName;
+        private DateTime _dtmWorkDate = PT.Helper.Globals.PTWorkingDate;
+        private DataTable _dtUserList = new DataTable();
+        private DataTable _dtBranchList = new DataTable();
+        private DataTable _dtWhList = new DataTable();
+        private DataTable _dtToWhList = new DataTable();
+        private DataTable _dtReason = new DataTable();
+        private DataTable _dtProductList = new DataTable();
+        private DataTable _dtProductInfo = new DataTable();
+        private string _strPro = "IN204";
 
-        string _strPro = "IN204";
-
-        public IN202()
+        public IN201()
         {
             InitializeComponent();
         }
+        //protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
+        //{
+        //    if (msg.WParam.ToInt32() == (int)Keys.Enter)
+        //    {
+        //        SendKeys.Send("{tab}");
+        //        return true;
+        //    }
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
 
         private void Form1_Load(object sender, EventArgs e)
-        {            
-            _BinProductList();
+        {
+            _BindTxtProductList();
             _BindDataToCtrl();
             _SetInfoDefault();
             _BindDocList();
-            _BindDocDet();          
-        }       
-
-        private void _BinProductList()
+            _BindDocDet();
+        }
+        private void _BindTxtProductList()
         {
             _dtProductList = ConnectDB.ExecuteReader("sp_GetProductAll");
-           // txtProductID.DataSource = _dtProductList;
+            txtProductID.DataSource = _dtProductList;
         }
-
         private void _BindDataToCtrl()
         {
             _GetTableData();
@@ -70,14 +76,7 @@ namespace IN202
             cmbWhID.ColumnNames = "WhID,Name";
             cmbWhID.ColumnWidths = "95,150";
             cmbWhID.LinkedColumnIndex = 1;
-            
-            //cmbToWhID
-            cmbToWhID.DataSource = _dtToWhList;
-            cmbToWhID.DisplayMember = "WhID";
-            cmbToWhID.ValueMember = "WhID";
-            cmbToWhID.ColumnNames = "WhID,Name";
-            cmbToWhID.ColumnWidths = "95,150";
-            cmbToWhID.LinkedColumnIndex = 1;
+
             //cmbReason
             cmbReason.DataSource = _dtReason;
             cmbReason.DisplayMember = "RsID";
@@ -86,6 +85,20 @@ namespace IN202
             cmbReason.ColumnWidths = "95,150";
             cmbReason.LinkedColumnIndex = 1;
 
+        }
+        private void _BindDocList()
+        {
+            dgv.DataSource = ConnectDB.GetAll("INDoc");
+            dgv.ReadOnly = true;
+            _SetDocListVisible();
+            dgv.Refresh();
+        }
+        private void _BindDocDet()
+        {
+            dgvDocDet.DataSource = ConnectDB.GetAll("INDocDet");
+            dgvDocDet.ReadOnly = true;
+            _SetDocDetVisible();
+            dgvDocDet.Refresh();
         }
 
         private void _GetTableData()
@@ -96,33 +109,6 @@ namespace IN202
             _dtToWhList = ConnectDB.GetAll("INWarehouse");
             _dtReason = ConnectDB.GetAll("INReason");
         }
-
-        private void _SetInfoDefault()
-        {
-            dtmDocDate.Value = _dtmWorkDate;
-            dtmFromDate.Value = _dtmWorkDate;
-            dmtToDate.Value = _dtmWorkDate;
-            cmbUser.SelectedValue = _strUser;
-            cmbReason.SelectedValue = "CK";
-            txtStatus.Text = "None";
-        }
-
-        private void _BindDocList()
-        {
-            dgv.DataSource = ConnectDB.GetAll("INDoc");
-            dgv.ReadOnly = true;
-            _SetDocListVisible();
-            dgv.Refresh();
-        }
-
-        private void _BindDocDet()
-        {
-            dgvDocDet.DataSource = ConnectDB.GetAll("INDocDet");
-            dgvDocDet.ReadOnly = true;
-            _SetDocDetVisible();
-            dgvDocDet.Refresh();
-        }
-
         private void _SetDocDetVisible()
         {
             dgvDocDet.Columns["BranchID"].Visible = false;
@@ -182,42 +168,105 @@ namespace IN202
             dgv.Columns["LUpd_User"].Visible = false;
 
         }
-
-        DataRow _dr;
-        private void txtProductID_TextChanged_1(object sender, EventArgs e)
+        private void _SetInfoDefault()
         {
-            //if (txtProductID.Text.Trim() != "")
-            //{
-            //    _dtProductInfo = ConnectDB.ExecuteReader("sp_GetProductInfoAndStatus", new String[] { "UserID", "ProductID" }, new Object[] { _strUser, txtProductID.Text });
-            //    if (_dtProductInfo.Rows.Count > 0)
-            //    {
-            //        if (cmbIUnit.Items.Count > 0)
-            //            for (int i = 0; i <= cmbIUnit.Items.Count; i++)
-            //                cmbIUnit.Items.RemoveAt(0);
-            //        _dr = _dtProductInfo.Rows[0];
-            //        cmbIUnit.Items.Add(_dr["FromUnit"].ToString());
-            //        cmbIUnit.Items.Add(_dr["ToUnit"].ToString());
-            //        cmbIUnit.Text = _dr["INUnit"].ToString();
-            //        //cmbIUnit.Text = _dr["INUnit"].ToString();
-            //    }
-            //}
+            dtmDocDate.Value = _dtmWorkDate;
+            dtmFromDate.Value = _dtmWorkDate;
+            dmtToDate.Value = _dtmWorkDate;
+            cmbUser.SelectedValue = _strUser;
+            cmbReason.SelectedValue = "CK";
+            txtStatus.Text = "None";
         }
-        float _fltUnitRate;
-        private void cmbIUnit_SelectedIndexChanged(object sender, EventArgs e)
+        private void _ResetPanelInput()
         {
-            if (cmbIUnit.Text == _dr["FromUnit"].ToString())
-                _fltUnitRate = 1;
-            else
-                _fltUnitRate = float.Parse(_dr["Cnvfact"].ToString());
-            //float a = 100000;
-            //txtTotalCost.Text = a.ToString();
-            //txtTotalCost.Text = a.ToString("0,0", CultureInfo.InvariantCulture);
-            //float c = float.Parse(txtTotalCost.Text);
+            txtProductID.Text = "";
+            //txtLotID.Text = "";
+            txtQty.Text = "";
+            txtUnitCost.Text = "";
+            txtTotalCost.Text = "";
+            cmbIUnit.Text = "";
         }
 
         private void btnAddRow_Click(object sender, EventArgs e)
         {
-            txtTotalAmt.Text = "500000";
+            txtProductID.Focus();
+            _ResetPanelInput();
         }
+
+        private void btnAddRow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnAdd.RaiseClick();
+        }
+        private DataRow _dr;
+
+        private void txtProductID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //txtLotID.Focus();
+                SendKeys.Send("{tab}");
+                //        return true;
+            }
+        }
+
+        float _fltQty, _fltUnitCost;
+
+        //Tinh toan so lieu nhap
+        private void txtQty_Leave(object sender, EventArgs e)
+        {
+            if (txtQty.Text.Trim() != "")
+                _fltQty = float.Parse(txtQty.Number);
+            else
+                _fltQty = 0;
+
+            if (txtUnitCost.Text.Trim() != "")
+                _fltUnitCost = float.Parse(txtUnitCost.Number);
+            else
+                _fltUnitCost = 0;
+            txtTotalCost.Text = (_fltQty * _fltUnitCost).ToString();
+        }
+        private void txtUnitCost_Leave(object sender, EventArgs e)
+        {
+            if (txtQty.Text.Trim() != "")
+                _fltQty = float.Parse(txtQty.Number);
+            else
+                _fltQty = 0;
+
+            if (txtUnitCost.Text.Trim() != "")
+                _fltUnitCost = float.Parse(txtUnitCost.Number);
+            else
+                _fltUnitCost = 0;
+            txtTotalCost.Text = (_fltQty * _fltUnitCost).ToString();
+        }
+        private void txtTotalCost_Leave(object sender, EventArgs e)
+        {
+            if (txtQty.Text.Trim() != "")
+                txtUnitCost.Text = (float.Parse(txtTotalCost.Number)/float.Parse(txtQty.Number)).ToString();
+            //if (txtUnitCost.Text.Trim() != "")
+            //    _fltUnitCost = float.Parse(txtUnitCost.Number);
+        }
+
+        private void txtProductID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtProductID.Text.Trim() != "")
+            {
+                _dtProductInfo = ConnectDB.ExecuteReader("sp_GetProductInfoAndStatus", new String[] { "UserID", "ProductID" }, new Object[] { _strUser, txtProductID.Text });
+                if (_dtProductInfo.Rows.Count > 0)
+                {
+                    if (cmbIUnit.Items.Count > 0)
+                        for (int i = 0; i <= cmbIUnit.Items.Count; i++)
+                            cmbIUnit.Items.RemoveAt(0);
+                    _dr = _dtProductInfo.Rows[0];
+                    cmbIUnit.Items.Add(_dr["FromUnit"].ToString());
+                    cmbIUnit.Items.Add(_dr["ToUnit"].ToString());
+                    cmbIUnit.Text = _dr["INUnit"].ToString();
+                }
+            }
+            
+        }
+
+
+
     }
 }
