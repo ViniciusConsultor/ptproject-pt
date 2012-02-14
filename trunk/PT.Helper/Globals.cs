@@ -17,6 +17,7 @@ namespace PT.Helper
         public static string PTLanguage = "Language1"; //Ngon ngu mac dinh cua chuong trinh (dung de thay doi ngon ngu)
         public static string PTUserName = "Admin";
         public static DateTime PTWorkingDate = DateTime.Now;
+        public static bool bolUseLot = false; //[3:08:33 PM] Tuấn BK: biến này để cài đặt nó có sử dụng Lot để phân biệt lô hàng hay ko
         //public static DataTable PTMenu = new DataTable();
         public enum OrderStatus
         {
