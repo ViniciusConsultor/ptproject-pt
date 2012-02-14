@@ -15,17 +15,20 @@ namespace PT.Helper
         public static string PTXMLMenu = "../../../PT.Manager/Resources/XMLs/Menu.manger";
         public static string PTXMLConfig = "../../../PT.Manager/Resources/XMLs/Config.manger";
         public static string PTLanguage = "Language1"; //Ngon ngu mac dinh cua chuong trinh (dung de thay doi ngon ngu)
-        public static string PTUserName = "Admin";
-        public static DateTime PTWorkingDate = DateTime.Now;
-        public static bool bolUseLot = false; //[3:08:33 PM] Tuấn BK: biến này để cài đặt nó có sử dụng Lot để phân biệt lô hàng hay ko
-        //public static DataTable PTMenu = new DataTable();
-        public enum OrderStatus
+        public static string PTUserName = "Admin"; //Userdang su dung chuong trinh
+        public static DateTime PTWorkingDate = DateTime.Now; //Ngay gio hien tai cua he thong, cho phep user thay doi
+        public static DateTime PTDateLock = DateTime.Parse("2011/11/11"); //tức là từ thới gian này trở về trước ko dc chỉnh sửa nữa
+        public static bool PTUseLot = false; //[3:08:33 PM] Tuấn BK: biến này để cài đặt nó có sử dụng Lot để phân biệt lô hàng hay ko
+
+        public enum OrderStatus 
         {
             Pending = 0,
             Finish = 1,
             Shipping = 2
         }
-        public enum MenuStatus
+
+        // 
+        public enum MenuStatus 
         {
             Kho_hanghoa =1,
             Muahang = 2,
@@ -37,6 +40,8 @@ namespace PT.Helper
 
         }
     }
+
+
     public partial class SA_Language
     {
         public string LgID;
@@ -44,6 +49,7 @@ namespace PT.Helper
         public string Language2;
         public string Language3;
     }
+
     public partial class SA_Menu
     {
         public string ModuleID;
