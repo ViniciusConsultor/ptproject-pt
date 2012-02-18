@@ -1,0 +1,3 @@
+Thong ke cac loai messagebox (truyen bien nao vao ung voi moi ham).
+Sua multidropdowntextbox (enter - chon dong dau; search - chon dong dau)
+tao component textbox (click vo - select all; click - bo select all)
