@@ -84,6 +84,9 @@
     <Compile Include="RPSetup.cs" />
     <Compile Include="SALanguage.cs" />
     <Compile Include="SAMenu.cs" />
+    <Compile Include="SASetup.cs" />
+    <Compile Include="SAUser.cs" />
+    <Compile Include="SIBranch.cs" />
     <Compile Include="SOOrder.cs" />
     <Compile Include="SOOrderDet.cs" />
   </ItemGroup>
