@@ -55,6 +55,7 @@
     <Compile Include="IN201.Designer.cs">
       <DependentUpon>IN201.cs</DependentUpon>
     </Compile>
+    <Compile Include="IN201Ctrl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="IN201.resx">
