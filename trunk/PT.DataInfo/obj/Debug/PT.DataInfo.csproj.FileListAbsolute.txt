@@ -13,3 +13,8 @@ D:\My work\PT\SVN\PT.DataInfo\bin\Debug\PT.DataInfo.pdb
 D:\My work\PT\SVN\PT.DataInfo\obj\Debug\ResolveAssemblyReference.cache
 D:\My work\PT\SVN\PT.DataInfo\obj\Debug\PT.DataInfo.dll
 D:\My work\PT\SVN\PT.DataInfo\obj\Debug\PT.DataInfo.pdb
+E:\PT.Manager\PT.DataInfo\bin\Debug\PT.DataInfo.dll
+E:\PT.Manager\PT.DataInfo\bin\Debug\PT.DataInfo.pdb
+E:\PT.Manager\PT.DataInfo\obj\Debug\ResolveAssemblyReference.cache
+E:\PT.Manager\PT.DataInfo\obj\Debug\PT.DataInfo.dll
+E:\PT.Manager\PT.DataInfo\obj\Debug\PT.DataInfo.pdb
