@@ -10,9 +10,9 @@ namespace PT.DataInfo
         private string _InvtID;
         private DateTime _EffDate;
         private string _FromUnit;
-        private float _POFromUnitPrice;
+        private double _POFromUnitPrice;
         private string _ToUnit;
-        private float _POToUnitPrice;
+        private double _POToUnitPrice;
         #region private Pro+Date
         private DateTime _Crtd_DateTime;
         private string _Crtd_Prog;
@@ -25,9 +25,9 @@ namespace PT.DataInfo
         public string InvtID { get { return _InvtID; } set { _InvtID = value; } }
         public DateTime EffDate { get { return _EffDate; } set { _EffDate = value; } }
         public string FromUnit { get { return _FromUnit; } set { _FromUnit = value; } }
-        public float POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
+        public double POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
         public string ToUnit { get { return _ToUnit; } set { _ToUnit = value; } }
-        public float POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
+        public double POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
         public string Crtd_Prog { get { return _Crtd_Prog; } set { _Crtd_Prog = value; } }

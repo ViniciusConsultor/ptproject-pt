@@ -24,7 +24,7 @@ namespace PT.DataInfo
         private string _CountryID;
         private string _ProvinceID;
         private string _DistrictID;
-        private float _CrLmt;
+        private double _CrLmt;
         private bool _CrLmtCheck;
         private string _TimeLmtID;
         private bool _TimeLmtCheck;
@@ -57,7 +57,7 @@ namespace PT.DataInfo
         public string CountryID { get { return _CountryID; } set { _CountryID = value; } }
         public string ProvinceID { get { return _ProvinceID; } set { _ProvinceID = value; } }
         public string DistrictID { get { return _DistrictID; } set { _DistrictID = value; } }
-        public float CrLmt { get { return _CrLmt; } set { _CrLmt = value; } }
+        public double CrLmt { get { return _CrLmt; } set { _CrLmt = value; } }
         public bool CrLmtCheck { get { return _CrLmtCheck; } set { _CrLmtCheck = value; } }
         public string TimeLmtID { get { return _TimeLmtID; } set { _TimeLmtID = value; } }
         public bool TimeLmtCheck { get { return _TimeLmtCheck; } set { _TimeLmtCheck = value; } }

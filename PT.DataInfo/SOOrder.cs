@@ -26,13 +26,13 @@ namespace PT.DataInfo
         private string _SlsPerID;
         private string _InvcNbr;
         private string _InvcNote;
-        private float _SODiscAmt;
-        private float _SODiscAmtPct;
-        private float _SOPreTaxAmt;
-        private float _SOTaxAmt;
-        private float _SOAmt;
-        private float _SOQty;
-        private float _SOWeight;
+        private double _SODiscAmt;
+        private double _SODiscAmtPct;
+        private double _SOPreTaxAmt;
+        private double _SOTaxAmt;
+        private double _SOAmt;
+        private double _SOQty;
+        private double _SOWeight;
         private string _Reason;
         private string _Note;
         private string _SOOldNbr;
@@ -66,13 +66,13 @@ namespace PT.DataInfo
         public string SlsPerID { get { return _SlsPerID; } set { _SlsPerID = value; } }
         public string InvcNbr { get { return _InvcNbr; } set { _InvcNbr = value; } }
         public string InvcNote { get { return _InvcNote; } set { _InvcNote = value; } }
-        public float SODiscAmt { get { return _SODiscAmt; } set { _SODiscAmt = value; } }
-        public float SODiscAmtPct { get { return _SODiscAmtPct; } set { _SODiscAmtPct = value; } }
-        public float SOPreTaxAmt { get { return _SOPreTaxAmt; } set { _SOPreTaxAmt = value; } }
-        public float SOTaxAmt { get { return _SOTaxAmt; } set { _SOTaxAmt = value; } }
-        public float SOAmt { get { return _SOAmt; } set { _SOAmt = value; } }
-        public float SOQty { get { return _SOQty; } set { _SOQty = value; } }
-        public float SOWeight { get { return _SOWeight; } set { _SOWeight = value; } }
+        public double SODiscAmt { get { return _SODiscAmt; } set { _SODiscAmt = value; } }
+        public double SODiscAmtPct { get { return _SODiscAmtPct; } set { _SODiscAmtPct = value; } }
+        public double SOPreTaxAmt { get { return _SOPreTaxAmt; } set { _SOPreTaxAmt = value; } }
+        public double SOTaxAmt { get { return _SOTaxAmt; } set { _SOTaxAmt = value; } }
+        public double SOAmt { get { return _SOAmt; } set { _SOAmt = value; } }
+        public double SOQty { get { return _SOQty; } set { _SOQty = value; } }
+        public double SOWeight { get { return _SOWeight; } set { _SOWeight = value; } }
         public string Reason { get { return _Reason; } set { _Reason = value; } }
         public string Note { get { return _Note; } set { _Note = value; } }
         public string SOOldNbr { get { return _SOOldNbr; } set { _SOOldNbr = value; } }

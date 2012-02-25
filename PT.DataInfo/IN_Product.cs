@@ -14,12 +14,12 @@ namespace PT.DataInfo
         private static string _Status;
         private static string _FromUnit;
         private static string _ToUnit;
-        private static float _Cnvfact;
-        private static float _POFromUnitPrice;
-        private static float _POToUnitPrice;
+        private static double _Cnvfact;
+        private static double _POFromUnitPrice;
+        private static double _POToUnitPrice;
         private static DateTime _POPriStartDate;
-        private static float _SOFromUnitPrice;
-        private static float _SOToUnitPrice;
+        private static double _SOFromUnitPrice;
+        private static double _SOToUnitPrice;
         private static DateTime _SOPriStartDate;
         private static string _Color;
         private static string _StkUnit;
@@ -28,8 +28,8 @@ namespace PT.DataInfo
         private static string _DfltSite;
         private static string _Picture;
         private static string _Size;
-        private static float _StkVol;
-        private static float _StkWt;
+        private static double _StkVol;
+        private static double _StkWt;
         private static string _Style;
         private static string _DfltTax;
         #region private static Pro+Date
@@ -49,12 +49,12 @@ namespace PT.DataInfo
         public static string Status { get { return _Status; } set { _Status = value; } }
         public static string FromUnit { get { return _FromUnit; } set { _FromUnit = value; } }
         public static string ToUnit { get { return _ToUnit; } set { _ToUnit = value; } }
-        public static float Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
-        public static float POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
-        public static float POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
+        public static double Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
+        public static double POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
+        public static double POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
         public static DateTime POPriStartDate { get { return _POPriStartDate; } set { _POPriStartDate = value; } }
-        public static float SOFromUnitPrice { get { return _SOFromUnitPrice; } set { _SOFromUnitPrice = value; } }
-        public static float SOToUnitPrice { get { return _SOToUnitPrice; } set { _SOToUnitPrice = value; } }
+        public static double SOFromUnitPrice { get { return _SOFromUnitPrice; } set { _SOFromUnitPrice = value; } }
+        public static double SOToUnitPrice { get { return _SOToUnitPrice; } set { _SOToUnitPrice = value; } }
         public static DateTime SOPriStartDate { get { return _SOPriStartDate; } set { _SOPriStartDate = value; } }
         public static string Color { get { return _Color; } set { _Color = value; } }
         public static string StkUnit { get { return _StkUnit; } set { _StkUnit = value; } }
@@ -63,8 +63,8 @@ namespace PT.DataInfo
         public static string DfltSite { get { return _DfltSite; } set { _DfltSite = value; } }
         public static string Picture { get { return _Picture; } set { _Picture = value; } }
         public static string Size { get { return _Size; } set { _Size = value; } }
-        public static float StkVol { get { return _StkVol; } set { _StkVol = value; } }
-        public static float StkWt { get { return _StkWt; } set { _StkWt = value; } }
+        public static double StkVol { get { return _StkVol; } set { _StkVol = value; } }
+        public static double StkWt { get { return _StkWt; } set { _StkWt = value; } }
         public static string Style { get { return _Style; } set { _Style = value; } }
         public static string DfltTax { get { return _DfltTax; } set { _DfltTax = value; } }
         #region public Pro+Date
