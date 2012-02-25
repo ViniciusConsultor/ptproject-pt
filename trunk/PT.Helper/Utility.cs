@@ -8,13 +8,79 @@ using System.Data;
 using System.Xml.Linq;
 using System.IO;
 using PT.Helper;
+using System.Windows.Forms;
+using DevComponents.DotNetBar;
 
 
 namespace PT.Helper
 {
     public class Utility
     {
-         public static String virtualProductPath = "~/images/products/";
+         //public static String virtualProductPath = "~/images/products/";       
+        public static string ChangeLanguage(string _LgID, string _Language)
+        {
+             DataSet _dataset = new DataSet("Languages");
+             DataTable _datatable = new DataTable("Language");
+
+             _datatable.Columns.Add("LgID", typeof(string));
+             _datatable.Columns.Add("Language1", typeof(string));
+             _datatable.Columns.Add("Language2", typeof(string));
+             _datatable.Columns.Add("Language3", typeof(string));
+
+             _dataset.Tables.Add(_datatable);
+
+             _dataset.ReadXml(Globals.PTXMLLanguage, XmlReadMode.IgnoreSchema);
+
+             //DataTable _dt = _datatable;
+             string _sql = string.Format("LgID = '{0}'", _LgID);
+             DataRow[] _rows = _datatable.Select(_sql);
+             if (_rows.Length == 0)
+                 return _LgID;
+             string _value = (string)_rows[0][_Language];
+             if ((_value == "") || (_value == string.Empty) || (_value == null))
+                 return _LgID;
+             return _value;
+        }
+        private static string ReadMessage(string msid,string language)
+        {
+
+            string str = string.Empty ;
+            SA_Message ms = new SA_Message();
+            DataSet _dataset = new DataSet("Messages");
+            DataTable _datatable = new DataTable("Message");
+
+            _datatable.Columns.Add("MsID", typeof(string));
+            _datatable.Columns.Add("Language1", typeof(string));
+            _datatable.Columns.Add("Language2", typeof(string));
+            _datatable.Columns.Add("Language3", typeof(string));
+            _datatable.Columns.Add("Descr", typeof(string));
+
+            _dataset.Tables.Add(_datatable);
+
+            _dataset.ReadXml(Globals.PTXMLMessage, XmlReadMode.IgnoreSchema);
+
+            DataRow[] dr =  _datatable.Select("MsID = '" + msid + "'");
+            if (dr.Count() > 0)
+                str = dr[0][language].ToString().Trim();
+
+            return str;
+        }
+        public static DialogResult MessageShow(string msid, string language)
+        {
+            string str = ReadMessage(msid, language);
+            string cap = string.Empty;
+            return MessageBoxEx.Show(str,msid);
+        }
+        public static DialogResult MessageShow(string msid, string language,string value)
+        {
+            string str = ReadMessage(msid, language);
+            return MessageBoxEx.Show(string.Format(str, value), msid, MessageBoxButtons.OKCancel);
+        }
+        public static DialogResult MessageShow(string msid, string language, string value1, string value2)
+        {
+            string str = ReadMessage(msid, language);
+            return MessageBoxEx.Show(string.Format(str, value1, value2), msid, MessageBoxButtons.YesNo);
+        }
         public static int IntParser(string value, int DefaultValue)
         {
             int kq = DefaultValue;
@@ -23,38 +89,12 @@ namespace PT.Helper
 
             return kq;
         }
-
         public static bool IsImage(string filename)
         {
             if (filename.Contains(".jpg") || filename.Contains(".gif") || filename.Contains(".jpeg"))
                 return true;
             return false;
         }
-        public static string ChangeLanguage(string _LgID, string _Language)
-        {
-            DataSet _dataset = new DataSet("Languages");
-            DataTable _datatable = new DataTable("Language");
-
-            _datatable.Columns.Add("LgID", typeof(string));
-            _datatable.Columns.Add("Language1", typeof(string));
-            _datatable.Columns.Add("Language2", typeof(string));
-            _datatable.Columns.Add("Language3", typeof(string));
-
-            _dataset.Tables.Add(_datatable);
-
-            _dataset.ReadXml(Globals.PTXMLLanguage, XmlReadMode.IgnoreSchema);
-
-            //DataTable _dt = _datatable;
-            string _sql = string.Format("LgID = '{0}'",_LgID);
-            DataRow[] _rows = _datatable.Select(_sql);
-            if (_rows.Length == 0)
-                return _LgID;
-            string _value = (string)_rows[0][_Language];
-            if ((_value == "")||(_value == string.Empty)||(_value == null))
-                return _LgID;
-            return _value;
-        }       
-
         public static string MD5EncodePassword(string originalPassword)
         {
             Byte[] originalBytes;
@@ -79,14 +119,7 @@ namespace PT.Helper
             }
             return ret;
 
-        }
-
-        //public static void Alert(string message, Page page)
-        //{
-        //    if (message != string.Empty)
-        //        page.ClientScript.RegisterStartupScript(typeof(Page), "AlertScript", "<script type='text/javascript'>alert(" + EscapeQuote(message) + ")</script>");
-        //}
-
+        }        
         public static string EscapeQuote(string S)
         {
             if (S == null)
@@ -120,8 +153,6 @@ namespace PT.Helper
             sb.Append("'");
             return sb.ToString();
         }
-
-
         public static string FormatString(int count, string str)
         {
             if (str != null)
@@ -136,7 +167,6 @@ namespace PT.Helper
             }
             return str;
         }
-
         //public static Boolean CreateFoler(string name)
         //{
         //    if (System.IO.Directory.Exists(name) == false)
@@ -153,6 +183,7 @@ namespace PT.Helper
         //        }
         //    return true;
         //}
+
         //public static Boolean WriteXML(DataTable datatable,string filePath)
         //{
         //    try
@@ -189,6 +220,11 @@ namespace PT.Helper
         //    _datatable.ReadXml(path);
 
         //    return _datatable;
+        //}
+        //public static void Alert(string message, Page page)
+        //{
+        //    if (message != string.Empty)
+        //        page.ClientScript.RegisterStartupScript(typeof(Page), "AlertScript", "<script type='text/javascript'>alert(" + EscapeQuote(message) + ")</script>");
         //}
     }
 }

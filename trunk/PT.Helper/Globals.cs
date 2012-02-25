@@ -13,6 +13,7 @@ namespace PT.Helper
         public static string PTXMLLanguage = "../../../PT.Manager/Resources/XMLs/Language.manger";
         public static string PTXMLLog = "../../../PT.Manager/Resources/XMLs/Log.manger";
         public static string PTXMLMenu = "../../../PT.Manager/Resources/XMLs/Menu.manger";
+        public static string PTXMLMessage = "../../../PT.Manager/Resources/XMLs/Message.manger";
         public static string PTXMLConfig = "../../../PT.Manager/Resources/XMLs/Config.manger";
         public static string PTLanguage = "Language1"; //Ngon ngu mac dinh cua chuong trinh (dung de thay doi ngon ngu)
         public static string PTUserName = "Admin"; //Userdang su dung chuong trinh
@@ -56,6 +57,13 @@ namespace PT.Helper
         public string MenuType;
         public string ScreenID;
         public string Descr;
+    }
+    public partial class SA_Message
+    {
+        private string _LgID;
+        private string _Language1;
+        private string _Language2;
+        private string _Language3;
     }
 }
 
