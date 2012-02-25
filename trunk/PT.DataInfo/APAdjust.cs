@@ -12,7 +12,7 @@ namespace PT.DataInfo
         private DateTime _AdjDate;
         private string _AdjDesc;
         private string _AdjAcct;
-        private float _AdjAmt;
+        private double _AdjAmt;
         private int _Rlsed;
         private string _Note;
         #region private Pro+Date
@@ -29,7 +29,7 @@ namespace PT.DataInfo
         public DateTime AdjDate { get { return _AdjDate; } set { _AdjDate = value; } }
         public string AdjDesc { get { return _AdjDesc; } set { _AdjDesc = value; } }
         public string AdjAcct { get { return _AdjAcct; } set { _AdjAcct = value; } }
-        public float AdjAmt { get { return _AdjAmt; } set { _AdjAmt = value; } }
+        public double AdjAmt { get { return _AdjAmt; } set { _AdjAmt = value; } }
         public int Rlsed { get { return _Rlsed; } set { _Rlsed = value; } }
         public string Note { get { return _Note; } set { _Note = value; } }
         #region Pro+Date

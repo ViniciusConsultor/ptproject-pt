@@ -16,7 +16,7 @@ namespace PT.DataInfo
         private string _DocPerson;
         private string _DocPerAddr;
         private string _Acct;
-        private float _CAAmt;
+        private double _CAAmt;
         private int _Rlsed;
         private string _Note;
         #region private Pro+Date
@@ -37,7 +37,7 @@ namespace PT.DataInfo
         public string DocPerson { get { return _DocPerson; } set { _DocPerson = value; } }
         public string DocPerAddr { get { return _DocPerAddr; } set { _DocPerAddr = value; } }
         public string Acct { get { return _Acct; } set { _Acct = value; } }
-        public float CAAmt { get { return _CAAmt; } set { _CAAmt = value; } }
+        public double CAAmt { get { return _CAAmt; } set { _CAAmt = value; } }
         public int Rlsed { get { return _Rlsed; } set { _Rlsed = value; } }
         public string Note { get { return _Note; } set { _Note = value; } }
         #region Pro+Date

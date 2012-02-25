@@ -15,12 +15,12 @@ namespace PT.DataInfo
         private string _Status;
         private string _FromUnit;
         private string _ToUnit;
-        private float _Cnvfact;
-        private float _POFromUnitPrice;
-        private float _POToUnitPrice;
+        private double _Cnvfact;
+        private double _POFromUnitPrice;
+        private double _POToUnitPrice;
         private DateTime _POPriEffDate;
-        private float _SOFromUnitPrice;
-        private float _SOToUnitPrice;
+        private double _SOFromUnitPrice;
+        private double _SOToUnitPrice;
         private DateTime _SOPriEffDate;
         private string _POUnit;
         private string _SOUnit;
@@ -30,9 +30,9 @@ namespace PT.DataInfo
         private string _Picture;
         private string _PriceClassID;
         private string _Size;
-        private float _Volume;
-        private float _Weight;
-        private float _Style;
+        private double _Volume;
+        private double _Weight;
+        private string _Style;
         private string _TaxID;
         #region private Pro+Date
         private DateTime _Crtd_DateTime;
@@ -51,12 +51,12 @@ namespace PT.DataInfo
         public string Status { get { return _Status; } set { _Status = value; } }
         public string FromUnit { get { return _FromUnit; } set { _FromUnit = value; } }
         public string ToUnit { get { return _ToUnit; } set { _ToUnit = value; } }
-        public float Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
-        public float POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
-        public float POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
+        public double Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
+        public double POFromUnitPrice { get { return _POFromUnitPrice; } set { _POFromUnitPrice = value; } }
+        public double POToUnitPrice { get { return _POToUnitPrice; } set { _POToUnitPrice = value; } }
         public DateTime POPriEffDate { get { return _POPriEffDate; } set { _POPriEffDate = value; } }
-        public float SOFromUnitPrice { get { return _SOFromUnitPrice; } set { _SOFromUnitPrice = value; } }
-        public float SOToUnitPrice { get { return _SOToUnitPrice; } set { _SOToUnitPrice = value; } }
+        public double SOFromUnitPrice { get { return _SOFromUnitPrice; } set { _SOFromUnitPrice = value; } }
+        public double SOToUnitPrice { get { return _SOToUnitPrice; } set { _SOToUnitPrice = value; } }
         public DateTime SOPriEffDate { get { return _SOPriEffDate; } set { _SOPriEffDate = value; } }
         public string POUnit { get { return _POUnit; } set { _POUnit = value; } }
         public string SOUnit { get { return _SOUnit; } set { _SOUnit = value; } }
@@ -66,9 +66,9 @@ namespace PT.DataInfo
         public string Picture { get { return _Picture; } set { _Picture = value; } }
         public string PriceClassID { get { return _PriceClassID; } set { _PriceClassID = value; } }
         public string Size { get { return _Size; } set { _Size = value; } }
-        public float Volume { get { return _Volume; } set { _Volume = value; } }
-        public float Weight { get { return _Weight; } set { _Weight = value; } }
-        public float Style { get { return _Style; } set { _Style = value; } }
+        public double Volume { get { return _Volume; } set { _Volume = value; } }
+        public double Weight { get { return _Weight; } set { _Weight = value; } }
+        public string Style { get { return _Style; } set { _Style = value; } }
         public string TaxID { get { return _TaxID; } set { _TaxID = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }

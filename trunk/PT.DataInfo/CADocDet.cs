@@ -24,9 +24,9 @@ namespace PT.DataInfo
         private string _InvcNote;
         private string _TaxRegNbr;
         private string _TaxID;
-        private float _PreTaxAmt;
-        private float _TaxAmt;
-        private float _LineAmt;
+        private double _PreTaxAmt;
+        private double _TaxAmt;
+        private double _LineAmt;
         private int _Rlsed;
         #region private Pro+Date
         private DateTime _Crtd_DateTime;
@@ -54,9 +54,9 @@ namespace PT.DataInfo
         public string InvcNote { get { return _InvcNote; } set { _InvcNote = value; } }
         public string TaxRegNbr { get { return _TaxRegNbr; } set { _TaxRegNbr = value; } }
         public string TaxID { get { return _TaxID; } set { _TaxID = value; } }
-        public float PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
-        public float TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
-        public float LineAmt { get { return _LineAmt; } set { _LineAmt = value; } }
+        public double PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
+        public double TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
+        public double LineAmt { get { return _LineAmt; } set { _LineAmt = value; } }
         public int Rlsed { get { return _Rlsed; } set { _Rlsed = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }

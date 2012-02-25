@@ -13,7 +13,7 @@ namespace PT.DataInfo
         private DateTime _AdjDate;
         private string _CustID;
         private string _AdjAcct;
-        private float _AdjAmt;
+        private double _AdjAmt;
         private string _NDocNbr;
         private string _NDocType;
         private DateTime _NDocDate;
@@ -36,7 +36,7 @@ namespace PT.DataInfo
         public DateTime AdjDate { get { return _AdjDate; } set { _AdjDate = value; } }
         public string CustID { get { return _CustID; } set { _CustID = value; } }
         public string AdjAcct { get { return _AdjAcct; } set { _AdjAcct = value; } }
-        public float AdjAmt { get { return _AdjAmt; } set { _AdjAmt = value; } }
+        public double AdjAmt { get { return _AdjAmt; } set { _AdjAmt = value; } }
         public string NDocNbr { get { return _NDocNbr; } set { _NDocNbr = value; } }
         public string NDocType { get { return _NDocType; } set { _NDocType = value; } }
         public DateTime NDocDate { get { return _NDocDate; } set { _NDocDate = value; } }

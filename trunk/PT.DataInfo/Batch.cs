@@ -10,7 +10,7 @@ namespace PT.DataInfo
         private string _BranchID;
         private string _Module;
         private string _BatNbr;
-        private float _TotAmt;
+        private double _TotAmt;
         private DateTime _BatDate;
         private string _Descr;
         private string _TranType;
@@ -30,7 +30,7 @@ namespace PT.DataInfo
         public string BranchID { get { return _BranchID; } set { _BranchID = value; } }
         public string Module { get { return _Module; } set { _Module = value; } }
         public string BatNbr { get { return _BatNbr; } set { _BatNbr = value; } }
-        public float TotAmt { get { return _TotAmt; } set { _TotAmt = value; } }
+        public double TotAmt { get { return _TotAmt; } set { _TotAmt = value; } }
         public DateTime BatDate { get { return _BatDate; } set { _BatDate = value; } }
         public string Descr { get { return _Descr; } set { _Descr = value; } }
         public string TranType { get { return _TranType; } set { _TranType = value; } }

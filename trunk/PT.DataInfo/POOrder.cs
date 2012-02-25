@@ -20,14 +20,14 @@ namespace PT.DataInfo
         private string _APDocNbr;
         private string _VendID;
         private string _PODescr;
-        private float _PODiscAmt;
-        private float _PODiscAmtPct;
-        private float _PreTaxAmt;
-        private float _TaxAmt;
-        private float _POAmt;
-        private float _POQty;
-        private float _POWeight;
-        private float _POVolume;
+        private double _PODiscAmt;
+        private double _PODiscAmtPct;
+        private double _PreTaxAmt;
+        private double _TaxAmt;
+        private double _POAmt;
+        private double _POQty;
+        private double _POWeight;
+        private double _POVolume;
         private string _TimeLmtID;
         private DateTime _DueDate;
         private string _Note;
@@ -54,14 +54,14 @@ namespace PT.DataInfo
         public string APDocNbr { get { return _APDocNbr; } set { _APDocNbr = value; } }
         public string VendID { get { return _VendID; } set { _VendID = value; } }
         public string PODescr { get { return _PODescr; } set { _PODescr = value; } }
-        public float PODiscAmt { get { return _PODiscAmt; } set { _PODiscAmt = value; } }
-        public float PODiscAmtPct { get { return _PODiscAmtPct; } set { _PODiscAmtPct = value; } }
-        public float PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
-        public float TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
-        public float POAmt { get { return _POAmt; } set { _POAmt = value; } }
-        public float POQty { get { return _POQty; } set { _POQty = value; } }
-        public float POWeight { get { return _POWeight; } set { _POWeight = value; } }
-        public float POVolume { get { return _POVolume; } set { _POVolume = value; } }
+        public double PODiscAmt { get { return _PODiscAmt; } set { _PODiscAmt = value; } }
+        public double PODiscAmtPct { get { return _PODiscAmtPct; } set { _PODiscAmtPct = value; } }
+        public double PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
+        public double TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
+        public double POAmt { get { return _POAmt; } set { _POAmt = value; } }
+        public double POQty { get { return _POQty; } set { _POQty = value; } }
+        public double POWeight { get { return _POWeight; } set { _POWeight = value; } }
+        public double POVolume { get { return _POVolume; } set { _POVolume = value; } }
         public string TimeLmtID { get { return _TimeLmtID; } set { _TimeLmtID = value; } }
         public DateTime DueDate { get { return _DueDate; } set { _DueDate = value; } }
         public string Note { get { return _Note; } set { _Note = value; } }

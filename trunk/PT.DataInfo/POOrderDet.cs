@@ -17,21 +17,21 @@ namespace PT.DataInfo
         private string _TranDesc;
         private bool _FreeItem;
         private string _POUnit;
-        private float _LineQty;
-        private float _UnitRate;
-        private float _Cnvfact;
-        private float _DetailQty;
-        private float _POPrice;
-        private float _LineDiscAmt;
-        private float _LineDiscPct;
-        private float _PODiscAmt;
-        private float _PreTaxAmt;
-        private float _TaxAmt;
+        private double _LineQty;
+        private double _UnitRate;
+        private double _Cnvfact;
+        private double _DetailQty;
+        private double _POPrice;
+        private double _LineDiscAmt;
+        private double _LineDiscPct;
+        private double _PODiscAmt;
+        private double _PreTaxAmt;
+        private double _TaxAmt;
         private string _TaxID;
-        private float _LineAmt;
-        private float _UnitCost;
-        private float _LineWeight;
-        private float _LineVolume;
+        private double _LineAmt;
+        private double _UnitCost;
+        private double _LineWeight;
+        private double _LineVolume;
         private int _Rlsed;
         #region private Pro+Date
         private DateTime _Crtd_DateTime;
@@ -52,21 +52,21 @@ namespace PT.DataInfo
         public string TranDesc { get { return _TranDesc; } set { _TranDesc = value; } }
         public bool FreeItem { get { return _FreeItem; } set { _FreeItem = value; } }
         public string POUnit { get { return _POUnit; } set { _POUnit = value; } }
-        public float LineQty { get { return _LineQty; } set { _LineQty = value; } }
-        public float UnitRate { get { return _UnitRate; } set { _UnitRate = value; } }
-        public float Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
-        public float DetailQty { get { return _DetailQty; } set { _DetailQty = value; } }
-        public float POPrice { get { return _POPrice; } set { _POPrice = value; } }
-        public float LineDiscAmt { get { return _LineDiscAmt; } set { _LineDiscAmt = value; } }
-        public float LineDiscPct { get { return _LineDiscPct; } set { _LineDiscPct = value; } }
-        public float PODiscAmt { get { return _PODiscAmt; } set { _PODiscAmt = value; } }
-        public float PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
-        public float TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
+        public double LineQty { get { return _LineQty; } set { _LineQty = value; } }
+        public double UnitRate { get { return _UnitRate; } set { _UnitRate = value; } }
+        public double Cnvfact { get { return _Cnvfact; } set { _Cnvfact = value; } }
+        public double DetailQty { get { return _DetailQty; } set { _DetailQty = value; } }
+        public double POPrice { get { return _POPrice; } set { _POPrice = value; } }
+        public double LineDiscAmt { get { return _LineDiscAmt; } set { _LineDiscAmt = value; } }
+        public double LineDiscPct { get { return _LineDiscPct; } set { _LineDiscPct = value; } }
+        public double PODiscAmt { get { return _PODiscAmt; } set { _PODiscAmt = value; } }
+        public double PreTaxAmt { get { return _PreTaxAmt; } set { _PreTaxAmt = value; } }
+        public double TaxAmt { get { return _TaxAmt; } set { _TaxAmt = value; } }
         public string TaxID { get { return _TaxID; } set { _TaxID = value; } }
-        public float LineAmt { get { return _LineAmt; } set { _LineAmt = value; } }
-        public float UnitCost { get { return _UnitCost; } set { _UnitCost = value; } }
-        public float LineWeight { get { return _LineWeight; } set { _LineWeight = value; } }
-        public float LineVolume { get { return _LineVolume; } set { _LineVolume = value; } }
+        public double LineAmt { get { return _LineAmt; } set { _LineAmt = value; } }
+        public double UnitCost { get { return _UnitCost; } set { _UnitCost = value; } }
+        public double LineWeight { get { return _LineWeight; } set { _LineWeight = value; } }
+        public double LineVolume { get { return _LineVolume; } set { _LineVolume = value; } }
         public int Rlsed { get { return _Rlsed; } set { _Rlsed = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
