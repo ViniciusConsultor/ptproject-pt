@@ -62,13 +62,7 @@ namespace PT.Component
         {
             base.OnGotFocus(e);
             _DrawDataGridViewX();
-            _SelectAll();
             
-        }
-        protected override void OnClick(EventArgs e)
-        {
-            base.OnClick(e);
-            _SelectAll();
         }
         protected override void OnLeave(EventArgs e)
         {
@@ -83,24 +77,26 @@ namespace PT.Component
                 return;                                    
             if (_ColumnNames.Count != 0&& this.Focused==true)
             {
+                
                 string sql = string.Format("{0} like '%{1}%'", _ColumnNames[0], this.Text); 
                 int a;
                 for (a = 1; a <= _ColumnNames.Count - 1; a++)
                 {
-                    sql += string.Format("OR {0} like '%{1}%'", _ColumnNames[a], this.Text);
+                    sql += string.Format(" OR {0} like '%{1}%' ", _ColumnNames[a], this.Text);
                 }
-                _DataSource.DefaultView.RowFilter = sql;                
-               _DataGridViewX_ChangeStyle();
+                _DataSource.DefaultView.RowFilter = sql;
+                _DataGridViewX_ChangeStyle();
             }
         }       
         //Override lai su kien KeyDown cua TextBox
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
-            _DataGridViewX_ChangeStyle();
-            
-            if (e.KeyCode == Keys.Down && _DataGridViewX.RowCount != 0)
+            if (e.KeyCode == Keys.Down)
             {
+                _DataGridViewX_ChangeStyle();
+                if (_DataGridViewX.RowCount == 0)
+                    return;
                 _DataGridViewX.Focus();
                 if ((this.Text == "") || (this.Text == string.Empty) || (this.Text == null))
                 {
@@ -112,12 +108,14 @@ namespace PT.Component
                     if (_intRow < _DataGridViewX.RowCount - 1)
                         _intRow = _intRow + 1;
                     _DataGridViewX.CurrentCell = this._DataGridViewX[0, _intRow];
-                    _DataGridViewX.CurrentCell.Selected = true;
-                    
+                    _DataGridViewX.CurrentCell.Selected = true;                    
                 }
             }
-            if (e.KeyCode == Keys.Up && _DataGridViewX.RowCount != 0)
+            else if (e.KeyCode == Keys.Up && _DataGridViewX.RowCount != 0)
             {
+                _DataGridViewX_ChangeStyle();
+                if (_DataGridViewX.RowCount == 0)
+                    return;
                 _DataGridViewX.Focus();
                 int _intRow = _getItemRow(this.Text);
                 if (_intRow > 0)
@@ -126,29 +124,37 @@ namespace PT.Component
                 _DataGridViewX.CurrentCell.Selected = true;
                 return;
             }
-            if (e.KeyCode == Keys.Escape)
+            else if (e.KeyCode == Keys.Escape)
             {
                 _DataGridViewX.Visible = false;
+                this.Focus();
                 return;
             }
-            if (e.KeyCode == Keys.Enter && _DataGridViewX.RowCount != 0)
+            else if (e.KeyCode == Keys.Enter)
             {
-                if (_DataGridViewX.Rows.Count > 0)
+                if (_DataGridViewX.Visible == true) 
                 {
-                    this.Text = _DataGridViewX.CurrentRow.Cells[0].Value.ToString();
-                    _DataGridViewX.Visible = false;
+                    if (_DataGridViewX.RowCount > 0)
+                    {
+                        this.Text = _DataGridViewX.CurrentRow.Cells[0].Value.ToString();
+                        _DataGridViewX.Visible = false;
+                        SendKeys.Send("{tab}");
+                        return;
+                    }
+                }
+                else
+                {
                     SendKeys.Send("{tab}");
                     return;
                 }
-                
             }
         }
         private void _SelectAll()
         {
-            this.SelectionStart = 0;
-            this.SelectionLength = this.Text.Length;
+                this.SelectionStart = 0;
+                this.SelectionLength = this.Text.Length;         
+         
         }
-
 
         //Khoi tao DataGridViewX
         private void _DrawDataGridViewX()
@@ -232,6 +238,8 @@ namespace PT.Component
             {
                 _DataGridViewX.Columns[0].Width = this.Width - 2;
             }
+            if (_DataGridViewX.ColumnCount ==1)
+                _DataGridViewX.Width = this.Width;
 
             //Thay doi kich thuoc cua Grid
             //if (_DataSource.Rows.Count != 0 && _DataGridViewX.Rows.Count != 0)
@@ -250,8 +258,13 @@ namespace PT.Component
             //Cuon con tro den dong dau tien
             int _intRow = 0;
             _intRow = _getItemRow(this.Text);
-            if (_intRow != 0)
-                _DataGridViewX.FirstDisplayedScrollingRowIndex = _intRow;
+            if (_DataGridViewX.RowCount > 0)
+            {
+                //_DataGridViewX.FirstDisplayedScrollingRowIndex = _intRow;
+                _DataGridViewX.Rows[_DataGridViewX.CurrentRow.Index].Selected = false;
+                _DataGridViewX.Rows[_intRow].Selected = true;
+                _DataGridViewX.CurrentCell = _DataGridViewX.Rows[_intRow].Cells[0];
+            }
 
             //Thay doi vi tri hien thi cua Grid
             //Point X = this.Location;
@@ -284,12 +297,14 @@ namespace PT.Component
             //_DataGridViewX.Left = this.Location.X;
             //else
             //    _DataGridViewX.Location = new Point(_x.X - this.TopLevelControl.Margin.Left - this.Margin.Left, _x.Y + this.Height);              
+
         }
 
         private void _DataGridViewX_CellDoubleClick(object sender, DataGridViewCellEventArgs e) 
         {
             string _strText;
-            _strText = _DataGridViewX.CurrentRow.Cells[_ColumnNames[0]].Value.ToString();
+            //_strText = _DataGridViewX.CurrentRow.Cells[_ColumnNames[0]].Value.ToString();
+            _strText = _DataGridViewX.Rows[e.RowIndex].Cells[_ColumnNames[0]].Value.ToString();
             this.Text = _strText;            
             _DataGridViewX.Visible = false;
             this.Focus();
@@ -317,12 +332,13 @@ namespace PT.Component
                 _strProductID = _DataGridViewX.CurrentRow.Cells[_ColumnNames[0]].Value.ToString();
                 this.Text = _strProductID;
                 _DataGridViewX.Visible = false;
-                this.Parent.Focus(); 
-            }
+                this.Focus();
+                }
             if (e.KeyCode == Keys.Escape)
             {
                 _DataGridViewX.Visible = false;
-                this.Parent.Focus(); 
+                this.Focus();
+                SendKeys.Send("{tab}");
             }
             
         }
@@ -333,7 +349,6 @@ namespace PT.Component
                 _DataGridViewX.Visible = false;
             }
         }
-
         private int _getItemRow(String _strString)
         {
             int _intRow = 0;
@@ -347,8 +362,7 @@ namespace PT.Component
             }
             return _intRow;
         }
-        // Thay doi cac kich thuoc cua column, Grid        
-       
+        // Thay doi cac kich thuoc cua column, Grid               
         public DataTable DataSource
         {
             get { return _DataSource; }
