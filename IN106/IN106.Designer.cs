@@ -88,6 +88,7 @@
             this.txtINUnit = new PT.Component.MultiColumnComboBox();
             this.txtVendID = new PT.Component.MultiColumnComboBox();
             this.txtPOUnit = new PT.Component.MultiColumnComboBox();
+            this.chkStatus = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.pnl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -141,6 +142,7 @@
             // pnl
             // 
             this.pnl.AutoSize = true;
+            this.pnl.Controls.Add(this.chkStatus);
             this.pnl.Controls.Add(this.txtPOUnit);
             this.pnl.Controls.Add(this.txtVendID);
             this.pnl.Controls.Add(this.txtINUnit);
@@ -248,7 +250,7 @@
             // 
             // lblVendID
             // 
-            this.lblVendID.Location = new System.Drawing.Point(308, 213);
+            this.lblVendID.Location = new System.Drawing.Point(1, 390);
             this.lblVendID.Name = "lblVendID";
             this.lblVendID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblVendID.Size = new System.Drawing.Size(120, 15);
@@ -257,16 +259,16 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.Location = new System.Drawing.Point(3, 419);
+            this.lblStatus.Location = new System.Drawing.Point(229, 8);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblStatus.Size = new System.Drawing.Size(120, 15);
+            this.lblStatus.Size = new System.Drawing.Size(70, 15);
             this.lblStatus.TabIndex = 11;
             this.lblStatus.Text = "Status";
             // 
             // lblFromUnit
             // 
-            this.lblFromUnit.Location = new System.Drawing.Point(3, 263);
+            this.lblFromUnit.Location = new System.Drawing.Point(5, 160);
             this.lblFromUnit.Name = "lblFromUnit";
             this.lblFromUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblFromUnit.Size = new System.Drawing.Size(120, 15);
@@ -275,25 +277,25 @@
             // 
             // lblToUnit
             // 
-            this.lblToUnit.Location = new System.Drawing.Point(3, 289);
+            this.lblToUnit.Location = new System.Drawing.Point(257, 160);
             this.lblToUnit.Name = "lblToUnit";
             this.lblToUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblToUnit.Size = new System.Drawing.Size(120, 15);
+            this.lblToUnit.Size = new System.Drawing.Size(70, 15);
             this.lblToUnit.TabIndex = 15;
             this.lblToUnit.Text = "ToUnit";
             // 
             // lblCnvfact
             // 
-            this.lblCnvfact.Location = new System.Drawing.Point(3, 237);
+            this.lblCnvfact.Location = new System.Drawing.Point(447, 160);
             this.lblCnvfact.Name = "lblCnvfact";
             this.lblCnvfact.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblCnvfact.Size = new System.Drawing.Size(120, 15);
+            this.lblCnvfact.Size = new System.Drawing.Size(70, 15);
             this.lblCnvfact.TabIndex = 17;
             this.lblCnvfact.Text = "Cnvfact";
             // 
             // lblPOFromUnitPrice
             // 
-            this.lblPOFromUnitPrice.Location = new System.Drawing.Point(3, 367);
+            this.lblPOFromUnitPrice.Location = new System.Drawing.Point(3, 186);
             this.lblPOFromUnitPrice.Name = "lblPOFromUnitPrice";
             this.lblPOFromUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPOFromUnitPrice.Size = new System.Drawing.Size(120, 15);
@@ -302,7 +304,7 @@
             // 
             // lblPOToUnitPrice
             // 
-            this.lblPOToUnitPrice.Location = new System.Drawing.Point(3, 393);
+            this.lblPOToUnitPrice.Location = new System.Drawing.Point(207, 188);
             this.lblPOToUnitPrice.Name = "lblPOToUnitPrice";
             this.lblPOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPOToUnitPrice.Size = new System.Drawing.Size(120, 15);
@@ -311,7 +313,7 @@
             // 
             // lblPOPriEffDate
             // 
-            this.lblPOPriEffDate.Location = new System.Drawing.Point(3, 211);
+            this.lblPOPriEffDate.Location = new System.Drawing.Point(401, 187);
             this.lblPOPriEffDate.Name = "lblPOPriEffDate";
             this.lblPOPriEffDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPOPriEffDate.Size = new System.Drawing.Size(120, 15);
@@ -320,7 +322,7 @@
             // 
             // lblSOFromUnitPrice
             // 
-            this.lblSOFromUnitPrice.Location = new System.Drawing.Point(3, 315);
+            this.lblSOFromUnitPrice.Location = new System.Drawing.Point(4, 212);
             this.lblSOFromUnitPrice.Name = "lblSOFromUnitPrice";
             this.lblSOFromUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblSOFromUnitPrice.Size = new System.Drawing.Size(120, 15);
@@ -329,7 +331,7 @@
             // 
             // lblSOToUnitPrice
             // 
-            this.lblSOToUnitPrice.Location = new System.Drawing.Point(3, 341);
+            this.lblSOToUnitPrice.Location = new System.Drawing.Point(207, 214);
             this.lblSOToUnitPrice.Name = "lblSOToUnitPrice";
             this.lblSOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblSOToUnitPrice.Size = new System.Drawing.Size(120, 15);
@@ -338,7 +340,7 @@
             // 
             // lblSOPriEffDate
             // 
-            this.lblSOPriEffDate.Location = new System.Drawing.Point(3, 185);
+            this.lblSOPriEffDate.Location = new System.Drawing.Point(401, 214);
             this.lblSOPriEffDate.Name = "lblSOPriEffDate";
             this.lblSOPriEffDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblSOPriEffDate.Size = new System.Drawing.Size(120, 15);
@@ -347,7 +349,7 @@
             // 
             // lblPOUnit
             // 
-            this.lblPOUnit.Location = new System.Drawing.Point(308, 132);
+            this.lblPOUnit.Location = new System.Drawing.Point(1, 309);
             this.lblPOUnit.Name = "lblPOUnit";
             this.lblPOUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPOUnit.Size = new System.Drawing.Size(120, 15);
@@ -356,7 +358,7 @@
             // 
             // lblSOUnit
             // 
-            this.lblSOUnit.Location = new System.Drawing.Point(308, 159);
+            this.lblSOUnit.Location = new System.Drawing.Point(1, 336);
             this.lblSOUnit.Name = "lblSOUnit";
             this.lblSOUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblSOUnit.Size = new System.Drawing.Size(120, 15);
@@ -365,7 +367,7 @@
             // 
             // lblINUnit
             // 
-            this.lblINUnit.Location = new System.Drawing.Point(308, 185);
+            this.lblINUnit.Location = new System.Drawing.Point(1, 362);
             this.lblINUnit.Name = "lblINUnit";
             this.lblINUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblINUnit.Size = new System.Drawing.Size(120, 15);
@@ -379,23 +381,23 @@
             // 
             this.txtColor.Border.Class = "TextBoxBorder";
             this.txtColor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtColor.Location = new System.Drawing.Point(433, 263);
+            this.txtColor.Location = new System.Drawing.Point(328, 256);
             this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(150, 20);
+            this.txtColor.Size = new System.Drawing.Size(100, 20);
             this.txtColor.TabIndex = 36;
             // 
             // lblColor
             // 
-            this.lblColor.Location = new System.Drawing.Point(308, 265);
+            this.lblColor.Location = new System.Drawing.Point(247, 258);
             this.lblColor.Name = "lblColor";
             this.lblColor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblColor.Size = new System.Drawing.Size(120, 15);
+            this.lblColor.Size = new System.Drawing.Size(80, 15);
             this.lblColor.TabIndex = 37;
             this.lblColor.Text = "Color";
             // 
             // lblDfltWhID
             // 
-            this.lblDfltWhID.Location = new System.Drawing.Point(308, 83);
+            this.lblDfltWhID.Location = new System.Drawing.Point(1, 260);
             this.lblDfltWhID.Name = "lblDfltWhID";
             this.lblDfltWhID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblDfltWhID.Size = new System.Drawing.Size(120, 15);
@@ -409,17 +411,17 @@
             // 
             this.txtPicture.Border.Class = "TextBoxBorder";
             this.txtPicture.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPicture.Location = new System.Drawing.Point(433, 289);
+            this.txtPicture.Location = new System.Drawing.Point(328, 282);
             this.txtPicture.Name = "txtPicture";
-            this.txtPicture.Size = new System.Drawing.Size(150, 20);
+            this.txtPicture.Size = new System.Drawing.Size(100, 20);
             this.txtPicture.TabIndex = 40;
             // 
             // lblPicture
             // 
-            this.lblPicture.Location = new System.Drawing.Point(308, 289);
+            this.lblPicture.Location = new System.Drawing.Point(247, 282);
             this.lblPicture.Name = "lblPicture";
             this.lblPicture.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPicture.Size = new System.Drawing.Size(120, 15);
+            this.lblPicture.Size = new System.Drawing.Size(80, 15);
             this.lblPicture.TabIndex = 41;
             this.lblPicture.Text = "Picture";
             // 
@@ -430,17 +432,17 @@
             // 
             this.txtSize.Border.Class = "TextBoxBorder";
             this.txtSize.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSize.Location = new System.Drawing.Point(433, 315);
+            this.txtSize.Location = new System.Drawing.Point(328, 308);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(150, 20);
+            this.txtSize.Size = new System.Drawing.Size(100, 20);
             this.txtSize.TabIndex = 42;
             // 
             // lblSize
             // 
-            this.lblSize.Location = new System.Drawing.Point(308, 317);
+            this.lblSize.Location = new System.Drawing.Point(247, 310);
             this.lblSize.Name = "lblSize";
             this.lblSize.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblSize.Size = new System.Drawing.Size(120, 15);
+            this.lblSize.Size = new System.Drawing.Size(80, 15);
             this.lblSize.TabIndex = 43;
             this.lblSize.Text = "Size";
             // 
@@ -451,17 +453,17 @@
             // 
             this.txtVolume.Border.Class = "TextBoxBorder";
             this.txtVolume.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtVolume.Location = new System.Drawing.Point(433, 341);
+            this.txtVolume.Location = new System.Drawing.Point(328, 334);
             this.txtVolume.Name = "txtVolume";
-            this.txtVolume.Size = new System.Drawing.Size(150, 20);
+            this.txtVolume.Size = new System.Drawing.Size(100, 20);
             this.txtVolume.TabIndex = 44;
             // 
             // lblVolume
             // 
-            this.lblVolume.Location = new System.Drawing.Point(308, 343);
+            this.lblVolume.Location = new System.Drawing.Point(247, 336);
             this.lblVolume.Name = "lblVolume";
             this.lblVolume.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblVolume.Size = new System.Drawing.Size(120, 15);
+            this.lblVolume.Size = new System.Drawing.Size(80, 15);
             this.lblVolume.TabIndex = 45;
             this.lblVolume.Tag = "";
             this.lblVolume.Text = "Volume";
@@ -473,17 +475,17 @@
             // 
             this.txtWeight.Border.Class = "TextBoxBorder";
             this.txtWeight.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtWeight.Location = new System.Drawing.Point(433, 367);
+            this.txtWeight.Location = new System.Drawing.Point(328, 360);
             this.txtWeight.Name = "txtWeight";
-            this.txtWeight.Size = new System.Drawing.Size(150, 20);
+            this.txtWeight.Size = new System.Drawing.Size(100, 20);
             this.txtWeight.TabIndex = 46;
             // 
             // lblWeight
             // 
-            this.lblWeight.Location = new System.Drawing.Point(308, 369);
+            this.lblWeight.Location = new System.Drawing.Point(247, 362);
             this.lblWeight.Name = "lblWeight";
             this.lblWeight.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblWeight.Size = new System.Drawing.Size(120, 15);
+            this.lblWeight.Size = new System.Drawing.Size(80, 15);
             this.lblWeight.TabIndex = 47;
             this.lblWeight.Text = "Weight";
             // 
@@ -494,23 +496,23 @@
             // 
             this.txtStyle.Border.Class = "TextBoxBorder";
             this.txtStyle.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtStyle.Location = new System.Drawing.Point(433, 393);
+            this.txtStyle.Location = new System.Drawing.Point(328, 386);
             this.txtStyle.Name = "txtStyle";
-            this.txtStyle.Size = new System.Drawing.Size(150, 20);
+            this.txtStyle.Size = new System.Drawing.Size(100, 20);
             this.txtStyle.TabIndex = 48;
             // 
             // lblStyle
             // 
-            this.lblStyle.Location = new System.Drawing.Point(308, 395);
+            this.lblStyle.Location = new System.Drawing.Point(247, 388);
             this.lblStyle.Name = "lblStyle";
             this.lblStyle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblStyle.Size = new System.Drawing.Size(120, 15);
+            this.lblStyle.Size = new System.Drawing.Size(80, 15);
             this.lblStyle.TabIndex = 49;
             this.lblStyle.Text = "Style";
             // 
             // lblTaxID
             // 
-            this.lblTaxID.Location = new System.Drawing.Point(308, 106);
+            this.lblTaxID.Location = new System.Drawing.Point(1, 283);
             this.lblTaxID.Name = "lblTaxID";
             this.lblTaxID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblTaxID.Size = new System.Drawing.Size(120, 15);
@@ -527,7 +529,7 @@
             this.txtDesc.Location = new System.Drawing.Point(124, 61);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(150, 40);
+            this.txtDesc.Size = new System.Drawing.Size(380, 20);
             this.txtDesc.TabIndex = 2;
             // 
             // txtProductID
@@ -539,7 +541,7 @@
             this.txtProductID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtProductID.Location = new System.Drawing.Point(124, 35);
             this.txtProductID.Name = "txtProductID";
-            this.txtProductID.Size = new System.Drawing.Size(150, 20);
+            this.txtProductID.Size = new System.Drawing.Size(100, 20);
             this.txtProductID.TabIndex = 1;
             // 
             // cbxStatus
@@ -551,9 +553,9 @@
             this.cbxStatus.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem3});
-            this.cbxStatus.Location = new System.Drawing.Point(125, 419);
+            this.cbxStatus.Location = new System.Drawing.Point(305, 3);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(150, 20);
+            this.cbxStatus.Size = new System.Drawing.Size(100, 20);
             this.cbxStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cbxStatus.TabIndex = 52;
             // 
@@ -575,7 +577,7 @@
             this.dtiPOPriEffDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiPOPriEffDate.ButtonDropDown.Visible = true;
             this.dtiPOPriEffDate.IsPopupCalendarOpen = false;
-            this.dtiPOPriEffDate.Location = new System.Drawing.Point(125, 209);
+            this.dtiPOPriEffDate.Location = new System.Drawing.Point(523, 185);
             // 
             // 
             // 
@@ -611,7 +613,7 @@
             this.dtiPOPriEffDate.MonthCalendar.TodayButtonVisible = true;
             this.dtiPOPriEffDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dtiPOPriEffDate.Name = "dtiPOPriEffDate";
-            this.dtiPOPriEffDate.Size = new System.Drawing.Size(150, 20);
+            this.dtiPOPriEffDate.Size = new System.Drawing.Size(100, 20);
             this.dtiPOPriEffDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtiPOPriEffDate.TabIndex = 53;
             // 
@@ -625,7 +627,7 @@
             this.dtiSOPriEffDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiSOPriEffDate.ButtonDropDown.Visible = true;
             this.dtiSOPriEffDate.IsPopupCalendarOpen = false;
-            this.dtiSOPriEffDate.Location = new System.Drawing.Point(125, 185);
+            this.dtiSOPriEffDate.Location = new System.Drawing.Point(523, 214);
             // 
             // 
             // 
@@ -661,7 +663,7 @@
             this.dtiSOPriEffDate.MonthCalendar.TodayButtonVisible = true;
             this.dtiSOPriEffDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dtiSOPriEffDate.Name = "dtiSOPriEffDate";
-            this.dtiSOPriEffDate.Size = new System.Drawing.Size(150, 20);
+            this.dtiSOPriEffDate.Size = new System.Drawing.Size(100, 20);
             this.dtiSOPriEffDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtiSOPriEffDate.TabIndex = 54;
             // 
@@ -683,7 +685,7 @@
             this.txtClassID2.Location = new System.Drawing.Point(124, 107);
             this.txtClassID2.Name = "txtClassID2";
             this.txtClassID2.RowsDisplay = 10;
-            this.txtClassID2.Size = new System.Drawing.Size(150, 20);
+            this.txtClassID2.Size = new System.Drawing.Size(100, 20);
             this.txtClassID2.TabIndex = 3;
             this.txtClassID2.TextChanged += new System.EventHandler(this.txtClassID2_TextChanged);
             // 
@@ -705,7 +707,7 @@
             this.txtClassID1.Location = new System.Drawing.Point(125, 132);
             this.txtClassID1.Name = "txtClassID1";
             this.txtClassID1.RowsDisplay = 10;
-            this.txtClassID1.Size = new System.Drawing.Size(150, 20);
+            this.txtClassID1.Size = new System.Drawing.Size(100, 20);
             this.txtClassID1.TabIndex = 4;
             this.txtClassID1.TextChanged += new System.EventHandler(this.txtClassID1_TextChanged);
             // 
@@ -790,12 +792,12 @@
             // 
             this.btnCopy.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCopy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCopy.Location = new System.Drawing.Point(352, 35);
+            this.btnCopy.Location = new System.Drawing.Point(328, 35);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.Size = new System.Drawing.Size(70, 20);
             this.btnCopy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCopy.TabIndex = 72;
-            this.btnCopy.Text = "Copy";
+            this.btnCopy.Text = "Copy From ...";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // txtCopy
@@ -813,10 +815,10 @@
             this.txtCopy.ColumnWidths = "";
             this.txtCopy.DataSource = null;
             this.txtCopy.Language = "Language1";
-            this.txtCopy.Location = new System.Drawing.Point(433, 35);
+            this.txtCopy.Location = new System.Drawing.Point(404, 35);
             this.txtCopy.Name = "txtCopy";
             this.txtCopy.RowsDisplay = 10;
-            this.txtCopy.Size = new System.Drawing.Size(150, 20);
+            this.txtCopy.Size = new System.Drawing.Size(100, 20);
             this.txtCopy.TabIndex = 73;
             this.txtCopy.WatermarkText = "ProductID";
             // 
@@ -828,12 +830,11 @@
             // 
             this.txtSOFromUnitPrice.Border.Class = "TextBoxBorder";
             this.txtSOFromUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSOFromUnitPrice.Location = new System.Drawing.Point(125, 313);
+            this.txtSOFromUnitPrice.Location = new System.Drawing.Point(126, 210);
             this.txtSOFromUnitPrice.Name = "txtSOFromUnitPrice";
             this.txtSOFromUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSOFromUnitPrice.Size = new System.Drawing.Size(150, 20);
+            this.txtSOFromUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.txtSOFromUnitPrice.TabIndex = 74;
-            this.txtSOFromUnitPrice.Text = "sdf\r\n";
             this.txtSOFromUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtSOToUnitPrice
@@ -844,10 +845,10 @@
             // 
             this.txtSOToUnitPrice.Border.Class = "TextBoxBorder";
             this.txtSOToUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSOToUnitPrice.Location = new System.Drawing.Point(125, 339);
+            this.txtSOToUnitPrice.Location = new System.Drawing.Point(329, 212);
             this.txtSOToUnitPrice.Name = "txtSOToUnitPrice";
             this.txtSOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtSOToUnitPrice.Size = new System.Drawing.Size(150, 20);
+            this.txtSOToUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.txtSOToUnitPrice.TabIndex = 75;
             this.txtSOToUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -859,10 +860,10 @@
             // 
             this.txtPOFromUnitPrice.Border.Class = "TextBoxBorder";
             this.txtPOFromUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPOFromUnitPrice.Location = new System.Drawing.Point(126, 365);
+            this.txtPOFromUnitPrice.Location = new System.Drawing.Point(126, 184);
             this.txtPOFromUnitPrice.Name = "txtPOFromUnitPrice";
             this.txtPOFromUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPOFromUnitPrice.Size = new System.Drawing.Size(150, 20);
+            this.txtPOFromUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPOFromUnitPrice.TabIndex = 76;
             this.txtPOFromUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -874,10 +875,10 @@
             // 
             this.txtPOToUnitPrice.Border.Class = "TextBoxBorder";
             this.txtPOToUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPOToUnitPrice.Location = new System.Drawing.Point(125, 391);
+            this.txtPOToUnitPrice.Location = new System.Drawing.Point(329, 186);
             this.txtPOToUnitPrice.Name = "txtPOToUnitPrice";
             this.txtPOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPOToUnitPrice.Size = new System.Drawing.Size(150, 20);
+            this.txtPOToUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPOToUnitPrice.TabIndex = 77;
             this.txtPOToUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -896,10 +897,10 @@
             this.txtCnvfact.ColumnWidths = "";
             this.txtCnvfact.DataSource = null;
             this.txtCnvfact.Language = "Language1";
-            this.txtCnvfact.Location = new System.Drawing.Point(124, 235);
+            this.txtCnvfact.Location = new System.Drawing.Point(523, 158);
             this.txtCnvfact.Name = "txtCnvfact";
             this.txtCnvfact.RowsDisplay = 10;
-            this.txtCnvfact.Size = new System.Drawing.Size(150, 20);
+            this.txtCnvfact.Size = new System.Drawing.Size(100, 20);
             this.txtCnvfact.TabIndex = 79;
             // 
             // txtFromUnit
@@ -912,14 +913,14 @@
             this.txtFromUnit.ColumnWidthDefault = 75;
             this.txtFromUnit.ColumnWidths = "";
             this.txtFromUnit.DisplayMember = "Text";
-            this.txtFromUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.txtFromUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.txtFromUnit.FormattingEnabled = true;
             this.txtFromUnit.ItemHeight = 14;
             this.txtFromUnit.LinkedColumnIndex = 0;
             this.txtFromUnit.LinkedTextBox = null;
-            this.txtFromUnit.Location = new System.Drawing.Point(124, 261);
+            this.txtFromUnit.Location = new System.Drawing.Point(126, 158);
             this.txtFromUnit.Name = "txtFromUnit";
-            this.txtFromUnit.Size = new System.Drawing.Size(150, 20);
+            this.txtFromUnit.Size = new System.Drawing.Size(100, 20);
             this.txtFromUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtFromUnit.TabIndex = 80;
             // 
@@ -938,9 +939,9 @@
             this.txtToUnit.ItemHeight = 14;
             this.txtToUnit.LinkedColumnIndex = 0;
             this.txtToUnit.LinkedTextBox = null;
-            this.txtToUnit.Location = new System.Drawing.Point(125, 289);
+            this.txtToUnit.Location = new System.Drawing.Point(328, 158);
             this.txtToUnit.Name = "txtToUnit";
-            this.txtToUnit.Size = new System.Drawing.Size(150, 20);
+            this.txtToUnit.Size = new System.Drawing.Size(100, 20);
             this.txtToUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtToUnit.TabIndex = 81;
             // 
@@ -959,9 +960,9 @@
             this.txtTaxID.ItemHeight = 14;
             this.txtTaxID.LinkedColumnIndex = 0;
             this.txtTaxID.LinkedTextBox = null;
-            this.txtTaxID.Location = new System.Drawing.Point(433, 105);
+            this.txtTaxID.Location = new System.Drawing.Point(126, 282);
             this.txtTaxID.Name = "txtTaxID";
-            this.txtTaxID.Size = new System.Drawing.Size(150, 20);
+            this.txtTaxID.Size = new System.Drawing.Size(100, 20);
             this.txtTaxID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtTaxID.TabIndex = 82;
             // 
@@ -980,9 +981,9 @@
             this.txtDfltWhID.ItemHeight = 14;
             this.txtDfltWhID.LinkedColumnIndex = 0;
             this.txtDfltWhID.LinkedTextBox = null;
-            this.txtDfltWhID.Location = new System.Drawing.Point(433, 79);
+            this.txtDfltWhID.Location = new System.Drawing.Point(126, 256);
             this.txtDfltWhID.Name = "txtDfltWhID";
-            this.txtDfltWhID.Size = new System.Drawing.Size(150, 20);
+            this.txtDfltWhID.Size = new System.Drawing.Size(100, 20);
             this.txtDfltWhID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtDfltWhID.TabIndex = 83;
             // 
@@ -1001,9 +1002,9 @@
             this.txtSOUnit.ItemHeight = 14;
             this.txtSOUnit.LinkedColumnIndex = 0;
             this.txtSOUnit.LinkedTextBox = null;
-            this.txtSOUnit.Location = new System.Drawing.Point(434, 157);
+            this.txtSOUnit.Location = new System.Drawing.Point(127, 334);
             this.txtSOUnit.Name = "txtSOUnit";
-            this.txtSOUnit.Size = new System.Drawing.Size(150, 20);
+            this.txtSOUnit.Size = new System.Drawing.Size(100, 20);
             this.txtSOUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtSOUnit.TabIndex = 84;
             // 
@@ -1022,9 +1023,9 @@
             this.txtINUnit.ItemHeight = 14;
             this.txtINUnit.LinkedColumnIndex = 0;
             this.txtINUnit.LinkedTextBox = null;
-            this.txtINUnit.Location = new System.Drawing.Point(434, 183);
+            this.txtINUnit.Location = new System.Drawing.Point(127, 360);
             this.txtINUnit.Name = "txtINUnit";
-            this.txtINUnit.Size = new System.Drawing.Size(150, 20);
+            this.txtINUnit.Size = new System.Drawing.Size(100, 20);
             this.txtINUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtINUnit.TabIndex = 85;
             // 
@@ -1043,9 +1044,9 @@
             this.txtVendID.ItemHeight = 14;
             this.txtVendID.LinkedColumnIndex = 0;
             this.txtVendID.LinkedTextBox = null;
-            this.txtVendID.Location = new System.Drawing.Point(433, 209);
+            this.txtVendID.Location = new System.Drawing.Point(126, 386);
             this.txtVendID.Name = "txtVendID";
-            this.txtVendID.Size = new System.Drawing.Size(150, 20);
+            this.txtVendID.Size = new System.Drawing.Size(100, 20);
             this.txtVendID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtVendID.TabIndex = 86;
             // 
@@ -1064,18 +1065,31 @@
             this.txtPOUnit.ItemHeight = 14;
             this.txtPOUnit.LinkedColumnIndex = 0;
             this.txtPOUnit.LinkedTextBox = null;
-            this.txtPOUnit.Location = new System.Drawing.Point(434, 131);
+            this.txtPOUnit.Location = new System.Drawing.Point(127, 308);
             this.txtPOUnit.Name = "txtPOUnit";
-            this.txtPOUnit.Size = new System.Drawing.Size(150, 20);
+            this.txtPOUnit.Size = new System.Drawing.Size(100, 20);
             this.txtPOUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtPOUnit.TabIndex = 87;
+            // 
+            // chkStatus
+            // 
+            // 
+            // 
+            // 
+            this.chkStatus.BackgroundStyle.Class = "";
+            this.chkStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkStatus.Location = new System.Drawing.Point(242, 32);
+            this.chkStatus.Name = "chkStatus";
+            this.chkStatus.Size = new System.Drawing.Size(76, 23);
+            this.chkStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chkStatus.TabIndex = 88;
+            this.chkStatus.Text = "Status";
             // 
             // IN106
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
-            this.DoubleBuffered = true;
             this.Name = "IN106";
             this.Text = "IN106";
             this.WindowState = System.Windows.Forms.FormWindowState.Normal;
@@ -1153,6 +1167,7 @@
         private PT.Component.MultiColumnComboBox txtINUnit;
         private PT.Component.MultiColumnComboBox txtSOUnit;
         private PT.Component.MultiColumnComboBox txtDfltWhID;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkStatus;
 
     }
 }
