@@ -117,5 +117,32 @@ namespace IN201
                             info.DetailQty,
                     info.Crtd_DateTime, info.Crtd_Prog, info.Crtd_User, info.LUpd_DateTime, info.LUpd_Prog, info.LUpd_User });
         }
+
+        public static DataTable GetINDocListByPara(string ProID, string UserID, string TranType, DateTime FromDate, DateTime ToDate)
+        {
+            return ConnectDB.ExecuteReader("sp_GetINDocListByPara", new String[] { "ProID", "UserID", "TranType", "FromDate", "ToDate" }, new Object[] { ProID, UserID, TranType, FromDate, ToDate });
+        }
+        public static DataTable GetINDocDetByDoc(string BranchID, string DocNbr,string Module)
+        {
+            return ConnectDB.ExecuteReader("sp_GetINDocDetByDoc", new String[] { "BranchID", "DocNbr","Module" }, new Object[] { BranchID, DocNbr, Module });
+        }
+
+        public static DataTable GetINDocByKey(string BranchID, string DocNbr, string Module)
+        {
+            return ConnectDB.ExecuteReader("sp_INDocDetGetByKey", new String[] { "BranchID", "DocNbr", "Module" }, new Object[] { BranchID, DocNbr, Module });
+        }
+
+
+        public static int DeleteINDocDet(string strBranchID, string strDocNbr, string strModule, string strLineRef)
+        {
+            return ConnectDB.ExecuteNonQuery("sp_INDocDetDelete", new String[] { "BranchID", "DocNbr", "Module", "Lineref" },
+                                                                  new Object[] { strBranchID, strDocNbr, strModule, strLineRef });
+        }
+        public static int DeleteINDoc(string strBranchID, string strDocNbr, string strModule)
+        {
+            return ConnectDB.ExecuteNonQuery("sp_INDocDelete", new String[] { "BranchID", "DocNbr", "Module", "Lineref" },
+                                                               new Object[] { strBranchID, strDocNbr, strModule });
+        }
+
     }
 }
