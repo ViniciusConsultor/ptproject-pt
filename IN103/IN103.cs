@@ -10,11 +10,13 @@ using PT.Helper;
 using PT.DataInfo;
 using PT.Master;
 
+
 namespace IN103
 {
     public partial class IN103 : Grid
     {
-        string _strUser = "ADMIN";
+        string _strUser = PT.Helper.Globals.PTUserName;
+        DateTime _dtmWorkDate = PT.Helper.Globals.PTWorkingDate;
         string _strPro = "IN103";
 
         public IN103()
@@ -24,16 +26,20 @@ namespace IN103
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txtProgID.Text = "ProgID : " + _strPro;
             _BinGrid();
+            _SetColumVisible();
         }
 
         private void _BinGrid()
         {
             DataTable _dtINReason = new DataTable();
+            dgv.Visible = false;
             _dtINReason = ConnectDB.GetAll("INReason");
+            dgv.EndCell = 1;
             dgv.DataSource = _dtINReason;
-            //_SetColumVisible();
             dgv.Refresh();
+            dgv.Visible = true;
         }
 
         private void _SetColumVisible()
@@ -44,6 +50,8 @@ namespace IN103
             dgv.Columns["LUpd_DateTime"].Visible = false;
             dgv.Columns["LUpd_Prog"].Visible = false;
             dgv.Columns["LUpd_User"].Visible = false;
+            dgv.Columns["Descr"].Width = 500;
+
         }
         private void _SaveGrid()
         {
@@ -54,10 +62,10 @@ namespace IN103
                     INReason _rs = new INReason();
                     _rs.RsID = dgv.Rows[i].Cells["RsId"].FormattedValue.ToString().Trim();
                     _rs.Descr = dgv.Rows[i].Cells["Descr"].FormattedValue.ToString().Trim();
-                    _rs.Crtd_DateTime = DateTime.Now;
+                    _rs.Crtd_DateTime = _dtmWorkDate;
                     _rs.Crtd_Prog = _strPro;
                     _rs.Crtd_User = _strUser;
-                    _rs.LUpd_DateTime = DateTime.Now;
+                    _rs.LUpd_DateTime = _dtmWorkDate;
                     _rs.LUpd_Prog = _strPro;
                     _rs.LUpd_User = _strUser;
                     int kq;
@@ -71,7 +79,10 @@ namespace IN103
         private void _DeleteRow(int row)
         {
             string _strRsId = dgv.Rows[row].Cells[0].FormattedValue.ToString();
-            IN103Ctrl.DeleteINReason(_strRsId);
+            if (_strRsId != "CK" && _strRsId != "DC")
+                IN103Ctrl.DeleteINReason(_strRsId);
+            else
+                MessageBox.Show(_strRsId + " là dữ liệu mặc định, không được phép xóa","Thông báo" ,MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
 
 
