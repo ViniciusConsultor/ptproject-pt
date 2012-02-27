@@ -14,6 +14,9 @@ namespace PT.Helper
     public class ConnectDB
     {
         public static string connectionString = "";
+        private SqlCommand _Command;
+        private SqlDataAdapter _DataAdapter;
+        private static SqlConnection _Connection;
         private static string ReadDB()
         {
             DataSet _dataset = new DataSet("Configs");
@@ -109,6 +112,31 @@ namespace PT.Helper
             return kq;
         }
 
+        public static int ExecuteScalar(String strSql)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand();
+            int kq = 0;
+            try
+            {
+                connection.Open();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = strSql;
+                kq = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return kq;
+        } 
+
         public static int ExecuteScalar(String StoreProcedureName, String[] parameterNames, Object[] parameterValues)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -188,7 +216,32 @@ namespace PT.Helper
 
             return kq;
         }
+        public static DataTable ExecuteSQLReader(String SQL)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter adapter;
+            DataTable kq = new DataTable();
+            try
+            {
+                connection.Open();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = SQL;
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(kq);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
+            return kq;
+        }
         public static DataTable GetAll(string _strTableName)
         {
             return ExecuteReader("sp_GetAll", new String[] { "TableName" }, new Object[] { _strTableName });
