@@ -26,19 +26,10 @@ namespace IN101
             _BinGrid();
             _SetColumnVisible();
         }
-        private void _SetColumnVisible()
+        private void dgv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            dgv.Columns["Crtd_DateTime"].Visible = false;
-            dgv.Columns["Crtd_Prog"].Visible = false;
-            dgv.Columns["Crtd_User"].Visible = false;
-            dgv.Columns["LUpd_DateTime"].Visible = false;
-            dgv.Columns["LUpd_Prog"].Visible = false;
-            dgv.Columns["LUpd_User"].Visible = false;            
+            _CheckCell(dgv.CurrentRow.Index, dgv.CurrentCell.ColumnIndex);
         }
-
-
-         
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Int32 _intTotalRow = dgv.Rows.GetRowCount(DataGridViewElementStates.Selected);
@@ -49,13 +40,58 @@ namespace IN101
                     for (int i = 0; i < _intTotalRow; i++)
                     {
                         int _row = Int16.Parse(dgv.SelectedRows[i].Index.ToString());
+
                         _DeleteRow(_row);
                     }
                     _BinGrid();
                 }
-                
-            }
 
+            }
+            else
+                MessageBox.Show("Chon dong can xoa","thongbao");
+
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            _BinGrid();
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (dgv != null)
+            {
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    INWarehouse _rs = new INWarehouse();
+                    _rs.WhId = dgv.Rows[i].Cells["WhId"].FormattedValue.ToString().Trim();
+                    if (_rs.WhId != "")
+                    {
+                        _rs.Name = dgv.Rows[i].Cells["Name"].FormattedValue.ToString().Trim();
+                        _rs.WhKeeper = dgv.Rows[i].Cells["WhKeeper"].FormattedValue.ToString().Trim();
+                        _rs.Addr = dgv.Rows[i].Cells["Addr"].FormattedValue.ToString().Trim();
+                        _rs.Phone = dgv.Rows[i].Cells["Phone"].FormattedValue.ToString().Trim();
+                        _rs.Type = dgv.Rows[i].Cells["Type"].FormattedValue.ToString().Trim();
+                        _rs.Crtd_DateTime = DateTime.Now;
+                        _rs.Crtd_Prog = this.strPro;
+                        _rs.Crtd_User = Globals.PTUserName;
+                        _rs.LUpd_DateTime = DateTime.Parse(dgv.Rows[i].Cells["LUpd_DateTime"].FormattedValue.ToString().Trim());
+                        _rs.LUpd_Prog = dgv.Rows[i].Cells["LUpd_Prog"].FormattedValue.ToString().Trim();
+                        _rs.LUpd_User = dgv.Rows[i].Cells["LUpd_User"].FormattedValue.ToString().Trim();
+                        int kq;
+                        kq = IN101Ctrl.SaveWarehouse(_rs);
+                    }
+                }
+                _BinGrid();
+            }
+        }
+        private void _SetColumnVisible()
+        {
+            dgv.Columns["Crtd_DateTime"].Visible = false;
+            dgv.Columns["Crtd_Prog"].Visible = false;
+            dgv.Columns["Crtd_User"].Visible = false;
+            dgv.Columns["LUpd_DateTime"].Visible = false;
+            dgv.Columns["LUpd_Prog"].Visible = false;
+            dgv.Columns["LUpd_User"].Visible = false;            
         }
         private void _BinGrid()
         {
@@ -68,45 +104,17 @@ namespace IN101
             dgv.Refresh();
             dgv.Visible = true;
         }
-
         private void _DeleteRow(int row)
         {
             string _id = dgv.Rows[row].Cells["WhID"].Value.ToString();
-            string _strRsId = dgv.Rows[row].Cells[0].FormattedValue.ToString();
-            IN101Ctrl.DeleteWarehouse(_strRsId);
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            _BinGrid();
-            
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (dgv != null)
+            //string _strRsId = dgv.Rows[row].Cells[0].FormattedValue.ToString();
+            if (_CheckWarehouseUsed(_id) == true)
             {
-                for (int i = 0; i < dgv.Rows.Count; i++)
-                {
-                    INWarehouse _rs = new INWarehouse();
-                    _rs.WhId = dgv.Rows[i].Cells["WhId"].FormattedValue.ToString().Trim();
-                    _rs.Name = dgv.Rows[i].Cells["Name"].FormattedValue.ToString().Trim();
-                    _rs.WhKeeper = dgv.Rows[i].Cells["WhKeeper"].FormattedValue.ToString().Trim();
-                    _rs.Addr = dgv.Rows[i].Cells["Addr"].FormattedValue.ToString().Trim();
-                    _rs.Phone = dgv.Rows[i].Cells["Phone"].FormattedValue.ToString().Trim();
-                    _rs.Type = dgv.Rows[i].Cells["Type"].FormattedValue.ToString().Trim();
-                    _rs.Crtd_DateTime = DateTime.Now;
-                    _rs.Crtd_Prog = this.strPro ;
-                    _rs.Crtd_User = Globals.PTUserName;
-                    _rs.LUpd_DateTime = DateTime.Parse(dgv.Rows[i].Cells["LUpd_DateTime"].FormattedValue.ToString().Trim());
-                    _rs.LUpd_Prog = dgv.Rows[i].Cells["LUpd_Prog"].FormattedValue.ToString().Trim();
-                    _rs.LUpd_User = dgv.Rows[i].Cells["LUpd_User"].FormattedValue.ToString().Trim();
-                    int kq;
-                    if (_rs.WhId!= "")
-                        kq = IN101Ctrl.SaveWarehouse(_rs);
-                }
-                _BinGrid();
+                MessageBox.Show("Da duoc su dung", "Thong bao");
+                return;
             }
+            else
+                IN101Ctrl.DeleteWarehouse(_id);
         }
         private bool _CheckCell(int _row, int _cell)
         {
@@ -122,10 +130,17 @@ namespace IN101
                 }
             return true;
         }
-
-        private void dgv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private bool _CheckWarehouseUsed(string Warehouse)
         {
-            _CheckCell(dgv.CurrentRow.Index, dgv.CurrentCell.ColumnIndex);
+            string _sql = "Select COUNT(*) from INProductStatus  where WhID = '" + Warehouse + "'";
+            int _count = ConnectDB.ExecuteScalar(_sql);
+            if (_count > 0)
+                return true;
+            else
+                return false;
         }
+        
+
+       
     }
 }
