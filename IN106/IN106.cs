@@ -448,11 +448,6 @@ namespace IN106
             txtDfltWhID.AutoComplete = true;
             txtDfltWhID.LinkedColumnIndex = 1;
 
-            comboBoxEx1.DataSource = dtselectedColumsWarehouse;
-            comboBoxEx1.ValueMember = "WhId";
-            comboBoxEx1.DisplayMember = "Name";
-            
-
             txtProductID.Focus();
             
         }
