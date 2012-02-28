@@ -42,6 +42,8 @@ namespace IN106
            _BindDataToPanel();
            _AddToPanel(_info);           
            _strStage = 1;
+           txtCopy.Enabled = false;
+           btnCopy.Enabled = false;
             
         }       
         private void btnAdd_Click(object sender, EventArgs e)
@@ -51,6 +53,8 @@ namespace IN106
             txtProductID.Focus();
             _BindDataToPanel();
             _strStage = 1;
+            btnCopy.Enabled = true;
+            txtCopy.Enabled = true;
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
@@ -138,6 +142,10 @@ namespace IN106
                     INProduct info = _GetPanel();
                     IN106Ctrl.SaveProduct(info);
                 }
+                txtProductID.Enabled = false;
+                txtDesc.Focus();
+                btnCopy.Enabled = false;
+                txtCopy.Enabled = false;
             }
         }
         private void btnBack_Click(object sender, EventArgs e)
@@ -146,29 +154,23 @@ namespace IN106
         }        
         private void btnCopy_Click(object sender, EventArgs e)
         {
-
             string copy = txtCopy.Text.Trim();
             string proid = txtProductID.Text.Trim();
             if (copy == "")
             {
-
-                //DevComponents.DotNetBar.MessageBoxEx.Show("Chọn ProductID", "Thông báo");
-                Utility.MessageShow("001", Globals.PTLanguage,"adfas");
+                Utility.MessageShow("001", Globals.PTLanguage,"ProductID");
                 txtCopy.Focus();
-                return;
-            }
-            if (proid == "")
-            {
-                DevComponents.DotNetBar.MessageBoxEx.Show("Nhập ProductID", "Thông báo");
-                txtProductID.Focus();
                 return;
             }
             if (_dtINProduct.Rows.Count > 0)
             {
-                DataRow[] dr = _dtINProduct.Select(string.Format("ProductID = '{0}'", proid));
-                if (dr.Count() > 0)
+                DataRow[] dr = _dtINProduct.Select(string.Format("ProductID = '{0}'", copy));
+                if (dr.Count() <= 0)
                 {
-                    MessageBox.Show("ProductID đã được sử dụng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("ProductID khong ton tai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCopy.Focus();
+                    txtCopy.SelectionStart = 0;
+                    txtCopy.SelectionLength = copy.Length;                    
                     return;
                 }
                 else
@@ -179,10 +181,11 @@ namespace IN106
                     _BindDataToPanel();
                     dgv.Visible = false;
                     pnl.Visible = true;
-                    // txtProductID.Text = copy;
                     txtProductID.Enabled = true;
-                    txtProductID.Text = "";
+                    txtProductID.Text = copy + "-1";
                     txtProductID.Focus();
+                    txtProductID.SelectionStart = 0;
+                    txtProductID.SelectionLength = txtProductID.Text.Length; ;
                 }
             }
         }
@@ -387,14 +390,14 @@ namespace IN106
             txtFromUnit.DataSource = dtselectedColumsUnit;
             txtFromUnit.DisplayMember = "Unit";
             txtFromUnit.ValueMember = "Unit";
-            txtFromUnit.ColumnWidths = "70,200";
+            txtFromUnit.ColumnWidths = "150,150";
             txtFromUnit.AutoComplete = true;
-            //txtFromUnit.LinkedColumnIndex = 1;
+            txtFromUnit.LinkedColumnIndex = 1;
 
             txtToUnit.DataSource = dtselectedColumsUnit2;
             txtToUnit.DisplayMember = "Unit";
             txtToUnit.ValueMember = "Unit";
-            txtToUnit.ColumnWidths = "70,200";
+            txtToUnit.ColumnWidths = "150,150";
             txtToUnit.AutoComplete = true;
             //txtToUnit.LinkedColumnIndex = 1;
 
@@ -403,43 +406,52 @@ namespace IN106
             txtPOUnit.DataSource = dtselectedColumsUnit3;
             txtPOUnit.DisplayMember = "Unit";
             txtPOUnit.ValueMember = "Unit";
-            txtPOUnit.ColumnWidths = "70,200";
+            txtPOUnit.ColumnWidths = "150,150";
             txtPOUnit.AutoComplete = true;
             //txtPOUnit.LinkedColumnIndex = 1;
 
             txtSOUnit.DataSource = dtselectedColumsUnit4;
             txtSOUnit.DisplayMember = "Unit";
             txtSOUnit.ValueMember = "Unit";
-            txtSOUnit.ColumnWidths = "70,200";
+            txtSOUnit.ColumnWidths = "150,150";
             txtSOUnit.AutoComplete = true;
             //txtSOUnit.LinkedColumnIndex = 1;
 
             txtINUnit.DataSource = dtselectedColumsUnit5;
             txtINUnit.DisplayMember = "Unit";
             txtINUnit.ValueMember = "Unit";
-            txtINUnit.ColumnWidths = "70,200";
+            txtINUnit.ColumnWidths = "150,150";
             txtINUnit.AutoComplete = true;
             //txtINUnit.LinkedColumnIndex = 1;
 
             txtVendID.DataSource = dtselectedColumsVendID;
             txtVendID.DisplayMember = "VendName";
             txtVendID.ValueMember = "VendID";
-            txtVendID.ColumnWidths = "70,200";
+            txtVendID.ColumnWidths = "150,150";
             txtVendID.AutoComplete = true;
-            //txtVendID.LinkedColumnIndex = 1;
+            txtVendID.LinkedColumnIndex = 1;
 
             txtTaxID.DataSource = dtselectedColumsTaxID;
+            txtTaxID.ColumnNames = "Descr,TaxId";
             txtTaxID.DisplayMember = "Descr";
             txtTaxID.ValueMember = "TaxID";
-            txtTaxID.ColumnWidths = "70,200";
+            txtTaxID.ColumnWidths = "150,150";
             txtTaxID.AutoComplete = true;
-            //txtTaxID.LinkedColumnIndex = 1;
+            txtTaxID.SelectedText = "Descr";
 
             txtDfltWhID.DataSource = dtselectedColumsWarehouse;
+            txtDfltWhID.ColumnNames = "Name,WhId";
             txtDfltWhID.DisplayMember = "Name";
             txtDfltWhID.ValueMember = "WhId";
-            txtDfltWhID.ColumnWidths = "70,200";
+            txtDfltWhID.SelectedItem = "WhID";
+            txtDfltWhID.ColumnWidths = "150,150";
             txtDfltWhID.AutoComplete = true;
+            txtDfltWhID.LinkedColumnIndex = 1;
+
+            comboBoxEx1.DataSource = dtselectedColumsWarehouse;
+            comboBoxEx1.ValueMember = "WhId";
+            comboBoxEx1.DisplayMember = "Name";
+            
 
             txtProductID.Focus();
             
@@ -489,10 +501,10 @@ namespace IN106
                 txtDesc.Text = _info.Descr.ToString();
                 txtClassID1.Text = _info.ClassID1.ToString();
                 txtClassID2.Text = _info.ClassID2.ToString();
-                txtVendID.Text = _info.VendID.ToString();
+                txtVendID.SelectedValue = _info.VendID.ToString();
                 cbxStatus.Text = _info.Status.ToString();
-                txtFromUnit.Text = _info.FromUnit.ToString();
-                txtToUnit.Text = _info.ToUnit.ToString();
+                txtFromUnit.SelectedValue = _info.FromUnit.ToString();
+                txtToUnit.SelectedValue = _info.ToUnit.ToString();
                 txtCnvfact.Text = _info.Cnvfact.ToString();
                 txtPOFromUnitPrice.Text = _info.POFromUnitPrice.ToString();
                 txtPOToUnitPrice.Text = _info.POToUnitPrice.ToString();
@@ -502,17 +514,17 @@ namespace IN106
                 txtSOToUnitPrice.Text = _info.SOToUnitPrice.ToString();
                 if (_info.SOPriEffDate.ToString() != "")
                     dtiSOPriEffDate.Value = _info.SOPriEffDate;
-                txtPOUnit.Text = _info.POUnit.ToString();
-                txtSOUnit.Text = _info.SOUnit.ToString();
-                txtINUnit.Text = _info.INUnit.ToString();
+                txtPOUnit.SelectedValue = _info.POUnit.ToString();
+                txtSOUnit.SelectedValue = _info.SOUnit.ToString();
+                txtINUnit.SelectedValue = _info.INUnit.ToString();
                 txtColor.Text = _info.Color.ToString();
-                txtDfltWhID.Text = _info.DfltWhID.ToString();
+                txtDfltWhID.SelectedValue = _info.DfltWhID.ToString();
                 txtPicture.Text = _info.Picture.ToString();
                 txtSize.Text = _info.Size.ToString();
                 txtVolume.Text = _info.Volume.ToString();
                 txtWeight.Text = _info.Weight.ToString();
                 txtStyle.Text = _info.Style.ToString();
-                txtTaxID.Text = _info.TaxID.ToString();
+                txtTaxID.SelectedValue = _info.TaxID.ToString();
                 txtProductID.Text = _info.ProductID;
                 txtProductID.Enabled = false;
                 if (_info.Crtd_DateTime.ToString() == "")
@@ -568,8 +580,8 @@ namespace IN106
             info.ClassID2 = txtClassID2.Text.Trim();
             info.VendID = txtVendID.Text.Trim();
             info.Status = cbxStatus.Text.Trim();
-            info.FromUnit = txtFromUnit.Text.Trim();
-            info.ToUnit = txtToUnit.Text.Trim();
+            info.FromUnit = txtFromUnit.SelectedValue.ToString();
+            info.ToUnit = txtToUnit.SelectedValue.ToString();
             if (txtCnvfact.Text.Trim() != "")
                 info.Cnvfact = double.Parse(txtCnvfact.Text.Trim());
             if (txtPOFromUnitPrice.Text.Trim() != "")
@@ -582,11 +594,11 @@ namespace IN106
                 info.SOToUnitPrice =  double.Parse(txtSOToUnitPrice.Text.Trim());
             info.POPriEffDate = dtiPOPriEffDate.Value;
             info.SOPriEffDate = dtiSOPriEffDate.Value;
-            info.POUnit = txtPOUnit.Text.Trim();
-            info.SOUnit = txtSOUnit.Text.Trim();
-            info.INUnit = txtINUnit.Text.Trim();
+            info.POUnit = txtPOUnit.SelectedValue.ToString();
+            info.SOUnit = txtSOUnit.SelectedValue.ToString();
+            info.INUnit = txtINUnit.SelectedValue.ToString();
             info.Color = txtColor.Text.Trim();
-            info.DfltWhID = txtDfltWhID.Text.Trim();
+            info.DfltWhID = txtDfltWhID.SelectedValue.ToString();
             info.Picture = txtPicture.Text.Trim();
             info.Size = txtSize.Text.Trim();
             if (txtVolume.Text.Trim() != "")
@@ -594,7 +606,7 @@ namespace IN106
             if (txtWeight.Text.Trim() != "")
                 info.Weight = double.Parse(txtWeight.Text.Trim());
             info.Style = txtStyle.Text.Trim();
-            info.TaxID = txtTaxID.Text.Trim();
+            info.TaxID = txtTaxID.SelectedValue.ToString();
             info.Crtd_DateTime = dtiCrtd_DateTime.Value;
             info.Crtd_Prog = txtCrtd_Prog.Text.Trim();
             info.Crtd_User = txtCrtd_User.Text.Trim();
