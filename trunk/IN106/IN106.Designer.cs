@@ -36,13 +36,11 @@
             this.lblVendID = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblFromUnit = new System.Windows.Forms.Label();
-            this.lblToUnit = new System.Windows.Forms.Label();
+            this.ToUnit = new System.Windows.Forms.Label();
             this.lblCnvfact = new System.Windows.Forms.Label();
             this.lblPOFromUnitPrice = new System.Windows.Forms.Label();
-            this.lblPOToUnitPrice = new System.Windows.Forms.Label();
             this.lblPOPriEffDate = new System.Windows.Forms.Label();
             this.lblSOFromUnitPrice = new System.Windows.Forms.Label();
-            this.lblSOToUnitPrice = new System.Windows.Forms.Label();
             this.lblSOPriEffDate = new System.Windows.Forms.Label();
             this.lblPOUnit = new System.Windows.Forms.Label();
             this.lblSOUnit = new System.Windows.Forms.Label();
@@ -89,6 +87,8 @@
             this.txtVendID = new PT.Component.MultiColumnComboBox();
             this.txtPOUnit = new PT.Component.MultiColumnComboBox();
             this.chkStatus = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.SOToUnitPrice = new System.Windows.Forms.Label();
+            this.POToUnitPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.pnl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -186,13 +186,13 @@
             this.pnl.Controls.Add(this.lblSOUnit);
             this.pnl.Controls.Add(this.lblPOUnit);
             this.pnl.Controls.Add(this.lblSOPriEffDate);
-            this.pnl.Controls.Add(this.lblSOToUnitPrice);
+            this.pnl.Controls.Add(this.SOToUnitPrice);
             this.pnl.Controls.Add(this.lblSOFromUnitPrice);
             this.pnl.Controls.Add(this.lblPOPriEffDate);
-            this.pnl.Controls.Add(this.lblPOToUnitPrice);
+            this.pnl.Controls.Add(this.POToUnitPrice);
             this.pnl.Controls.Add(this.lblPOFromUnitPrice);
             this.pnl.Controls.Add(this.lblCnvfact);
-            this.pnl.Controls.Add(this.lblToUnit);
+            this.pnl.Controls.Add(this.ToUnit);
             this.pnl.Controls.Add(this.lblFromUnit);
             this.pnl.Controls.Add(this.lblStatus);
             this.pnl.Controls.Add(this.lblVendID);
@@ -250,10 +250,10 @@
             // 
             // lblVendID
             // 
-            this.lblVendID.Location = new System.Drawing.Point(1, 390);
+            this.lblVendID.Location = new System.Drawing.Point(40, 390);
             this.lblVendID.Name = "lblVendID";
             this.lblVendID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblVendID.Size = new System.Drawing.Size(120, 15);
+            this.lblVendID.Size = new System.Drawing.Size(80, 15);
             this.lblVendID.TabIndex = 9;
             this.lblVendID.Text = "VendID";
             // 
@@ -275,18 +275,18 @@
             this.lblFromUnit.TabIndex = 13;
             this.lblFromUnit.Text = "FromUnit";
             // 
-            // lblToUnit
+            // ToUnit
             // 
-            this.lblToUnit.Location = new System.Drawing.Point(257, 160);
-            this.lblToUnit.Name = "lblToUnit";
-            this.lblToUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblToUnit.Size = new System.Drawing.Size(70, 15);
-            this.lblToUnit.TabIndex = 15;
-            this.lblToUnit.Text = "ToUnit";
+            this.ToUnit.Location = new System.Drawing.Point(171, 160);
+            this.ToUnit.Name = "ToUnit";
+            this.ToUnit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.ToUnit.Size = new System.Drawing.Size(70, 15);
+            this.ToUnit.TabIndex = 15;
+            this.ToUnit.Text = "/";
             // 
             // lblCnvfact
             // 
-            this.lblCnvfact.Location = new System.Drawing.Point(447, 160);
+            this.lblCnvfact.Location = new System.Drawing.Point(351, 160);
             this.lblCnvfact.Name = "lblCnvfact";
             this.lblCnvfact.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblCnvfact.Size = new System.Drawing.Size(70, 15);
@@ -302,18 +302,9 @@
             this.lblPOFromUnitPrice.TabIndex = 19;
             this.lblPOFromUnitPrice.Text = "POFromUnitPrice";
             // 
-            // lblPOToUnitPrice
-            // 
-            this.lblPOToUnitPrice.Location = new System.Drawing.Point(207, 188);
-            this.lblPOToUnitPrice.Name = "lblPOToUnitPrice";
-            this.lblPOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblPOToUnitPrice.Size = new System.Drawing.Size(120, 15);
-            this.lblPOToUnitPrice.TabIndex = 21;
-            this.lblPOToUnitPrice.Text = "POToUnitPrice";
-            // 
             // lblPOPriEffDate
             // 
-            this.lblPOPriEffDate.Location = new System.Drawing.Point(401, 187);
+            this.lblPOPriEffDate.Location = new System.Drawing.Point(305, 187);
             this.lblPOPriEffDate.Name = "lblPOPriEffDate";
             this.lblPOPriEffDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblPOPriEffDate.Size = new System.Drawing.Size(120, 15);
@@ -329,18 +320,9 @@
             this.lblSOFromUnitPrice.TabIndex = 25;
             this.lblSOFromUnitPrice.Text = "SOFromUnitPrice";
             // 
-            // lblSOToUnitPrice
-            // 
-            this.lblSOToUnitPrice.Location = new System.Drawing.Point(207, 214);
-            this.lblSOToUnitPrice.Name = "lblSOToUnitPrice";
-            this.lblSOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblSOToUnitPrice.Size = new System.Drawing.Size(120, 15);
-            this.lblSOToUnitPrice.TabIndex = 27;
-            this.lblSOToUnitPrice.Text = "SOToUnitPrice";
-            // 
             // lblSOPriEffDate
             // 
-            this.lblSOPriEffDate.Location = new System.Drawing.Point(401, 214);
+            this.lblSOPriEffDate.Location = new System.Drawing.Point(305, 214);
             this.lblSOPriEffDate.Name = "lblSOPriEffDate";
             this.lblSOPriEffDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblSOPriEffDate.Size = new System.Drawing.Size(120, 15);
@@ -577,7 +559,7 @@
             this.dtiPOPriEffDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiPOPriEffDate.ButtonDropDown.Visible = true;
             this.dtiPOPriEffDate.IsPopupCalendarOpen = false;
-            this.dtiPOPriEffDate.Location = new System.Drawing.Point(523, 185);
+            this.dtiPOPriEffDate.Location = new System.Drawing.Point(427, 185);
             // 
             // 
             // 
@@ -627,7 +609,7 @@
             this.dtiSOPriEffDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtiSOPriEffDate.ButtonDropDown.Visible = true;
             this.dtiSOPriEffDate.IsPopupCalendarOpen = false;
-            this.dtiSOPriEffDate.Location = new System.Drawing.Point(523, 214);
+            this.dtiSOPriEffDate.Location = new System.Drawing.Point(427, 214);
             // 
             // 
             // 
@@ -845,7 +827,7 @@
             // 
             this.txtSOToUnitPrice.Border.Class = "TextBoxBorder";
             this.txtSOToUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSOToUnitPrice.Location = new System.Drawing.Point(329, 212);
+            this.txtSOToUnitPrice.Location = new System.Drawing.Point(243, 212);
             this.txtSOToUnitPrice.Name = "txtSOToUnitPrice";
             this.txtSOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtSOToUnitPrice.Size = new System.Drawing.Size(100, 20);
@@ -875,7 +857,7 @@
             // 
             this.txtPOToUnitPrice.Border.Class = "TextBoxBorder";
             this.txtPOToUnitPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPOToUnitPrice.Location = new System.Drawing.Point(329, 186);
+            this.txtPOToUnitPrice.Location = new System.Drawing.Point(243, 186);
             this.txtPOToUnitPrice.Name = "txtPOToUnitPrice";
             this.txtPOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtPOToUnitPrice.Size = new System.Drawing.Size(100, 20);
@@ -897,7 +879,7 @@
             this.txtCnvfact.ColumnWidths = "";
             this.txtCnvfact.DataSource = null;
             this.txtCnvfact.Language = "Language1";
-            this.txtCnvfact.Location = new System.Drawing.Point(523, 158);
+            this.txtCnvfact.Location = new System.Drawing.Point(427, 158);
             this.txtCnvfact.Name = "txtCnvfact";
             this.txtCnvfact.RowsDisplay = 10;
             this.txtCnvfact.Size = new System.Drawing.Size(100, 20);
@@ -939,7 +921,7 @@
             this.txtToUnit.ItemHeight = 14;
             this.txtToUnit.LinkedColumnIndex = 0;
             this.txtToUnit.LinkedTextBox = null;
-            this.txtToUnit.Location = new System.Drawing.Point(328, 158);
+            this.txtToUnit.Location = new System.Drawing.Point(242, 158);
             this.txtToUnit.Name = "txtToUnit";
             this.txtToUnit.Size = new System.Drawing.Size(100, 20);
             this.txtToUnit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -1085,6 +1067,24 @@
             this.chkStatus.TabIndex = 88;
             this.chkStatus.Text = "Status";
             // 
+            // SOToUnitPrice
+            // 
+            this.SOToUnitPrice.Location = new System.Drawing.Point(121, 214);
+            this.SOToUnitPrice.Name = "SOToUnitPrice";
+            this.SOToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.SOToUnitPrice.Size = new System.Drawing.Size(120, 15);
+            this.SOToUnitPrice.TabIndex = 27;
+            this.SOToUnitPrice.Text = "/";
+            // 
+            // POToUnitPrice
+            // 
+            this.POToUnitPrice.Location = new System.Drawing.Point(121, 188);
+            this.POToUnitPrice.Name = "POToUnitPrice";
+            this.POToUnitPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.POToUnitPrice.Size = new System.Drawing.Size(120, 15);
+            this.POToUnitPrice.TabIndex = 21;
+            this.POToUnitPrice.Text = "/";
+            // 
             // IN106
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1129,13 +1129,11 @@
         private System.Windows.Forms.Label lblSOUnit;
         private System.Windows.Forms.Label lblPOUnit;
         private System.Windows.Forms.Label lblSOPriEffDate;
-        private System.Windows.Forms.Label lblSOToUnitPrice;
         private System.Windows.Forms.Label lblSOFromUnitPrice;
         private System.Windows.Forms.Label lblPOPriEffDate;
-        private System.Windows.Forms.Label lblPOToUnitPrice;
         private System.Windows.Forms.Label lblPOFromUnitPrice;
         private System.Windows.Forms.Label lblCnvfact;
-        private System.Windows.Forms.Label lblToUnit;
+        private System.Windows.Forms.Label ToUnit;
         private System.Windows.Forms.Label lblFromUnit;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblVendID;
@@ -1168,6 +1166,8 @@
         private PT.Component.MultiColumnComboBox txtSOUnit;
         private PT.Component.MultiColumnComboBox txtDfltWhID;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkStatus;
+        private System.Windows.Forms.Label SOToUnitPrice;
+        private System.Windows.Forms.Label POToUnitPrice;
 
     }
 }
