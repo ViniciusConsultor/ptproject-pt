@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.FromDate = new DevComponents.DotNetBar.LabelX();
             this.dtmToDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
@@ -503,6 +503,7 @@
             this.txtTotalAmt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtTotalAmt.Size = new System.Drawing.Size(100, 20);
             this.txtTotalAmt.TabIndex = 20;
+            this.txtTotalAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalQty
             // 
@@ -519,6 +520,7 @@
             this.txtTotalQty.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtTotalQty.Size = new System.Drawing.Size(100, 20);
             this.txtTotalQty.TabIndex = 19;
+            this.txtTotalQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX19
             // 
@@ -918,6 +920,7 @@
             this.txtTotalCost.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtTotalCost.Size = new System.Drawing.Size(100, 20);
             this.txtTotalCost.TabIndex = 17;
+            this.txtTotalCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalCost.Leave += new System.EventHandler(this.txtTotalCost_Leave);
             // 
             // txtUnitCost
@@ -933,6 +936,7 @@
             this.txtUnitCost.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtUnitCost.Size = new System.Drawing.Size(100, 20);
             this.txtUnitCost.TabIndex = 16;
+            this.txtUnitCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtUnitCost.Leave += new System.EventHandler(this.txtUnitCost_Leave);
             // 
             // txtQty
@@ -948,6 +952,7 @@
             this.txtQty.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtQty.Size = new System.Drawing.Size(100, 20);
             this.txtQty.TabIndex = 15;
+            this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQty.Leave += new System.EventHandler(this.txtQty_Leave);
             // 
             // btnAddRow
@@ -985,14 +990,14 @@
             this.dgvDocDet.AllowUserToAddRows = false;
             this.dgvDocDet.AutoColumnHeadder = true;
             this.dgvDocDet.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDocDet.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDocDet.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDocDet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDocDet.EndCell = 0;
             this.dgvDocDet.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));

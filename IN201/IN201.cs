@@ -802,6 +802,14 @@ namespace IN201
         }
         private void _SetButtomStatus()
         {
+            if ( cmbStatus.SelectedValue == null)
+            {
+                btnRelease.Enabled = true;
+                btnDestroy.Enabled = false;
+                btnCanAndCopy.Enabled = false;
+                btnDelete.Enabled = true;
+                pnl.Enabled = true;
+            }
             if (cmbStatus.SelectedValue.ToString() == "0")
             {
                 btnRelease.Enabled = true;
