@@ -1,0 +1,7 @@
+- update lai database them cot tstamp
+- update lai sp_GetAll
+- update lai cac store save ( smallint) 1 insert thanh cong, 2 update thanh cong, 0 , ko thuc thi dc
+- Set gia tri '' cho cac table
+- sua lai info : Them convert Datarow + them feild timestamp(string)
+
+
