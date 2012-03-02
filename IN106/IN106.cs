@@ -10,10 +10,9 @@ using PT.DataInfo;
 using PT.Helper;
 using PT.MainCtl;
 
-
 namespace IN106
 {
-    public partial class IN106 : PT.Master.GridEdit
+    public partial class IN106 : PT.Master.GridEditIn
     {
         private byte _strStage = 0; // 1 la chinh sua, 2 la them moi, 0 ko lam gi
         private DataTable _dtINProduct = new DataTable();
@@ -23,29 +22,38 @@ namespace IN106
         private DataTable _dtSITax = new DataTable();
         private DataTable _dtAPVendor = new DataTable();
         private DataTable _dtINWarehouse = new DataTable();
+        private DataTable _dtSearch = new DataTable();
+        private string _strPro = "IN106";
         public IN106()
         {
             InitializeComponent();
         }
-        private void IN106_Load(object sender, EventArgs e)
-        {           
-            strPro = "IN106";
+
+        private void IN1061_Load(object sender, EventArgs e)
+        {
             _BindGrid();
-            _strStage = 2;
-            _ChangeControlName();            
-        }   
+            _BindVenIDSeach();
+            _strStage = 2;            
+            _ChangeControlName();
+        }
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-           INProduct _info = new INProduct();
-           _info = _GetProduct(e.RowIndex);
-           _BindDataToPanel();
-           _AddToPanel(_info);           
-           _strStage = 1;
-           txtCopy.Enabled = false;
-           btnCopy.Enabled = false;
-            
-        }       
+            pnldgv.Visible = false;
+            pnl.Visible = false;
+            pnl.Dock = DockStyle.Fill;
+            pnldgv.Dock = DockStyle.Fill;
+            INProduct _info = new INProduct();
+            _info = _GetProduct(e.RowIndex);
+            _BindDataToPanel();
+            _AddToPanel(_info);
+            _strStage = 1;
+            txtCopy.Enabled = false;
+            btnCopy.Enabled = false;
+            btnSave.Enabled = true;
+            btnDelete.Enabled = true;
+            btnBack.Enabled = true;
+            pnl.Visible = true;
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _RefreshPanel();
@@ -64,7 +72,9 @@ namespace IN106
                 INProduct _product = _GetProduct(proid);
                 if (_product != null)
                 {
+
                     _RefreshPanel();
+                    _BindDataToPanel();
                     _AddToPanel(_product);
                 }
                 else
@@ -74,9 +84,8 @@ namespace IN106
                     txtProductID.Focus();
                 }
             }
-            else if (dgv.Visible == true)
+            else if (pnldgv.Visible == true)
                 _BindGrid();
-
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -85,7 +94,7 @@ namespace IN106
                 Int32 _intTotalRow = dgv.Rows.GetRowCount(DataGridViewElementStates.Selected);
                 if (_intTotalRow > 0)
                 {
-                    if (MessageBox.Show("Bạn có muốn xóa '" + _intTotalRow + 
+                    if (MessageBox.Show("Bạn có muốn xóa '" + _intTotalRow +
                                         "' dòng được chọn không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         for (int i = 0; i < _intTotalRow; i++)
@@ -98,7 +107,7 @@ namespace IN106
 
                 }
             }
-            else if(pnl.Visible == true )
+            else if (pnl.Visible == true)
             {
                 string _strProductID = txtProductID.Text.Trim();
 
@@ -150,15 +159,19 @@ namespace IN106
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
+            pnl.Visible = false;
             _strStage = 2;
-        }        
+            _BindGrid();
+            btnBack.Enabled = false;
+            pnldgv.Visible = true;
+        }
         private void btnCopy_Click(object sender, EventArgs e)
         {
             string copy = txtCopy.Text.Trim();
             string proid = txtProductID.Text.Trim();
             if (copy == "")
             {
-                Utility.MessageShow("001", Globals.PTLanguage,"ProductID");
+                Utility.MessageShow("001", Globals.PTLanguage, "ProductID");
                 txtCopy.Focus();
                 return;
             }
@@ -170,7 +183,7 @@ namespace IN106
                     MessageBox.Show("ProductID khong ton tai", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtCopy.Focus();
                     txtCopy.SelectionStart = 0;
-                    txtCopy.SelectionLength = copy.Length;                    
+                    txtCopy.SelectionLength = copy.Length;
                     return;
                 }
                 else
@@ -188,10 +201,6 @@ namespace IN106
                     txtProductID.SelectionLength = txtProductID.Text.Length; ;
                 }
             }
-        }
-        private void txtCopy_GotFocus(object sender, EventArgs e)
-        {
-            txtCopy.Text = "";
         }
         private void txtProductID_TextChanged(object sender, EventArgs e)
         {
@@ -224,104 +233,63 @@ namespace IN106
                     _SetClass2ToPanel(class2);
             }
         }
-        //private void txtProductID_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtProductID.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtProductID.Focus();
-        //    }
-
-        //}
-        //private void txtDesc_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtDesc.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtDesc.Focus();
-        //    }
-        //}
-        //private void txtClassID2_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtClassID2.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtClassID2.Focus();
-        //    }
-        //}
-        //private void txtVendID_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtVendID.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtVendID.Focus();
-        //    }
-        //}
-        //private void cbxStatus_Leave(object sender, EventArgs e)
-        //{
-        //    if (cbxStatus.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        cbxStatus.Focus();
-        //    }
-        //}
-        //private void txtCnvfact_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtCnvfact.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtCnvfact.Focus();
-        //    }
-        //}
-        //private void txtFromUnit_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtFromUnit.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtFromUnit.Focus();
-        //    }
-        //}
-        //private void txtToUnit_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtToUnit.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtToUnit.Focus();
-        //    }
-        //}
-        //private void txtPOUnit_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtPOUnit.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtPOUnit.Focus();
-        //    }
-        //}
-        //private void txtSOUnit_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtSOUnit.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtSOUnit.Focus();
-        //    }
-        //}
-        //private void txtDfltWhID_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtDfltWhID.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtDfltWhID.Focus();
-        //    }
-        //}
-        //private void txtTaxID_Leave(object sender, EventArgs e)
-        //{
-        //    if (txtTaxID.Text.Trim() == "")
-        //    {
-        //        MessageBox.Show("Khong duoc rong", "thong bao");
-        //        txtTaxID.Focus();
-        //    }
-        //}
-
+        private void txtPOFromUnitPrice_Leave(object sender, EventArgs e)
+        {
+            if (txtCnvfact.Text.Trim() != "")
+            {
+                int intvnfacf = Int32.Parse(txtCnvfact.Text.Trim());
+                double dbpofromunit = txtPOFromUnitPrice.doubles;
+                txtPOToUnitPrice.Text = (dbpofromunit / intvnfacf).ToString();
+            }
+        }
+        private void txtSOFromUnitPrice_Leave(object sender, EventArgs e)
+        {
+            if (txtCnvfact.Text.Trim() != "")
+            {
+                int intvnfacf = Int32.Parse(txtCnvfact.Text.Trim());
+                double dbsofromunit = txtSOFromUnitPrice.doubles;
+                txtSOToUnitPrice.Text = (dbsofromunit / intvnfacf).ToString();
+            }
+        }
+        private void txtCnvfact_Leave(object sender, EventArgs e)
+        {
+            if (txtPOFromUnitPrice.Text.Trim() != "")
+            {
+                int intvnfacf = Int32.Parse(txtCnvfact.Text.Trim());
+                double dbpofromunit = txtPOFromUnitPrice.doubles;
+                txtPOToUnitPrice.Text = (dbpofromunit / intvnfacf).ToString();
+            }
+            if (txtSOFromUnitPrice.Text.Trim() != "")
+            {
+                int intvnfacf = Int32.Parse(txtCnvfact.Text.Trim());
+                double dbsofromunit = txtSOFromUnitPrice.doubles;
+                txtSOToUnitPrice.Text = (dbsofromunit / intvnfacf).ToString();
+            }
+        }
+        private void txtFromUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _BindUnit();
+        }
+        private void txtToUnit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _BindUnit();
+        }
+        private void txtClassID1Search_TextChanged(object sender, EventArgs e)
+        {
+            _Search();
+        }
+        private void cbxVendIdSearch_SelectedValueChanged(object sender, EventArgs e)
+        {
+            _Search();
+        }
+        private void txtClassID2Search_TextChanged(object sender, EventArgs e)
+        {
+            _Search();
+        }
+        private void txtProductNameSearch_TextChanged(object sender, EventArgs e)
+        {
+            _Search();
+        }
 
         private void _BindGrid()
         {
@@ -346,11 +314,11 @@ namespace IN106
             _dtAPVendor = IN106Ctrl.GetAPVendor();
             _dtINWarehouse = IN106Ctrl.GetINWarehouse();
 
-            string[] selectedColumns1 = new[] { "ClassID1", "Descr"};
+            string[] selectedColumns1 = new[] { "ClassID1", "Descr" };
             DataTable dtINProductClass1SelectedColumns =
                 new DataView(_dtINProductClass1).ToTable(false, selectedColumns1);
 
-            string[] selectedColumns2 = new[] { "ClassID2","Descr"};
+            string[] selectedColumns2 = new[] { "ClassID2", "Descr" };
             DataTable dtINProductClass2SelectedColumns =
                new DataView(_dtINProductClass2).ToTable(false, selectedColumns2);
 
@@ -359,15 +327,15 @@ namespace IN106
                new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
             DataTable dtselectedColumsUnit2 =
                new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
-            DataTable dtselectedColumsUnit3 =
-               new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
-            DataTable dtselectedColumsUnit4 =
-               new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
-            DataTable dtselectedColumsUnit5 =
-               new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
-            
+            //DataTable dtselectedColumsUnit3 =
+            //   new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
+            //DataTable dtselectedColumsUnit4 =
+            //   new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
+            //DataTable dtselectedColumsUnit5 =
+            //   new DataView(_dtINUnit).ToTable(false, selectedColumsUnit);
 
-            string[] selectedColumsProduct = new[] { "ProductID","Descr" };
+
+            string[] selectedColumsProduct = new[] { "ProductID", "Descr" };
             DataTable dtselectedColumsProduct =
                new DataView(_dtINProduct).ToTable(false, selectedColumsProduct);
 
@@ -392,44 +360,44 @@ namespace IN106
             txtFromUnit.ValueMember = "Unit";
             txtFromUnit.ColumnWidths = "150,150";
             txtFromUnit.AutoComplete = true;
-            txtFromUnit.LinkedColumnIndex = 1;
+            txtFromUnit.SelectedIndex = -1;
 
             txtToUnit.DataSource = dtselectedColumsUnit2;
             txtToUnit.DisplayMember = "Unit";
             txtToUnit.ValueMember = "Unit";
             txtToUnit.ColumnWidths = "150,150";
             txtToUnit.AutoComplete = true;
-            //txtToUnit.LinkedColumnIndex = 1;
+            txtToUnit.SelectedIndex = -1;
 
             txtCopy.DataSource = dtselectedColumsProduct;
 
-            txtPOUnit.DataSource = dtselectedColumsUnit3;
-            txtPOUnit.DisplayMember = "Unit";
-            txtPOUnit.ValueMember = "Unit";
-            txtPOUnit.ColumnWidths = "150,150";
-            txtPOUnit.AutoComplete = true;
-            //txtPOUnit.LinkedColumnIndex = 1;
+            //txtPOUnit.DataSource = dtselectedColumsUnit3;
+            //txtPOUnit.DisplayMember = "Unit";
+            //txtPOUnit.ValueMember = "Unit";
+            //txtPOUnit.ColumnWidths = "150,150";
+            //txtPOUnit.AutoComplete = true;
+            //txtPOUnit.SelectedIndex = -1;
 
-            txtSOUnit.DataSource = dtselectedColumsUnit4;
-            txtSOUnit.DisplayMember = "Unit";
-            txtSOUnit.ValueMember = "Unit";
-            txtSOUnit.ColumnWidths = "150,150";
-            txtSOUnit.AutoComplete = true;
-            //txtSOUnit.LinkedColumnIndex = 1;
+            //txtSOUnit.DataSource = dtselectedColumsUnit4;
+            //txtSOUnit.DisplayMember = "Unit";
+            //txtSOUnit.ValueMember = "Unit";
+            //txtSOUnit.ColumnWidths = "150,150";
+            //txtSOUnit.AutoComplete = true;
+            //txtSOUnit.SelectedIndex = -1;
 
-            txtINUnit.DataSource = dtselectedColumsUnit5;
-            txtINUnit.DisplayMember = "Unit";
-            txtINUnit.ValueMember = "Unit";
-            txtINUnit.ColumnWidths = "150,150";
-            txtINUnit.AutoComplete = true;
-            //txtINUnit.LinkedColumnIndex = 1;
+            //txtINUnit.DataSource = dtselectedColumsUnit5;
+            //txtINUnit.DisplayMember = "Unit";
+            //txtINUnit.ValueMember = "Unit";
+            //txtINUnit.ColumnWidths = "150,150";
+            //txtINUnit.AutoComplete = true;
+            //txtINUnit.SelectedIndex = -1;
 
             txtVendID.DataSource = dtselectedColumsVendID;
             txtVendID.DisplayMember = "VendName";
             txtVendID.ValueMember = "VendID";
             txtVendID.ColumnWidths = "150,150";
             txtVendID.AutoComplete = true;
-            txtVendID.LinkedColumnIndex = 1;
+            txtVendID.SelectedIndex = -1;
 
             txtTaxID.DataSource = dtselectedColumsTaxID;
             txtTaxID.ColumnNames = "Descr,TaxId";
@@ -437,7 +405,7 @@ namespace IN106
             txtTaxID.ValueMember = "TaxID";
             txtTaxID.ColumnWidths = "150,150";
             txtTaxID.AutoComplete = true;
-            txtTaxID.SelectedText = "Descr";
+            txtTaxID.SelectedIndex = -1;
 
             txtDfltWhID.DataSource = dtselectedColumsWarehouse;
             txtDfltWhID.ColumnNames = "Name,WhId";
@@ -446,10 +414,10 @@ namespace IN106
             txtDfltWhID.SelectedItem = "WhID";
             txtDfltWhID.ColumnWidths = "150,150";
             txtDfltWhID.AutoComplete = true;
-            txtDfltWhID.LinkedColumnIndex = 1;
+            txtDfltWhID.SelectedIndex = -1;
 
             txtProductID.Focus();
-            
+
         }
         private INProductClass1 _GetClass1Info(string classid)
         {
@@ -497,9 +465,16 @@ namespace IN106
                 txtClassID1.Text = _info.ClassID1.ToString();
                 txtClassID2.Text = _info.ClassID2.ToString();
                 txtVendID.SelectedValue = _info.VendID.ToString();
-                cbxStatus.Text = _info.Status.ToString();
+
+                if (_info.Status == "True")
+                    chkStatus.Checked = true;
+                else
+                    chkStatus.Checked = false;
+                //cbxStatus.Text = _info.Status.ToString();
+
                 txtFromUnit.SelectedValue = _info.FromUnit.ToString();
                 txtToUnit.SelectedValue = _info.ToUnit.ToString();
+                _BindUnit();
                 txtCnvfact.Text = _info.Cnvfact.ToString();
                 txtPOFromUnitPrice.Text = _info.POFromUnitPrice.ToString();
                 txtPOToUnitPrice.Text = _info.POToUnitPrice.ToString();
@@ -533,20 +508,20 @@ namespace IN106
         private void _RefreshPanel()
         {
             txtProductID.Text = "";
+            chkStatus.Checked = false;
             txtDesc.Text = "";
             txtClassID1.Text = "";
             txtClassID2.Text = "";
             txtVendID.Text = "";
-            cbxStatus.Text = "";
             txtFromUnit.Text = "";
             txtToUnit.Text = "";
             txtCnvfact.Text = "";
             txtPOFromUnitPrice.Text = "";
             txtPOToUnitPrice.Text = "";
-            //dtiPOPriEffDate.Value = DateTime.Now;
+            dtiPOPriEffDate.Value = DateTime.Now;
             txtSOFromUnitPrice.Text = "";
             txtSOToUnitPrice.Text = "";
-            //dtiSOPriEffDate.Value = DateTime.Now;
+            dtiSOPriEffDate.Value = DateTime.Now;
             txtPOUnit.Text = "";
             txtSOUnit.Text = "";
             txtINUnit.Text = "";
@@ -561,8 +536,7 @@ namespace IN106
             txtProductID.Text = "";
             txtProductID.Enabled = false;
             txtProductID.Focus();
-            //txtLUpd_User.Text = "";
-            txtCrtd_Prog.Text = strPro;
+            txtCrtd_Prog.Text = _strPro;
             txtCrtd_User.Text = Globals.PTUserName;
             dtiCrtd_DateTime.Value = DateTime.Now;
         }
@@ -571,33 +545,57 @@ namespace IN106
             INProduct info = new INProduct();
             info.ProductID = txtProductID.Text.Trim();
             info.Descr = txtDesc.Text.Trim();
-            info.ClassID1 = txtClassID1.Text.Trim();            
+            info.ClassID1 = txtClassID1.Text.Trim();
             info.ClassID2 = txtClassID2.Text.Trim();
             info.VendID = txtVendID.Text.Trim();
-            info.Status = cbxStatus.Text.Trim();
-            info.FromUnit = txtFromUnit.SelectedValue.ToString();
-            info.ToUnit = txtToUnit.SelectedValue.ToString();
+            if (chkStatus.Checked == true)
+                info.Status = "1";
+            else
+                info.Status = "0";
+
+            if (txtFromUnit.SelectedValue == null)
+                info.FromUnit = "";
+            else
+                info.FromUnit = txtFromUnit.SelectedValue.ToString();
+            if (txtToUnit.SelectedValue == null)
+                info.ToUnit = "";
+            else
+                info.ToUnit = txtToUnit.SelectedValue.ToString();
+
             if (txtCnvfact.Text.Trim() != "")
                 info.Cnvfact = double.Parse(txtCnvfact.Text.Trim());
             if (txtPOFromUnitPrice.Text.Trim() != "")
-                info.POFromUnitPrice = double.Parse(txtPOFromUnitPrice.Text.Trim());            
+                info.POFromUnitPrice = double.Parse(txtPOFromUnitPrice.Text.Trim());
             if (txtPOToUnitPrice.Text.Trim() != "")
-                info.POToUnitPrice =  double.Parse(txtPOToUnitPrice.Text.Trim());                
+                info.POToUnitPrice = double.Parse(txtPOToUnitPrice.Text.Trim());
             if (txtSOFromUnitPrice.Text.Trim() != "")
-                info.SOFromUnitPrice =  double.Parse(txtSOFromUnitPrice.Text.Trim());            
+                info.SOFromUnitPrice = double.Parse(txtSOFromUnitPrice.Text.Trim());
             if (txtSOToUnitPrice.Text.Trim() != "")
-                info.SOToUnitPrice =  double.Parse(txtSOToUnitPrice.Text.Trim());
+                info.SOToUnitPrice = double.Parse(txtSOToUnitPrice.Text.Trim());
             info.POPriEffDate = dtiPOPriEffDate.Value;
             info.SOPriEffDate = dtiSOPriEffDate.Value;
-            info.POUnit = txtPOUnit.SelectedValue.ToString();
-            info.SOUnit = txtSOUnit.SelectedValue.ToString();
-            info.INUnit = txtINUnit.SelectedValue.ToString();
+
+            if (txtPOUnit.SelectedValue == null)
+                info.POUnit = "";
+            else
+                info.POUnit = txtPOUnit.SelectedValue.ToString();
+            if (txtSOUnit.SelectedValue == null)
+                info.SOUnit = "";
+            else
+                info.SOUnit = txtSOUnit.SelectedValue.ToString();
+            if (txtINUnit.SelectedValue == null)
+                info.INUnit = "";
+            else
+                info.INUnit = txtINUnit.SelectedValue.ToString();
+            if (txtDfltWhID.SelectedValue == null)
+                info.DfltWhID = "";
+            else
+                info.DfltWhID = txtDfltWhID.SelectedValue.ToString();
             info.Color = txtColor.Text.Trim();
-            info.DfltWhID = txtDfltWhID.SelectedValue.ToString();
             info.Picture = txtPicture.Text.Trim();
             info.Size = txtSize.Text.Trim();
             if (txtVolume.Text.Trim() != "")
-                info.Volume =  double.Parse(txtVolume.Text.Trim());
+                info.Volume = double.Parse(txtVolume.Text.Trim());
             if (txtWeight.Text.Trim() != "")
                 info.Weight = double.Parse(txtWeight.Text.Trim());
             info.Style = txtStyle.Text.Trim();
@@ -606,7 +604,7 @@ namespace IN106
             info.Crtd_Prog = txtCrtd_Prog.Text.Trim();
             info.Crtd_User = txtCrtd_User.Text.Trim();
             info.LUpd_DateTime = DateTime.Now;
-            info.LUpd_Prog = strPro;
+            info.LUpd_Prog = _strPro;
             info.LUpd_User = Globals.PTUserName;
             return info;
         }
@@ -616,7 +614,7 @@ namespace IN106
             if (IN106Ctrl.CheckProductUsed(_id) == true)
             {
                 //MessageBox.Show("Sản phẩm này đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Utility.MessageShow("006",Globals.PTLanguage, "AG001");
+                Utility.MessageShow("006", Globals.PTLanguage, "AG001");
                 return;
             }
             IN106Ctrl.DeleteProduct(_id);
@@ -714,63 +712,68 @@ namespace IN106
         }
         private bool _CheckNotNull()
         {
-            INProduct info = _GetPanel();           
+            INProduct info = _GetPanel();
             if (info.ProductID == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtProductID.Focus();
                 return false;
-            }else if (info.Descr == "")
+            }
+            else if (info.Descr == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtDesc.Focus();
                 return false;
-            }else if (info.ClassID2== "")
-            {
-                MessageBox.Show("Khong duoc rong", "thong bao");
-                txtClassID2.Focus();
-                return false;
-            }else if (info.VendID == "")
-            {
-                MessageBox.Show("Khong duoc rong", "thong bao");
-                txtVendID.Focus();
-                return false;
-            }else if (info.Status == "")
-            {
-                MessageBox.Show("Khong duoc rong", "thong bao");
-                cbxStatus.Focus();
-                return false;
-            }else if (info.Cnvfact.ToString() == "")
+            }
+            else if (info.Cnvfact.ToString() == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtCnvfact.Focus();
                 return false;
-            }else if (info.FromUnit == "")
+            }
+            else if (info.FromUnit == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtFromUnit.Focus();
                 return false;
-            }else if (info.ToUnit == "")
+            }
+            else if (info.ToUnit == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtToUnit.Focus();
                 return false;
-            }else if (info.POUnit == "")
+            }
+            else if (info.POUnit == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtPOUnit.Focus();
                 return false;
-            }else if (info.SOUnit == "")
+            }
+            else if (info.ClassID2 == "")
+            {
+                MessageBox.Show("Khong duoc rong", "thong bao");
+                txtClassID2.Focus();
+                return false;
+            }
+            else if (info.VendID == "")
+            {
+                MessageBox.Show("Khong duoc rong", "thong bao");
+                txtVendID.Focus();
+                return false;
+            }
+            else if (info.SOUnit == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtSOUnit.Focus();
                 return false;
-            }else if (info.DfltWhID == "")
+            }
+            else if (info.DfltWhID == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtDfltWhID.Focus();
                 return false;
-            }else if (info.TaxID == "")
+            }
+            else if (info.TaxID == "")
             {
                 MessageBox.Show("Khong duoc rong", "thong bao");
                 txtTaxID.Focus();
@@ -782,12 +785,75 @@ namespace IN106
         {
             foreach (Control ctrl in pnl.Controls)
             {
-                int textleng = ctrl.Name.Length;
-                string label = ctrl.Name.Substring(0,3);
-                string text = ctrl.Name.Substring(3,textleng - 3);
+                string label = ctrl.Name.Substring(0, 3);
                 if (label == "lbl")
-                   ctrl.Text = Utility.ChangeLanguage(text,Globals.PTLanguage);
+                    ctrl.Text = Utility.ChangeLanguage(ctrl.Text.Trim(), Globals.PTLanguage);
             }
         }
+        private void _BindUnit()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Unit", typeof(string));
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("Unit", typeof(string));
+            DataTable dt3 = new DataTable();
+            dt3.Columns.Add("Unit", typeof(string));
+            if (txtFromUnit.SelectedValue != null)
+            {
+                dt.Rows.Add(new object[] { txtFromUnit.SelectedValue.ToString() });
+                dt2.Rows.Add(new object[] { txtFromUnit.SelectedValue.ToString() });
+                dt3.Rows.Add(new object[] { txtFromUnit.SelectedValue.ToString() });
+            }
+            if (txtToUnit.SelectedValue != null)
+            {
+                dt.Rows.Add(new object[] { txtToUnit.SelectedValue.ToString() });
+                dt2.Rows.Add(new object[] { txtToUnit.SelectedValue.ToString() });
+                dt3.Rows.Add(new object[] { txtToUnit.SelectedValue.ToString() });
+            }
+            txtPOUnit.DataSource = dt;
+            txtPOUnit.DisplayMember = "Unit";
+            txtPOUnit.ValueMember = "Unit";
+            txtPOUnit.ColumnWidths = "150,150";
+            txtPOUnit.AutoComplete = true;
+            txtPOUnit.SelectedIndex = -1;
+
+            txtSOUnit.DataSource = dt2;
+            txtSOUnit.DisplayMember = "Unit";
+            txtSOUnit.ValueMember = "Unit";
+            txtSOUnit.ColumnWidths = "150,150";
+            txtSOUnit.AutoComplete = true;
+            txtSOUnit.SelectedIndex = -1;
+
+            txtINUnit.DataSource = dt3;
+            txtINUnit.DisplayMember = "Unit";
+            txtINUnit.ValueMember = "Unit";
+            txtINUnit.ColumnWidths = "150,150";
+            txtINUnit.AutoComplete = true;
+            txtINUnit.SelectedIndex = -1;
+        }
+        private void _BindVenIDSeach()
+        {
+            _dtAPVendor = IN106Ctrl.GetAPVendor();
+            string[] selectedColumsVendID = new[] { "VendID" };
+            DataTable dtselectedColumsVendID =
+               new DataView(_dtAPVendor).ToTable(false, selectedColumsVendID);
+            dtselectedColumsVendID.Rows.Add(new object[] {"All"});
+            cbxVendIdSearch.DataSource = dtselectedColumsVendID;
+            cbxVendIdSearch.DisplayMember = "VendID";
+            cbxVendIdSearch.ValueMember = "VendID";
+            cbxVendIdSearch.SelectedValue = "All";
+
+        }
+        private void _Search()
+        {
+            string sql="";
+            if (cbxVendIdSearch.SelectedValue != "All")
+                sql = string.Format(" VendID like '%{0}%' AND ClassID1 like '%{1}%' AND ClassID2 like '%{2}%' AND Descr like '%{3}%'", cbxVendIdSearch.SelectedValue, txtClassID1Search.Text.Trim(), txtClassID2Search.Text.Trim(), txtProductNameSearch.Text.Trim());                
+            else
+                sql = string.Format(" ClassID1 like '%{0}%' AND ClassID2 like '%{1}%' AND Descr like '%{2}%'", txtClassID1Search.Text.Trim(), txtClassID2Search.Text.Trim(), txtProductNameSearch.Text.Trim());                
+            
+            ((DataTable)dgv.DataSource).DefaultView.RowFilter = sql;            
+        }
+        
     }
 }
