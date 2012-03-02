@@ -132,9 +132,16 @@ namespace PT.Component
                 return this.allowSpace;
             }
         }
-        public string Number
+        public double Number
         {
-            get { return Text.Replace(",", null); }
+            get
+            {
+                if (Text == "")
+                    return 0;
+                double db;
+                db = double.Parse(Text);
+                return db;
+            }
         }
         public double doubles
         {
