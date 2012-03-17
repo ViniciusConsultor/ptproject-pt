@@ -1,0 +1,10 @@
+hs2RW5be7kG5
+
+them excute tra ve gia tri trong prod (ghi chu cach su dung trong ConnectDB)
+dua getall
+test in202 
+viet tiep qui trinh cong no mua hang
+tim hieu search 1 cell(ung voi 1 table) tren luoi
+
+
+
