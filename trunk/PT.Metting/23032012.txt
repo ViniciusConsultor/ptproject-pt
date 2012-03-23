@@ -1,0 +1,4 @@
+viet IN202 (Chuyen kho - tuong tu IN201)
+lay gia tri cua dialogbox (truong hop huy)
+them Acct vao APDoc, AADoc
+Them CheckAll vao APDoc,AADoc
