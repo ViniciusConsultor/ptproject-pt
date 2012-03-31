@@ -14,8 +14,8 @@ namespace PT.Master
     {
         private int _EndCell;
         private string _strPro;
-        public bool _IsChange=false;
-        private string _strCell="";
+        public bool _IsChange = false;
+        private string _strCell = "";
         public Grid()
         {
             InitializeComponent();
@@ -31,11 +31,11 @@ namespace PT.Master
             {
                 dgv.Columns[0].ReadOnly = true;
             }
-           
+
         }
 
         private void dgv_DataSourceChanged(object sender, EventArgs e)
-        {           
+        {
             if (dgv.Rows.Count > 0)
             {
                 dgv.Columns[0].ReadOnly = true;
@@ -45,7 +45,7 @@ namespace PT.Master
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {            
+        {
             ((DataTable)dgv.DataSource).Rows.Add("");
             dgv.CurrentCell = dgv.Rows[dgv.Rows.Count - 1].Cells[0];
             dgv.CurrentCell.ReadOnly = false;
@@ -65,21 +65,19 @@ namespace PT.Master
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-        
+            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            
             if (dgv.Rows.Count > 0)
-            {            
+            {
                 btnDelete.Enabled = true;
                 btnSave.Enabled = true;
             }
         }
 
-        
+
 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
@@ -108,17 +106,20 @@ namespace PT.Master
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {            
-            string _strCrtUser = dgv.Rows[e.RowIndex].Cells["Crtd_User"].FormattedValue.ToString();
-            string _strMdfUser = dgv.Rows[e.RowIndex].Cells["LUpd_User"].FormattedValue.ToString();
-            string _strCrtTime = dgv.Rows[e.RowIndex].Cells["Crtd_DateTime"].FormattedValue.ToString();
-            string _strMdfTime = dgv.Rows[e.RowIndex].Cells["LUpd_DateTime"].FormattedValue.ToString();
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex > -1)
+            {
+                string _strCrtUser = dgv.Rows[e.RowIndex].Cells["Crtd_User"].FormattedValue.ToString();
+                string _strMdfUser = dgv.Rows[e.RowIndex].Cells["LUpd_User"].FormattedValue.ToString();
+                string _strCrtTime = dgv.Rows[e.RowIndex].Cells["Crtd_DateTime"].FormattedValue.ToString();
+                string _strMdfTime = dgv.Rows[e.RowIndex].Cells["LUpd_DateTime"].FormattedValue.ToString();
 
-            txtCrtUser.Text = " by "+ _strCrtUser;
-            txtMdfUser.Text = " by "+ _strMdfUser;
-            txtCrtTime.Text = "Created at "+_strCrtTime;
-            txtMdfTime.Text = "Modified at "+_strMdfTime;
-            
+                txtCrtUser.Text = " by " + _strCrtUser;
+                txtMdfUser.Text = " by " + _strMdfUser;
+                txtCrtTime.Text = "Created at " + _strCrtTime;
+                txtMdfTime.Text = "Modified at " + _strMdfTime;
+            }
+
         }
 
         private void dgv_KeyDown(object sender, KeyEventArgs e)
@@ -177,7 +178,7 @@ namespace PT.Master
             }
         }
 
-       
-        
+
+
     }
 }

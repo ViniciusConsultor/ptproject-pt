@@ -26,13 +26,10 @@ namespace PT.Master
 
         }
 
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ((DataTable)dgv1.DataSource).Rows.Add("");
-            dgv1.CurrentCell = dgv1.Rows[dgv1.Rows.Count - 1].Cells[1];
-            dgv1.CurrentCell.ReadOnly = false;
-            btnDelete.Enabled = false;
-            btnSave.Enabled = true;
+
         }
 
         private void GridEdit2_Load(object sender, EventArgs e)
@@ -53,16 +50,32 @@ namespace PT.Master
         }
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
-            int _endcell = dgv1.EndCell;
-            if (_endcell == 0)
-                _endcell = dgv1.Rows.Count - 1;
+            //if (msg.WParam.ToInt32() == (int)Keys.Enter)
+            //{
+            //    SendKeys.Send("{tab}");
+            //    return true;
+            //}
+
+            int _endcell1 = dgv1.EndCell;
+            int _endcell2 = dgv2.EndCell;
+
+            if (_endcell1 == 0)
+                _endcell1 = dgv1.Rows.Count - 1;
+            if (_endcell2 == 0)
+                _endcell2 = dgv2.Rows.Count - 1;
             if (msg.WParam.ToInt32() == (int)Keys.Tab)
             {
-                if (dgv1.CurrentCell == dgv1.Rows[dgv1.Rows.Count - 1].Cells[_endcell])
+                if (dgv1.CurrentCell == dgv1.Rows[dgv1.Rows.Count - 1].Cells[_endcell1])
                 {
                     btnAdd.RaiseClick();
                     return true;
                 }
+                if (dgv2.Rows.Count > 0)
+                    if (dgv2.CurrentCell == dgv2.Rows[dgv2.Rows.Count - 1].Cells[_endcell2])
+                    {
+                        btnAdd.RaiseClick();
+                        return true;
+                    }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -146,10 +159,26 @@ namespace PT.Master
             btnRefresh.RaiseClick();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
 
+        private void dgv2_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dgv1.Rows.Count > 0)
+            {
+                dgv1.Columns[0].ReadOnly = true;
+                btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
         }
-      
+
+        private void dgv2_DataSourceChanged(object sender, EventArgs e)
+        {
+            if (dgv1.Rows.Count > 0)
+            {
+                dgv1.Columns[0].ReadOnly = true;
+                btnDelete.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
     }
 }
