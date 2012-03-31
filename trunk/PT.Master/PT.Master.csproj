@@ -72,6 +72,24 @@
     <Compile Include="GridEdit.Designer.cs">
       <DependentUpon>GridEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridEdit2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridEdit2.Designer.cs">
+      <DependentUpon>GridEdit2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridEditIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridEditIn.Designer.cs">
+      <DependentUpon>GridEditIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GridEditInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridEditInput.Designer.cs">
+      <DependentUpon>GridEditInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -82,6 +100,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GridEdit.resx">
       <DependentUpon>GridEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridEdit2.resx">
+      <DependentUpon>GridEdit2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridEditIn.resx">
+      <DependentUpon>GridEditIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridEditInput.resx">
+      <DependentUpon>GridEditInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
