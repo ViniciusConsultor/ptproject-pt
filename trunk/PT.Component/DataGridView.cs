@@ -53,13 +53,7 @@ namespace PT.Component
             base.OnRowsAdded(e);
             _AutoNumberForGrid();
         }
-        
-        protected override void OnCellEnter(DataGridViewCellEventArgs e)
-        {
-           
-            base.OnCellEnter(e);            
-        }
-
+                
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
             if(msg.WParam.ToInt32() == (int) Keys.Enter)
