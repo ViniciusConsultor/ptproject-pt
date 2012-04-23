@@ -23,7 +23,6 @@ namespace PT.DataInfo
         private bool _Bool3;
         private string _UserID;
         private string _AppPath;
-
         public int RPID { get { return _RPID; } set { _RPID = value; } }
         public string ScreenID { get { return _ScreenID; } set { _ScreenID = value; } }
         public string ClientName { get { return _ClientName; } set { _ClientName = value; } }
@@ -40,7 +39,6 @@ namespace PT.DataInfo
         public bool Bool3 { get { return _Bool3; } set { _Bool3 = value; } }
         public string UserID { get { return _UserID; } set { _UserID = value; } }
         public string AppPath { get { return _AppPath; } set { _AppPath = value; } }
-
 
     }
 }

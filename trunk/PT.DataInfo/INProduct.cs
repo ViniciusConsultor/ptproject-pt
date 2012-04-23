@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -41,8 +42,10 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
 
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string ProductID { get { return _ProductID; } set { _ProductID = value; } }
         public string Descr { get { return _Descr; } set { _Descr = value; } }
         public string ClassID2 { get { return _ClassID2; } set { _ClassID2 = value; } }
@@ -78,7 +81,42 @@ namespace PT.DataInfo
         public string LUpd_Prog { get { return _LUpd_Prog; } set { _LUpd_Prog = value; } }
         public string LUpd_User { get { return _LUpd_User; } set { _LUpd_User = value; } }
         #endregion
-
-
+        public void ConvertToINProduct(DataRow dr)
+        {
+            _ProductID = dr["ProductID"].ToString().Trim();
+            _Descr = dr["Descr"].ToString().Trim();
+            _ClassID2 = dr["ClassID2"].ToString().Trim();
+            _ClassID1 = dr["ClassID1"].ToString().Trim();
+            _VendID = dr["VendID"].ToString().Trim();
+            _Status = dr["Status"].ToString().Trim();
+            _FromUnit = dr["FromUnit"].ToString().Trim();
+            _ToUnit = dr["ToUnit"].ToString().Trim();
+            _Cnvfact = double.Parse(dr["Cnvfact"].ToString().Trim());
+            _POFromUnitPrice = double.Parse(dr["POFromUnitPrice"].ToString().Trim());
+            _POToUnitPrice = double.Parse(dr["POToUnitPrice"].ToString().Trim());
+            _POPriEffDate = DateTime.Parse(dr["POPriEffDate"].ToString().Trim());
+            _SOFromUnitPrice = double.Parse(dr["SOFromUnitPrice"].ToString().Trim());
+            _SOToUnitPrice = double.Parse(dr["SOToUnitPrice"].ToString().Trim());
+            _SOPriEffDate = DateTime.Parse(dr["SOPriEffDate"].ToString().Trim());
+            _POUnit = dr["POUnit"].ToString().Trim();
+            _SOUnit = dr["SOUnit"].ToString().Trim();
+            _INUnit = dr["INUnit"].ToString().Trim();
+            _Color = dr["Color"].ToString().Trim();
+            _DfltWhID = dr["DfltWhID"].ToString().Trim();
+            _Picture = dr["Picture"].ToString().Trim();
+            _PriceClassID = dr["PriceClassID"].ToString().Trim();
+            _Size = dr["Size"].ToString().Trim();
+            _Volume = double.Parse(dr["Volume"].ToString().Trim());
+            _Weight = double.Parse(dr["Weight"].ToString().Trim());
+            _Style = dr["Style"].ToString().Trim();
+            _TaxID = dr["TaxID"].ToString().Trim();
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();         
+        }
     }
 }
