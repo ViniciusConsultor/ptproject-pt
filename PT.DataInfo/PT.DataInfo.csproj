@@ -48,14 +48,9 @@
     <Compile Include="APAdjust.cs" />
     <Compile Include="APAdjustDet.cs" />
     <Compile Include="APDoc.cs" />
-    <Compile Include="APVendor.cs" />
-    <Compile Include="AP_Vendor.cs" />
     <Compile Include="ARAdjust.cs" />
     <Compile Include="ARAdjustDet.cs" />
-    <Compile Include="ARCustomer.cs" />
     <Compile Include="ARDoc.cs" />
-    <Compile Include="ARStaff.cs" />
-    <Compile Include="Batch.cs" />
     <Compile Include="CAAccount.cs" />
     <Compile Include="CADoc.cs" />
     <Compile Include="CADocDet.cs" />
@@ -69,13 +64,7 @@
     <Compile Include="INReason.cs" />
     <Compile Include="INUnit.cs" />
     <Compile Include="INWarehouse.cs" />
-    <Compile Include="IN_Product.cs" />
-    <Compile Include="IN_ProductClass.cs" />
-    <Compile Include="IN_ProductStatus.cs" />
-    <Compile Include="IN_Reason.cs" />
-    <Compile Include="IN_Trans.cs" />
-    <Compile Include="IN_Unit.cs" />
-    <Compile Include="IN_Warehouse.cs" />
+    <Compile Include="INTrans.cs" />
     <Compile Include="POOrder.cs" />
     <Compile Include="POOrderDet.cs" />
     <Compile Include="POPrice.cs" />
@@ -88,6 +77,8 @@
     <Compile Include="SASetup.cs" />
     <Compile Include="SAUser.cs" />
     <Compile Include="SIBranch.cs" />
+    <Compile Include="SIObject.cs" />
+    <Compile Include="SITax.cs" />
     <Compile Include="SOOrder.cs" />
     <Compile Include="SOOrderDet.cs" />
   </ItemGroup>

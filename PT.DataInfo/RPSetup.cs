@@ -24,8 +24,7 @@ namespace PT.DataInfo
         private string _Bool2;
         private string _Bool3;
         private string _List;
-        private string _ListPro;
-
+        private string _ListPro;        
         public string ScreenID { get { return _ScreenID; } set { _ScreenID = value; } }
         public int RPID { get { return _RPID; } set { _RPID = value; } }
         public string ReportName { get { return _ReportName; } set { _ReportName = value; } }

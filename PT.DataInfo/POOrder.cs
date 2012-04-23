@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -39,8 +41,10 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
 
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string BranchID { get { return _BranchID; } set { _BranchID = value; } }
         public string PONbr { get { return _PONbr; } set { _PONbr = value; } }
         public string POType { get { return _POType; } set { _POType = value; } }
@@ -65,8 +69,6 @@ namespace PT.DataInfo
         public string TimeLmtID { get { return _TimeLmtID; } set { _TimeLmtID = value; } }
         public DateTime DueDate { get { return _DueDate; } set { _DueDate = value; } }
         public string Note { get { return _Note; } set { _Note = value; } }
-
-
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
         public string Crtd_Prog { get { return _Crtd_Prog; } set { _Crtd_Prog = value; } }
@@ -75,5 +77,39 @@ namespace PT.DataInfo
         public string LUpd_Prog { get { return _LUpd_Prog; } set { _LUpd_Prog = value; } }
         public string LUpd_User { get { return _LUpd_User; } set { _LUpd_User = value; } }
         #endregion
+        public void ConvertToPOOrder(DataRow dr)
+        {
+            _BranchID = dr["BranchID"].ToString().Trim();
+            _PONbr = dr["PONbr"].ToString().Trim();
+            _POType = dr["POType"].ToString().Trim();
+            _PODate = DateTime.Parse(dr["PODate"].ToString().Trim());
+            _Status = dr["Status"].ToString().Trim();
+            _INDocDate = DateTime.Parse(dr["INDocDate"].ToString().Trim());
+            _APDocDate = DateTime.Parse(dr["APDocDate"].ToString().Trim());
+            _InvcNbr = dr["InvcNbr"].ToString().Trim();
+            _InvcNote = dr["InvcNote"].ToString().Trim();
+            _INDocNbr = dr["INDocNbr"].ToString().Trim();
+            _APDocNbr = dr["APDocNbr"].ToString().Trim();
+            _VendID = dr["VendID"].ToString().Trim();
+            _PODescr = dr["PODescr"].ToString().Trim();
+            _PODiscAmt = double.Parse(dr["PODiscAmt"].ToString().Trim());
+            _PODiscAmtPct = double.Parse(dr["PODiscAmtPct"].ToString().Trim());
+            _PreTaxAmt = double.Parse(dr["PreTaxAmt"].ToString().Trim());
+            _TaxAmt = double.Parse(dr["TaxAmt"].ToString().Trim());
+            _POAmt = double.Parse(dr["POAmt"].ToString().Trim());
+            _POQty = double.Parse(dr["POQty"].ToString().Trim());
+            _POWeight = double.Parse(dr["POWeight"].ToString().Trim());
+            _POVolume = double.Parse(dr["POVolume"].ToString().Trim());
+            _TimeLmtID = dr["TimeLmtID"].ToString().Trim();
+            _DueDate = DateTime.Parse(dr["DueDate"].ToString().Trim());
+            _Note = dr["Note"].ToString().Trim();
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();
+        }
     }
 }

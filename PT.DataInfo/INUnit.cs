@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -16,8 +17,10 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
 
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string Unit { get { return _Unit; } set { _Unit = value; } }
         #region Pro+Date
         public DateTime Crtd_DateTime { get { return _Crtd_DateTime; } set { _Crtd_DateTime = value; } }
@@ -29,14 +32,15 @@ namespace PT.DataInfo
         #endregion
         public void ConvertToUnit(DataRow dr)
         {
-                _Unit = dr["Unit"].ToString().Trim();
-                _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
-                _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
-                _Crtd_User = dr["Crtd_User"].ToString().Trim();
-                _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
-                _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
-                _LUpd_User = dr["LUpd_User"].ToString().Trim();
-            
+            _Unit = dr["Unit"].ToString().Trim();
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();
+
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -22,8 +23,9 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
-
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string BranchID { get { return _BranchID; } set { _BranchID = value; } }
         public string AdjNbr { get { return _AdjNbr; } set { _AdjNbr = value; } }
         public DateTime AdjDate { get { return _AdjDate; } set { _AdjDate = value; } }
@@ -40,5 +42,23 @@ namespace PT.DataInfo
         public string LUpd_Prog { get { return _LUpd_Prog; } set { _LUpd_Prog = value; } }
         public string LUpd_User { get { return _LUpd_User; } set { _LUpd_User = value; } }
         #endregion
+        public void ConvertToARAdjust(DataRow dr)
+        {
+            _BranchID = dr["BranchID"].ToString().Trim();
+            _AdjNbr = dr["AdjNbr"].ToString().Trim();
+            _AdjDate = DateTime.Parse(dr["AdjDate"].ToString().Trim());
+            _AdjDesc = dr["AdjDesc"].ToString().Trim();
+            _AdjAcct = dr["AdjAcct"].ToString().Trim();
+            _AdjAmt = double.Parse(dr["AdjAmt"].ToString().Trim());
+            _Rlsed = Int32.Parse(dr["Rlsed"].ToString().Trim());
+            _Note = dr["Note"].ToString().Trim();
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog "].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();
+        }
     }
 }

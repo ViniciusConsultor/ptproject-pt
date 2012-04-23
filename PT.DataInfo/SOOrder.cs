@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -45,8 +46,10 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
 
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string BranchID { get { return _BranchID; } set { _BranchID = value; } }
         public string SONbr { get { return _SONbr; } set { _SONbr = value; } }
         public string Status { get { return _Status; } set { _Status = value; } }
@@ -86,5 +89,46 @@ namespace PT.DataInfo
         public string LUpd_Prog { get { return _LUpd_Prog; } set { _LUpd_Prog = value; } }
         public string LUpd_User { get { return _LUpd_User; } set { _LUpd_User = value; } }
         #endregion
+        public void ConvertToSOOrder(DataRow dr)
+        {
+            _BranchID = dr["BranchID"].ToString().Trim();
+            _SONbr = dr["SONbr"].ToString().Trim();
+            _Status = dr["Status"].ToString().Trim();
+            _SODate = DateTime.Parse(dr["SODate"].ToString().Trim());
+            _SOType = dr["SOType"].ToString().Trim();
+            _SODesc = dr["SODesc"].ToString().Trim();
+            _ARDocNbr = dr["ARDocNbr"].ToString().Trim();
+            _ARDocDate = DateTime.Parse(dr["ARDocDate"].ToString().Trim());
+            _INDocNbr = dr["INDocNbr"].ToString().Trim();
+            _INDocDate = DateTime.Parse(dr["INDocDate"].ToString().Trim());
+            _CustID = dr["CustID"].ToString().Trim();
+            _RcptPerson = dr["RcptPerson"].ToString().Trim();
+            _SOAddr1 = dr["SOAddr1"].ToString().Trim();
+            _SOAdrr2 = dr["SOAdrr2"].ToString().Trim();
+            _ShipDate = DateTime.Parse(dr["ShipDate"].ToString().Trim());
+            _ShipperID = dr["ShipperID"].ToString().Trim();
+            _SlsPerID = dr["SlsPerID"].ToString().Trim();
+            _InvcNbr = dr["InvcNbr"].ToString().Trim();
+            _InvcNote = dr["InvcNote"].ToString().Trim();
+            _SODiscAmt = double.Parse(dr["SODiscAmt"].ToString().Trim());
+            _SODiscAmtPct = double.Parse(dr["SODiscAmtPct"].ToString().Trim());
+            _SOPreTaxAmt = double.Parse(dr["SOPreTaxAmt"].ToString().Trim());
+            _SOTaxAmt = double.Parse(dr["SOTaxAmt"].ToString().Trim());
+            _SOAmt = double.Parse(dr["SOAmt"].ToString().Trim());
+            _SOQty = double.Parse(dr["SOQty"].ToString().Trim());
+            _SOWeight = double.Parse(dr["SOWeight"].ToString().Trim());
+            _Reason = dr["Reason"].ToString().Trim();
+            _Note = dr["Note"].ToString().Trim();
+            _SOOldNbr = dr["SOOldNbr"].ToString().Trim();
+            _TimeLmtID = dr["TimeLmtID"].ToString().Trim();
+            _DueDate = DateTime.Parse(dr["DueDate"].ToString().Trim());
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();
+        }
     }
 }

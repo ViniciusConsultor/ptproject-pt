@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace PT.DataInfo
 {
@@ -24,8 +25,10 @@ namespace PT.DataInfo
         private DateTime _LUpd_DateTime;
         private string _LUpd_Prog;
         private string _LUpd_User;
+        private string _Version;
         #endregion
 
+        public string Version { get { return _Version; } set { _Version = value; } }
         public string ProductID { get { return _ProductID; } set { _ProductID = value; } }
         public string WhID { get { return _WhID; } set { _WhID = value; } }
         public string LotID { get { return _LotID; } set { _LotID = value; } }
@@ -44,6 +47,25 @@ namespace PT.DataInfo
         public string LUpd_Prog { get { return _LUpd_Prog; } set { _LUpd_Prog = value; } }
         public string LUpd_User { get { return _LUpd_User; } set { _LUpd_User = value; } }
         #endregion
-
+        public void ConvertToINProductStatus(DataRow dr)
+        {
+            _ProductID = dr["ProductID"].ToString().Trim();
+            _WhID = dr["WhID"].ToString().Trim();
+            _LotID = dr["LotID"].ToString().Trim();
+            _AvgCost = double.Parse(dr["AvgCost"].ToString().Trim());
+            _TotalCost = double.Parse(dr["TotalCost"].ToString().Trim());
+            _QtyOnHand = double.Parse(dr["QtyOnHand"].ToString().Trim());
+            _QtyOnPO = double.Parse(dr["QtyOnPO"].ToString().Trim());
+            _QtyOnSO = double.Parse(dr["QtyOnSO"].ToString().Trim());
+            _QtyOnIN = double.Parse(dr["QtyOnIN"].ToString().Trim());
+            _QtyAvail = double.Parse(dr["QtyAvail"].ToString().Trim());
+            _Crtd_DateTime = DateTime.Parse(dr["Crtd_DateTime"].ToString().Trim());
+            _Crtd_Prog = dr["Crtd_Prog"].ToString().Trim();
+            _Crtd_User = dr["Crtd_User"].ToString().Trim();
+            _LUpd_DateTime = DateTime.Parse(dr["LUpd_DateTime"].ToString().Trim());
+            _LUpd_Prog = dr["LUpd_Prog"].ToString().Trim();
+            _LUpd_User = dr["LUpd_User"].ToString().Trim();
+            _Version = dr["Version"].ToString().Trim();
+        }
     }
 }
