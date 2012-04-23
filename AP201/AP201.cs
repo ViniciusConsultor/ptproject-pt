@@ -18,7 +18,7 @@ namespace AP201
 {
     public partial class AP201 : PT.Master.GridEditIn
     {
-        public string _DocType = "GN";
+        public string _DocType = "TN";
         private string _strPro = "AP201";
         private string _strUser = PT.Helper.Globals.PTUserName;
         private DataTable _dtAPDoc = new DataTable();
@@ -220,7 +220,8 @@ namespace AP201
             _info.LUpd_DateTime = DateTime.Now;
             _info.LUpd_Prog = _strPro;
             _info.LUpd_User = _strUser;
-            //_info.Version = "";
+            if (_info.Version == null)
+                _info.Version = "";
             return _info;
         }
         private bool _CheckValid()
@@ -381,7 +382,12 @@ namespace AP201
 
                 int kq = _SaveAPDoc(0);
                 if (kq != 0)
+                {
+                    APDoc tmp = new APDoc();
+                    tmp.ConvertToAPDoc( AP201Ctrl.GetAPDoc(_info.BranchID, _info.DocNbr).Rows[0]);
+                    _info = tmp;
                     _SetButtomStatus();
+                }
             }
             
         }

@@ -49,6 +49,12 @@ namespace AP201
                 new String[] { "Module", "FistChar", "LastNbr" },
                 new Object[] { info.Module, info.FistChar, info.LastNbr });
         }
+        public static DataTable GetAPDoc(string BranchID, string DocNbr)
+        {
+            return ConnectDB.ExecuteReader("sp_APDocGetVersion",
+                new String[] { "BranchID", "DocNbr" },
+                new Object[] { BranchID,DocNbr });
+        }
         public static int SaveAPDoc(APDoc info)
         {
             int kq = ConnectDB.ExecuteScalar("sp_APDocSave",
