@@ -16,7 +16,7 @@ namespace PT.Component
 
         protected override void OnBindingContextChanged(EventArgs e)
         {
-            TextAlign = HorizontalAlignment.Right;            
+            //TextAlign = HorizontalAlignment.Right;            
             base.OnBindingContextChanged(e);
         }
         protected override void OnKeyDown(KeyEventArgs e)
@@ -34,11 +34,12 @@ namespace PT.Component
             {
                 if (Double.TryParse(Text, out Num))
                 {
-                    Text = String.Format("{0:#,###.###}", Num);
+                    //Text = String.Format("{0:#,###.###}", Num);
+                    Text = String.Format("{0:#,##0.###}", Num);
                     this.Text = Text;
                 }
             }
-            this.SelectionStart = Text.Length;            
+            this.SelectionStart = Text.Length;
         }
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
