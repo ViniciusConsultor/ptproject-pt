@@ -35,10 +35,10 @@
             this.labelX8 = new PT.Component.NormalLabel();
             this.labelX4 = new PT.Component.NormalLabel();
             this.labelX9 = new PT.Component.NormalLabel();
-            this.lblBranchID = new PT.Component.NormalLabel();
+            this.label21 = new PT.Component.NormalLabel();
             this.labelX5 = new PT.Component.NormalLabel();
             this.txtVendID = new PT.Component.MultiDropDownTextBox(this.components);
-            this.VendID = new PT.Component.NormalLabel();
+            this.label20 = new PT.Component.NormalLabel();
             this.labelX2 = new PT.Component.NormalLabel();
             this.labelX7 = new PT.Component.NormalLabel();
             this.cmbTaxID = new PT.Component.MultiColumnComboBox();
@@ -69,7 +69,7 @@
             this.txtDocDescr = new PT.Component.NormalTextBox();
             this.cmbType = new PT.Component.NormalComboBox();
             this.cmbStatus = new PT.Component.NormalComboBox();
-            this.normalLabel1 = new PT.Component.NormalLabel();
+            this.label1 = new PT.Component.NormalLabel();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.pnldgv.SuspendLayout();
             this.pnl.SuspendLayout();
@@ -104,7 +104,7 @@
             // 
             // pnl
             // 
-            this.pnl.Controls.Add(this.normalLabel1);
+            this.pnl.Controls.Add(this.label1);
             this.pnl.Controls.Add(this.cmbStatus);
             this.pnl.Controls.Add(this.cmbType);
             this.pnl.Controls.Add(this.txtDocDescr);
@@ -122,7 +122,7 @@
             this.pnl.Controls.Add(this.labelX7);
             this.pnl.Controls.Add(this.cmbTaxID);
             this.pnl.Controls.Add(this.labelX2);
-            this.pnl.Controls.Add(this.VendID);
+            this.pnl.Controls.Add(this.label20);
             this.pnl.Controls.Add(this.txtVendID);
             this.pnl.Controls.Add(this.labelX1);
             this.pnl.Controls.Add(this.cmbDocAcct);
@@ -133,7 +133,7 @@
             this.pnl.Controls.Add(this.labelX8);
             this.pnl.Controls.Add(this.labelX4);
             this.pnl.Controls.Add(this.labelX9);
-            this.pnl.Controls.Add(this.lblBranchID);
+            this.pnl.Controls.Add(this.label21);
             this.pnl.Location = new System.Drawing.Point(12, 74);
             this.pnl.Size = new System.Drawing.Size(769, 422);
             this.pnl.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -276,6 +276,7 @@
             this.dtmDocDate.MonthCalendar.TodayButtonVisible = true;
             this.dtmDocDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dtmDocDate.Name = "dtmDocDate";
+            this.dtmDocDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtmDocDate.Size = new System.Drawing.Size(100, 20);
             this.dtmDocDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtmDocDate.TabIndex = 3;
@@ -319,18 +320,18 @@
             this.labelX9.TabIndex = 34;
             this.labelX9.Text = "DocDate";
             // 
-            // lblBranchID
+            // label21
             // 
             // 
             // 
             // 
-            this.lblBranchID.BackgroundStyle.Class = "";
-            this.lblBranchID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblBranchID.Location = new System.Drawing.Point(29, 11);
-            this.lblBranchID.Name = "lblBranchID";
-            this.lblBranchID.Size = new System.Drawing.Size(50, 15);
-            this.lblBranchID.TabIndex = 33;
-            this.lblBranchID.Text = "BranchID";
+            this.label21.BackgroundStyle.Class = "";
+            this.label21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.label21.Location = new System.Drawing.Point(29, 11);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(50, 15);
+            this.label21.TabIndex = 33;
+            this.label21.Text = "BranchID";
             // 
             // labelX5
             // 
@@ -367,18 +368,18 @@
             this.txtVendID.Size = new System.Drawing.Size(100, 20);
             this.txtVendID.TabIndex = 4;
             // 
-            // VendID
+            // label20
             // 
             // 
             // 
             // 
-            this.VendID.BackgroundStyle.Class = "";
-            this.VendID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.VendID.Location = new System.Drawing.Point(228, 71);
-            this.VendID.Name = "VendID";
-            this.VendID.Size = new System.Drawing.Size(50, 15);
-            this.VendID.TabIndex = 49;
-            this.VendID.Text = "VendID";
+            this.label20.BackgroundStyle.Class = "";
+            this.label20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.label20.Location = new System.Drawing.Point(228, 71);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 15);
+            this.label20.TabIndex = 49;
+            this.label20.Text = "VendID";
             // 
             // labelX2
             // 
@@ -473,6 +474,7 @@
             this.dtmDueDate.MonthCalendar.TodayButtonVisible = true;
             this.dtmDueDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.dtmDueDate.Name = "dtmDueDate";
+            this.dtmDueDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dtmDueDate.Size = new System.Drawing.Size(100, 20);
             this.dtmDueDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dtmDueDate.TabIndex = 6;
@@ -910,18 +912,18 @@
             this.cmbStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbStatus.TabIndex = 68;
             // 
-            // normalLabel1
+            // label1
             // 
             // 
             // 
             // 
-            this.normalLabel1.BackgroundStyle.Class = "";
-            this.normalLabel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.normalLabel1.Location = new System.Drawing.Point(427, 92);
-            this.normalLabel1.Name = "normalLabel1";
-            this.normalLabel1.Size = new System.Drawing.Size(53, 23);
-            this.normalLabel1.TabIndex = 72;
-            this.normalLabel1.Text = "InvcNote";
+            this.label1.BackgroundStyle.Class = "";
+            this.label1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.label1.Location = new System.Drawing.Point(427, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 23);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "InvcNote";
             // 
             // AP201
             // 
@@ -955,10 +957,10 @@
         private PT.Component.NormalLabel labelX8;
         private PT.Component.NormalLabel labelX4;
         private PT.Component.NormalLabel labelX9;
-        private PT.Component.NormalLabel lblBranchID;
+        private PT.Component.NormalLabel label21;
         private PT.Component.NormalLabel labelX5;
         private PT.Component.NormalLabel labelX2;
-        private PT.Component.NormalLabel VendID;
+        private PT.Component.NormalLabel label20;
         private PT.Component.MultiDropDownTextBox txtVendID;
         private PT.Component.NormalDateTimeInput dtmDueDate;
         private PT.Component.NormalLabel labelX10;
@@ -989,7 +991,7 @@
         private PT.Component.NormalTextBox txtDocNbr;
         private PT.Component.NormalComboBox cmbStatus;
         private PT.Component.NormalComboBox cmbType;
-        private PT.Component.NormalLabel normalLabel1;
+        private PT.Component.NormalLabel label1;
     }
 }
 
