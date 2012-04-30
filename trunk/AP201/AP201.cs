@@ -29,8 +29,7 @@ namespace AP201
         private DataTable _dtCAAccount = new DataTable();
         private DataTable _dtPONbr = new DataTable();
         private string _strFistChar, _strLastNbr;
-        private APDoc _info = new APDoc();
-        
+        private APDoc _info = new APDoc();        
         public AP201()
         {
             InitializeComponent();
@@ -134,7 +133,7 @@ namespace AP201
             cmbUser.LinkedColumnIndex = 1;
 
             cmbBranchID.DataSource = _dtSIBranch;
-            cmbBranchID.DisplayMember = "BranchName";
+            cmbBranchID.DisplayMember = "BranchID";
             cmbBranchID.ValueMember = "BranchID";
             cmbBranchID.ColumnNames = "BranchID,BranchName";
             cmbBranchID.ColumnWidths = "100,200";
@@ -143,7 +142,7 @@ namespace AP201
             cmbTaxID.DataSource = _dtSITax;
             cmbTaxID.DisplayMember = "Descr";
             cmbTaxID.ValueMember = "TaxRate";
-            cmbTaxID.ColumnNames = "TaxID,Descr,TaxRate";
+            cmbTaxID.ColumnNames = "Descr,TaxID,TaxRate";
             cmbTaxID.ColumnWidths = "100";
             cmbTaxID.LinkedColumnIndex = 1;
 
@@ -152,6 +151,7 @@ namespace AP201
             cmbDocAcct.ValueMember = "Acct";
             cmbDocAcct.ColumnNames = "Acct,AcctName";
             cmbDocAcct.ColumnWidths = "100,150";
+            cmbDocAcct.SelectedValue = "";
 
             DataTable dtStatus = new DataTable();
             dtStatus.Columns.Add("Rlease", typeof(int));
@@ -199,11 +199,14 @@ namespace AP201
             _info.DocNbr = txtDocNbr.Text.ToString().Trim();
             _info.DocType = cmbType.SelectedValue.ToString();
             _info.DocDesc = txtDocDescr.Text.ToString().Trim();
-            _info.DocAcct = cmbDocAcct.SelectedValue.ToString();
+            if (cmbDocAcct.SelectedValue != null)
+                _info.DocAcct = cmbDocAcct.SelectedValue.ToString();
+            else
+                _info.DocAcct = "";
             _info.VendID = txtVendID.Text.ToString().Trim();
             _info.DocBal = double.Parse(txtOrigDocAmt.Text);
             _info.OrigDocAmt = txtOrigDocAmt.Number;
-            _info.DocDate = dtmDocDate.Value;            
+            _info.DocDate = dtmDocDate.Value.Date;            
             _info.InvcNbr = txtInvcNbr.Text.ToString().Trim();
             _info.InvcNote = txtInvcNote.Text.ToString().Trim();
             _info.Rlsed = intRelease;
@@ -211,7 +214,7 @@ namespace AP201
             _info.PreTaxAmt = txtPreTaxAmt.Number;
             _info.TaxAmt = txtTaxAmt.Number;
             _info.TimeLmtID = "";
-            _info.DueDate = dtmDueDate.Value;
+            _info.DueDate = dtmDueDate.Value.Date;
             _info.Note = "";
             _info.PONbr = "";
             _info.Crtd_DateTime = DateTime.Now;
@@ -226,6 +229,15 @@ namespace AP201
         }
         private bool _CheckValid()
         {
+            if (_DocType == "TT")
+            {
+                if (cmbDocAcct.SelectedValue.ToString() == "")
+                {
+                    MessageBox.Show("Vui long nhap du lieu", "Thong bao");
+                    cmbDocAcct.Focus();
+                    return false;
+                }
+            }
             if (txtVendID.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Vui long nhap du lieu", "Thong bao");
@@ -291,7 +303,12 @@ namespace AP201
                 btnDelete.Enabled = false;
                 btnSave.Enabled = true;
                 btnBack.Enabled = true;
-                pnl.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if ((name != "label") && (name != "pnl"))
+                        c.Enabled = true;
+                }
             }
             if (pnl.Visible == true)
                 btnBack.Enabled = true;
@@ -301,7 +318,12 @@ namespace AP201
                 btnDestroy.Enabled = false;
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = true;
-                pnl.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if ((name != "label") && (name != "pnl"))
+                        c.Enabled = true;
+                }
             }
             if ((cmbStatus.SelectedValue.ToString() == "0")&&(txtDocNbr.Text.ToString().Trim() != ""))
             {
@@ -309,8 +331,13 @@ namespace AP201
                 btnRelease.Enabled = true;
                 btnDestroy.Enabled = false;
                 btnCanAndCopy.Enabled = false;
-                btnDelete.Enabled = true;                
-                pnl.Enabled = true;
+                btnDelete.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if ((name != "label") && (name != "pnl"))
+                        c.Enabled = true;
+                }
             }
             else if (cmbStatus.SelectedValue.ToString() == "1")
             {
@@ -318,7 +345,12 @@ namespace AP201
                 btnDestroy.Enabled = true;
                 btnCanAndCopy.Enabled = true;
                 btnDelete.Enabled = false;
-                pnl.Enabled = false;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if ((name != "label")&&(name !="pnl"))
+                        c.Enabled = false;
+                }
             }
             else if (cmbStatus.SelectedValue.ToString() == "-1")
             {
@@ -326,10 +358,14 @@ namespace AP201
                 btnDestroy.Enabled = false;
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = false;
-                pnl.Enabled = false;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if ((name != "label") && (name != "pnl"))
+                        c.Enabled = false;
+                }
             }
         }    
-
         private void pnlhead_Click(object sender, EventArgs e)
         {
             _BindGrid();
@@ -340,7 +376,6 @@ namespace AP201
             _ResetPanelInput();
             _SetButtomStatus();
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //APDoc info = new APDoc();
@@ -355,7 +390,6 @@ namespace AP201
             _SetButtomStatus();
 
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (_CheckValid() == true)
@@ -391,34 +425,30 @@ namespace AP201
             }
             
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             _BindGrid();
         }
-
         private void txtPreTaxAmt_Leave(object sender, EventArgs e)
         {
             if (txtPreTaxAmt.Text.Trim() != "")
             {                
                 double TaxID = double.Parse(cmbTaxID.SelectedValue.ToString());
-                double taxamt = txtPreTaxAmt.Number * TaxID;
+                double taxamt = Math.Round(txtPreTaxAmt.Number * TaxID);
                 txtTaxAmt.Text = taxamt.ToString();
                 txtOrigDocAmt.Text = (txtPreTaxAmt.Number + txtTaxAmt.Number).ToString();
             }
         }
-
         private void cmbTaxID_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (txtPreTaxAmt.Text.Trim() != "")
             {
                 double TaxID = double.Parse(cmbTaxID.SelectedValue.ToString());
-                double taxamt = txtPreTaxAmt.Number * TaxID;
+                double taxamt = Math.Round(txtPreTaxAmt.Number * TaxID);
                 txtTaxAmt.Text = taxamt.ToString();
                 txtOrigDocAmt.Text = (txtPreTaxAmt.Number + txtTaxAmt.Number).ToString();
             }
         }
-
         private void btnRelease_Click(object sender, EventArgs e)
         {
             _GetPanel(1);            
@@ -433,7 +463,6 @@ namespace AP201
             }
             _SetButtomStatus();
         }
-
         private void btnDestroy_Click(object sender, EventArgs e)
         {
            
@@ -455,7 +484,6 @@ namespace AP201
             }
             _SetButtomStatus();
         }
-
         private void btnCanAndCopy_Click(object sender, EventArgs e)
         {
             PT.Component.InputBoxForm ib = new PT.Component.InputBoxForm("Bạn có muốn hủy?", "default", "Chuyển Kho");
@@ -488,168 +516,6 @@ namespace AP201
             _SetButtomStatus();
         }
 
+
     }
 }
-//C# .NET - check all and uncheck all checkbox in datagridview in window application
-//Asked By Monoj Kumar Muchahari
-//02-Feb-09 07:46 AM
-//I am working on a window application in which i have checkboxes, i want that when i check the last row of the datagridview all the above checkboxes should also be checked. plz help.
-//Advertisement - WPF Resource Washer
-//re  re
-//02-Feb-09 08:03 AM
-
-//use this
-
-//// customize dataviewgrid, add checkbox column
-//DataGridViewCheckBoxColumn checkboxColumn = new DataGridViewCheckBoxColumn();
-//checkboxColumn.Width = 30;
-//checkboxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-//list.Columns.Insert(0, checkboxColumn);
- 
-//// add checkbox header
-//Rectangle rect = list.GetCellDisplayRectangle(0, -1, true);
-//// set checkbox header to center of header cell. +1 pixel to position correctly.
-//rect.X = rect.Location.X + (rect.Width / 4);
- 
-//CheckBox checkboxHeader = new CheckBox();
-//checkboxHeader.Name = "checkboxHeader";
-//checkboxHeader.Size = new Size(18, 18);
-//checkboxHeader.Location = rect.Location;
-//checkboxHeader.CheckedChanged += new EventHandler(checkboxHeader_CheckedChanged);
- 
-//list.Controls.Add(checkboxHeader);   
-
-//private void checkboxHeader_CheckedChanged(object sender, EventArgs e) {
-//    for (int i = 0; i < list.RowCount; i++) {
-//    list[0, i].Value = ((CheckBox) list.Controls.Find("checkboxHeader", true)[0]).Checked;
-//    }
-//    list.EndEdit();
-//}
-
-//http://tech.chitgoks.com/2008/11/17/c-add-select-all-deselect-all-checkbox-in-column-header-in-datagridview-control/
-
-//re  re
-//02-Feb-09 08:03 AM
-//http://social.msdn.microsoft.com/Forums/en-US/winforms/thread/68b5ed2f-d924-4e26-a354-7be30ac08ef6/
-//Reply  Reply
-//02-Feb-09 11:14 AM
-
-//protected override void OnMouseClick(DataGridViewCellMouseEventArgs e)
-//        {
-//            //Convert the CheckBoxRegion
-//            Rectangle rec = new Rectangle(new Point(0, 0), this.CheckBoxRegion.Size);
-//            this.checkAll = !this.checkAll;
-//            if (rec.Contains(e.Location))
-//            {
-//                this.DataGridView.Invalidate();
-//            }
-//            base.OnMouseClick(e);
-//        }
-
-//        public bool CheckAll
-//        {
-//            get { return this.checkAll; }
-//            set { this.checkAll = value; }
-//        }
-
-//private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-//        {
-//            if (e.ColumnIndex == 0)
-//            {
-//                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-//                {
-//                    dataGridView1.Rows[i].Cells[0].Value = dgvColumnHeader.CheckAll;
-//                }
-//            }
-//        }
-//  Vasanthakumar D replied to Monoj Kumar Muchahari
-//02-Feb-09 12:43 PM
-
-//Hi,
-
-//try this...
-
- 
-
-//private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-//        {
-//            if (e.ColumnIndex == 3 && e.RowIndex == dataGridView1.Rows.Count - 1)
-//            {
-//                if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "true")
-//                {
-//                    for (int count = 0; count < dataGridView1.Rows.Count - 1; count++)
-//                    {
-//                        dataGridView1.Rows[count].Cells[e.ColumnIndex].Value = true;
-//                    }
-//                }
-
-//                else
-
-//                 {
-
-//                              for (int count = 0; count < dataGridView1.Rows.Count - 1; count++)
-//                             {
-//                                 dataGridView1.Rows[count].Cells[e.ColumnIndex].Value = false;
-//                             }
-                         
-
-//                 }        
-//            }
-//        }
-
-//check all and uncheck all checkbox in datagridview in window application  check all and uncheck all checkbox in datagridview in window application
-//21-Apr-09 12:36 AM
-
-//Hi , use this code
-
-//private void grd_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-
-//{
-
-//try
-
-//{
-
-//DataGridView dgv = (DataGridView)sender;
-
-//if (e.ColumnIndex == dgv.Columns[0].Index)
-
-//{
-
-//if (e.RowIndex < 0)
-
-//{
-
-//for (int i = 0; i < dgv.Rows.Count; i++)
-
-//{
-
-//dgv.Rows[i].Cells[0].Value = !lastDRGridCheckAllSelected;
-
-//}
-
-//lastDRGridCheckAllSelected = !lastDRGridCheckAllSelected;
-
-//dgv.Refresh();
-
-//}
-
-//}
-
-//}
-
-//catch (Exception exp)
-
-//{
-
-//MessageBox.Show(exp.Message);
-
-//}
-
-//}
-
- 
-//Error  Error
-//13-Aug-09 02:11 AM
-//dgvAttendance.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()
-//it shows error
