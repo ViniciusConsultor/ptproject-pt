@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BFB542EC-10C1-4130-A3B8-80114027CA33}</ProjectGuid>
+    <ProjectGuid>{D6F51C8C-33DE-4DAE-B02B-3EDD7BE39964}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AP202</RootNamespace>
-    <AssemblyName>AP202</AssemblyName>
+    <RootNamespace>AP203</RootNamespace>
+    <AssemblyName>AP203</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=10.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="DevComponents.TreeGX, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cfcbd7476b2389d1" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -52,17 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AP202.cs">
+    <Compile Include="AP203Ctrl.cs" />
+    <Compile Include="AP203.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AP202.Designer.cs">
-      <DependentUpon>AP202.cs</DependentUpon>
+    <Compile Include="AP203.Designer.cs">
+      <DependentUpon>AP203.cs</DependentUpon>
     </Compile>
-    <Compile Include="AP202Ctrl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AP202.resx">
-      <DependentUpon>AP202.cs</DependentUpon>
+    <EmbeddedResource Include="AP203.resx">
+      <DependentUpon>AP203.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +95,10 @@
     <ProjectReference Include="..\PT.Helper\PT.Helper.csproj">
       <Project>{998770D9-C789-45D5-8DBC-494C079FBA8A}</Project>
       <Name>PT.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PT.Manager\PT.Manager.csproj">
+      <Project>{7D720DBC-2D1A-48A8-B01D-774A8B593155}</Project>
+      <Name>PT.Manager</Name>
     </ProjectReference>
     <ProjectReference Include="..\PT.Master\PT.Master.csproj">
       <Project>{E41DD384-8DD3-4427-97C4-4FCFD5464533}</Project>
