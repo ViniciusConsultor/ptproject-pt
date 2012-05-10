@@ -71,12 +71,13 @@ namespace AP202
             }
             else
             {
+                _BindCtrl();
                 txtAdjNbr.Text = "";             
                 dtmAdjDate.Value = DateTime.Now;
                 txtAdjAmt.Text = "";
                 txtAdjDescr.Text = "";
                 dtmFromDateLoad.Value = DateTime.Now;
-                dtmToDateLoad.Value = DateTime.Now;                
+                dtmToDateLoad.Value = DateTime.Now;                   
                 dgvDocList.DataSource = null;
             }
             _SetButtomStatus();
@@ -84,6 +85,7 @@ namespace AP202
         }
         private void _ResetPanelInput()
         {
+            _BindCtrl();
             txtAdjNbr.Text = "";
             dtmAdjDate.Value = DateTime.Now;
             txtAdjAmt.Text = "";
@@ -242,8 +244,7 @@ namespace AP202
             if (_infoAPAdjust.Version == null)
                 _infoAPAdjust.Version = "";
             return _infoAPAdjust;
-        }
-        
+        }        
         private bool _CheckValid()
         {            
             if (cmbBranchID.SelectedValue.ToString() == "")
@@ -444,7 +445,29 @@ namespace AP202
             if (count == dgvDocList.RowCount)
                 ((CheckBox)dgvDocList.Controls.Find("checkboxHeader", true)[0]).Checked = true;
             
-        }  
+        }
+        private void _ComputeAmt()
+        {
+            //double totalAmt= 0;
+            double totalPayment = 0;
+            if (dgvDocList.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvDocList.Rows)
+                {
+                    //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
+                    totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
+                }
+                txtAdjAmt.Text = totalPayment.ToString();
+            }
+        }
+        private double[] _GetValue(string id)
+        {
+            double[] db = new double[2];
+            string sql = string.Format("DocNbr = '{0}'", id);
+            db[0] = double.Parse(_dtAPDocTmp.Select(sql)[0]["Payment"].ToString());
+            db[1] = double.Parse(_dtAPDocTmp.Select(sql)[0]["DocBal"].ToString());
+            return db;
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             _BindGrid();
@@ -773,35 +796,13 @@ namespace AP202
             _SaveAPAdjust(-1);
             cmbStatus.SelectedValue = -1;
             _SetButtomStatus();
-        }
-        private void _ComputeAmt()
-        {
-            //double totalAmt= 0;
-            double totalPayment = 0;
-            if (dgvDocList.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgvDocList.Rows)
-                {
-                    //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
-                    totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
-                }
-                txtAdjAmt.Text = totalPayment.ToString();
-            }
-        }
+        }        
         private void btnBack_Click(object sender, EventArgs e)
         {
             dtmToDateLoad.Enabled = true;
             dtmFromDateLoad.Enabled = true;
             txtVendIDLoad.Enabled = true;
-        }
-        private double[] _GetValue(string id)
-        {
-            double[] db= new double[2];
-            string sql = string.Format("DocNbr = '{0}'",id);
-            db[0] = double.Parse(_dtAPDocTmp.Select(sql)[0]["Payment"].ToString());
-            db[1] = double.Parse(_dtAPDocTmp.Select(sql)[0]["DocBal"].ToString());
-            return db;
-        }
+        }        
         private void btnCanAndCopy_Click(object sender, EventArgs e)
         {
             DateTime from = dtmFromDateLoad.Value;
@@ -816,9 +817,6 @@ namespace AP202
             txtAdjNbr.Text = "";
             cmbStatus.SelectedValue = 0;
             _SetButtomStatus();
-        }
-
-       
-       
+        }       
     }
 }
