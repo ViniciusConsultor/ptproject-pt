@@ -36,7 +36,7 @@ namespace AP203
 
         private void AP203_Load(object sender, EventArgs e)
         {
-           // _LoadData();
+            _LoadData();
             _BindCtrl();
             dtmFromDate.Value = DateTime.Now.Date;
             dtmToDate.Value = DateTime.Now.Date;
@@ -70,12 +70,6 @@ namespace AP203
             cmbBranchID.ColumnWidths = "100,200";
             cmbBranchID.LinkedColumnIndex = 1;
 
-            //cmbAdjAcct.DataSource = _dtCAAccount;
-            //cmbAdjAcct.DisplayMember = "Acct";
-            //cmbAdjAcct.ValueMember = "Acct";
-            //cmbAdjAcct.ColumnNames = "Acct,AcctName";
-            //cmbAdjAcct.ColumnWidths = "100,150";
-
             DataTable dtStatus = new DataTable();
             dtStatus.Columns.Add("Rlease", typeof(int));
             dtStatus.Columns.Add("Descr", typeof(string));
@@ -86,13 +80,8 @@ namespace AP203
             cmbStatus.DisplayMember = "Descr";
             cmbStatus.ValueMember = "Rlease";
             cmbStatus.SelectedValue = 0;
-            //cmbStatus.ColumnNames = "Descr";
-            //cmbStatus.ColumnWidths = "95";
-            //cmbStatus.LinkedColumnIndex = 1;
 
-            //txtVendIDLoad.DataSource = _dtVend;
-            //txtVendIDLoad.ColumnWidths = "100,250";
-
+            txtVendID.DataSource = _dtVend;
         }
         private void _LoadData()
         {
@@ -105,108 +94,232 @@ namespace AP203
         {
             _dtADoc = AP203Ctrl.LoadADoc(brandid, AdjNbr, vendid, Release);
             _dtADocTmp = _dtADoc.Copy();
-            dgvADocList.DataSource = _dtADoc;
-
-            //==================
-            if (dgvADocList.Columns[0].Name != "")
-            {
-                DataGridViewCheckBoxColumn checkboxColumn = new DataGridViewCheckBoxColumn();
-                checkboxColumn.Width = 30;
-                checkboxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvADocList.Columns.Insert(0, checkboxColumn);
-
-                // add checkbox header            
-                Rectangle rect = dgvADocList.GetCellDisplayRectangle(0, -1, true);
-                // set checkbox header to center of header cell. +1 pixel to position correctly.
-                rect.X = rect.Location.X + (rect.Width / 4);
-
-                CheckBox checkboxHeader = new CheckBox();
-                checkboxHeader.Name = "checkboxHeaderADoc";
-                checkboxHeader.Size = new Size(18, 18);
-                checkboxHeader.Location = rect.Location;
-                checkboxHeader.CheckedChanged += new EventHandler(checkboxHeaderADoc_CheckedChanged);
-
-                dgvADocList.Controls.Add(checkboxHeader);
-            }
-            //==================
-
-            for (int i = 0; i < dgvADocList.Columns.Count; i++)
-                dgvADocList.Columns[i].ReadOnly = true;
-            dgvADocList.Columns["Payment"].ReadOnly = false;
-            dgvADocList.Columns[0].ReadOnly = false;
-            //==================
-
-            for (int i = 0; i < dgvADocList.RowCount; i++)
-            {
-                if (dgvADocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
-                    dgvADocList[0, i].Value = true;
-                else
-                    dgvADocList[0, i].Value = false;
-            }
-        }
-        private void checkboxHeaderADoc_CheckedChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i < dgvADocList.RowCount; i++)
-            {
-                dgvADocList[0, i].Value = ((CheckBox)dgvADocList.Controls.Find("checkboxHeaderADoc", true)[0]).Checked;
-                if (double.Parse(dgvADocList.Rows[i].Cells["Docbal"].Value.ToString()) != 0)
-                {
-                    if ((bool)dgvADocList.Rows[i].Cells[0].FormattedValue)
-                    {
-                        dgvADocList.Rows[i].Cells["Payment"].Value = _dtADocTmp.Rows[i]["Docbal"].ToString();
-                        dgvADocList.Rows[i].Cells["Docbal"].Value = 0;
-                    }
-                    else
-                    {
-                        dgvADocList.Rows[i].Cells["Payment"].Value = 0;
-                        dgvADocList.Rows[i].Cells["Docbal"].Value = _dtADocTmp.Rows[i]["Docbal"].ToString();
-                    }
-                }
-            }
-            dgvADocList.EndEdit();
+            dgvADocList.DataSource = _dtADoc;            
         }
         private void _BindNDocGrid(string brandid, string AdjNbr, string vendid, int Release)
         {
             _dtNDoc = AP203Ctrl.LoadNDoc(brandid, AdjNbr, vendid, Release);
             _dtNDocTmp = _dtNDoc.Copy();
-            dgvADocList.DataSource = _dtADoc;
-
-            //==================
-            if (dgvNDocList.Columns[0].Name != "")
+            dgvNDocList.DataSource = _dtNDoc;           
+        }
+        private bool _CheckValid()
+        {
+            if (cmbBranchID.SelectedValue.ToString() == "")
             {
-                DataGridViewCheckBoxColumn checkboxColumn = new DataGridViewCheckBoxColumn();
-                checkboxColumn.Width = 30;
-                checkboxColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvNDocList.Columns.Insert(0, checkboxColumn);
-
-                // add checkbox header            
-                Rectangle rect = dgvNDocList.GetCellDisplayRectangle(0, -1, true);
-                // set checkbox header to center of header cell. +1 pixel to position correctly.
-                rect.X = rect.Location.X + (rect.Width / 4);
-
-                CheckBox checkboxHeader = new CheckBox();
-                checkboxHeader.Name = "checkboxHeaderADoc";
-                checkboxHeader.Size = new Size(18, 18);
-                checkboxHeader.Location = rect.Location;
-                checkboxHeader.CheckedChanged += new EventHandler(checkboxHeaderNDoc_CheckedChanged);
-
-                dgvNDocList.Controls.Add(checkboxHeader);
+                MessageBox.Show("Vui long nhap du lieu", "Thong bao");
+                cmbBranchID.Focus();
+                return false;
             }
-            //==================
-
-            for (int i = 0; i < dgvNDocList.Columns.Count; i++)
-                dgvNDocList.Columns[i].ReadOnly = true;
-            dgvNDocList.Columns["Payment"].ReadOnly = false;
-            dgvNDocList.Columns[0].ReadOnly = false;
-            //==================
-
-            for (int i = 0; i < dgvNDocList.RowCount; i++)
+            if (txtAdjAmt.Text.ToString() == "0")
             {
-                if (dgvNDocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
-                    dgvNDocList[0, i].Value = true;
-                else
-                    dgvNDocList[0, i].Value = false;
+                MessageBox.Show("Vui long nhap du lieu", "Thong bao");
+                dgvADocList.Focus();
+                return false;
             }
+            return true;
+        }
+        private int _SaveAPAdjust(int release)
+        {
+            _infoAPAdjust.Rlsed = release;
+            return AP203Ctrl.SaveAPAdjust(_infoAPAdjust);
+
+        }
+        private int _SaveAPAdjustDet()
+        {
+            //string strBrandID = cmbBranchID.SelectedValue.ToString().Trim();
+            //string strAdjNbr = txtAdjNbr.Text.ToString().Trim();
+            //DateTime dteAdjDate = dtmAdjDate.Value.Date;
+            //string strAdjAcct = cmbAdjAcct.SelectedValue.ToString().Trim();
+            //double dbeAdjAmt = double.Parse(txtAdjAmt.Text.ToString().Trim());
+            ////DataTable list = new DataTable();
+            ////list = AP202Ctrl.FindAPADjustDet("");
+            //if (dgvDocList.DataSource == _dtAPDoc)
+            //{
+            //    foreach (DataRow rows in _dtAPDoc.Rows)
+            //    {
+            //        if (double.Parse(rows["Payment"].ToString().Trim()) != 0)
+            //        {
+            //            APAdjustDet info = new APAdjustDet();
+            //            info.BranchID = strBrandID;
+            //            info.AdjNbr = strAdjNbr;
+            //            info.LineRef = "none";
+            //            info.VendID = rows["VendID"].ToString().Trim();
+            //            info.AdjDate = dteAdjDate;
+            //            info.AdjAcct = strAdjAcct;
+            //            info.AdjAmt = double.Parse(rows["Payment"].ToString().Trim());
+            //            info.NDocNbr = rows["DocNbr"].ToString().Trim();
+            //            info.NDocType = rows["DocType"].ToString().Trim();
+            //            info.NDocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date;
+            //            info.ADocNbr = "";
+            //            info.ADocType = "";
+            //            info.ADocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date; ;
+            //            info.Rlsed = 0;
+            //            info.Crtd_DateTime = DateTime.Now;
+            //            info.Crtd_Prog = _strPro;
+            //            info.Crtd_User = _strUser;
+            //            info.LUpd_DateTime = DateTime.Now;
+            //            info.LUpd_Prog = _strPro;
+            //            info.LUpd_User = _strUser;
+            //            info.Version = "";
+            //            AP202Ctrl.SaveAPAdjustDet(info);
+            //        }
+            //    }
+            //}
+            //else if (dgvDocList.DataSource == _dtAPAdjustDet)
+            //{
+            //    foreach (DataRow rows in _dtAPAdjustDet.Rows)
+            //    {
+            //        APAdjustDet info = new APAdjustDet();
+            //        info.BranchID = strBrandID;
+            //        info.AdjNbr = strAdjAcct;
+            //        info.LineRef = rows["LineRef"].ToString().Trim();// intLineRef.ToString("00000");
+            //        info.VendID = rows["VendID"].ToString().Trim();
+            //        info.AdjDate = dteAdjDate;
+            //        info.AdjAcct = strAdjAcct;
+            //        info.AdjAmt = dbeAdjAmt;
+            //        info.NDocNbr = rows["NDocNbr"].ToString().Trim();
+            //        info.NDocType = rows["NDocType"].ToString().Trim();
+            //        info.NDocDate = DateTime.Parse(rows["NDocDate"].ToString().Trim()).Date;
+            //        info.ADocNbr = "";
+            //        info.ADocType = "";
+            //        //info.ADocDate = null;
+            //        info.Rlsed = 0;
+            //        info.Crtd_DateTime = DateTime.Now;
+            //        info.Crtd_Prog = _strPro;
+            //        info.Crtd_User = _strUser;
+            //        info.LUpd_DateTime = DateTime.Now;
+            //        info.LUpd_Prog = _strPro;
+            //        info.LUpd_User = _strUser;
+            //        info.Version = "";
+            //        AP202Ctrl.SaveAPAdjust(_infoAPAdjust);
+
+            //    }
+            //}
+            return 1;
+        }
+        private void _SaveSASetup(string strModule, string strFistChar, string strLastNbr)
+        {
+            SASetup _sa = new SASetup();
+            _sa.Module = strModule;
+            _sa.FistChar = strFistChar;
+            _sa.LastNbr = strLastNbr;
+            int kq;
+            if (_sa.Module != "" && _sa.FistChar != "")
+                kq = AP203Ctrl.SaveSASetup(_sa);
+        }
+        private void _SetButtomStatus()
+        {
+            if (txtAdjNbr.Text.ToString().Trim() == "")
+            {
+                btnRelease.Enabled = false;
+                btnDestroy.Enabled = false;
+                btnCanAndCopy.Enabled = false;
+                btnDelete.Enabled = false;
+                btnSave.Enabled = true;
+                btnBack.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                        c.Enabled = true;
+                }
+            }
+            if (pnl.Visible == true)
+                btnBack.Enabled = true;
+            if (cmbStatus.SelectedValue == null)
+            {
+                btnRelease.Enabled = true;
+                btnDestroy.Enabled = false;
+                btnCanAndCopy.Enabled = false;
+                btnDelete.Enabled = true;
+                btnBack.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                        c.Enabled = true;
+                }
+            }
+            if ((cmbStatus.SelectedValue.ToString() == "0") && (txtAdjNbr.Text.ToString().Trim() != ""))
+            {
+                btnSave.Enabled = true;
+                btnRelease.Enabled = true;
+                btnDestroy.Enabled = false;
+                btnBack.Enabled = true;
+                btnCanAndCopy.Enabled = false;
+                btnDelete.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                        c.Enabled = true;
+                }
+            }
+            else if (cmbStatus.SelectedValue.ToString() == "1")
+            {
+                btnRelease.Enabled = false;
+                btnDestroy.Enabled = true;
+                btnCanAndCopy.Enabled = true;
+                btnDelete.Enabled = false;
+                btnBack.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                        c.Enabled = false;
+                }
+            }
+            else if (cmbStatus.SelectedValue.ToString() == "-1")
+            {
+                btnRelease.Enabled = false;
+                btnDestroy.Enabled = false;
+                btnCanAndCopy.Enabled = false;
+                btnDelete.Enabled = false;
+                btnBack.Enabled = true;
+                foreach (Control c in pnl.Controls) //assuming this is a Form
+                {
+                    string name = c.Name.Substring(0, 5);
+                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                        c.Enabled = false;
+                }
+            }
+        }       
+        private void _ComputeAmt()
+        {
+            ////double totalAmt= 0;
+            //double totalPayment = 0;
+            //if (dgvDocList.Rows.Count > 0)
+            //{
+            //    foreach (DataGridViewRow row in dgvDocList.Rows)
+            //    {
+            //        //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
+            //        totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
+            //    }
+            //    txtAdjAmt.Text = totalPayment.ToString();
+            //}
+        }
+        private double[] _GetValue(string id)
+        {
+            double[] db = new double[2];
+            //string sql = string.Format("DocNbr = '{0}'", id);
+            //db[0] = double.Parse(_dtAPDocTmp.Select(sql)[0]["Payment"].ToString());
+            //db[1] = double.Parse(_dtAPDocTmp.Select(sql)[0]["DocBal"].ToString());
+            return db;
+        }
+        private void _ResetPanel()
+        {
+            _LoadData();
+            _BindCtrl();
+            dtmAdjDate.Value = DateTime.Now;
+            txtDocDescr.Text = "";
+            txtAdjAmt.Text = "";
+            txtTotalAAmt.Text = "";
+            txtTaltalNAmt.Text = "";
+            txtTaltolCheck.Text = "";
+            cmbBranchID.Focus();
+
+            _BindADocGrid(cmbBranchID.SelectedValue.ToString(), txtAdjNbr.Text.ToString(), txtVendID.Text.ToString(), 1);
+            _BindNDocGrid(cmbBranchID.SelectedValue.ToString(), txtAdjNbr.Text.ToString(), txtVendID.Text.ToString(), 1);
         }
         private void checkboxHeaderNDoc_CheckedChanged(object sender, EventArgs e)
         {
@@ -228,6 +341,16 @@ namespace AP203
                 }
             }
             dgvNDocList.EndEdit();
+        }
+        private void pnl_SizeChanged(object sender, EventArgs e)
+        {
+            int pnlW = pnl.Width;
+            pnlA.Width = pnlW / 2 - 2;
+            pnlB.Width = pnlW / 2 - 2;
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            _ResetPanel();
         }
     }
 }

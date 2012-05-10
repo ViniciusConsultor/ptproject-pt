@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtAdjdNbrFind = new PT.Component.NormalTextBox();
             this.cmbUser = new PT.Component.MultiColumnComboBox();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
@@ -64,7 +64,7 @@
             this.dgvADocList = new PT.Component.DataGridView(this.components);
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
-            this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
+            this.pnlB = new DevComponents.DotNetBar.PanelEx();
             this.dgvNDocList = new PT.Component.DataGridView(this.components);
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
@@ -80,9 +80,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtmAdjDate)).BeginInit();
             this.pnlA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvADocList)).BeginInit();
-            this.panelEx3.SuspendLayout();
+            this.pnlB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNDocList)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // pnldgv
             // 
@@ -97,7 +101,7 @@
             // 
             // pnl
             // 
-            this.pnl.Controls.Add(this.panelEx3);
+            this.pnl.Controls.Add(this.pnlB);
             this.pnl.Controls.Add(this.labelX6);
             this.pnl.Controls.Add(this.pnlA);
             this.pnl.Controls.Add(this.panelEx2);
@@ -110,6 +114,7 @@
             this.pnl.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnl.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnl.Style.GradientAngle = 90;
+            this.pnl.SizeChanged += new System.EventHandler(this.pnl_SizeChanged);
             // 
             // pnlhead
             // 
@@ -132,7 +137,9 @@
             // 
             // dgv
             // 
+            this.dgv.AllowUserToAddRows = false;
             this.dgv.Location = new System.Drawing.Point(0, 53);
+            this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(578, 89);
             // 
             // panelEx1
@@ -718,14 +725,14 @@
             // dgvADocList
             // 
             this.dgvADocList.AutoColumnHeadder = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvADocList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvADocList.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvADocList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvADocList.EndCell = 0;
             this.dgvADocList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -765,37 +772,37 @@
             this.labelX6.Size = new System.Drawing.Size(5, 99);
             this.labelX6.TabIndex = 77;
             // 
-            // panelEx3
+            // pnlB
             // 
-            this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.dgvNDocList);
-            this.panelEx3.Controls.Add(this.labelX7);
-            this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx3.Location = new System.Drawing.Point(572, 129);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(197, 99);
-            this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx3.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx3.Style.GradientAngle = 90;
-            this.panelEx3.TabIndex = 78;
-            this.panelEx3.Text = "panelEx3";
+            this.pnlB.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlB.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlB.Controls.Add(this.dgvNDocList);
+            this.pnlB.Controls.Add(this.labelX7);
+            this.pnlB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlB.Location = new System.Drawing.Point(572, 129);
+            this.pnlB.Name = "pnlB";
+            this.pnlB.Size = new System.Drawing.Size(197, 99);
+            this.pnlB.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlB.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.pnlB.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.pnlB.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnlB.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnlB.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnlB.Style.GradientAngle = 90;
+            this.pnlB.TabIndex = 78;
+            this.pnlB.Text = "panelEx3";
             // 
             // dgvNDocList
             // 
             this.dgvNDocList.AutoColumnHeadder = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNDocList.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNDocList.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvNDocList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNDocList.EndCell = 0;
             this.dgvNDocList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -843,7 +850,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtmAdjDate)).EndInit();
             this.pnlA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvADocList)).EndInit();
-            this.panelEx3.ResumeLayout(false);
+            this.pnlB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNDocList)).EndInit();
             this.ResumeLayout(false);
 
@@ -877,7 +884,7 @@
         private DevComponents.DotNetBar.PanelEx pnlA;
         private DevComponents.DotNetBar.LabelX labelX3;
         private PT.Component.DataGridView dgvADocList;
-        private DevComponents.DotNetBar.PanelEx panelEx3;
+        private DevComponents.DotNetBar.PanelEx pnlB;
         private PT.Component.DataGridView dgvNDocList;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX labelX6;

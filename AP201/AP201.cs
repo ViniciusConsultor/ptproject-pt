@@ -18,7 +18,7 @@ namespace AP201
 {
     public partial class AP201 : PT.Master.GridEditIn
     {
-        public string _DocType = "TN";
+        public string _DocType = "GN";
         private string _strPro = "AP201";
         private string _strUser = PT.Helper.Globals.PTUserName;
         private DataTable _dtAPDoc = new DataTable();
@@ -77,6 +77,7 @@ namespace AP201
         }
         private void _ResetPanelInput()
         {
+            _BindCtrl();
             cmbStatus.SelectedValue = 0;
             txtDocNbr.Text = "";
             txtInvcNbr.Text = "";
