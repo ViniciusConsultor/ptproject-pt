@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtAdjdNbrFind = new PT.Component.NormalTextBox();
             this.cmbUser = new PT.Component.MultiColumnComboBox();
             this.labelX17 = new DevComponents.DotNetBar.LabelX();
@@ -43,7 +43,7 @@
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.txtTaltalNAmt = new PT.Component.NumericTextBox();
+            this.txtTotalNAmt = new PT.Component.NumericTextBox();
             this.txtTaltolCheck = new PT.Component.NumericTextBox();
             this.txtTotalAAmt = new PT.Component.NumericTextBox();
             this.txtVendID = new PT.Component.MultiDropDownTextBox(this.components);
@@ -87,6 +87,10 @@
             // btnAdd
             // 
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // pnldgv
             // 
@@ -348,7 +352,7 @@
             this.panelEx2.Controls.Add(this.labelX11);
             this.panelEx2.Controls.Add(this.labelX10);
             this.panelEx2.Controls.Add(this.labelX1);
-            this.panelEx2.Controls.Add(this.txtTaltalNAmt);
+            this.panelEx2.Controls.Add(this.txtTotalNAmt);
             this.panelEx2.Controls.Add(this.txtTaltolCheck);
             this.panelEx2.Controls.Add(this.txtTotalAAmt);
             this.panelEx2.Controls.Add(this.txtVendID);
@@ -417,19 +421,19 @@
             this.labelX1.TabIndex = 81;
             this.labelX1.Text = "TotalAmt";
             // 
-            // txtTaltalNAmt
+            // txtTotalNAmt
             // 
-            this.txtTaltalNAmt.AllowSpace = false;
+            this.txtTotalNAmt.AllowSpace = false;
             // 
             // 
             // 
-            this.txtTaltalNAmt.Border.Class = "TextBoxBorder";
-            this.txtTaltalNAmt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTaltalNAmt.Location = new System.Drawing.Point(644, 106);
-            this.txtTaltalNAmt.Name = "txtTaltalNAmt";
-            this.txtTaltalNAmt.Size = new System.Drawing.Size(100, 20);
-            this.txtTaltalNAmt.TabIndex = 80;
-            this.txtTaltalNAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalNAmt.Border.Class = "TextBoxBorder";
+            this.txtTotalNAmt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalNAmt.Location = new System.Drawing.Point(644, 106);
+            this.txtTotalNAmt.Name = "txtTotalNAmt";
+            this.txtTotalNAmt.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalNAmt.TabIndex = 80;
+            this.txtTotalNAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTaltolCheck
             // 
@@ -480,6 +484,7 @@
             this.txtVendID.RowsDisplay = 10;
             this.txtVendID.Size = new System.Drawing.Size(100, 20);
             this.txtVendID.TabIndex = 76;
+            this.txtVendID.TextChanged += new System.EventHandler(this.txtVendID_TextChanged);
             // 
             // VendID
             // 
@@ -704,6 +709,7 @@
             // 
             // pnlA
             // 
+            this.pnlA.AutoScroll = true;
             this.pnlA.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlA.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlA.Controls.Add(this.dgvADocList);
@@ -724,15 +730,17 @@
             // 
             // dgvADocList
             // 
+            this.dgvADocList.AllowUserToAddRows = false;
             this.dgvADocList.AutoColumnHeadder = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvADocList.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvADocList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvADocList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvADocList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvADocList.EndCell = 0;
             this.dgvADocList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -741,6 +749,9 @@
             this.dgvADocList.Name = "dgvADocList";
             this.dgvADocList.Size = new System.Drawing.Size(567, 76);
             this.dgvADocList.TabIndex = 1;
+            this.dgvADocList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellContentDoubleClick);
+            this.dgvADocList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellEndEdit);
+            this.dgvADocList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellContentClick);
             // 
             // labelX3
             // 
@@ -774,6 +785,7 @@
             // 
             // pnlB
             // 
+            this.pnlB.AutoScroll = true;
             this.pnlB.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlB.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlB.Controls.Add(this.dgvNDocList);
@@ -794,15 +806,17 @@
             // 
             // dgvNDocList
             // 
+            this.dgvNDocList.AllowUserToAddRows = false;
             this.dgvNDocList.AutoColumnHeadder = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNDocList.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvNDocList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNDocList.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNDocList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNDocList.EndCell = 0;
             this.dgvNDocList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -811,6 +825,9 @@
             this.dgvNDocList.Name = "dgvNDocList";
             this.dgvNDocList.Size = new System.Drawing.Size(197, 76);
             this.dgvNDocList.TabIndex = 1;
+            this.dgvNDocList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNDocList_CellContentDoubleClick);
+            this.dgvNDocList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNDocList_CellEndEdit);
+            this.dgvNDocList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNDocList_CellContentClick);
             // 
             // labelX7
             // 
@@ -890,7 +907,7 @@
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private PT.Component.NumericTextBox txtTaltalNAmt;
+        private PT.Component.NumericTextBox txtTotalNAmt;
         private PT.Component.NumericTextBox txtTaltolCheck;
         private PT.Component.NumericTextBox txtTotalAAmt;
         private DevComponents.DotNetBar.LabelX labelX11;

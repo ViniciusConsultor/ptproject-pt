@@ -33,7 +33,6 @@ namespace AP203
         {
             InitializeComponent();
         }
-
         private void AP203_Load(object sender, EventArgs e)
         {
             _LoadData();
@@ -90,18 +89,113 @@ namespace AP203
             _dtSIBranch = AP203Ctrl.GetSIBranch();
             _dtVend = AP203Ctrl.GetVendID();
         }
-        private void _BindADocGrid(string brandid, string AdjNbr,string vendid,int Release )
-        {
+        private void _BindADocGrid()
+        {            
+            string brandid = cmbBranchID.SelectedValue.ToString();
+            string AdjNbr = txtAdjNbr.Text.ToString();
+            string vendid = txtVendID.Text.ToString();
+            int Release = Int32.Parse(cmbStatus.SelectedValue.ToString());
             _dtADoc = AP203Ctrl.LoadADoc(brandid, AdjNbr, vendid, Release);
             _dtADocTmp = _dtADoc.Copy();
-            dgvADocList.DataSource = _dtADoc;            
-        }
-        private void _BindNDocGrid(string brandid, string AdjNbr, string vendid, int Release)
+            dgvADocList.DataSource = _dtADoc;
+
+            //==================
+            if ((dgvADocList.Columns[0].Name == "chk") && (dgvADocList.Rows.Count > 0))
+            {
+                dgvADocList.Columns[0].HeaderText = "";
+                dgvADocList.Columns[0].Width = 18;
+                // add checkbox header            
+                Rectangle rect = dgvADocList.GetCellDisplayRectangle(0, -1, true);
+                // set checkbox header to center of header cell. +1 pixel to position correctly.
+                rect.X = rect.Location.X + (rect.Width / 4) - 2;
+                rect.Y = rect.Y + 5;
+
+                CheckBox AcheckboxHeader = new CheckBox();
+                AcheckboxHeader.Name = "AcheckboxHeader";
+                AcheckboxHeader.Size = new Size(13, 13);
+                AcheckboxHeader.Location = rect.Location;
+                AcheckboxHeader.Click += new EventHandler(AcheckboxHeader_Click);
+                dgvADocList.Controls.Add(AcheckboxHeader);
+                for (int i = 0; i < dgvADocList.Columns.Count; i++)
+                {
+                    dgvADocList.Columns[i].ReadOnly = true;
+                }
+                dgvADocList.Columns["Payment"].ReadOnly = false;
+                dgvADocList.Columns[0].ReadOnly = false;
+
+                bool kq = true;
+                for (int i = 0; i < dgvADocList.RowCount; i++)
+                {
+                    if (dgvADocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
+                        dgvADocList[0, i].Value = true;
+                    else
+                    {
+                        dgvADocList[0, i].Value = false;
+                        kq = false;
+                    }
+
+                }
+                if (kq == true)
+                    ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
+                dgvADocList.EndEdit();
+            }
+
+            //==================
+
+        }        
+        private void _BindNDocGrid()
         {
+            string brandid = cmbBranchID.SelectedValue.ToString();
+            string AdjNbr = txtAdjNbr.Text.ToString();
+            string vendid = txtVendID.Text.ToString();
+            int Release = Int32.Parse(cmbStatus.SelectedValue.ToString());
             _dtNDoc = AP203Ctrl.LoadNDoc(brandid, AdjNbr, vendid, Release);
             _dtNDocTmp = _dtNDoc.Copy();
-            dgvNDocList.DataSource = _dtNDoc;           
-        }
+            dgvNDocList.DataSource = _dtNDoc;
+
+            //==================
+            if ((dgvNDocList.Columns[0].Name == "chk") && (dgvNDocList.Rows.Count > 0))
+            {
+                dgvNDocList.Columns[0].HeaderText = "";
+                dgvNDocList.Columns[0].Width = 18;
+                // add checkbox header            
+                Rectangle rect = dgvNDocList.GetCellDisplayRectangle(0, -1, true);
+                // set checkbox header to center of header cell. +1 pixel to position correctly.
+                rect.X = rect.Location.X + (rect.Width / 4) - 2;
+                rect.Y = rect.Y + 5;
+
+                CheckBox NcheckboxHeader = new CheckBox();
+                NcheckboxHeader.Name = "NcheckboxHeader";
+                NcheckboxHeader.Size = new Size(13, 13);
+                NcheckboxHeader.Location = rect.Location;
+                NcheckboxHeader.Click += new EventHandler(NcheckboxHeader_Click);
+                dgvNDocList.Controls.Add(NcheckboxHeader);
+                for (int i = 0; i < dgvNDocList.Columns.Count; i++)
+                {
+                    dgvNDocList.Columns[i].ReadOnly = true;
+                }
+                dgvNDocList.Columns["Payment"].ReadOnly = false;
+                dgvNDocList.Columns[0].ReadOnly = false;
+
+                bool kq = true;
+                for (int i = 0; i < dgvNDocList.RowCount; i++)
+                {
+                    if (dgvNDocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
+                        dgvNDocList[0, i].Value = true;
+                    else
+                    {
+                        dgvNDocList[0, i].Value = false;
+                        kq = false;
+                    }
+
+                }
+                if (kq == true)
+                    ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+                dgvNDocList.EndEdit();
+            }
+
+            //==================
+        }     
         private bool _CheckValid()
         {
             if (cmbBranchID.SelectedValue.ToString() == "")
@@ -284,26 +378,49 @@ namespace AP203
                 }
             }
         }       
-        private void _ComputeAmt()
+        private void _SumADoc()
+        {
+            //double totalAmt= 0;
+            double totalPayment = 0;
+            if (dgvADocList.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvADocList.Rows)
+               {
+                   //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
+                   totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
+               }
+               txtTotalAAmt.Text = totalPayment.ToString();
+            }
+        }
+        private void _SumNDoc()
         {
             ////double totalAmt= 0;
-            //double totalPayment = 0;
-            //if (dgvDocList.Rows.Count > 0)
-            //{
-            //    foreach (DataGridViewRow row in dgvDocList.Rows)
-            //    {
-            //        //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
-            //        totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
-            //    }
-            //    txtAdjAmt.Text = totalPayment.ToString();
-            //}
+            double totalPayment = 0;
+            if (dgvNDocList.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvNDocList.Rows)
+                {
+                    //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
+                    totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
+                }
+                txtTotalNAmt.Text = totalPayment.ToString();
+            }
         }
-        private double[] _GetValue(string id)
+
+        private double[] _GetAValue(string id)
         {
             double[] db = new double[2];
-            //string sql = string.Format("DocNbr = '{0}'", id);
-            //db[0] = double.Parse(_dtAPDocTmp.Select(sql)[0]["Payment"].ToString());
-            //db[1] = double.Parse(_dtAPDocTmp.Select(sql)[0]["DocBal"].ToString());
+            string sql = string.Format("DocNbr = '{0}'", id);
+            db[0] = double.Parse(_dtADocTmp.Select(sql)[0]["Payment"].ToString());
+            db[1] = double.Parse(_dtADocTmp.Select(sql)[0]["DocBal"].ToString());
+            return db;
+        }
+        private double[] _GetNValue(string id)
+        {
+            double[] db = new double[2];
+            string sql = string.Format("DocNbr = '{0}'", id);
+            db[0] = double.Parse(_dtNDocTmp.Select(sql)[0]["Payment"].ToString());
+            db[1] = double.Parse(_dtNDocTmp.Select(sql)[0]["DocBal"].ToString());
             return db;
         }
         private void _ResetPanel()
@@ -314,33 +431,71 @@ namespace AP203
             txtDocDescr.Text = "";
             txtAdjAmt.Text = "";
             txtTotalAAmt.Text = "";
-            txtTaltalNAmt.Text = "";
+            txtTotalNAmt.Text = "";
             txtTaltolCheck.Text = "";
+            txtVendID.Text = "";
             cmbBranchID.Focus();
 
-            _BindADocGrid(cmbBranchID.SelectedValue.ToString(), txtAdjNbr.Text.ToString(), txtVendID.Text.ToString(), 1);
-            _BindNDocGrid(cmbBranchID.SelectedValue.ToString(), txtAdjNbr.Text.ToString(), txtVendID.Text.ToString(), 1);
+            dgvADocList.DataSource = null;
+            dgvADocList.Controls.Clear();
+            dgvNDocList.DataSource = null;
+            dgvNDocList.Controls.Clear();
+            //_BindADocGrid();
+            //_BindNDocGrid();
         }
-        private void checkboxHeaderNDoc_CheckedChanged(object sender, EventArgs e)
+        private void NcheckboxHeader_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgvADocList.RowCount; i++)
+            for (int i = 0; i < dgvNDocList.RowCount; i++)
             {
-                dgvADocList[0, i].Value = ((CheckBox)dgvADocList.Controls.Find("checkboxHeaderADoc", true)[0]).Checked;
-                if (double.Parse(dgvADocList.Rows[i].Cells["Docbal"].Value.ToString()) != 0)
+                double payment = _GetNValue(dgvNDocList.Rows[i].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetNValue(dgvNDocList.Rows[i].Cells["DocNbr"].Value.ToString())[1];
+                dgvNDocList[0, i].Value = ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked;
+
+                object d = ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked;
+
+                if ((bool)dgvNDocList.Rows[i].Cells[0].FormattedValue)
                 {
-                    if ((bool)dgvADocList.Rows[i].Cells[0].FormattedValue)
+                    if (double.Parse(dgvNDocList.Rows[i].Cells["Docbal"].Value.ToString()) != 0)
                     {
-                        dgvADocList.Rows[i].Cells["Payment"].Value = _dtADocTmp.Rows[i]["Docbal"].ToString();
-                        dgvADocList.Rows[i].Cells["Docbal"].Value = 0;
+                        dgvNDocList.Rows[i].Cells["Payment"].Value = payment + docbal;
+                        dgvNDocList.Rows[i].Cells["Docbal"].Value = 0;
                     }
-                    else
-                    {
-                        dgvADocList.Rows[i].Cells["Payment"].Value = 0;
-                        dgvADocList.Rows[i].Cells["Docbal"].Value = _dtADocTmp.Rows[i]["Docbal"].ToString();
-                    }
+                }
+                else
+                {
+                    dgvNDocList.Rows[i].Cells["Docbal"].Value = payment + docbal;
+                    dgvNDocList.Rows[i].Cells["Payment"].Value = 0;
                 }
             }
             dgvNDocList.EndEdit();
+            _SumNDoc();
+        }
+        private void AcheckboxHeader_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvADocList.RowCount; i++)
+            {
+                double payment = _GetAValue(dgvADocList.Rows[i].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetAValue(dgvADocList.Rows[i].Cells["DocNbr"].Value.ToString())[1];
+                dgvADocList[0, i].Value = ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked;
+
+                object d = ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked;
+
+                if ((bool)dgvADocList.Rows[i].Cells[0].FormattedValue)
+                {
+                    if (double.Parse(dgvADocList.Rows[i].Cells["Docbal"].Value.ToString()) != 0)
+                    {
+                        dgvADocList.Rows[i].Cells["Payment"].Value = payment + docbal;
+                        dgvADocList.Rows[i].Cells["Docbal"].Value = 0;
+                    }
+                }
+                else
+                {
+                    dgvADocList.Rows[i].Cells["Docbal"].Value = payment + docbal;
+                    dgvADocList.Rows[i].Cells["Payment"].Value = 0;
+                }
+            }
+            dgvADocList.EndEdit();
+            _SumADoc();
         }
         private void pnl_SizeChanged(object sender, EventArgs e)
         {
@@ -351,6 +506,221 @@ namespace AP203
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _ResetPanel();
+        }
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+           
+        }
+        private void txtVendID_TextChanged(object sender, EventArgs e)
+        {
+            _BindADocGrid();
+            _BindNDocGrid();
+        }
+        private void dgvADocList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                double payment = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+
+                dgvADocList.EndEdit();
+                if (((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                {
+                    dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                    dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+
+                    //===============
+                    bool kq = true;
+                    foreach (DataGridViewRow row in dgvADocList.Rows)
+                    {
+                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        {
+                            kq = false;
+                            break;
+                        }
+                    }
+                    if (kq == true)
+                        ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
+                    //===============
+                }
+                else if ((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                {
+                    dgvADocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                    dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;                    
+                }
+
+
+            }
+            dgvADocList.EndEdit();
+            _SumADoc();
+        }
+        private void dgvADocList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                double payment = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+
+                dgvADocList.EndEdit();
+                if (((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                {
+                    dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                    dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+
+                    //===============
+                    bool kq = true;
+                    foreach (DataGridViewRow row in dgvADocList.Rows)
+                    {
+                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        {
+                            kq = false;
+                            break;
+                        }
+                    }
+                    if (kq == true)
+                        ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
+                    //===============
+                }
+                else if ((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                {
+                    dgvADocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                    dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;                    
+                }
+
+
+            }
+            dgvADocList.EndEdit();
+            _SumADoc();
+        }
+        private void dgvNDocList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                double payment = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+
+                dgvNDocList.EndEdit();
+                if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                {
+                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+
+                    //===============
+                    bool kq = true;
+                    foreach (DataGridViewRow row in dgvNDocList.Rows)
+                    {
+                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        {
+                            kq = false;
+                            break;
+                        }
+                    }
+                    if (kq == true)
+                        ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+                    //===============
+                }
+                else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                {
+                    dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
+                }
+
+
+            }
+            dgvNDocList.EndEdit();
+            _SumNDoc();
+        }
+        private void dgvNDocList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                double payment = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+
+                dgvNDocList.EndEdit();
+                if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                {
+                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+
+                    //===============
+                    bool kq = true;
+                    foreach (DataGridViewRow row in dgvNDocList.Rows)
+                    {
+                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        {
+                            kq = false;
+                            break;
+                        }
+                    }
+                    if (kq == true)
+                        ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+                    //===============
+                }
+                else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                {
+                    dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
+                }
+
+
+            }
+            dgvNDocList.EndEdit();
+            _SumNDoc();
+        }
+        private void dgvADocList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvADocList.Columns["Payment"].Index)
+            {
+                double payment = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+                dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
+                if (double.Parse(dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value.ToString()) == 0)
+                    dgvADocList[0, e.RowIndex].Value = true;
+                else
+                    dgvADocList[0, e.RowIndex].Value = false;
+
+            }
+            //===============
+            bool kq = true;
+            foreach (DataGridViewRow row in dgvADocList.Rows)
+            {
+                if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                {
+                    kq = false;
+                    break;
+                }
+            }
+            if (kq == true && dgvADocList.Rows.Count > 0)
+                ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
+            _SumADoc();
+        }
+        private void dgvNDocList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvNDocList.Columns["Payment"].Index)
+            {
+                double payment = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                double docbal = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+                dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
+                if (double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value.ToString()) == 0)
+                    dgvNDocList[0, e.RowIndex].Value = true;
+                else
+                    dgvNDocList[0, e.RowIndex].Value = false;
+
+            }
+            //===============
+            bool kq = true;
+            foreach (DataGridViewRow row in dgvNDocList.Rows)
+            {
+                if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                {
+                    kq = false;
+                    break;
+                }
+            }
+            if (kq == true && dgvNDocList.Rows.Count > 0)
+                ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+            _SumNDoc();
         }
     }
 }
