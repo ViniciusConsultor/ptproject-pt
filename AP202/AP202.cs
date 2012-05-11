@@ -620,9 +620,10 @@ namespace AP202
         }
         private void dgvDocList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            double a = 0;
-            if (double.TryParse(dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString(), out a) == false)
-                dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
+            //double a = 0;
+            //if (double.TryParse(dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString(), out a) == false)
+            //    dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
+            
             if (e.ColumnIndex == dgvDocList.Columns["Payment"].Index)
             {
                 double payment = _GetValue(dgvDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
@@ -777,12 +778,6 @@ namespace AP202
             txtVendIDLoad.Enabled = false;
             btnLoad.PerformClick();
         }
-        private void dgvDocList_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            double a = 0;
-            if (double.TryParse(dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString(), out a) == false)
-                dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
-        }
         private void btnRelease_Click(object sender, EventArgs e)
         {
             _GetPanel(1);
@@ -817,6 +812,38 @@ namespace AP202
             txtAdjNbr.Text = "";
             cmbStatus.SelectedValue = 0;
             _SetButtomStatus();
-        }       
+        }
+        private void dgvDocList_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+             double a = 0;
+            if (a > double.Parse(dgvDocList.Rows[e.RowIndex].Cells["DocBal"].Value.ToString()))
+                dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value = double.Parse(dgvDocList.Rows[e.RowIndex].Cells["DocBal"].Value.ToString());     
+        }
+
+        private void dgvDocList_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            double a = 0;
+            if (double.TryParse(dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString(), out a) == false)
+                dgvDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
+        }
+
+        private void dgvDocList_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDocList.EndEdit();
+            DataGridViewCell cuCell = dgvDocList.CurrentCell;
+            string mainStr = dgvDocList.CurrentCell.Value.ToString();
+            for (int scan = 0; scan < mainStr.Length; scan++)
+            {
+                if (Char.IsDigit(mainStr[scan])) { }
+                else
+                {
+                    dgvDocList.CurrentCell.Value = 0;
+                    dgvDocList.ClearSelection();
+                    dgvDocList.CurrentCell = cuCell;
+                    dgvDocList.CurrentCell.Selected = true;
+                    return;
+                }
+            }
+        }
     }
 }

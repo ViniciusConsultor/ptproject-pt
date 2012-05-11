@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbUser = new PT.Component.MultiColumnComboBox();
             this.labelX14 = new PT.Component.NormalLabel();
             this.dtmToDate = new PT.Component.NormalDateTimeInput();
@@ -97,7 +97,6 @@
             // btnRefresh
             // 
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // 
             // btnBack
             // 
@@ -849,14 +848,14 @@
             this.dgvDocList.AllowUserToResizeColumns = false;
             this.dgvDocList.AutoColumnHeadder = true;
             this.dgvDocList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDocList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDocList.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDocList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDocList.EndCell = 0;
             this.dgvDocList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
@@ -865,6 +864,8 @@
             this.dgvDocList.Name = "dgvDocList";
             this.dgvDocList.Size = new System.Drawing.Size(757, 238);
             this.dgvDocList.TabIndex = 76;
+            this.dgvDocList.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocList_CellLeave);
+            this.dgvDocList.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocList_CellValidated);
             this.dgvDocList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocList_CellContentDoubleClick);
             this.dgvDocList.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvDocList_CellValidating);
             this.dgvDocList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocList_CellEndEdit);
