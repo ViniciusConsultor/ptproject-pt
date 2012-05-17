@@ -468,6 +468,7 @@ namespace AP202
             db[1] = double.Parse(_dtAPDocTmp.Select(sql)[0]["DocBal"].ToString());
             return db;
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             _BindGrid();
@@ -787,9 +788,23 @@ namespace AP202
         }
         private void btnDestroy_Click(object sender, EventArgs e)
         {
-            _GetPanel(-1);
-            _SaveAPAdjust(-1);
-            cmbStatus.SelectedValue = -1;
+            PT.Component.InputBoxForm ib = new PT.Component.InputBoxForm("Bạn có muốn hủy?", "default", "Chuyển Kho");
+            if (ib.ShowDialog() == DialogResult.OK)
+            {
+                _GetPanel(-1);
+                _infoAPAdjust.Note = ib.txtOut.Text.ToString();
+                _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+                _infoAPAdjust.LUpd_Prog = _strPro;
+                _infoAPAdjust.LUpd_User = _strUser;
+                int kq = _SaveAPAdjust(-1);
+                if (kq == 1)
+                {
+                    cmbStatus.SelectedValue = -1;
+                    _BindGrid();
+                    MessageBox.Show("Huy thanh cong", "Thong bao");
+                }
+
+            } 
             _SetButtomStatus();
         }        
         private void btnBack_Click(object sender, EventArgs e)
@@ -803,14 +818,25 @@ namespace AP202
             DateTime from = dtmFromDateLoad.Value;
             DateTime to = dtmToDateLoad.Value;
             string vendid = txtVendIDLoad.Text.ToString().Trim();
-            _GetPanel(-1);
-            _SaveAPAdjust(-1);
-            cmbStatus.SelectedValue = -1;
-
-            _ResetPanelInput();
-            _BindPanel(_infoAPAdjust);
-            txtAdjNbr.Text = "";
-            cmbStatus.SelectedValue = 0;
+            PT.Component.InputBoxForm ib = new PT.Component.InputBoxForm("Bạn có muốn hủy?", "default", "Chuyển Kho");
+            if (ib.ShowDialog() == DialogResult.OK)
+            {
+                _GetPanel(-1);
+                _infoAPAdjust.Note = ib.txtOut.Text.ToString();
+                _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+                _infoAPAdjust.LUpd_Prog = _strPro;
+                _infoAPAdjust.LUpd_User = _strUser;
+                int kq = _SaveAPAdjust(-1);
+                if (kq == 1)
+                {
+                    _BindGrid();
+                    _ResetPanelInput();
+                    _BindPanel(_infoAPAdjust);
+                    txtAdjNbr.Text = "";
+                    cmbStatus.SelectedValue = 0;
+                    MessageBox.Show("Huy thanh cong", "Thong bao");
+                }
+            } 
             _SetButtomStatus();
         }
         private void dgvDocList_CellValidated(object sender, DataGridViewCellEventArgs e)
@@ -829,21 +855,21 @@ namespace AP202
 
         private void dgvDocList_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            dgvDocList.EndEdit();
-            DataGridViewCell cuCell = dgvDocList.CurrentCell;
-            string mainStr = dgvDocList.CurrentCell.Value.ToString();
-            for (int scan = 0; scan < mainStr.Length; scan++)
-            {
-                if (Char.IsDigit(mainStr[scan])) { }
-                else
-                {
-                    dgvDocList.CurrentCell.Value = 0;
-                    dgvDocList.ClearSelection();
-                    dgvDocList.CurrentCell = cuCell;
-                    dgvDocList.CurrentCell.Selected = true;
-                    return;
-                }
-            }
+            //dgvDocList.EndEdit();
+            //DataGridViewCell cuCell = dgvDocList.CurrentCell;
+            //string mainStr = dgvDocList.CurrentCell.Value.ToString();
+            //for (int scan = 0; scan < mainStr.Length; scan++)
+            //{
+            //    if (Char.IsDigit(mainStr[scan])) { }
+            //    else
+            //    {
+            //        dgvDocList.CurrentCell.Value = 0;
+            //        dgvDocList.ClearSelection();
+            //        dgvDocList.CurrentCell = cuCell;
+            //        dgvDocList.CurrentCell.Selected = true;
+            //        return;
+            //    }
+            //}
         }
     }
 }
