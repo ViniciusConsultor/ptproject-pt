@@ -155,7 +155,7 @@ namespace AP203
             }
 
             //==================
-
+            _dtADoc.DefaultView.Sort = "Payment DESC";
         }        
         private void _BindNDocGrid()
         {
@@ -212,6 +212,7 @@ namespace AP203
             }
 
             //==================
+            _dtNDoc.DefaultView.Sort = "Payment DESC";
         }     
         private bool _CheckValid()
         {
@@ -975,8 +976,10 @@ namespace AP203
                 }
             }
             _BindGrid();
-            _dtADoc.DefaultView.Sort = "Payment ASC";
-            _dtNDoc.DefaultView.Sort = "Payment ASC";
+            //_BindNDocGrid();
+            //_BindADocGrid();
+            _dtADoc.DefaultView.Sort = "Payment DESC";
+            _dtNDoc.DefaultView.Sort = "Payment DESC";
         }
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1017,7 +1020,6 @@ namespace AP203
 
             } 
             _SetButtomStatus();
-
         }
         private void btnCanAndCopy_Click(object sender, EventArgs e)
         {            
@@ -1044,7 +1046,39 @@ namespace AP203
             } 
             
             _SetButtomStatus();
+        }     
+
+        private void dgvADocList_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            DataGridViewTextBoxCell cell = dgvADocList[e.ColumnIndex, e.RowIndex] as DataGridViewTextBoxCell;
+
+            if (cell != null)
+            {
+                char[] chars = e.FormattedValue.ToString().ToCharArray();
+                foreach (char c in chars)
+                {
+                    if (char.IsDigit(c) == false)
+                    {
+                        MessageBox.Show("You have to enter digits only");
+
+                        e.Cancel = true;
+                        break;
+                    }
+                }
+            }
+            else
+                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+            if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
+                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
         }
+
+        private void dgvADocList_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
+                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+        }
+
+       
         
     }
 }
