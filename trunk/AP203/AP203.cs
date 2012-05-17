@@ -542,19 +542,22 @@ namespace AP203
             _BindCtrl();
             dtmAdjDate.Value = DateTime.Now;
             txtAdjDescr.Text = "";
+            txtAdjNbr.Text = "";
             txtAdjAmt.Text = "";
             txtTotalAAmt.Text = "";
             txtTotalNAmt.Text = "";
             txtTotalACheck.Text = "";
             txtVendID.Text = "";
+            txtVendID.Enabled = true;
             cmbBranchID.Focus();
+            cmbStatus.SelectedValue = 0;
 
             dgvADocList.DataSource = null;
             dgvADocList.Controls.Clear();
             dgvNDocList.DataSource = null;
             dgvNDocList.Controls.Clear();
-            //_BindADocGrid();
-            //_BindNDocGrid();
+            _BindGrid();
+            _SetButtomStatus();
         }
 
         private void NcheckboxHeader_Click(object sender, EventArgs e)
@@ -648,7 +651,7 @@ namespace AP203
         }
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-           
+            _BindGrid();
         }
         private void txtVendID_TextChanged(object sender, EventArgs e)
         {
@@ -889,7 +892,6 @@ namespace AP203
                 ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
             _SumADoc();
         }
-
         private void dgvNDocList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvNDocList.Columns["Payment"].Index)
@@ -937,7 +939,6 @@ namespace AP203
                 ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
             _SumNDoc();
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -977,7 +978,6 @@ namespace AP203
             _dtADoc.DefaultView.Sort = "Payment ASC";
             _dtNDoc.DefaultView.Sort = "Payment ASC";
         }
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             pnldgv.Visible = false;
@@ -987,41 +987,62 @@ namespace AP203
             txtVendID.Enabled = false;
             _BindADocGrid();
             _BindNDocGrid();
-            //dtmFromDateLoad.Value = _infoAPAdjust.FromDateTmp;
-            //dtmToDateLoad.Value = _infoAPAdjust.ToDateTmp;
-            //txtVendIDLoad.Text = _infoAPAdjust.VendIDTmp;
-            //dtmToDateLoad.Enabled = false;
-            //dtmFromDateLoad.Enabled = false;
-            //txtVendIDLoad.Enabled = false;
-            //btnLoad.PerformClick();
+            _SetButtomStatus();
         }
-
         private void btnRelease_Click(object sender, EventArgs e)
         {
             _GetPanel(1);
             _SaveAPAdjust(1);
             cmbStatus.SelectedValue = 1;
             _SetButtomStatus();
+            _BindGrid();
         }
-
         private void btnDestroy_Click(object sender, EventArgs e)
         {
-            _GetPanel(-1);
-            _SaveAPAdjust(-1);
-            cmbStatus.SelectedValue = -1;
-            _SetButtomStatus();
-        }
+            PT.Component.InputBoxForm ib = new PT.Component.InputBoxForm("Bạn có muốn hủy?", "default", "Chuyển Kho");
+            if (ib.ShowDialog() == DialogResult.OK)
+            {
+                _GetPanel(-1);
+                _infoAPAdjust.Note = ib.txtOut.Text.ToString();
+                _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+                _infoAPAdjust.LUpd_Prog = _strPro;
+                _infoAPAdjust.LUpd_User = _strUser;
+                int kq = _SaveAPAdjust(-1);
+                if (kq == 1)
+                {
+                    cmbStatus.SelectedValue = -1;
+                    _BindGrid();
+                    MessageBox.Show("Huy thanh cong", "Thong bao");
+                }
 
+            } 
+            _SetButtomStatus();
+
+        }
         private void btnCanAndCopy_Click(object sender, EventArgs e)
         {            
             string vendid = txtVendID.Text.ToString().Trim();
-            _GetPanel(-1);
-            _SaveAPAdjust(-1);
-            //_ResetPanelInput();
-            _BindPanel(_infoAPAdjust);
-            txtAdjNbr.Text = "";
-            txtVendID.Enabled = true;
-            cmbStatus.SelectedValue = 0;
+            PT.Component.InputBoxForm ib = new PT.Component.InputBoxForm("Bạn có muốn hủy?", "default", "Chuyển Kho");
+            if (ib.ShowDialog() == DialogResult.OK)
+            {
+                _GetPanel(-1);
+                _infoAPAdjust.Note = ib.txtOut.Text.ToString();
+                _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+                _infoAPAdjust.LUpd_Prog = _strPro;
+                _infoAPAdjust.LUpd_User = _strUser;
+                int kq = _SaveAPAdjust(-1);
+                if (kq == 1)
+                {
+                    _BindGrid();
+                    _BindPanel(_infoAPAdjust);
+                    txtAdjNbr.Text = "";
+                    txtVendID.Enabled = true;
+                    cmbStatus.SelectedValue = 0;
+                    MessageBox.Show("Huy thanh cong", "Thong bao");
+                }
+
+            } 
+            
             _SetButtomStatus();
         }
         
