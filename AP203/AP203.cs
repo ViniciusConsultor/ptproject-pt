@@ -995,6 +995,35 @@ namespace AP203
             //txtVendIDLoad.Enabled = false;
             //btnLoad.PerformClick();
         }
+
+        private void btnRelease_Click(object sender, EventArgs e)
+        {
+            _GetPanel(1);
+            _SaveAPAdjust(1);
+            cmbStatus.SelectedValue = 1;
+            _SetButtomStatus();
+        }
+
+        private void btnDestroy_Click(object sender, EventArgs e)
+        {
+            _GetPanel(-1);
+            _SaveAPAdjust(-1);
+            cmbStatus.SelectedValue = -1;
+            _SetButtomStatus();
+        }
+
+        private void btnCanAndCopy_Click(object sender, EventArgs e)
+        {            
+            string vendid = txtVendID.Text.ToString().Trim();
+            _GetPanel(-1);
+            _SaveAPAdjust(-1);
+            //_ResetPanelInput();
+            _BindPanel(_infoAPAdjust);
+            txtAdjNbr.Text = "";
+            txtVendID.Enabled = true;
+            cmbStatus.SelectedValue = 0;
+            _SetButtomStatus();
+        }
         
     }
 }
