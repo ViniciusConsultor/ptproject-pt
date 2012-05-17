@@ -40,16 +40,18 @@
             this.FromDate = new DevComponents.DotNetBar.LabelX();
             this.labelX14 = new DevComponents.DotNetBar.LabelX();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX12 = new DevComponents.DotNetBar.LabelX();
+            this.txtTotalNCheck = new PT.Component.NumericTextBox();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtTotalNAmt = new PT.Component.NumericTextBox();
-            this.txtTaltolCheck = new PT.Component.NumericTextBox();
+            this.txtTotalACheck = new PT.Component.NumericTextBox();
             this.txtTotalAAmt = new PT.Component.NumericTextBox();
             this.txtVendID = new PT.Component.MultiDropDownTextBox(this.components);
             this.VendID = new DevComponents.DotNetBar.LabelX();
             this.txtAdjNbr = new PT.Component.NormalTextBox();
-            this.txtDocDescr = new PT.Component.NormalTextBox();
+            this.txtAdjDescr = new PT.Component.NormalTextBox();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.txtAdjAmt = new PT.Component.NumericTextBox();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
@@ -84,9 +86,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNDocList)).BeginInit();
             this.SuspendLayout();
             // 
+            // bar1
+            // 
+            this.bar1.Size = new System.Drawing.Size(876, 25);
+            // 
             // btnAdd
             // 
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnRefresh
             // 
@@ -110,7 +120,7 @@
             this.pnl.Controls.Add(this.pnlA);
             this.pnl.Controls.Add(this.panelEx2);
             this.pnl.Location = new System.Drawing.Point(3, 189);
-            this.pnl.Size = new System.Drawing.Size(769, 228);
+            this.pnl.Size = new System.Drawing.Size(832, 228);
             this.pnl.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnl.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnl.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -145,9 +155,15 @@
             this.dgv.Location = new System.Drawing.Point(0, 53);
             this.dgv.ReadOnly = true;
             this.dgv.Size = new System.Drawing.Size(578, 89);
+            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // barStatus
+            // 
+            this.barStatus.Size = new System.Drawing.Size(876, 19);
             // 
             // panelEx1
             // 
+            this.panelEx1.Size = new System.Drawing.Size(876, 537);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -349,16 +365,18 @@
             // 
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx2.Controls.Add(this.labelX12);
+            this.panelEx2.Controls.Add(this.txtTotalNCheck);
             this.panelEx2.Controls.Add(this.labelX11);
             this.panelEx2.Controls.Add(this.labelX10);
             this.panelEx2.Controls.Add(this.labelX1);
             this.panelEx2.Controls.Add(this.txtTotalNAmt);
-            this.panelEx2.Controls.Add(this.txtTaltolCheck);
+            this.panelEx2.Controls.Add(this.txtTotalACheck);
             this.panelEx2.Controls.Add(this.txtTotalAAmt);
             this.panelEx2.Controls.Add(this.txtVendID);
             this.panelEx2.Controls.Add(this.VendID);
             this.panelEx2.Controls.Add(this.txtAdjNbr);
-            this.panelEx2.Controls.Add(this.txtDocDescr);
+            this.panelEx2.Controls.Add(this.txtAdjDescr);
             this.panelEx2.Controls.Add(this.labelX2);
             this.panelEx2.Controls.Add(this.txtAdjAmt);
             this.panelEx2.Controls.Add(this.labelX5);
@@ -372,7 +390,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(769, 129);
+            this.panelEx2.Size = new System.Drawing.Size(832, 129);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -381,6 +399,33 @@
             this.panelEx2.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 75;
+            // 
+            // labelX12
+            // 
+            // 
+            // 
+            // 
+            this.labelX12.BackgroundStyle.Class = "";
+            this.labelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX12.Location = new System.Drawing.Point(750, 109);
+            this.labelX12.Name = "labelX12";
+            this.labelX12.Size = new System.Drawing.Size(60, 15);
+            this.labelX12.TabIndex = 85;
+            this.labelX12.Text = "CheckAmt";
+            // 
+            // txtTotalNCheck
+            // 
+            this.txtTotalNCheck.AllowSpace = false;
+            // 
+            // 
+            // 
+            this.txtTotalNCheck.Border.Class = "TextBoxBorder";
+            this.txtTotalNCheck.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalNCheck.Location = new System.Drawing.Point(816, 106);
+            this.txtTotalNCheck.Name = "txtTotalNCheck";
+            this.txtTotalNCheck.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalNCheck.TabIndex = 84;
+            this.txtTotalNCheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelX11
             // 
@@ -435,19 +480,19 @@
             this.txtTotalNAmt.TabIndex = 80;
             this.txtTotalNAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtTaltolCheck
+            // txtTotalACheck
             // 
-            this.txtTaltolCheck.AllowSpace = false;
+            this.txtTotalACheck.AllowSpace = false;
             // 
             // 
             // 
-            this.txtTaltolCheck.Border.Class = "TextBoxBorder";
-            this.txtTaltolCheck.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtTaltolCheck.Location = new System.Drawing.Point(251, 106);
-            this.txtTaltolCheck.Name = "txtTaltolCheck";
-            this.txtTaltolCheck.Size = new System.Drawing.Size(100, 20);
-            this.txtTaltolCheck.TabIndex = 79;
-            this.txtTaltolCheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalACheck.Border.Class = "TextBoxBorder";
+            this.txtTotalACheck.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalACheck.Location = new System.Drawing.Point(251, 106);
+            this.txtTotalACheck.Name = "txtTotalACheck";
+            this.txtTotalACheck.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalACheck.TabIndex = 79;
+            this.txtTotalACheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalAAmt
             // 
@@ -511,17 +556,17 @@
             this.txtAdjNbr.Size = new System.Drawing.Size(100, 20);
             this.txtAdjNbr.TabIndex = 75;
             // 
-            // txtDocDescr
+            // txtAdjDescr
             // 
             // 
             // 
             // 
-            this.txtDocDescr.Border.Class = "TextBoxBorder";
-            this.txtDocDescr.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDocDescr.Location = new System.Drawing.Point(69, 67);
-            this.txtDocDescr.Name = "txtDocDescr";
-            this.txtDocDescr.Size = new System.Drawing.Size(299, 20);
-            this.txtDocDescr.TabIndex = 74;
+            this.txtAdjDescr.Border.Class = "TextBoxBorder";
+            this.txtAdjDescr.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAdjDescr.Location = new System.Drawing.Point(69, 67);
+            this.txtAdjDescr.Name = "txtAdjDescr";
+            this.txtAdjDescr.Size = new System.Drawing.Size(299, 20);
+            this.txtAdjDescr.TabIndex = 74;
             // 
             // labelX2
             // 
@@ -561,7 +606,7 @@
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(50, 15);
             this.labelX5.TabIndex = 68;
-            this.labelX5.Text = "DocDescr";
+            this.labelX5.Text = "AdjDescr";
             // 
             // cmbBranchID
             // 
@@ -793,7 +838,7 @@
             this.pnlB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlB.Location = new System.Drawing.Point(572, 129);
             this.pnlB.Name = "pnlB";
-            this.pnlB.Size = new System.Drawing.Size(197, 99);
+            this.pnlB.Size = new System.Drawing.Size(260, 99);
             this.pnlB.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlB.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlB.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -823,7 +868,7 @@
             this.dgvNDocList.Language = "Language1";
             this.dgvNDocList.Location = new System.Drawing.Point(0, 23);
             this.dgvNDocList.Name = "dgvNDocList";
-            this.dgvNDocList.Size = new System.Drawing.Size(197, 76);
+            this.dgvNDocList.Size = new System.Drawing.Size(260, 76);
             this.dgvNDocList.TabIndex = 1;
             this.dgvNDocList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNDocList_CellContentDoubleClick);
             this.dgvNDocList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNDocList_CellEndEdit);
@@ -839,7 +884,7 @@
             this.labelX7.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelX7.Location = new System.Drawing.Point(0, 0);
             this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(197, 23);
+            this.labelX7.Size = new System.Drawing.Size(260, 23);
             this.labelX7.TabIndex = 0;
             this.labelX7.Text = "NDocList";
             this.labelX7.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -849,7 +894,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(876, 562);
             this.DoubleBuffered = true;
             this.Name = "AP203";
             this.Text = "Form1";
@@ -885,7 +930,7 @@
         private DevComponents.DotNetBar.LabelX labelX14;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private PT.Component.NormalTextBox txtAdjNbr;
-        private PT.Component.NormalTextBox txtDocDescr;
+        private PT.Component.NormalTextBox txtAdjDescr;
         private DevComponents.DotNetBar.LabelX labelX2;
         private PT.Component.NumericTextBox txtAdjAmt;
         private DevComponents.DotNetBar.LabelX labelX5;
@@ -908,9 +953,11 @@
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.LabelX labelX1;
         private PT.Component.NumericTextBox txtTotalNAmt;
-        private PT.Component.NumericTextBox txtTaltolCheck;
+        private PT.Component.NumericTextBox txtTotalACheck;
         private PT.Component.NumericTextBox txtTotalAAmt;
-        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.LabelX labelX12;
+        private PT.Component.NumericTextBox txtTotalNCheck;
+        public DevComponents.DotNetBar.LabelX labelX11;
     }
 }
 

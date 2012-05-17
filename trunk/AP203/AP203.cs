@@ -28,7 +28,7 @@ namespace AP203
         private DataTable _dtVend = new DataTable();
         private DataTable _dtCAAccount = new DataTable();
         private DataTable _dtPONbr = new DataTable();
-        private string _strFistChar = "CC", _strLastNbr;
+        private string _strFistChar = "CT", _strLastNbr;
         public AP203()
         {
             InitializeComponent();
@@ -40,6 +40,7 @@ namespace AP203
             dtmFromDate.Value = DateTime.Now.Date;
             dtmToDate.Value = DateTime.Now.Date;
             _BindGrid();
+            
         }
         private void _BindGrid()
         {
@@ -81,6 +82,16 @@ namespace AP203
             cmbStatus.SelectedValue = 0;
 
             txtVendID.DataSource = _dtVend;
+        }
+        private void _BindPanel(APAdjust info)
+        {
+            cmbBranchID.SelectedValue = info.BranchID;
+            cmbStatus.SelectedValue = info.Rlsed;
+            txtAdjNbr.Text = info.AdjNbr;
+            dtmAdjDate.Value = info.AdjDate;
+            txtAdjAmt.Text = info.AdjAmt.ToString();
+            txtAdjDescr.Text = info.AdjDesc;
+            txtVendID.Text = info.VendIDTmp;
         }
         private void _LoadData()
         {
@@ -124,8 +135,10 @@ namespace AP203
                 dgvADocList.Columns[0].ReadOnly = false;
 
                 bool kq = true;
+                double total = 0;
                 for (int i = 0; i < dgvADocList.RowCount; i++)
                 {
+                    total += double.Parse(dgvADocList.Rows[i].Cells["Docbal"].Value.ToString());
                     if (dgvADocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
                         dgvADocList[0, i].Value = true;
                     else
@@ -138,6 +151,7 @@ namespace AP203
                 if (kq == true)
                     ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
                 dgvADocList.EndEdit();
+                txtTotalAAmt.Text = total.ToString();
             }
 
             //==================
@@ -178,8 +192,10 @@ namespace AP203
                 dgvNDocList.Columns[0].ReadOnly = false;
 
                 bool kq = true;
+                double total = 0;
                 for (int i = 0; i < dgvNDocList.RowCount; i++)
                 {
+                                        total += double.Parse(dgvNDocList.Rows[i].Cells["Docbal"].Value.ToString());
                     if (dgvNDocList.Rows[i].Cells["Docbal"].Value.ToString() == "0")
                         dgvNDocList[0, i].Value = true;
                     else
@@ -192,6 +208,7 @@ namespace AP203
                 if (kq == true)
                     ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
                 dgvNDocList.EndEdit();
+                 txtTotalNAmt.Text = total.ToString();
             }
 
             //==================
@@ -220,45 +237,98 @@ namespace AP203
         }
         private int _SaveAPAdjustDet()
         {
-            //string strBrandID = cmbBranchID.SelectedValue.ToString().Trim();
-            //string strAdjNbr = txtAdjNbr.Text.ToString().Trim();
-            //DateTime dteAdjDate = dtmAdjDate.Value.Date;
-            //string strAdjAcct = cmbAdjAcct.SelectedValue.ToString().Trim();
-            //double dbeAdjAmt = double.Parse(txtAdjAmt.Text.ToString().Trim());
-            ////DataTable list = new DataTable();
-            ////list = AP202Ctrl.FindAPADjustDet("");
-            //if (dgvDocList.DataSource == _dtAPDoc)
-            //{
-            //    foreach (DataRow rows in _dtAPDoc.Rows)
-            //    {
-            //        if (double.Parse(rows["Payment"].ToString().Trim()) != 0)
-            //        {
-            //            APAdjustDet info = new APAdjustDet();
-            //            info.BranchID = strBrandID;
-            //            info.AdjNbr = strAdjNbr;
-            //            info.LineRef = "none";
-            //            info.VendID = rows["VendID"].ToString().Trim();
-            //            info.AdjDate = dteAdjDate;
-            //            info.AdjAcct = strAdjAcct;
-            //            info.AdjAmt = double.Parse(rows["Payment"].ToString().Trim());
-            //            info.NDocNbr = rows["DocNbr"].ToString().Trim();
-            //            info.NDocType = rows["DocType"].ToString().Trim();
-            //            info.NDocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date;
-            //            info.ADocNbr = "";
-            //            info.ADocType = "";
-            //            info.ADocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date; ;
-            //            info.Rlsed = 0;
-            //            info.Crtd_DateTime = DateTime.Now;
-            //            info.Crtd_Prog = _strPro;
-            //            info.Crtd_User = _strUser;
-            //            info.LUpd_DateTime = DateTime.Now;
-            //            info.LUpd_Prog = _strPro;
-            //            info.LUpd_User = _strUser;
-            //            info.Version = "";
-            //            AP202Ctrl.SaveAPAdjustDet(info);
-            //        }
-            //    }
-            //}
+            string strBrandID = cmbBranchID.SelectedValue.ToString().Trim();
+            string strAdjNbr = txtAdjNbr.Text.ToString().Trim();
+            //string strAdjNbr = "tmp";
+            DateTime dteAdjDate = dtmAdjDate.Value.Date;
+            string strAdjAcct = "";
+            double dbeAdjAmt = double.Parse(txtAdjAmt.Text.ToString().Trim());
+            //DataTable list = new DataTable();
+            //list = AP202Ctrl.FindAPADjustDet("");
+            if (dgvADocList.DataSource == _dtADoc)
+            {
+                DataTable t1 = new DataTable();
+                string sql1 = string.Format("Payment > 0 ");
+                t1 = _dtADoc.Copy();
+                t1.DefaultView.RowFilter = sql1;
+                t1.DefaultView.Sort = "Payment DESC";
+                t1 = t1.DefaultView.ToTable();
+                DataTable t2 = new DataTable();
+                string sql2 = string.Format("Payment > 0 ");
+                t2 = _dtNDoc.Copy();
+                t2.DefaultView.RowFilter = sql2;
+                t2.DefaultView.Sort = "Payment DESC";
+                t2 = t2.DefaultView.ToTable();
+
+
+                foreach (DataRow rows in t1.Rows)
+                {
+                    foreach (DataRow rows2 in t2.Rows)
+                    {
+                        double s1 = double.Parse(rows["Payment"].ToString().Trim());
+                        double s2 = double.Parse(rows2["Payment"].ToString().Trim());
+                        if (s1 > 0 && s2 > 0)
+                        {
+                            if (s1 > s2 && s2 > 0)
+                            {
+                                APAdjustDet info = new APAdjustDet();
+                                info.BranchID = strBrandID;
+                                info.AdjNbr = strAdjNbr;
+                                info.LineRef = "none";
+                                info.VendID = rows["VendID"].ToString().Trim();
+                                info.AdjDate = dteAdjDate;
+                                info.AdjAcct = strAdjAcct;
+                                info.AdjAmt = s2;
+                                info.ADocNbr = rows["DocNbr"].ToString().Trim();
+                                info.ADocType = rows["DocType"].ToString().Trim();
+                                info.ADocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date;
+                                info.NDocNbr = rows2["DocNbr"].ToString().Trim();
+                                info.NDocType = rows2["DocType"].ToString().Trim();
+                                info.NDocDate = DateTime.Parse(rows2["DocDate"].ToString().Trim()).Date;
+                                info.Rlsed = 0;
+                                info.Crtd_DateTime = DateTime.Now;
+                                info.Crtd_Prog = _strPro;
+                                info.Crtd_User = _strUser;
+                                info.LUpd_DateTime = DateTime.Now;
+                                info.LUpd_Prog = _strPro;
+                                info.LUpd_User = _strUser;
+                                info.Version = "";
+                                AP203Ctrl.SaveAPAdjustDet(info);
+                                rows["Payment"] = s1 - s2;
+                                rows2["Payment"] = 0;
+                            }
+                            else if (s1 > 0)
+                            {
+                                APAdjustDet info = new APAdjustDet();
+                                info.BranchID = strBrandID;
+                                info.AdjNbr = strAdjNbr;
+                                info.LineRef = "none";
+                                info.VendID = rows["VendID"].ToString().Trim();
+                                info.AdjDate = dteAdjDate;
+                                info.AdjAcct = strAdjAcct;
+                                info.AdjAmt = s1;
+                                info.ADocNbr = rows["DocNbr"].ToString().Trim();
+                                info.ADocType = rows["DocType"].ToString().Trim();
+                                info.ADocDate = DateTime.Parse(rows["DocDate"].ToString().Trim()).Date;
+                                info.NDocNbr = rows2["DocNbr"].ToString().Trim();
+                                info.NDocType = rows2["DocType"].ToString().Trim();
+                                info.NDocDate = DateTime.Parse(rows2["DocDate"].ToString().Trim()).Date;
+                                info.Rlsed = 0;
+                                info.Crtd_DateTime = DateTime.Now;
+                                info.Crtd_Prog = _strPro;
+                                info.Crtd_User = _strUser;
+                                info.LUpd_DateTime = DateTime.Now;
+                                info.LUpd_Prog = _strPro;
+                                info.LUpd_User = _strUser;
+                                info.Version = "";
+                                AP203Ctrl.SaveAPAdjustDet(info);
+                                rows["Payment"] = 0;
+                                rows2["Payment"] = s2 - s1;
+                            }
+                        }
+                    }
+                }
+            }
             //else if (dgvDocList.DataSource == _dtAPAdjustDet)
             //{
             //    foreach (DataRow rows in _dtAPAdjustDet.Rows)
@@ -313,11 +383,16 @@ namespace AP203
                 btnBack.Enabled = true;
                 foreach (Control c in pnl.Controls) //assuming this is a Form
                 {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
+                    if (c.Name.ToString().Length >= 5)
+                    {
+                        string name = c.Name.Substring(0, 5);
+                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                            c.Enabled = true;
+                    }
                 }
             }
+            else
+                txtVendID.Enabled = false;
             if (pnl.Visible == true)
                 btnBack.Enabled = true;
             if (cmbStatus.SelectedValue == null)
@@ -329,9 +404,12 @@ namespace AP203
                 btnBack.Enabled = true;
                 foreach (Control c in pnl.Controls) //assuming this is a Form
                 {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
+                    if (c.Name.ToString().Length >= 5)
+                    {
+                        string name = c.Name.Substring(0, 5);
+                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                            c.Enabled = true;
+                    }
                 }
             }
             if ((cmbStatus.SelectedValue.ToString() == "0") && (txtAdjNbr.Text.ToString().Trim() != ""))
@@ -344,9 +422,12 @@ namespace AP203
                 btnDelete.Enabled = true;
                 foreach (Control c in pnl.Controls) //assuming this is a Form
                 {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
+                    if (c.Name.ToString().Length >= 5)
+                    {
+                        string name = c.Name.Substring(0, 5);
+                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                            c.Enabled = true;
+                    }
                 }
             }
             else if (cmbStatus.SelectedValue.ToString() == "1")
@@ -358,9 +439,12 @@ namespace AP203
                 btnBack.Enabled = true;
                 foreach (Control c in pnl.Controls) //assuming this is a Form
                 {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = false;
+                    if (c.Name.ToString().Length >= 5)
+                    {
+                        string name = c.Name.Substring(0, 5);
+                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                            c.Enabled = false;
+                    }
                 }
             }
             else if (cmbStatus.SelectedValue.ToString() == "-1")
@@ -372,9 +456,12 @@ namespace AP203
                 btnBack.Enabled = true;
                 foreach (Control c in pnl.Controls) //assuming this is a Form
                 {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = false;
+                    if (c.Name.ToString().Length >= 5)
+                    {
+                        string name = c.Name.Substring(0, 5);
+                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                            c.Enabled = false;
+                    }
                 }
             }
         }       
@@ -389,10 +476,10 @@ namespace AP203
                    //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
                    totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
                }
-               txtTotalAAmt.Text = totalPayment.ToString();
+               txtTotalACheck.Text = totalPayment.ToString();
             }
         }
-        private void _SumNDoc()
+        private double _SumNDoc()
         {
             ////double totalAmt= 0;
             double totalPayment = 0;
@@ -400,13 +487,13 @@ namespace AP203
             {
                 foreach (DataGridViewRow row in dgvNDocList.Rows)
                 {
-                    //totalAmt += double.Parse(row.Cells["DocBal"].Value.ToString());
                     totalPayment += double.Parse(row.Cells["Payment"].Value.ToString());
-                }
-                txtTotalNAmt.Text = totalPayment.ToString();
+                }                
+                txtTotalNCheck.Text = totalPayment.ToString();
+                txtAdjAmt.Text = totalPayment.ToString();
             }
+            return totalPayment;
         }
-
         private double[] _GetAValue(string id)
         {
             double[] db = new double[2];
@@ -419,20 +506,46 @@ namespace AP203
         {
             double[] db = new double[2];
             string sql = string.Format("DocNbr = '{0}'", id);
-            db[0] = double.Parse(_dtNDocTmp.Select(sql)[0]["Payment"].ToString());
+             /////////db[0] = double.Parse(_dtNDocTmp.Select(sql)[0]["Payment"].ToString());
             db[1] = double.Parse(_dtNDocTmp.Select(sql)[0]["DocBal"].ToString());
             return db;
         }
+        private APAdjust _GetPanel(int intRelease)
+        {
+            _infoAPAdjust.BranchID = cmbBranchID.SelectedValue.ToString().Trim();
+            _infoAPAdjust.AdjNbr = txtAdjNbr.Text.ToString().Trim();
+            _infoAPAdjust.AdjDate = dtmAdjDate.Value.Date;
+            _infoAPAdjust.AdjDesc = txtAdjDescr.Text.ToString().Trim();
+            _infoAPAdjust.AdjAcct = "";
+            _infoAPAdjust.AdjAmt = double.Parse(txtAdjAmt.Text.ToString().Trim());
+            _infoAPAdjust.Rlsed = intRelease;
+            _infoAPAdjust.FromDateTmp = DateTime.Now;
+            _infoAPAdjust.ToDateTmp = DateTime.Now;
+            _infoAPAdjust.VendIDTmp = txtVendID.Text.ToString().Trim();
+            _infoAPAdjust.Note = "";
+            if (_infoAPAdjust.Crtd_DateTime == DateTime.MinValue)
+                _infoAPAdjust.Crtd_DateTime = DateTime.Now;
+            if (_infoAPAdjust.Crtd_Prog == null)
+            _infoAPAdjust.Crtd_Prog = _strPro;
+            if (_infoAPAdjust.Crtd_User == null)
+            _infoAPAdjust.Crtd_User = _strUser;
+            _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+            _infoAPAdjust.LUpd_Prog = _strPro;
+            _infoAPAdjust.LUpd_User = _strUser;
+            if (_infoAPAdjust.Version == null)
+                _infoAPAdjust.Version = "";
+            return _infoAPAdjust;
+        }     
         private void _ResetPanel()
         {
             _LoadData();
             _BindCtrl();
             dtmAdjDate.Value = DateTime.Now;
-            txtDocDescr.Text = "";
+            txtAdjDescr.Text = "";
             txtAdjAmt.Text = "";
             txtTotalAAmt.Text = "";
             txtTotalNAmt.Text = "";
-            txtTaltolCheck.Text = "";
+            txtTotalACheck.Text = "";
             txtVendID.Text = "";
             cmbBranchID.Focus();
 
@@ -443,10 +556,21 @@ namespace AP203
             //_BindADocGrid();
             //_BindNDocGrid();
         }
+
         private void NcheckboxHeader_Click(object sender, EventArgs e)
-        {
+        {            
             for (int i = 0; i < dgvNDocList.RowCount; i++)
             {
+                //if (txtTotalACheck.Text.ToString().Trim() == "0")
+                //{
+                //    dgvNDocList.EndEdit();
+                //    //dgvADocList.CancelEdit();
+                //    //dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+                //    MessageBox.Show("Vui long chon don can thanh toan");
+                //    dgvADocList.Focus();
+                //    dgvNDocList.EndEdit();
+                //    return;
+                //}
                 double payment = _GetNValue(dgvNDocList.Rows[i].Cells["DocNbr"].Value.ToString())[0];
                 double docbal = _GetNValue(dgvNDocList.Rows[i].Cells["DocNbr"].Value.ToString())[1];
                 dgvNDocList[0, i].Value = ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked;
@@ -472,6 +596,16 @@ namespace AP203
         }
         private void AcheckboxHeader_Click(object sender, EventArgs e)
         {
+            //if (((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked == false )
+            //{
+            //    dgvNDocList.EndEdit();
+            //    //dgvADocList.CancelEdit();
+            //    dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+            //    MessageBox.Show("Vui long chon don can thanh toan");
+            //    dgvADocList.Focus();
+            //    dgvNDocList.EndEdit();
+            //    return;
+            //}
             for (int i = 0; i < dgvADocList.RowCount; i++)
             {
                 double payment = _GetAValue(dgvADocList.Rows[i].Cells["DocNbr"].Value.ToString())[0];
@@ -499,9 +633,14 @@ namespace AP203
         }
         private void pnl_SizeChanged(object sender, EventArgs e)
         {
+            labelX11.Left = pnlB.Left;
             int pnlW = pnl.Width;
             pnlA.Width = pnlW / 2 - 2;
             pnlB.Width = pnlW / 2 - 2;
+            labelX11.Left = pnlA.Width + 10;
+            txtTotalNAmt.Left = labelX11.Left + labelX11.Width + 10;
+            labelX12.Left = txtTotalNAmt.Left + txtTotalNAmt.Width + 10;
+            txtTotalNCheck.Left = labelX12.Left + labelX12.Width + 10;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -541,10 +680,13 @@ namespace AP203
                     }
                     if (kq == true)
                         ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
+                    else
+                        ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = false;
                     //===============
                 }
                 else if ((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
                 {
+                    ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = false;
                     dgvADocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
                     dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;                    
                 }
@@ -583,6 +725,7 @@ namespace AP203
                 }
                 else if ((bool)dgvADocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
                 {
+                    ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = false;
                     dgvADocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
                     dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;                    
                 }
@@ -594,38 +737,64 @@ namespace AP203
         }
         private void dgvNDocList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgvNDocList.EndEdit();
             if (e.ColumnIndex == 0)
             {
-                double payment = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
-                double docbal = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
-
-                dgvNDocList.EndEdit();
-                if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                dgvNDocList.BeginEdit(true);
+                if (txtTotalACheck.Text.ToString().Trim() == "0")
                 {
-                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
-                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
-
-                    //===============
-                    bool kq = true;
-                    foreach (DataGridViewRow row in dgvNDocList.Rows)
+                    //dgvNDocList.EndEdit();
+                    dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+                    ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
+                    MessageBox.Show("Vui long chon don can thanh toan");
+                    dgvADocList.Focus();
+                    dgvNDocList.EndEdit();
+                    return;
+                }
+                else
+                {
+                    //dgvNDocList.EndEdit();
+                    double payment = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                    double docbal = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+                    if (payment + docbal > txtTotalACheck.Number - txtTotalNCheck.Number)
                     {
-                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+                        ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
+                        MessageBox.Show("Qua gioi han thanh toan");
+                        dgvADocList.Focus();
+                        dgvNDocList.EndEdit();
+                        return;
+                    }
+                    else
+                    {
+                        
+                        if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
                         {
-                            kq = false;
-                            break;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+                            //===============
+                            bool kq = true;
+                            foreach (DataGridViewRow row in dgvNDocList.Rows)
+                            {
+                                if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                                {
+                                    kq = false;
+                                    break;
+                                }
+                            }
+                            if (kq == true)
+                                ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+                            //===============
+                        }
+                        else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                        {
+                            ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
+                            dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
                         }
                     }
-                    if (kq == true)
-                        ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
-                    //===============
                 }
-                else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
-                {
-                    dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
-                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
-                }
-
-
+                //dgvNDocList.CommitEdit(DataGridViewDataErrorContexts.Display);
             }
             dgvNDocList.EndEdit();
             _SumNDoc();
@@ -634,36 +803,59 @@ namespace AP203
         {
             if (e.ColumnIndex == 0)
             {
-                double payment = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
-                double docbal = _GetNValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
-
-                dgvNDocList.EndEdit();
-                if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
+                if (txtTotalACheck.Text.ToString().Trim() == "0")
                 {
-                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
-                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
-
-                    //===============
-                    bool kq = true;
-                    foreach (DataGridViewRow row in dgvNDocList.Rows)
+                    dgvNDocList.EndEdit();
+                    //dgvADocList.CancelEdit();
+                    dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+                    MessageBox.Show("Vui long chon don can thanh toan");
+                    dgvADocList.Focus();
+                    dgvNDocList.EndEdit();
+                    return;
+                }
+                else
+                {
+                    dgvNDocList.EndEdit();
+                    double payment = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                    double docbal = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+                    if (payment + docbal > txtTotalACheck.Number - txtTotalNCheck.Number)
                     {
-                        if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                        dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
+                        MessageBox.Show("Qua gioi han thanh toan");
+                        dgvADocList.Focus();
+                        dgvNDocList.EndEdit();
+                        return;
+                    }
+                    else
+                    {
+
+                        if (((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == true) && (dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue != null))
                         {
-                            kq = false;
-                            break;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment + docbal;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = 0;
+
+                            //===============
+                            bool kq = true;
+                            foreach (DataGridViewRow row in dgvNDocList.Rows)
+                            {
+                                if (bool.Parse(row.Cells[0].Value.ToString()) == false)
+                                {
+                                    kq = false;
+                                    break;
+                                }
+                            }
+                            if (kq == true)
+                                ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+                            //===============
+                        }
+                        else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
+                        {
+                            ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
+                            dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
+                            dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
                         }
                     }
-                    if (kq == true)
-                        ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
-                    //===============
                 }
-                else if ((bool)dgvNDocList.Rows[e.RowIndex].Cells[0].FormattedValue == false)
-                {
-                    dgvNDocList.Rows[e.RowIndex].Cells["DocBal"].Value = payment + docbal;
-                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = 0;
-                }
-
-
             }
             dgvNDocList.EndEdit();
             _SumNDoc();
@@ -674,6 +866,8 @@ namespace AP203
             {
                 double payment = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
                 double docbal = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
+                if (double.Parse(dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString()) > docbal)
+                    dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value = docbal;
                 dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvADocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
                 if (double.Parse(dgvADocList.Rows[e.RowIndex].Cells["Docbal"].Value.ToString()) == 0)
                     dgvADocList[0, e.RowIndex].Value = true;
@@ -695,20 +889,39 @@ namespace AP203
                 ((CheckBox)dgvADocList.Controls.Find("AcheckboxHeader", true)[0]).Checked = true;
             _SumADoc();
         }
+
         private void dgvNDocList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvNDocList.Columns["Payment"].Index)
             {
                 double payment = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
                 double docbal = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
-                dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
-                if (double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value.ToString()) == 0)
-                    dgvNDocList[0, e.RowIndex].Value = true;
+                if (txtTotalACheck.Text.ToString().Trim() == "0")
+                {
+                    MessageBox.Show("Vui long chon don can thanh toan");
+                    dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = payment;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = docbal;
+                    dgvADocList.Focus();
+                    return;
+                }
                 else
-                    dgvNDocList[0, e.RowIndex].Value = false;
-
+                {
+                    if (double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString()) > docbal)
+                        dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = docbal;
+                    dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
+                    if (double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString()) > txtTotalACheck.Number - txtTotalNCheck.Number)
+                    {
+                        dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value = txtTotalACheck.Number - txtTotalNCheck.Number;
+                        dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value = (payment + docbal) - double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Payment"].Value.ToString());
+                        dgvNDocList.EndEdit();
+                    }
+                    if (double.Parse(dgvNDocList.Rows[e.RowIndex].Cells["Docbal"].Value.ToString()) == 0)
+                        dgvNDocList[0, e.RowIndex].Value = true;
+                    else
+                        dgvNDocList[0, e.RowIndex].Value = false;
+                }
             }
-            //===============
+
             bool kq = true;
             foreach (DataGridViewRow row in dgvNDocList.Rows)
             {
@@ -720,7 +933,68 @@ namespace AP203
             }
             if (kq == true && dgvNDocList.Rows.Count > 0)
                 ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = true;
+            else
+                ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
             _SumNDoc();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            dgvADocList.EndEdit();
+            dgvNDocList.EndEdit();
+            _dtNDoc.AcceptChanges();
+            //_SaveAPAdjustDet();
+            if (txtAdjNbr.Text.ToString().Trim() == "")
+            {
+                DataTable _dtLastNbr = AP203Ctrl.GetSASetupGetLastNbr("AP", _strFistChar);
+                _strLastNbr = _dtLastNbr.Rows[0]["LastNbr"].ToString();
+                string strLastNbr = (Int16.Parse(_strLastNbr) + 1).ToString("000000");
+                txtAdjNbr.Text = "AP" + _strFistChar + strLastNbr;
+                _infoAPAdjust.AdjNbr = "AP" + _strFistChar + strLastNbr;
+                _SaveSASetup("AP", _strFistChar, strLastNbr);
+                _GetPanel(0);
+            }
+            else
+            {
+                _GetPanel(0);
+                _infoAPAdjust.LUpd_DateTime = DateTime.Now;
+                _infoAPAdjust.LUpd_Prog = _strPro;
+                _infoAPAdjust.LUpd_User = _strUser;
+            }
+
+            int kq = _SaveAPAdjust(0);
+            if (kq != 0)
+            {
+                kq = _SaveAPAdjustDet();
+                if (kq != 0)
+                {
+                    _infoAPAdjust.ConvertToAPAdjust(AP203Ctrl.GetAPAdjust(_infoAPAdjust.BranchID, _infoAPAdjust.AdjNbr).Rows[0]);
+                    _SetButtomStatus();
+                }
+            }
+            _BindGrid();
+            _dtADoc.DefaultView.Sort = "Payment ASC";
+            _dtNDoc.DefaultView.Sort = "Payment ASC";
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pnldgv.Visible = false;
+            pnl.Visible = true;
+            _infoAPAdjust.ConvertToAPAdjust(_dtAPAdjust.Rows[e.RowIndex]);
+            _BindPanel(_infoAPAdjust);
+            txtVendID.Enabled = false;
+            _BindADocGrid();
+            _BindNDocGrid();
+            //dtmFromDateLoad.Value = _infoAPAdjust.FromDateTmp;
+            //dtmToDateLoad.Value = _infoAPAdjust.ToDateTmp;
+            //txtVendIDLoad.Text = _infoAPAdjust.VendIDTmp;
+            //dtmToDateLoad.Enabled = false;
+            //dtmFromDateLoad.Enabled = false;
+            //txtVendIDLoad.Enabled = false;
+            //btnLoad.PerformClick();
+        }
+        
     }
 }
