@@ -155,7 +155,7 @@ namespace AP203
             }
 
             //==================
-            _dtADoc.DefaultView.Sort = "Payment DESC";
+            
         }        
         private void _BindNDocGrid()
         {
@@ -212,7 +212,7 @@ namespace AP203
             }
 
             //==================
-            _dtNDoc.DefaultView.Sort = "Payment DESC";
+            
         }     
         private bool _CheckValid()
         {
@@ -382,15 +382,18 @@ namespace AP203
                 btnDelete.Enabled = false;
                 btnSave.Enabled = true;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    if (c.Name.ToString().Length >= 5)
-                    {
-                        string name = c.Name.Substring(0, 5);
-                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                            c.Enabled = true;
-                    }
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    if (c.Name.ToString().Length >= 5)
+                //    {
+                //        string name = c.Name.Substring(0, 5);
+                //        if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //            c.Enabled = true;
+                //    }
+                //}
+                txtVendID.Enabled = true;
+                cmbBranchID.Enabled = true;
+                txtAdjDescr.Enabled = true;
             }
             else
                 txtVendID.Enabled = false;
@@ -403,15 +406,9 @@ namespace AP203
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = true;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    if (c.Name.ToString().Length >= 5)
-                    {
-                        string name = c.Name.Substring(0, 5);
-                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                            c.Enabled = true;
-                    }
-                }
+                txtVendID.Enabled = true;
+                cmbBranchID.Enabled = true;
+                txtAdjDescr.Enabled = true;
             }
             if ((cmbStatus.SelectedValue.ToString() == "0") && (txtAdjNbr.Text.ToString().Trim() != ""))
             {
@@ -421,15 +418,9 @@ namespace AP203
                 btnBack.Enabled = true;
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    if (c.Name.ToString().Length >= 5)
-                    {
-                        string name = c.Name.Substring(0, 5);
-                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                            c.Enabled = true;
-                    }
-                }
+                txtVendID.Enabled = true;
+                cmbBranchID.Enabled = true;
+                txtAdjDescr.Enabled = true;
             }
             else if (cmbStatus.SelectedValue.ToString() == "1")
             {
@@ -438,15 +429,9 @@ namespace AP203
                 btnCanAndCopy.Enabled = true;
                 btnDelete.Enabled = false;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    if (c.Name.ToString().Length >= 5)
-                    {
-                        string name = c.Name.Substring(0, 5);
-                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                            c.Enabled = false;
-                    }
-                }
+                txtVendID.Enabled = false;
+                cmbBranchID.Enabled = false;
+                txtAdjDescr.Enabled = false;
             }
             else if (cmbStatus.SelectedValue.ToString() == "-1")
             {
@@ -455,15 +440,9 @@ namespace AP203
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = false;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    if (c.Name.ToString().Length >= 5)
-                    {
-                        string name = c.Name.Substring(0, 5);
-                        if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                            c.Enabled = false;
-                    }
-                }
+                txtVendID.Enabled = false;
+                cmbBranchID.Enabled = false;
+                txtAdjDescr.Enabled = false;
             }
         }       
         private void _SumADoc()
@@ -747,7 +726,6 @@ namespace AP203
                 dgvNDocList.BeginEdit(true);
                 if (txtTotalACheck.Text.ToString().Trim() == "0")
                 {
-                    //dgvNDocList.EndEdit();
                     dgvNDocList.Rows[e.RowIndex].Cells["chk"].Value = false;
                     ((CheckBox)dgvNDocList.Controls.Find("NcheckboxHeader", true)[0]).Checked = false;
                     MessageBox.Show("Vui long chon don can thanh toan");
@@ -757,7 +735,6 @@ namespace AP203
                 }
                 else
                 {
-                    //dgvNDocList.EndEdit();
                     double payment = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
                     double docbal = _GetNValue(dgvNDocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[1];
                     if (payment + docbal > txtTotalACheck.Number - txtTotalNCheck.Number)
@@ -798,7 +775,6 @@ namespace AP203
                         }
                     }
                 }
-                //dgvNDocList.CommitEdit(DataGridViewDataErrorContexts.Display);
             }
             dgvNDocList.EndEdit();
             _SumNDoc();
@@ -990,6 +966,8 @@ namespace AP203
             txtVendID.Enabled = false;
             _BindADocGrid();
             _BindNDocGrid();
+            _dtNDoc.DefaultView.Sort = "Payment DESC";
+            _dtADoc.DefaultView.Sort = "Payment DESC";
             _SetButtomStatus();
         }
         private void btnRelease_Click(object sender, EventArgs e)
@@ -1051,31 +1029,35 @@ namespace AP203
         private void dgvADocList_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             DataGridViewTextBoxCell cell = dgvADocList[e.ColumnIndex, e.RowIndex] as DataGridViewTextBoxCell;
-
-            if (cell != null)
+            if (dgvADocList.Columns[e.ColumnIndex].Name == "Payment")
             {
-                char[] chars = e.FormattedValue.ToString().ToCharArray();
-                foreach (char c in chars)
+                if (cell != null)
                 {
-                    if (char.IsDigit(c) == false)
+                    char[] chars = e.FormattedValue.ToString().ToCharArray();
+                    foreach (char c in chars)
                     {
-                        MessageBox.Show("You have to enter digits only");
+                        if (char.IsDigit(c) == false)
+                        {
+                            MessageBox.Show("You have to enter digits only");
 
-                        e.Cancel = true;
-                        break;
+                            e.Cancel = true;
+                            break;
+                        }
                     }
                 }
+                //else
+                //    dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+                //if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
+                //    dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
             }
-            else
-                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
-            if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
-                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
         }
 
         private void dgvADocList_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
-                dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
+            //if (dgvADocList.Columns[e.ColumnIndex].Name == "Payment")
+
+            //    if (dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "" || dgvADocList["Payment", e.RowIndex].Value.ToString().Trim() == "0")
+            //        dgvADocList["Payment", e.RowIndex].Value = _GetAValue(dgvADocList.Rows[e.RowIndex].Cells["DocNbr"].Value.ToString())[0];
         }
 
        
