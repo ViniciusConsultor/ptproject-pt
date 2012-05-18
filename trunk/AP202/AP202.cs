@@ -361,12 +361,12 @@ namespace AP202
                 btnDelete.Enabled = false;
                 btnSave.Enabled = true;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    string name = c.Name.Substring(0, 5);
+                //    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //        c.Enabled = true;
+                //}
             }
             if (pnl.Visible == true)
                 btnBack.Enabled = true;
@@ -377,12 +377,12 @@ namespace AP202
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = true;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    string name = c.Name.Substring(0, 5);
+                //    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //        c.Enabled = true;
+                //}
             }
             if ((cmbStatus.SelectedValue.ToString() == "0") && (txtAdjNbr.Text.ToString().Trim() != ""))
             {
@@ -392,12 +392,12 @@ namespace AP202
                 btnBack.Enabled = true;
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = true;
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    string name = c.Name.Substring(0, 5);
+                //    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //        c.Enabled = true;
+                //}
             }
             else if (cmbStatus.SelectedValue.ToString() == "1")
             {
@@ -406,12 +406,12 @@ namespace AP202
                 btnCanAndCopy.Enabled = true;
                 btnDelete.Enabled = false;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = false;
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    string name = c.Name.Substring(0, 5);
+                //    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //        c.Enabled = false;
+                //}
             }
             else if (cmbStatus.SelectedValue.ToString() == "-1")
             {
@@ -420,12 +420,12 @@ namespace AP202
                 btnCanAndCopy.Enabled = false;
                 btnDelete.Enabled = false;
                 btnBack.Enabled = true;
-                foreach (Control c in pnl.Controls) //assuming this is a Form
-                {
-                    string name = c.Name.Substring(0, 5);
-                    if (((name != "label") || (name == "btn")) && (name != "pnl"))
-                        c.Enabled = false;
-                }
+                //foreach (Control c in pnl.Controls) //assuming this is a Form
+                //{
+                //    string name = c.Name.Substring(0, 5);
+                //    if (((name != "label") || (name == "btn")) && (name != "pnl"))
+                //        c.Enabled = false;
+                //}
             }
         }
         private void _FilterGrid()
@@ -761,8 +761,8 @@ namespace AP202
                 }
             }
             _BindGrid();
-            _dtAPDoc.DefaultView.Sort = "DocBal ASC";
-            _dtAPDocTmp.DefaultView.Sort = "DocBal ASC";
+            _dtAPDoc.DefaultView.Sort = "DocBal DESC";
+            _dtAPDocTmp.DefaultView.Sort = "DocBal DESC";
 
         }
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -774,9 +774,9 @@ namespace AP202
             dtmFromDateLoad.Value = _infoAPAdjust.FromDateTmp;
             dtmToDateLoad.Value = _infoAPAdjust.ToDateTmp;
             txtVendIDLoad.Text = _infoAPAdjust.VendIDTmp;
-            dtmToDateLoad.Enabled = false;
-            dtmFromDateLoad.Enabled = false;
-            txtVendIDLoad.Enabled = false;
+            //dtmToDateLoad.Enabled = false;
+            //dtmFromDateLoad.Enabled = false;
+            //txtVendIDLoad.Enabled = false;
             btnLoad.PerformClick();
         }
         private void btnRelease_Click(object sender, EventArgs e)

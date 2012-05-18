@@ -157,6 +157,10 @@
             this.dgv.Size = new System.Drawing.Size(578, 89);
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
+            // btnRelease
+            // 
+            this.btnRelease.Click += new System.EventHandler(this.btnRelease_Click);
+            // 
             // barStatus
             // 
             this.barStatus.Size = new System.Drawing.Size(876, 19);
@@ -171,6 +175,14 @@
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
+            // 
+            // btnDestroy
+            // 
+            this.btnDestroy.Click += new System.EventHandler(this.btnDestroy_Click);
+            // 
+            // btnCanAndCopy
+            // 
+            this.btnCanAndCopy.Click += new System.EventHandler(this.btnCanAndCopy_Click);
             // 
             // txtAdjdNbrFind
             // 
@@ -421,6 +433,7 @@
             // 
             this.txtTotalNCheck.Border.Class = "TextBoxBorder";
             this.txtTotalNCheck.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalNCheck.Enabled = false;
             this.txtTotalNCheck.Location = new System.Drawing.Point(816, 106);
             this.txtTotalNCheck.Name = "txtTotalNCheck";
             this.txtTotalNCheck.Size = new System.Drawing.Size(100, 20);
@@ -474,6 +487,7 @@
             // 
             this.txtTotalNAmt.Border.Class = "TextBoxBorder";
             this.txtTotalNAmt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalNAmt.Enabled = false;
             this.txtTotalNAmt.Location = new System.Drawing.Point(644, 106);
             this.txtTotalNAmt.Name = "txtTotalNAmt";
             this.txtTotalNAmt.Size = new System.Drawing.Size(100, 20);
@@ -488,6 +502,7 @@
             // 
             this.txtTotalACheck.Border.Class = "TextBoxBorder";
             this.txtTotalACheck.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalACheck.Enabled = false;
             this.txtTotalACheck.Location = new System.Drawing.Point(251, 106);
             this.txtTotalACheck.Name = "txtTotalACheck";
             this.txtTotalACheck.Size = new System.Drawing.Size(100, 20);
@@ -502,6 +517,7 @@
             // 
             this.txtTotalAAmt.Border.Class = "TextBoxBorder";
             this.txtTotalAAmt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtTotalAAmt.Enabled = false;
             this.txtTotalAAmt.Location = new System.Drawing.Point(70, 106);
             this.txtTotalAAmt.Name = "txtTotalAAmt";
             this.txtTotalAAmt.Size = new System.Drawing.Size(100, 20);
@@ -551,6 +567,7 @@
             // 
             this.txtAdjNbr.Border.Class = "TextBoxBorder";
             this.txtAdjNbr.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAdjNbr.Enabled = false;
             this.txtAdjNbr.Location = new System.Drawing.Point(266, 18);
             this.txtAdjNbr.Name = "txtAdjNbr";
             this.txtAdjNbr.Size = new System.Drawing.Size(100, 20);
@@ -589,6 +606,7 @@
             // 
             this.txtAdjAmt.Border.Class = "TextBoxBorder";
             this.txtAdjAmt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtAdjAmt.Enabled = false;
             this.txtAdjAmt.Location = new System.Drawing.Point(467, 43);
             this.txtAdjAmt.Name = "txtAdjAmt";
             this.txtAdjAmt.Size = new System.Drawing.Size(100, 20);
@@ -794,7 +812,9 @@
             this.dgvADocList.Name = "dgvADocList";
             this.dgvADocList.Size = new System.Drawing.Size(567, 76);
             this.dgvADocList.TabIndex = 1;
+            this.dgvADocList.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellValidated);
             this.dgvADocList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellContentDoubleClick);
+            this.dgvADocList.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvADocList_CellValidating);
             this.dgvADocList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellEndEdit);
             this.dgvADocList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvADocList_CellContentClick);
             // 
